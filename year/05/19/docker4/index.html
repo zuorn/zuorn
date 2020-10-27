@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zuorn.gitee.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Docker 学习笔记 （四） 数据管理">
+<meta property="og:url" content="http://zuorn.gitee.io/year/05/19/docker4/index.html">
+<meta property="og:site_name" content="Zorn&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g36owkutjrj30u00eyq5e.jpg">
+<meta property="article:published_time" content="2019-05-19T11:23:11.000Z">
+<meta property="article:modified_time" content="2020-07-05T05:27:32.847Z">
+<meta property="article:author" content="Zorn">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg">
+
+<link rel="canonical" href="http://zuorn.gitee.io/year/05/19/docker4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Docker 学习笔记 （四） 数据管理 | Zorn's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Zorn's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zuorn.gitee.io/year/05/19/docker4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zorn">
+      <meta itemprop="description" content="你要保持清醒、独立，并且始终活的真实。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zorn's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Docker 学习笔记 （四） 数据管理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-19 19:23:11" itemprop="dateCreated datePublished" datetime="2019-05-19T19:23:11+08:00">2019-05-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-05 13:27:32" itemprop="dateModified" datetime="2020-07-05T13:27:32+08:00">2020-07-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
+<a id="more"></a>
+
+<p>在默认情况下，容器内所有文件都存储在可写容器层中，这意味着：</p>
+<ul>
+<li>当该容器不再存在时，数据不会持久存在，并且如果另一个容器需要数据，则可能很难从容器中获取数据。</li>
+<li>容器的可写层紧密耦合到运行容器的主机。无法轻松地将数据移动到其他位置。</li>
+<li>写入容器的可写层需要 存储驱动程序来管理文件系统。存储驱动程序使用Linux内核提供联合文件系统。与使用直接写入主机文件系统的数据卷相比，这种额外的抽象降低了性能 。</li>
+</ul>
+<p>Docker有两个容器选项可以在主机中存储文件，因此即使在容器停止之后文件仍然会存在：volumes和 bind mounts。在Linux上运行Docker，可以使用tmpfs mount临时挂载。</p>
+<p>无论哪种方式，数据在容器内都是相同的。它作为目录或容器文件系统中的单个文件公开。</p>
+<p>Volumes，Bind mounts和tmpfs 装载之间差异的简单方法是考虑数据在Docker主机上的位置。</p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g36owkutjrj30u00eyq5e.jpg" alt=""></p>
+<h3 id="三者的区别"><a href="#三者的区别" class="headerlink" title="三者的区别"></a>三者的区别</h3><ul>
+<li><p>Volumes存储在由Docker（/var/lib/docker/volumes/在Linux上）管理的主机文件系统的一部分中。非Docker进程不应修改文件系统的这一部分。卷是在Docker中保留数据的最佳方式。</p>
+</li>
+<li><p>Bind mounts可以存储在主机系统的任何位置。它们甚至可能是重要的系统文件或目录。Docker主机或Docker容器上的非Docker进程可以随时修改它们。</p>
+</li>
+<li><p>tmpfs挂载仅存储在主机系统的内存中，永远不会写入主机系统的文件系统。</p>
+</li>
+</ul>
+<h3 id="Volumes的特点"><a href="#Volumes的特点" class="headerlink" title="Volumes的特点"></a>Volumes的特点</h3><p>卷是在Docker容器和服务中持久保存数据的首选方法。卷的一些用例包括：</p>
+<ul>
+<li><p>在多个运行容器之间共享数据。如果未显式创建它，则会在第一次将其装入容器时创建卷。当该容器停止或被移除时，该卷仍然存在。多个容器可以同时安装相同的卷，可以是读写也可以是只读。仅在您明确删除卷时才会删除卷。</p>
+<p>  当Docker主机不能保证具有给定的目录或文件结构时。卷可帮助您将Docker主机的配置与容器运行时分离。</p>
+</li>
+<li><p>如果要将容器的数据存储在远程主机或云提供程序上，而不是本地存储。</p>
+</li>
+<li><p>当您需要将数据从一个Docker主机备份，还原或迁移到另一个Docker主机时，卷是更好的选择。您可以使用卷停止容器，然后备份卷的目录（例如/var/lib/docker/volumes/<volume-name>）。</p>
+</li>
+</ul>
+<h3 id="Bind-mounts的特点"><a href="#Bind-mounts的特点" class="headerlink" title="Bind mounts的特点"></a>Bind mounts的特点</h3><ul>
+<li><p>将配置文件从主机共享到容器。这就是Docker默认通过/etc/resolv.conf从主机安装到每个容器中来为容器提供DNS解析的方式 。</p>
+</li>
+<li><p>在Docker主机上的开发环境和容器之间共享源代码或构建工件。例如，您可以将Maven target/ 目录挂载到容器中，每次在Docker主机上构建Maven项目时，容器都可以访问重建的工件。</p>
+<p>  如果以这种方式使用Docker进行开发，您的生产Dockerfile会将生产就绪工件直接复制到映像中，而不是依赖于绑定装载。</p>
+</li>
+<li><p>当Docker主机的文件或目录结构保证与容器所需的绑定安装一致时。</p>
+</li>
+</ul>
+<h3 id="tmpfs"><a href="#tmpfs" class="headerlink" title="tmpfs"></a>tmpfs</h3><ul>
+<li>tmpfs 不希望数据在主机或容器内持久存在时，最好使用挂载。这可能是出于安全原因，或者在应用程序需要编写大量非持久状态数据时保护容器的性能。</li>
+</ul>
+<h3 id="Volumes和Bind-mounts需要注意"><a href="#Volumes和Bind-mounts需要注意" class="headerlink" title="Volumes和Bind mounts需要注意"></a>Volumes和Bind mounts需要注意</h3><ul>
+<li><p>如果将空卷装入容器中存在文件或目录的目录中，则会将这些文件或目录传播（复制）到卷中。同样，如果启动容器并指定尚不存在的卷，则会为您创建一个空卷。这是预先填充另一个容器所需数据的好方法。</p>
+</li>
+<li><p>如果将绑定装载或非空卷装入容器中存在某些文件或目录的目录中，则装载会遮盖这些文件或目录，就像将文件保存到/mntLinux主机上然后安装USB驱动器进入/mnt。/mnt在卸载USB驱动器之前，USB驱动器的内容会遮挡内容。隐藏的文件不会被删除或更改，但在安装绑定装载或卷时无法访问。</p>
+</li>
+</ul>
+<h3 id="数据卷（Volumes）"><a href="#数据卷（Volumes）" class="headerlink" title="数据卷（Volumes）"></a>数据卷（Volumes）</h3><p>数据卷 是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：</p>
+<ul>
+<li><p>数据卷 可以在容器之间共享和重用</p>
+</li>
+<li><p>对 数据卷 的修改会立马生效</p>
+</li>
+<li><p>对 数据卷 的更新，不会影响镜像</p>
+</li>
+<li><p>数据卷 默认会一直存在，即使容器被删除</p>
+</li>
+</ul>
+<blockquote>
+<p>注意：数据卷 的使用，类似于 Linux 下对目录或文件进行 mount，镜像中的被指定为挂载点的目录中的文件会隐藏掉，能显示看的是挂载的 数据卷。</p>
+</blockquote>
+<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume create my-vol</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看所有的-数据卷"><a href="#查看所有的-数据卷" class="headerlink" title="查看所有的 数据卷"></a>查看所有的 数据卷</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> $ docker volume ls</span><br><span class="line">DRIVER              VOLUME NAME</span><br><span class="line">local               my-vol</span><br></pre></td></tr></table></figure>
+
+<h4 id="在主机里使用以下命令可以查看指定-数据卷-的信息"><a href="#在主机里使用以下命令可以查看指定-数据卷-的信息" class="headerlink" title="在主机里使用以下命令可以查看指定 数据卷 的信息"></a>在主机里使用以下命令可以查看指定 数据卷 的信息</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ docker volume inspect my-vol</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">"CreatedAt"</span>: <span class="string">"2019-05-19T08:22:09Z"</span>,</span><br><span class="line">        <span class="string">"Driver"</span>: <span class="string">"local"</span>,</span><br><span class="line">        <span class="string">"Labels"</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="string">"Mountpoint"</span>: <span class="string">"/var/lib/docker/volumes/my-vol/_data"</span>,</span><br><span class="line">        <span class="string">"Name"</span>: <span class="string">"my-vol"</span>,</span><br><span class="line">        <span class="string">"Options"</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="string">"Scope"</span>: <span class="string">"local"</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动一个挂载数据卷的容器"><a href="#启动一个挂载数据卷的容器" class="headerlink" title="启动一个挂载数据卷的容器"></a>启动一个挂载数据卷的容器</h4><p>在用 docker run 命令的时候，使用 -v和–mount 标记来将 数据卷 挂载到容器里。在一次 docker run 中可以挂载多个 数据卷。</p>
+<h5 id="v或–mount的区别："><a href="#v或–mount的区别：" class="headerlink" title="-v或–mount的区别："></a>-v或–mount的区别：</h5><p>如果要指定数据卷的选项，则必须使用–mount。</p>
+<ul>
+<li><p>-v或–volume：由三个字段组成，用冒号字符（:）分隔。字段必须按正确的顺序排列，并且每个字段的含义不是很明显。</p>
+<ul>
+<li>对于命名卷，第一个字段是卷的名称，并且在给定主机上是唯一的。对于匿名卷，省略第一个字段。</li>
+<li>第二个字段是文件或目录在容器中安装的路径。</li>
+<li>第三个字段是可选的，是逗号分隔的选项列表，例如ro。这些选项将在下面讨论。</li>
+</ul>
+</li>
+<li><p>–mount：由多个键值对组成，以逗号分隔，每个键<key>=<value>组由一个元组组成。该–mount语法比更详细的-v或–volume，但按键的顺序并不显著，并且标志的价值更容易理解。</p>
+<ul>
+<li>type是挂载类型，可以是bind，volume，或 tmpfs。本主题讨论卷，因此挂载类型始终是volume。</li>
+<li>source，对于命名卷，这是卷的名称。对于匿名卷，省略此字段。可以指定为source 或src。</li>
+<li>destination 文件或目录在容器中的路径。可以指定为destination，dst或target。</li>
+<li>readonly（如果存在）导致绑定装入以只读方式装入容器中。</li>
+<li>volume-opt 选项可以多次指定，它采用由选项名称及其值组成的键值对。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意：如果启动的容器不存在挂载卷的路径，Docker会自动创建。</p>
+</blockquote>
+<ul>
+<li>-v</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d \</span><br><span class="line">  --name devtest \</span><br><span class="line">  -v myvol2:<span class="regexp">/app \</span></span><br><span class="line"><span class="regexp">  nginx:latest</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>–mount</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d \</span><br><span class="line">  --name devtest \</span><br><span class="line">  --mount source=myvol2,target=<span class="regexp">/app \</span></span><br><span class="line"><span class="regexp">  nginx:latest</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="删除数据卷"><a href="#删除数据卷" class="headerlink" title="删除数据卷"></a>删除数据卷</h4><p>删除容器后，Docker数据卷仍然存在。</p>
+<ul>
+<li>例如，命名卷：具有来自容器外部的特定源awesome:/bar</li>
+<li>匿名卷没有特定的源，因此在删除容器时，可以用–rm指令删除。</li>
+</ul>
+<h4 id="删除匿名卷"><a href="#删除匿名卷" class="headerlink" title="删除匿名卷"></a>删除匿名卷</h4><p>要自动删除匿名卷，需要使用–rm选项。例如，创建匿名/foo卷。删除容器后，Docker守护进程会删除/foo卷但不会删除awesome卷。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -v /foo -v awesome:<span class="regexp">/bar busybox top</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="删除所有未使用的数据卷并释放空间："><a href="#删除所有未使用的数据卷并释放空间：" class="headerlink" title="删除所有未使用的数据卷并释放空间："></a>删除所有未使用的数据卷并释放空间：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume prune</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"># docker</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/year/05/19/docker3/" rel="prev" title="Docker 学习笔记（三）网络配置">
+      <i class="fa fa-chevron-left"></i> Docker 学习笔记（三）网络配置
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/year/05/20/dasha/" rel="next" title="大厦崩塌">
+      大厦崩塌 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#三者的区别"><span class="nav-number">1.</span> <span class="nav-text">三者的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Volumes的特点"><span class="nav-number">2.</span> <span class="nav-text">Volumes的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bind-mounts的特点"><span class="nav-number">3.</span> <span class="nav-text">Bind mounts的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tmpfs"><span class="nav-number">4.</span> <span class="nav-text">tmpfs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Volumes和Bind-mounts需要注意"><span class="nav-number">5.</span> <span class="nav-text">Volumes和Bind mounts需要注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据卷（Volumes）"><span class="nav-number">6.</span> <span class="nav-text">数据卷（Volumes）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据卷"><span class="nav-number">6.1.</span> <span class="nav-text">创建数据卷</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看所有的-数据卷"><span class="nav-number">6.2.</span> <span class="nav-text">查看所有的 数据卷</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在主机里使用以下命令可以查看指定-数据卷-的信息"><span class="nav-number">6.3.</span> <span class="nav-text">在主机里使用以下命令可以查看指定 数据卷 的信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动一个挂载数据卷的容器"><span class="nav-number">6.4.</span> <span class="nav-text">启动一个挂载数据卷的容器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#v或–mount的区别："><span class="nav-number">6.4.1.</span> <span class="nav-text">-v或–mount的区别：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据卷"><span class="nav-number">6.5.</span> <span class="nav-text">删除数据卷</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除匿名卷"><span class="nav-number">6.6.</span> <span class="nav-text">删除匿名卷</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除所有未使用的数据卷并释放空间："><span class="nav-number">6.7.</span> <span class="nav-text">删除所有未使用的数据卷并释放空间：</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zorn"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Zorn</p>
+  <div class="site-description" itemprop="description">你要保持清醒、独立，并且始终活的真实。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zuorn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zuorn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zuorn@qq.com" title="E-Mail → mailto:zuorn@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zorn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

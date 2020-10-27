@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zuorn.gitee.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="当我在填写网页内容的时候，我的手不得不从鼠标和键盘上来回切换，于是我开始寻找解决这个问题的办法，cvim很好的解决了这个问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cvim">
+<meta property="og:url" content="http://zuorn.gitee.io/year/09/09/cvim/index.html">
+<meta property="og:site_name" content="Zorn&#39;s Blog">
+<meta property="og:description" content="当我在填写网页内容的时候，我的手不得不从鼠标和键盘上来回切换，于是我开始寻找解决这个问题的办法，cvim很好的解决了这个问题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-09-09T15:18:44.000Z">
+<meta property="article:modified_time" content="2019-05-20T04:41:15.000Z">
+<meta property="article:author" content="Zorn">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://zuorn.gitee.io/year/09/09/cvim/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>cvim | Zorn's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Zorn's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zuorn.gitee.io/year/09/09/cvim/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zorn">
+      <meta itemprop="description" content="你要保持清醒、独立，并且始终活的真实。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zorn's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cvim
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-09-09 23:18:44" itemprop="dateCreated datePublished" datetime="2017-09-09T23:18:44+08:00">2017-09-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-05-20 12:41:15" itemprop="dateModified" datetime="2019-05-20T12:41:15+08:00">2019-05-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>当我在填写网页内容的时候，我的手不得不从鼠标和键盘上来回切换，于是我开始寻找解决这个问题的办法，<a href="https://chrome.google.com/webstore/detail/cvim/ihlenndgcmojhcghmfjfneahoeklbjjh" target="_blank" rel="noopener">cvim</a>很好的解决了这个问题。</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="什么是cvim？"><a href="#什么是cvim？" class="headerlink" title="什么是cvim？"></a>什么是<a href="https://chrome.google.com/webstore/detail/cvim/ihlenndgcmojhcghmfjfneahoeklbjjh" target="_blank" rel="noopener">cvim</a>？</h3><p>cvim适用于<a href="https://www.google.com/chrome/index.html" target="_blank" rel="noopener">Google Chrome</a>的<a href="https://vim.sourceforge.io/download.php" target="_blank" rel="noopener">Vim</a>。</p>
+<h4 id="作者的话："><a href="#作者的话：" class="headerlink" title="作者的话："></a>作者的话：</h4><blockquote>
+<p>我讨厌使用鼠标，尤其是在学习Vim之后。使用我的桌面（Linux），我有很多键绑定，使事情变得更容易：我用Alt + w打开Chrome，我用Alt + Shift + d关闭一个窗口，我打开一个Alt + t的终端。这对Chrome很难处理，因为它没有自定义键盘快捷键的部分，但仍然需要使用鼠标来执行点击链接。 cVim旨在尽可能地消除此问题，Chrome扩展API将允许它。</p>
+</blockquote>
+<h3 id="cvim的优势是什么？"><a href="#cvim的优势是什么？" class="headerlink" title="cvim的优势是什么？"></a>cvim的优势是什么？</h3><ul>
+<li>支持自定义搜索引擎</li>
+<li>支持插入符/Visual模式 （！！超赞有木有！！）</li>
+<li>支持正则表达式！！</li>
+<li>命令支持tab补全！</li>
+<li>支持自定义键映射！！（也就是你可以自己写vimrc，这才是完整的vim好不好！！可以备份到github）</li>
+<li>自定义命令</li>
+</ul>
+<h3 id="如何获取cvim"><a href="#如何获取cvim" class="headerlink" title="如何获取cvim"></a>如何获取cvim</h3><p><a href="https://chrome.google.com/webstore/category/extensions" target="_blank" rel="noopener">chrome web sotre</a>搜索<a href="https://chrome.google.com/webstore/detail/cvim/ihlenndgcmojhcghmfjfneahoeklbjjh" target="_blank" rel="noopener">cvim</a>安装即可，或者点击本文<a href="https://chrome.google.com/webstore/detail/cvim/ihlenndgcmojhcghmfjfneahoeklbjjh" target="_blank" rel="noopener">cvim</a>直接安装。</p>
+<h3 id="cvim用法："><a href="#cvim用法：" class="headerlink" title="cvim用法："></a>cvim用法：</h3><p>我这里分别从正常模式、链接提示、标签栏导航、视觉／插入模式、命令模式说明。</p>
+<h4 id="正常模式："><a href="#正常模式：" class="headerlink" title="正常模式："></a>正常模式：</h4><ul>
+<li>j， s 向下滚动</li>
+<li>k， w 向上滑动</li>
+<li>h 向左滚动</li>
+<li>l 向右滚动</li>
+<li>d 滚动一半页面</li>
+<li>u， e 滚动一半页面</li>
+<li>gg 滚动到页面顶部</li>
+<li>G 滚动到页面的底部</li>
+<li>gi 转到第一个输入框</li>
+<li>gI 转到最后一个输入框</li>
+</ul>
+<h4 id="链接提示："><a href="#链接提示：" class="headerlink" title="链接提示："></a>链接提示：</h4><ul>
+<li>f 打开当前选项卡中的链接</li>
+<li>F 在新标签页中打开链接</li>
+<li>W 在新窗口中打开链接</li>
+<li>A 重复最后提示命令</li>
+<li>q 触发悬停事件</li>
+<li>Q 触发不起眼的事件</li>
+<li>mf 打开多个链接</li>
+<li>gy 从链接复制URL到剪贴板</li>
+<li>yy 将当前页面的URL复制到剪贴板</li>
+<li>yY 将当前帧的URL复制到剪贴板</li>
+</ul>
+<h4 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h4><ul>
+<li>: 打开命令栏</li>
+<li>/ 打开搜索栏</li>
+<li>? 打开搜索栏（反向搜索）</li>
+<li>I 搜索浏览器历史记录</li>
+<li>zr 重新启动Google Chrome</li>
+<li>i 进入插入模式</li>
+<li>r 重新加载当前选项卡（刷新）</li>
+<li>gR 重新加载当前选项卡+本地缓存</li>
+<li>z<Enter> 切换图像缩放（与仅在图像页面上单击图像相同）</li>
+<li>yh 从查找模式复制当前匹配的文本（如果有）</li>
+<li>b 搜寻书签(相当于命令:bookmarks）</li>
+<li>p 打开剪贴板选择</li>
+<li>gj 隐藏下载栏</li>
+<li>gq 停止加载当前选项卡</li>
+<li>gQ 停止加载所有标签</li>
+</ul>
+<h4 id="标签导航："><a href="#标签导航：" class="headerlink" title="标签导航："></a>标签导航：</h4><ul>
+<li>gt，K，R 导航到下一个选项卡</li>
+<li>gT，J，E 导航到上一个选项卡</li>
+<li>g0， g$ 转到第一个/最后一个选项卡</li>
+<li>x 关闭当前选项卡</li>
+<li>X 打开最后关闭的标签页</li>
+<li>H， S 返回上一个标签</li>
+<li>L， D 前进下一个标签</li>
+<li>B 搜索另一个活动选项卡</li>
+<li>&lt; 向左移动当前标签</li>
+<li><blockquote>
+<p>向右移动当前标签</p>
+</blockquote>
+</li>
+<li>查找模式(/进入）：</li>
+<li>n 下一个搜索结果</li>
+<li>N 以前的搜索结果</li>
+<li>v 进入视觉/插入模式（突出显示当前搜索/选择）</li>
+<li>V 从插入模式/当前突出显示的搜索进入视线模式</li>
+</ul>
+<h4 id="视觉／插入模式（i插入、v视觉）："><a href="#视觉／插入模式（i插入、v视觉）：" class="headerlink" title="视觉／插入模式（i插入、v视觉）："></a>视觉／插入模式（i插入、v视觉）：</h4><ul>
+<li><Esc> 将视觉模式退出插入模式/退出插入模式到正常模式</li>
+<li>v 在视觉/插入模式之间切换</li>
+<li>h，j，k，l 移动插入位置/扩展视觉选择</li>
+<li>y 配合当前的选择</li>
+<li>n 选择下一个搜索结果</li>
+<li>N 选择先前的搜索结果</li>
+<li>p 打开当前选项卡中的突出显示</li>
+<li>P 在新标签中打开突出显示的文本</li>
+</ul>
+<h4 id="命令模式-打开命令栏）："><a href="#命令模式-打开命令栏）：" class="headerlink" title="命令模式(:打开命令栏）："></a>命令模式(:打开命令栏）：</h4><ul>
+<li>. 重复最后一个命令</li>
+<li>:new url 打开一个新窗口</li>
+<li>:bookmarks url  从书签中打开一条新的标签</li>
+<li>:open url 打开一个新标签</li>
+<li>:history url 打开一条历史标签</li>
+<li>:quit 关闭当前标签</li>
+<li>:qall 关闭当前窗口（注意：是关闭当前的窗口，不是关闭标签)</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"># 工具</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/year/09/08/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="prev" title="Hexo常用命令">
+      <i class="fa fa-chevron-left"></i> Hexo常用命令
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/year/09/10/Hexo%E5%8D%9A%E5%AE%A2%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" rel="next" title="Hexo博客配置代码高亮">
+      Hexo博客配置代码高亮 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是cvim？"><span class="nav-number">1.</span> <span class="nav-text">什么是cvim？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作者的话："><span class="nav-number">1.1.</span> <span class="nav-text">作者的话：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cvim的优势是什么？"><span class="nav-number">2.</span> <span class="nav-text">cvim的优势是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何获取cvim"><span class="nav-number">3.</span> <span class="nav-text">如何获取cvim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cvim用法："><span class="nav-number">4.</span> <span class="nav-text">cvim用法：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正常模式："><span class="nav-number">4.1.</span> <span class="nav-text">正常模式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链接提示："><span class="nav-number">4.2.</span> <span class="nav-text">链接提示：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他："><span class="nav-number">4.3.</span> <span class="nav-text">其他：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签导航："><span class="nav-number">4.4.</span> <span class="nav-text">标签导航：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#视觉／插入模式（i插入、v视觉）："><span class="nav-number">4.5.</span> <span class="nav-text">视觉／插入模式（i插入、v视觉）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令模式-打开命令栏）："><span class="nav-number">4.6.</span> <span class="nav-text">命令模式(:打开命令栏）：</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zorn"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Zorn</p>
+  <div class="site-description" itemprop="description">你要保持清醒、独立，并且始终活的真实。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zuorn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zuorn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zuorn@qq.com" title="E-Mail → mailto:zuorn@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zorn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zuorn.gitee.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="如果说有什么工具可以用相见恨晚 来形容的话，Tmux 算一个。 Tmuxs 是一款优秀的终端复用工具，使用它最直观的好处就是，通过一个终端登录远程主机并运行tmux后，在其中可以开启多个控制台而无需再“浪费”多余的终端来连接这台远程主机；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tmux 配置：打造最适合自己的终端复用工具">
+<meta property="og:url" content="http://zuorn.gitee.io/year/06/20/tmux-conf/index.html">
+<meta property="og:site_name" content="Zorn&#39;s Blog">
+<meta property="og:description" content="如果说有什么工具可以用相见恨晚 来形容的话，Tmux 算一个。 Tmuxs 是一款优秀的终端复用工具，使用它最直观的好处就是，通过一个终端登录远程主机并运行tmux后，在其中可以开启多个控制台而无需再“浪费”多余的终端来连接这台远程主机；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-20-161234.png">
+<meta property="og:image" content="http://zuorn.gitee.io/year/06/20/tmux-conf/media/15604367235575/15610200944082.jpg">
+<meta property="article:published_time" content="2019-06-20T11:38:01.000Z">
+<meta property="article:modified_time" content="2020-07-05T05:29:28.575Z">
+<meta property="article:author" content="Zorn">
+<meta property="article:tag" content="tmux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-20-161234.png">
+
+<link rel="canonical" href="http://zuorn.gitee.io/year/06/20/tmux-conf/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Tmux 配置：打造最适合自己的终端复用工具 | Zorn's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Zorn's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zuorn.gitee.io/year/06/20/tmux-conf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zorn">
+      <meta itemprop="description" content="你要保持清醒、独立，并且始终活的真实。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zorn's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Tmux 配置：打造最适合自己的终端复用工具
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-20 19:38:01" itemprop="dateCreated datePublished" datetime="2019-06-20T19:38:01+08:00">2019-06-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-05 13:29:28" itemprop="dateModified" datetime="2020-07-05T13:29:28+08:00">2020-07-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-20-161234.png" alt="image-20190621001230589"></p>
+<p>如果说有什么工具可以用<strong>相见恨晚</strong> 来形容的话，Tmux 算一个。</p>
+<p>Tmuxs 是一款优秀的终端复用工具，使用它最直观的好处就是，通过一个终端登录远程主机并运行tmux后，在其中可以开启多个控制台而无需再“浪费”多余的终端来连接这台远程主机；</p>
+<a id="more"></a>
+
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ul>
+<li>提供了强劲的、易于使用的命令行界面。</li>
+<li>可横向和纵向分割窗口。</li>
+<li>窗格可以自由移动和调整大小，或直接利用四个预设布局之一。</li>
+<li>支持 UTF-8 编码及 256 色终端。</li>
+<li>可在多个缓冲区进行复制和粘贴。</li>
+<li>可通过交互式菜单来选择窗口、会话及客户端。</li>
+<li>支持跨窗口搜索。</li>
+<li>支持自动及手动锁定窗口。</li>
+<li>可以自由配置绑定快捷键。</li>
+</ul>
+<h2 id="Tmux-重要概念"><a href="#Tmux-重要概念" class="headerlink" title="Tmux 重要概念"></a>Tmux 重要概念</h2><p>使用 Tmux 的时候千万不要去背指令，所有的指令都可以在 <code>.tmux.conf</code> 配置文件中绑定自己顺手的快捷键，也可以配置开启鼠标。</p>
+<p>这个是我的配置文件：<a href="https://github.com/zuorn/tmux.conf" target="_blank" rel="noopener">https://github.com/zuorn/tmux.conf</a> </p>
+<p>在Tmux逻辑中，需要分清楚Server &gt; Session &gt; Window &gt; Pane这个大小和层级顺序是极其重要的，直接关系到工作效率：</p>
+<ul>
+<li>Server：是整个tmux的后台服务。有时候更改配置不生效，就要使用tmux kill-server来重启tmux。</li>
+<li>Session：是tmux的所有会话。我之前就错把这个session当成窗口用，造成了很多不便里。一般只要保存一个session就足够了。</li>
+<li>Window：相当于一个工作区，包含很多分屏，可以针对每种任务分一个Window。如下载一个Window，编程一个window。</li>
+<li>Pane：是在Window里面的小分屏。最常用也最好用</li>
+</ul>
+<p>了解了这个逻辑后，整个Tmux的使用和配置也就清晰了。<br>（ps：下面这种方便好看的Status bar状态栏，显示的是windows，而不是sessions）<br><img src="media/15604367235575/15610200944082.jpg" alt="-w318"></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在 Mac OS 中，通过 brew 安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install tmux</span><br></pre></td></tr></table></figure>
+<p>ubuntu版本下直接apt-get安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install tmux</span><br></pre></td></tr></table></figure>
+<p>centos7版本下直接yum安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum install -y tmux</span><br><span class="line"></span><br><span class="line">​```sh</span><br><span class="line">centos6版本需要编译安装</span><br><span class="line"></span><br><span class="line">​```sh</span><br><span class="line">yum install libevent libevent-devel ncurses-devel</span><br><span class="line">tar -zvxf tmux-2.3.tar.gz <span class="comment"># (提前下载：wget https://github.com/tmux/tmux/releases/download/2.3/tmux-2.3.tar.gz)</span></span><br><span class="line"><span class="built_in">cd</span> tmux-2.3</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h2 id="Tmux-常用命令"><a href="#Tmux-常用命令" class="headerlink" title="Tmux 常用命令"></a>Tmux 常用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#启动新session：</span><br><span class="line">$ tmux [new -s 会话名 -n 窗口名]</span><br><span class="line"></span><br><span class="line">#恢复session：</span><br><span class="line">$ tmux at [-t 会话名]</span><br><span class="line"></span><br><span class="line">#列出所有sessions：</span><br><span class="line">$ tmux ls</span><br><span class="line"></span><br><span class="line">#关闭session：</span><br><span class="line">$ tmux kill-session -t 会话名</span><br><span class="line"></span><br><span class="line">#关闭整个tmux服务器：</span><br><span class="line">$ tmux kill-server</span><br></pre></td></tr></table></figure>
+
+<h2 id="Tmux-常用内部命令"><a href="#Tmux-常用内部命令" class="headerlink" title="Tmux 常用内部命令"></a>Tmux 常用内部命令</h2><blockquote>
+<p>所谓内部命令，就是进入Tmux后，并按下前缀键后的命令，一般前缀键为Ctrl+b. 虽然ctrl和b离得很远但是不建议改前缀键，因为别的键也不见得方便好记不冲突。还是记忆默认的比较可靠。</p>
+</blockquote>
+<h3 id="系统指令："><a href="#系统指令：" class="headerlink" title="系统指令："></a>系统指令：</h3><table>
+<thead>
+<tr>
+<th>前缀</th>
+<th>指令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+b</td>
+<td>?</td>
+<td>显示快捷键帮助文档</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>d</td>
+<td>断开当前会话</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>D</td>
+<td>选择要断开的会话</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>Ctrl+z</td>
+<td>挂起当前会话</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>r</td>
+<td>强制重载当前会话</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>s</td>
+<td>显示会话列表用于选择并切换</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>:</td>
+<td>进入命令行模式，此时可直接输入ls等命令</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>[</td>
+<td>进入复制模式，按q退出</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>]</td>
+<td>粘贴复制模式中复制的文本</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>~</td>
+<td>列出提示信息缓存</td>
+</tr>
+</tbody></table>
+<h3 id="窗口（window）指令："><a href="#窗口（window）指令：" class="headerlink" title="窗口（window）指令："></a>窗口（window）指令：</h3><table>
+<thead>
+<tr>
+<th>前缀</th>
+<th>指令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+b</td>
+<td>c</td>
+<td>新建窗口</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>&amp;</td>
+<td>关闭当前窗口</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>0~9</td>
+<td>切换到指定窗口</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>p</td>
+<td>切换到上一窗口</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>n</td>
+<td>切换到下一窗口</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>w</td>
+<td>打开窗口列表，用于且切换窗口</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>,</td>
+<td>重命名当前窗口</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>.</td>
+<td>修改当前窗口编号（适用于窗口重新排序）</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>f</td>
+<td>快速定位到窗口（输入关键字匹配窗口名称）</td>
+</tr>
+</tbody></table>
+<h3 id="面板（pane）指令："><a href="#面板（pane）指令：" class="headerlink" title="面板（pane）指令："></a>面板（pane）指令：</h3><table>
+<thead>
+<tr>
+<th>前缀</th>
+<th>指令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+b</td>
+<td>“</td>
+<td>当前面板上下一分为二，下侧新建面板</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>%</td>
+<td>当前面板左右一分为二，右侧新建面板</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>x</td>
+<td>关闭当前面板（关闭前需输入y or n确认）</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>z</td>
+<td>最大化当前面板，再重复一次按键后恢复正常（v1.8版本新增）</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>!</td>
+<td>将当前面板移动到新的窗口打开（原窗口中存在两个及以上面板有效）</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>;</td>
+<td>切换到最后一次使用的面板</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>q</td>
+<td>显示面板编号，在编号消失前输入对应的数字可切换到相应的面板</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>{</td>
+<td>向前置换当前面板</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>}</td>
+<td>向后置换当前面板</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>Ctrl+o</td>
+<td>顺时针旋转当前窗口中的所有面板</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>方向键</td>
+<td>移动光标切换面板</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>o</td>
+<td>选择下一面板</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>空格键</td>
+<td>在自带的面板布局中循环切换</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>Alt+方向键</td>
+<td>以5个单元格为单位调整当前面板边缘</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>Ctrl+方向键</td>
+<td>以1个单元格为单位调整当前面板边缘（Mac下</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>t</td>
+<td>显示时钟</td>
+</tr>
+</tbody></table>
+<h1 id="我的配置文件"><a href="#我的配置文件" class="headerlink" title="我的配置文件"></a>我的配置文件</h1><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@github.com:zuorn&#x2F;tmux-config.git</span><br><span class="line">$ cp tmux-config&#x2F;.tmux.conf ~&#x2F;.tmux.conf</span><br></pre></td></tr></table></figure>
+<p>重启 tmux <code>restart tmux</code> 或者 在 tmux 窗口中，先按下 <code>Ctrl+b</code> 指令前缀，然后按下系统指令:，进入到命令模式后输入 <code>source-file ~/.tmux.conf</code>，回车后生效。</p>
+<h2 id="配置项"><a href="#配置项" class="headerlink" title="配置项"></a>配置项</h2><h3 id="修改指令前缀"><a href="#修改指令前缀" class="headerlink" title="修改指令前缀"></a>修改指令前缀</h3><p>可根据自己的喜好来设置，如若要启用，取消注释即可。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#set -g prefix C-f #</span></span><br><span class="line"><span class="comment">#unbind C-f # C-b 即 Ctrl+b 键，unbind 意味着解除绑定</span></span><br><span class="line"><span class="comment">#bind C-f send-prefix # 绑定 Ctrl+f 为新的指令前缀</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从tmux v1.6版起，支持设置第二个指令前缀</span></span><br><span class="line"><span class="comment">#set-option -g prefix2 ` # 设置一个不常用的`键作为指令前缀，按键更快些</span></span><br></pre></td></tr></table></figure>
+<h3 id="添加加载配置文件快捷指令-r"><a href="#添加加载配置文件快捷指令-r" class="headerlink" title="添加加载配置文件快捷指令 r"></a>添加加载配置文件快捷指令 r</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> r <span class="built_in">source</span>-file ~/.tmux.conf \; display-message <span class="string">"Config reloaded.."</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="支持鼠标"><a href="#支持鼠标" class="headerlink" title="支持鼠标"></a>支持鼠标</h3><ul>
+<li>选取文本</li>
+<li>调整面板大小</li>
+<li>选中并切换面板</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 老版本：</span></span><br><span class="line"><span class="comment">#setw -g mode-mouse on # 支持鼠标选取文本等</span></span><br><span class="line"><span class="comment">#setw -g mouse-resize-pane on # 支持鼠标拖动调整面板的大小(通过拖动面板间的分割线)</span></span><br><span class="line"><span class="comment">#setw -g mouse-select-pane on # 支持鼠标选中并切换面板</span></span><br><span class="line"><span class="comment">#setw -g mouse-select-window on # 支持鼠标选中并切换窗口(通过点击状态栏窗口名称)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># v2.1及以上的版本</span></span><br><span class="line"><span class="built_in">set</span>-option -g mouse on</span><br></pre></td></tr></table></figure>
+<h3 id="面板"><a href="#面板" class="headerlink" title="面板"></a>面板</h3><h4 id="更改新增面板键"><a href="#更改新增面板键" class="headerlink" title="更改新增面板键"></a>更改新增面板键</h4><ul>
+<li><ul>
+<li>垂直新增面板</li>
+</ul>
+</li>
+<li><ul>
+<li>水平新增面板</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unbind <span class="string">'"'</span></span><br><span class="line"><span class="built_in">bind</span> - splitw -v -c <span class="string">'#&#123;pane_current_path&#125;'</span> <span class="comment"># 垂直方向新增面板，默认进入当前目录</span></span><br><span class="line">unbind %</span><br><span class="line"><span class="built_in">bind</span> =  splitw -h -c <span class="string">'#&#123;pane_current_path&#125;'</span> <span class="comment"># 水平方向新增面板，默认进入当前目录</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="面板调整大小"><a href="#面板调整大小" class="headerlink" title="面板调整大小"></a>面板调整大小</h4><p>绑定Ctrl+hjkl键为面板上下左右调整边缘的快捷指令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> -r ^k resizep -U 10 <span class="comment"># 绑定Ctrl+k为往↑调整面板边缘10个单元格</span></span><br><span class="line"><span class="built_in">bind</span> -r ^j resizep -D 10 <span class="comment"># 绑定Ctrl+j为往↓调整面板边缘10个单元格</span></span><br><span class="line"><span class="built_in">bind</span> -r ^h resizep -L 10 <span class="comment"># 绑定Ctrl+h为往←调整面板边缘10个单元格</span></span><br><span class="line"><span class="built_in">bind</span> -r ^l resizep -R 10 <span class="comment"># 绑定Ctrl+l为往→调整面板边缘10个单元格</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="复制模式"><a href="#复制模式" class="headerlink" title="复制模式"></a>复制模式</h3><h4 id="复制模式更改为-vi-风格"><a href="#复制模式更改为-vi-风格" class="headerlink" title="复制模式更改为 vi 风格"></a>复制模式更改为 vi 风格</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setw -g mode-keys vi <span class="comment"># 开启vi风格后，支持vi的C-d、C-u、hjkl等快捷键</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="复制模式向-vi-靠拢"><a href="#复制模式向-vi-靠拢" class="headerlink" title="复制模式向 vi 靠拢"></a>复制模式向 vi 靠拢</h4><ul>
+<li>v 开始选择文本</li>
+<li>y 复制选中文本</li>
+<li>p 粘贴文本</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> -t vi-copy v begin-selection <span class="comment"># 绑定v键为开始选择文本</span></span><br><span class="line"><span class="built_in">bind</span> -t vi-copy y copy-selection <span class="comment"># 绑定y键为复制选中文本</span></span><br><span class="line"><span class="built_in">bind</span> p pasteb <span class="comment"># 绑定p键为粘贴文本（p键默认用于进入上一个窗口，不建议覆盖）</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><h4 id="设置窗口面板起始序号"><a href="#设置窗口面板起始序号" class="headerlink" title="设置窗口面板起始序号"></a>设置窗口面板起始序号</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -g base-index 1 <span class="comment"># 设置窗口的起始下标为1</span></span><br><span class="line"><span class="built_in">set</span> -g pane-base-index 1 <span class="comment"># 设置面板的起始下标为1</span></span><br></pre></td></tr></table></figure>
+<h4 id="自定义状态栏"><a href="#自定义状态栏" class="headerlink" title="自定义状态栏"></a>自定义状态栏</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -g status-utf8 on <span class="comment"># 状态栏支持utf8</span></span><br><span class="line"><span class="built_in">set</span> -g status-interval 1 <span class="comment"># 状态栏刷新时间</span></span><br><span class="line"><span class="built_in">set</span> -g status-justify left <span class="comment"># 状态栏列表左对齐</span></span><br><span class="line">setw -g monitor-activity on <span class="comment"># 非当前窗口有内容更新时在状态栏通知</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> -wg window-status-format <span class="string">" #I #W "</span> <span class="comment"># 状态栏窗口名称格式</span></span><br><span class="line"><span class="built_in">set</span> -wg window-status-current-format <span class="string">" #I:#W#F "</span> <span class="comment"># 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)</span></span><br><span class="line"><span class="built_in">set</span> -wg window-status-separator <span class="string">""</span> <span class="comment"># 状态栏窗口名称之间的间隔</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Tmux-常见问题"><a href="#Tmux-常见问题" class="headerlink" title="Tmux 常见问题"></a>Tmux 常见问题</h2><h3 id="Tmux不管怎么改配置文件，都不产生变化"><a href="#Tmux不管怎么改配置文件，都不产生变化" class="headerlink" title="Tmux不管怎么改配置文件，都不产生变化"></a>Tmux不管怎么改配置文件，都不产生变化</h3><p>这个主要是由于Tmux的后台缓存机制造成的。我就犯了个大错误：甚至删了Tmux、重装Tmux、重启电脑，都没达成。<br>Tmux会有一个叫Tmux-server的东西。只要把它kill，重启tmux就OK了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux kill-server -a</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ul>
+<li><a href="http://man.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux%26sec=1" target="_blank" rel="noopener">官方文档</a></li>
+<li><a href="https://www.cnblogs.com/congbo/archive/2012/08/30/2649420.html" target="_blank" rel="noopener">https://www.cnblogs.com/congbo/archive/2012/08/30/2649420.html</a></li>
+<li><a href="http://louiszhai.github.io/2017/09/30/tmux/" target="_blank" rel="noopener">Tmux 使用手册</a></li>
+<li><a href="https://segmentfault.com/a/1190000018032072" target="_blank" rel="noopener">Tmux的超绝便利 （基础篇）</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/tmux/" rel="tag"># tmux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/year/06/04/splj-xwzdlw/" rel="prev" title="《小王子的领悟》 -- 商品逻辑 摘抄">
+      <i class="fa fa-chevron-left"></i> 《小王子的领悟》 -- 商品逻辑 摘抄
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/year/06/28/unrar/" rel="next" title="macOS 轻松愉快的解压 rar 压缩包">
+      macOS 轻松愉快的解压 rar 压缩包 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#功能"><span class="nav-number">1.</span> <span class="nav-text">功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tmux-重要概念"><span class="nav-number"></span> <span class="nav-text">Tmux 重要概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number"></span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tmux-常用命令"><span class="nav-number"></span> <span class="nav-text">Tmux 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tmux-常用内部命令"><span class="nav-number"></span> <span class="nav-text">Tmux 常用内部命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统指令："><span class="nav-number">1.</span> <span class="nav-text">系统指令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口（window）指令："><span class="nav-number">2.</span> <span class="nav-text">窗口（window）指令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面板（pane）指令："><span class="nav-number">3.</span> <span class="nav-text">面板（pane）指令：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#我的配置文件"><span class="nav-number"></span> <span class="nav-text">我的配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number"></span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置项"><span class="nav-number"></span> <span class="nav-text">配置项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改指令前缀"><span class="nav-number">1.</span> <span class="nav-text">修改指令前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加加载配置文件快捷指令-r"><span class="nav-number">2.</span> <span class="nav-text">添加加载配置文件快捷指令 r</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持鼠标"><span class="nav-number">3.</span> <span class="nav-text">支持鼠标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面板"><span class="nav-number">4.</span> <span class="nav-text">面板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#更改新增面板键"><span class="nav-number">4.1.</span> <span class="nav-text">更改新增面板键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面板调整大小"><span class="nav-number">4.2.</span> <span class="nav-text">面板调整大小</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制模式"><span class="nav-number">5.</span> <span class="nav-text">复制模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复制模式更改为-vi-风格"><span class="nav-number">5.1.</span> <span class="nav-text">复制模式更改为 vi 风格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制模式向-vi-靠拢"><span class="nav-number">5.2.</span> <span class="nav-text">复制模式向 vi 靠拢</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化"><span class="nav-number">6.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置窗口面板起始序号"><span class="nav-number">6.1.</span> <span class="nav-text">设置窗口面板起始序号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义状态栏"><span class="nav-number">6.2.</span> <span class="nav-text">自定义状态栏</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tmux-常见问题"><span class="nav-number"></span> <span class="nav-text">Tmux 常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tmux不管怎么改配置文件，都不产生变化"><span class="nav-number">1.</span> <span class="nav-text">Tmux不管怎么改配置文件，都不产生变化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number"></span> <span class="nav-text">参考：</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zorn"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Zorn</p>
+  <div class="site-description" itemprop="description">你要保持清醒、独立，并且始终活的真实。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zuorn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zuorn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zuorn@qq.com" title="E-Mail → mailto:zuorn@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zorn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+#hexo robots.txt
+User-agent: *
+
+Allow: /
+Allow: /archives/
+
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+
+Sitemap: http://zuorn.top/search.xml
+Sitemap: http://zuorn.top/sitemap.xml
+Sitemap: http://zuorn.top/baidusitemap.xml

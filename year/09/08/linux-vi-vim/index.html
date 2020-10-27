@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zuorn.gitee.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="#vi&#x2F;vim 第一部分：一般模式。移动光标的方法   h 或 向左箭头键(←) 光标向左移动一个字符 j 或 向下箭头键(↓) 光标向下移动一个字符 k 或 向上箭头键(↑) 光标向上移动一个字符 l 或 向右箭头键(→) 光标向右移动一个字符   如果你将右手放在键盘上的话，你会发现 hjkl 是排列在一起的，因此可以使用这四个按钮来移动光标。 如果想要进行多次移动的话，例如向下移动 30 行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux vi&#x2F;vim">
+<meta property="og:url" content="http://zuorn.gitee.io/year/09/08/linux-vi-vim/index.html">
+<meta property="og:site_name" content="Zorn&#39;s Blog">
+<meta property="og:description" content="#vi&#x2F;vim 第一部分：一般模式。移动光标的方法   h 或 向左箭头键(←) 光标向左移动一个字符 j 或 向下箭头键(↓) 光标向下移动一个字符 k 或 向上箭头键(↑) 光标向上移动一个字符 l 或 向右箭头键(→) 光标向右移动一个字符   如果你将右手放在键盘上的话，你会发现 hjkl 是排列在一起的，因此可以使用这四个按钮来移动光标。 如果想要进行多次移动的话，例如向下移动 30 行">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-09-08T03:00:28.000Z">
+<meta property="article:modified_time" content="2020-07-05T05:31:24.540Z">
+<meta property="article:author" content="Zorn">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://zuorn.gitee.io/year/09/08/linux-vi-vim/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>linux vi/vim | Zorn's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Zorn's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zuorn.gitee.io/year/09/08/linux-vi-vim/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zorn">
+      <meta itemprop="description" content="你要保持清醒、独立，并且始终活的真实。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zorn's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux vi/vim
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-09-08 11:00:28" itemprop="dateCreated datePublished" datetime="2017-09-08T11:00:28+08:00">2017-09-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-05 13:31:24" itemprop="dateModified" datetime="2020-07-05T13:31:24+08:00">2020-07-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>#vi/vim</p>
+<h3 id="第一部分：一般模式。"><a href="#第一部分：一般模式。" class="headerlink" title="第一部分：一般模式。"></a>第一部分：一般模式。</h3><p><strong>移动光标的方法</strong></p>
+<blockquote>
+<ul>
+<li>h 或 向左箭头键(←) 光标向左移动一个字符</li>
+<li>j 或 向下箭头键(↓) 光标向下移动一个字符</li>
+<li>k 或 向上箭头键(↑) 光标向上移动一个字符</li>
+<li>l 或 向右箭头键(→) 光标向右移动一个字符</li>
+</ul>
+</blockquote>
+<p>如果你将右手放在键盘上的话，你会发现 hjkl 是排列在一起的，因此可以使用这四个按钮来移动光标。 如果想要进行多次移动的话，例如向下移动 30 行，可以使用 “30j” 或 “30↓” 的组合按键， 亦即加上想要进行的次数(数字)后，按下动作即可！</p>
+<a id="more"></a>
+
+<blockquote>
+<ul>
+<li>[Ctrl] + [f] 屏幕『向下』移动一页，相当于 [Page Down]按键 (常用)</li>
+<li>[Ctrl] + [b] 屏幕『向上』移动一页，相当于 [Page Up] 按键 (常用)</li>
+<li>[Ctrl] + [d] 屏幕『向下』移动半页</li>
+<li>[Ctrl] + [u] 屏幕『向上』移动半页想</li>
+<li><ul>
+<li>光标移动到非空格符的下一行</li>
+</ul>
+</li>
+<li><ul>
+<li>光标移动到非空格符的上一行</li>
+</ul>
+</li>
+<li>n 表示『数字』，例如 20 。按下数字后再按空格键，光标会向右移动这一行的 n 个字符。例如 20 则光标会向后面移动 20 个字符距离。</li>
+<li>0 或功能键[Home] 这是数字『 0 』：移动到这一行的最前面字符处 (常用)</li>
+<li>( 或功能键[End] 移动到这一行的最后面字符处(常用)</li>
+<li>H 光标移动到这个屏幕的最上方那一行的第一个字符</li>
+<li>M 光标移动到这个屏幕的中央那一行的第一个字符</li>
+<li>L 光标移动到这个屏幕的最下方那一行的第一个字符</li>
+<li>G 移动到这个档案的最后一行(常用)</li>
+<li>nG n 为数字。移动到这个档案的第 n 行。例如 20G 则会移动到这个档案的第 20 行(可配合 :set nu)</li>
+<li>gg 移动到这个档案的第一行，相当于 1G 啊！ (常用)</li>
+<li>n<Enter> n 为数字。光标向下移动 n 行(常用)</li>
+</ul>
+</blockquote>
+<p><strong>搜索替换</strong></p>
+<blockquote>
+<ul>
+<li>/word 向光标之下寻找一个名称为 word 的字符串。例如要在档案内搜寻 vbird 这个字符串，就输入 /vbird 即可！ (常用)</li>
+<li>?word 向光标之上寻找一个字符串名称为 word 的字符串。</li>
+<li>n 这个 n 是英文按键。代表重复前一个搜寻的动作。举例来说， 如果刚刚我们执行 /vbird 去向下搜寻 vbird 这个字符串，则按下 n 后，会向下继续搜寻下一个名称为 vbird 的字符串。如果是执行 ?vbird 的话，那么按下 n 则会向上继续搜寻名称为 vbird 的字符串！</li>
+<li>N 这个 N 是英文按键。与 n 刚好相反，为『反向』进行前一个搜寻动作。 例如 /vbird 后，按下 N 则表示『向上』搜寻 vbird 。</li>
+<li>使用 /word 配合 n 及 N 是非常有帮助的！可以让你重复的找到一些你搜寻的关键词！</li>
+<li>:n1,n2s/word1/word2/g n1 与 n2 为数字。在第 n1 与 n2 行之间寻找 word1 这个字符串，并将该字符串取代为 word2 ！举例来说，在 100 到 200 行之间搜寻 vbird 并取代为 VBIRD 则：<br>『:100,200s/vbird/VBIRD/g』。(常用)</li>
+<li>:1,)s/word1/word2/g 从第一行到最后一行寻找 word1 字符串，并将该字符串取代为 word2 ！(常用)</li>
+<li>:1,(s/word1/word2/gc 从第一行到最后一行寻找 word1 字符串，并将该字符串取代为 word2 ！且在取代前显示提示字符给用户确认 (confirm) 是否需要取代！(常用)</li>
+</ul>
+</blockquote>
+<p><strong>删除、复制与粘贴</strong></p>
+<blockquote>
+<ul>
+<li>x, X 在一行字当中，x 为向后删除一个字符 (相当于 [del] 按键)， X 为向前删除一个字符(相当于 [backspace] 亦即是退格键) (常用)</li>
+<li>nx n 为数字，连续向后删除 n 个字符。举例来说，我要连续删除 10 个字符， 『10x』。</li>
+<li>dd 删除游标所在的那一整行(常用)</li>
+<li>ndd n 为数字。删除光标所在的向下 n 行，例如 20dd 则是删除 20 行 (常用)</li>
+<li>d1G 删除光标所在到第一行的所有数据</li>
+<li>dG 删除光标所在到最后一行的所有数据</li>
+<li>d) 删除游标所在处，到该行的最后一个字符</li>
+<li>d0 那个是数字的 0 ，删除游标所在处，到该行的最前面一个字符</li>
+<li>yy 复制游标所在的那一行(常用)</li>
+<li>nyy n 为数字。复制光标所在的向下 n 行，例如 20yy 则是复制 20 行(常用)</li>
+<li>y1G 复制游标所在行到第一行的所有数据</li>
+<li>yG 复制游标所在行到最后一行的所有数据</li>
+<li>y0 复制光标所在的那个字符到该行行首的所有数据</li>
+<li>y$ 复制光标所在的那个字符到该行行尾的所有数据</li>
+<li>p, P p 为将已复制的数据在光标下一行贴上，P 则为贴在游标上一行！ 举例来说，我目前光标在第 20 行，且已经复制了 10 行数据。则按下 p 后， 那 10 行数据会贴在原本的 20 &gt;行之后，亦即由 21 行开始贴。但如果是按下 P 呢？ 那么原本的第 20 行会被推到变成 30 行。 (常用)</li>
+<li>J 将光标所在行与下一行的数据结合成同一行</li>
+<li>c 重复删除多个数据，例如向下删除 10 行，[ 10cj ]</li>
+<li>u 复原前一个动作。(常用)</li>
+<li>[Ctrl]+r 重做上一个动作。(常用)</li>
+<li>这个 u 与 [Ctrl]+r 是很常用的指令！一个是复原，另一个则是重做一次～ 利用这两个功能按键，你的编辑，嘿嘿！很快乐的啦！</li>
+<li>. 不要怀疑！这就是小数点！意思是重复前一个动作的意思。 如果你想要重复删除、重复贴上等等动作，按下小数点『.』就好了！ (常用)</li>
+</ul>
+</blockquote>
+<h3 id="第二部份：一般模式切换到编辑模式的可用的按钮说明"><a href="#第二部份：一般模式切换到编辑模式的可用的按钮说明" class="headerlink" title="第二部份：一般模式切换到编辑模式的可用的按钮说明"></a>第二部份：一般模式切换到编辑模式的可用的按钮说明</h3><p><strong>进入插入或取代的编辑模式</strong></p>
+<blockquote>
+<ul>
+<li>i, I 进入插入模式(Insert mode)：</li>
+<li>i 为『从目前光标所在处插入』， I 为『在目前所在行的第一个非空格符处开始插入』。 (常用)</li>
+<li>a, A 进入插入模式(Insert mode)：</li>
+<li>a 为『从目前光标所在的下一个字符处开始插入』， A 为『从光标所在行的最后一个字符处开始插入』。(常用)</li>
+<li>o, O 进入插入模式(Insert mode)：<br>这是英文字母 o 的大小写。o 为『在目前光标所在的下一行处插入新的一行』； O 为在目前光标所在处的上一行插入新的一行！(常用)</li>
+<li>r, R 进入取代模式(Replace mode)：<br>r 只会取代光标所在的那一个字符一次；R会一直取代光标所在的文字，直到按下 ESC 为止；(常用)</li>
+<li>上面这些按键中，在 vi 画面的左下角处会出现『–INSERT–』或『–REPLACE–』的字样。 由名称就知道该动作了吧！！特别注意的是，我们上面也提过了，你想要在档案里面输入字符时， 一定要在左下角处看到 INSERT 或 REPLACE 才能输入喔！</li>
+<li>[Esc] 退出编辑模式，回到一般模式中(常用)</li>
+</ul>
+</blockquote>
+<h3 id="第三部份：一般模式切换到指令行模式的可用的按钮说明"><a href="#第三部份：一般模式切换到指令行模式的可用的按钮说明" class="headerlink" title="第三部份：一般模式切换到指令行模式的可用的按钮说明"></a>第三部份：一般模式切换到指令行模式的可用的按钮说明</h3><p><strong>指令行的储存、离开等指令</strong></p>
+<blockquote>
+<ul>
+<li>:w 将编辑的数据写入硬盘档案中(常用)</li>
+<li>:w! 若文件属性为『只读』时，强制写入该档案。不过，到底能不能写入， 还是跟你对该档案的档案权限有关啊！</li>
+<li>:q 离开 vi (常用)</li>
+<li>:q! 若曾修改过档案，又不想储存，使用 ! 为强制离开不储存档案。</li>
+</ul>
+</blockquote>
+<p>注意一下啊，那个惊叹号 (!) 在 vi 当中，常常具有『强制』的意思～</p>
+<blockquote>
+<ul>
+<li>:wq 储存后离开，若为 :wq! 则为强制储存后离开 (常用)</li>
+<li>ZZ 这是大写的 Z 喔！若档案没有更动，则不储存离开，若档案已经被更动过，则储存后离开！</li>
+<li>:w [filename] 将编辑的数据储存成另一个档案（类似另存新档）</li>
+<li>:r [filename] 在编辑的数据中，读入另一个档案的数据。亦即将 『filename』 这个档案内容加到游标所在行后面</li>
+<li>:n1,n2 w [filename] 将 n1 到 n2 的内容储存成 filename 这个档案。</li>
+<li>:! command 暂时离开 vi 到指令行模式下执行 command 的显示结果！例如<br>『:! ls /home』即可在 vi 当中察看 /home 底下以 ls 输出的档案信息！</li>
+</ul>
+</blockquote>
+<p><strong>vim 环境的变更</strong></p>
+<blockquote>
+<ul>
+<li>:set nu 显示行号，设定之后，会在每一行的前缀显示该行的行号</li>
+<li>:set nonu 与 set nu 相反，为取消行号！</li>
+<li>set cursorline    “选中行高亮</li>
+<li>set autoindent    “自动缩进</li>
+<li>set shiftwidth=4  “ 缩进位宽=4个空格位</li>
+<li>set expandtab     “ tab由空格表示</li>
+<li>set tabstop=4     “ tab=4空格</li>
+<li>set softtabstop=4 “ 回退可以删除缩进</li>
+<li>set laststatus=2 “ 总是显示状态栏</li>
+</ul>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/year/09/08/Markdown%E5%85%A5%E9%97%A8/" rel="prev" title="Markdown入门">
+      <i class="fa fa-chevron-left"></i> Markdown入门
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/year/09/08/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="Hexo常用命令">
+      Hexo常用命令 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一部分：一般模式。"><span class="nav-number">1.</span> <span class="nav-text">第一部分：一般模式。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二部份：一般模式切换到编辑模式的可用的按钮说明"><span class="nav-number">2.</span> <span class="nav-text">第二部份：一般模式切换到编辑模式的可用的按钮说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三部份：一般模式切换到指令行模式的可用的按钮说明"><span class="nav-number">3.</span> <span class="nav-text">第三部份：一般模式切换到指令行模式的可用的按钮说明</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zorn"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Zorn</p>
+  <div class="site-description" itemprop="description">你要保持清醒、独立，并且始终活的真实。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zuorn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zuorn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zuorn@qq.com" title="E-Mail → mailto:zuorn@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zorn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

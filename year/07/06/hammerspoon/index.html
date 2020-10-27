@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zuorn.gitee.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="为什么要费尽心思的用键盘替代鼠标操作。  在使用电脑的过程中，最优先的操作方式应该是键盘，而次等的方式才是鼠标，因为鼠标需要使用者在键盘和鼠标之间来回切换，因此影响效率。而 “纯键盘操作” 需要使用者记忆大量的键位和操作模式，所以纯键盘从来都是高阶操作。 鼠标长久以来都是顺应人的本能去设计的。但高阶操作是什么？高阶操作就是训练人克服本能，用更有效、更科学的但非本能的方式去应对，所以才需要大量的练">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hammerspoon - 岂止于窗口管理">
+<meta property="og:url" content="http://zuorn.gitee.io/year/07/06/hammerspoon/index.html">
+<meta property="og:site_name" content="Zorn&#39;s Blog">
+<meta property="og:description" content="为什么要费尽心思的用键盘替代鼠标操作。  在使用电脑的过程中，最优先的操作方式应该是键盘，而次等的方式才是鼠标，因为鼠标需要使用者在键盘和鼠标之间来回切换，因此影响效率。而 “纯键盘操作” 需要使用者记忆大量的键位和操作模式，所以纯键盘从来都是高阶操作。 鼠标长久以来都是顺应人的本能去设计的。但高阶操作是什么？高阶操作就是训练人克服本能，用更有效、更科学的但非本能的方式去应对，所以才需要大量的练">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g4q4yawr88j30ee0bydgm.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1g4q4xvmcbvj316o0i00ul.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g4pz9dhogwj31c00u04aw.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1g4q4x5cxatj31z40u0k5e.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1g4q4wsyk6lj31z40u0n5i.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1g4q4w5a6e8j31z40u0gvs.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g4q4utqg63j31z40u0tng.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1g4q4w5a6e8j31z40u0gvs.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g4q4u4g2jgj31z40u0gvb.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1g4q4tni77ej30ks0a2myp.jpg">
+<meta property="article:published_time" content="2019-07-06T06:58:30.000Z">
+<meta property="article:modified_time" content="2020-07-05T05:29:36.520Z">
+<meta property="article:author" content="Zorn">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g4q4yawr88j30ee0bydgm.jpg">
+
+<link rel="canonical" href="http://zuorn.gitee.io/year/07/06/hammerspoon/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hammerspoon - 岂止于窗口管理 | Zorn's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Zorn's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zuorn.gitee.io/year/07/06/hammerspoon/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zorn">
+      <meta itemprop="description" content="你要保持清醒、独立，并且始终活的真实。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zorn's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hammerspoon - 岂止于窗口管理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-06 14:58:30" itemprop="dateCreated datePublished" datetime="2019-07-06T14:58:30+08:00">2019-07-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-05 13:29:36" itemprop="dateModified" datetime="2020-07-05T13:29:36+08:00">2020-07-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>为什么要费尽心思的用键盘替代鼠标操作。</p>
+</blockquote>
+<p>在使用电脑的过程中，最优先的操作方式应该是<strong>键盘</strong>，而次等的方式才是鼠标，因为鼠标需要使用者在键盘和鼠标之间来回切换，因此影响效率。而 <strong>“纯键盘操作”</strong> 需要使用者记忆大量的键位和操作模式，所以<strong>纯键盘</strong>从来都是高阶操作。</p>
+<p>鼠标长久以来都是顺应人的本能去设计的。但高阶操作是什么？高阶操作就是训练人克服本能，用<strong>更有效</strong>、<strong>更科学</strong>的但<strong>非本能</strong>的方式去应对，所以才需要大量的练习，大量的实战，从而形成<a href="https://baike.baidu.com/item/%E8%82%8C%E8%82%89%E8%AE%B0%E5%BF%86" target="_blank" rel="noopener">肌肉记忆</a>和<a href="https://baike.baidu.com/item/%E6%80%9D%E7%BB%B4%E5%AE%9A%E5%8A%BF?fromtitle=%E6%80%9D%E7%BB%B4%E6%83%AF%E6%80%A7&fromid=3457840" target="_blank" rel="noopener">思维定势</a>去对抗本能。vim 如此,Hammerspoon 也如此。</p>
+<p>有些了解过 Hammerspoon 可能把它看作一款窗口管理工具，用此来替代 Magent 等付费工具，但 Hammerspoon 的玩法绝不仅于此，本文将介绍 Hammerspoon 及我的配置。</p>
+<a id="more"></a>
+
+
+
+<h3 id="Hammerspoon介绍"><a href="#Hammerspoon介绍" class="headerlink" title="Hammerspoon介绍"></a>Hammerspoon介绍</h3><blockquote>
+<p><a href="http://www.hammerspoon.org/" target="_blank" rel="noopener">Hammerspoon</a> 是一款<strong>免费开源</strong>的 app，通过桥接操作系统与 Lua 脚本引擎的方式，让我们可以通过编写 <a href="http://www.lua.org/docs.html" target="_blank" rel="noopener">Lua</a> 代码来实现操作应用程序、窗口、鼠标、文本、音频设备、电池、屏幕、剪切板、定位、wifi等。基本囊括了系统的各方面。</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li><p>通过 Homebrew 安装：<br>（如果不了解 <code>Homebrew</code> 看<a href="https://zuorn.top/year/05/22/homebrew-yuan/" target="_blank" rel="noopener">这里</a>。）</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install hammerspoon</span><br></pre></td></tr></table></figure></li>
+<li><p>手动下载安装：<a href="https://github.com/Hammerspoon/hammerspoon/releases/tag/0.9.75" target="_blank" rel="noopener">https://github.com/Hammerspoon/hammerspoon/releases/tag/0.9.75</a> 然后将应用程序拖到<code>/Applications/</code>。</p>
+</li>
+</ul>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g4q4yawr88j30ee0bydgm.jpg" alt=""></p>
+<p>第一次打开需要授予辅助功能权限，点击 <code>Enable Accessibility</code>即可。此时在 <code>~/.hammerspoon/init.lua</code> 写入自己的配置文件在 Hammerspoon 单栏图标并选择 <code>Reload Config</code> 重载配置即可生效。</p>
+<h2 id="配置与升级"><a href="#配置与升级" class="headerlink" title="配置与升级:"></a>配置与升级:</h2><p>将配置文件克隆到本地根目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;zuorn&#x2F;hammerspoon_config ~&#x2F;.hammerspoon</span><br></pre></td></tr></table></figure>
+<p>重新加载配置文件即可生效。</p>
+<p>如果提示：already exists and is not an empty directory.<br>先删除目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ~&#x2F;.hammerspoon</span><br></pre></td></tr></table></figure>
+
+<p>升级：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~&#x2F;.hammerspoon &amp;&amp; git pull</span><br></pre></td></tr></table></figure>
+
+<h2 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h2><blockquote>
+<p>本配置基于 vim 风格，实现了窗口管理，剪切板，倒计时，快速启动等功能。所有模式按照指定快捷键进入，所有模式都可以用 <code>esc</code> 或 <code>q</code>退出。在进入对应模式之前只有模式快捷键生效，进入对应模式之后此模式的操作快捷键生效。</p>
+</blockquote>
+<p>可以按下快捷键 <code>shift</code> + <code>option</code> + <code>/</code> 显示帮助面板查看各个模式快捷键。再按照提示切换模式。</p>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g4q4xvmcbvj316o0i00ul.jpg" alt=""></p>
+<h3 id="窗口管理"><a href="#窗口管理" class="headerlink" title="窗口管理"></a>窗口管理</h3><p>按下前缀键 <code>Option</code> + <code>R</code> 进入窗口管理模式：</p>
+<ul>
+<li><p>使用 <code>h、j、k、l</code> 移动为上下左右的半屏</p>
+</li>
+<li><p>使用 <code>y、u、i、o</code>（即 hjkl 上方按键）移动为左上/左下/右上/右下的四分之一窗口</p>
+</li>
+<li><p>使用 <code>c</code> 居中，按下 <code>=、-</code> 进行窗口大小缩放</p>
+</li>
+<li><p>使用 <code>w、s、a、d</code> 向上下左右移动窗口</p>
+</li>
+<li><p>使用 <code>H、J、K、L</code> 向左/下增减窗口大小</p>
+</li>
+<li><p>使用方向键 <code>上、下、左、右</code> 移动到相应方向上的显示器（多块显示器的话）</p>
+</li>
+<li><p>使用 <code>[,]</code> 左三分之二屏和右三分之二屏</p>
+</li>
+<li><p>使用 <code>空格</code> 将窗口投送到另外一块屏幕（假如有两块以上显示器的话）</p>
+</li>
+<li><p>使用 <code>t</code> 光标移动到所在窗口的中间位置</p>
+</li>
+<li><p>使用 <code>tab</code> 显示帮助面板，查看键位图</p>
+</li>
+<li><p>使用 q 或 Esc 退出管理</p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g4pz9dhogwj31c00u04aw.jpg" alt="">   </p>
+</li>
+</ul>
+<h3 id="应用快速切换"><a href="#应用快速切换" class="headerlink" title="应用快速切换"></a>应用快速切换</h3><p>按下前缀键 <code>Option</code> + <code>tab</code> 显示窗口提示，按下对应应用显示的字母快速切换。<br><img src="http://ww1.sinaimg.cn/large/006tNc79ly1g4q4x5cxatj31z40u0k5e.jpg" alt=""></p>
+<h3 id="展示应用快捷键"><a href="#展示应用快捷键" class="headerlink" title="展示应用快捷键"></a>展示应用快捷键</h3><p>按下快捷键 <code>Option</code> + <code>s</code> 展示当前应用快捷键。</p>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1g4q4wsyk6lj31z40u0n5i.jpg" alt=""></p>
+<h3 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h3><p>按下快捷键 <code>Option</code> + <code>a</code> 打开快速启动，按下对应字母快速打开应用。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1g4q4w5a6e8j31z40u0gvs.jpg" alt=""></p>
+<h3 id="AClock-显示当前时间"><a href="#AClock-显示当前时间" class="headerlink" title="AClock - 显示当前时间"></a>AClock - 显示当前时间</h3><p>按下 <code>Option</code> + <code>t</code> 显示当前时间。</p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g4q4utqg63j31z40u0tng.jpg" alt=""></p>
+<h3 id="倒计时（番茄钟）"><a href="#倒计时（番茄钟）" class="headerlink" title="倒计时（番茄钟）"></a>倒计时（番茄钟）</h3><p>按下 <code>Option</code> + <code>i</code> 打开倒计时面板，按下对应数字开始计时。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1g4q4w5a6e8j31z40u0gvs.jpg" alt=""></p>
+<h3 id="系统剪切板"><a href="#系统剪切板" class="headerlink" title="系统剪切板"></a>系统剪切板</h3><p>按下 <code>Option</code> + <code>c</code> 打开剪切板面板。</p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g4q4u4g2jgj31z40u0gvb.jpg" alt=""></p>
+<p>功能：</p>
+<ul>
+<li>保存会话</li>
+<li>恢复上一个会话</li>
+<li>在浏览器中打开</li>
+<li>使用百度搜索</li>
+<li>使用谷歌搜索</li>
+<li>保存到桌面</li>
+<li>使用 github 搜索</li>
+<li>在 Sublime Text 打开</li>
+</ul>
+<h3 id="顶部菜单栏实时显示网速"><a href="#顶部菜单栏实时显示网速" class="headerlink" title="顶部菜单栏实时显示网速"></a>顶部菜单栏实时显示网速</h3><p>没有对应快捷键，默认开启。</p>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1g4q4tni77ej30ks0a2myp.jpg" alt=""></p>
+<h3 id="其他快捷键"><a href="#其他快捷键" class="headerlink" title="其他快捷键"></a>其他快捷键</h3><ul>
+<li>粘贴 chrome 或 safari 打开最前置的网址：<code>option</code> + <code>v</code></li>
+<li>显示 Hammerspoon 控制台： <code>option</code> + <code>v</code></li>
+<li>锁定电脑快捷键：<code>option</code> + <code>l</code></li>
+<li>重新加载配置文件： <code>cmd</code> +  <code>shift</code> + <code>ctrl</code> + <code>r</code></li>
+<li>临时禁用所有快捷键(注意：只能手动接禁。)：<code>cmd</code> +  <code>shift</code> + <code>ctrl</code> + <code>q</code></li>
+</ul>
+<h2 id="自定义配置"><a href="#自定义配置" class="headerlink" title="自定义配置"></a>自定义配置</h2><p>拷贝私有配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ~&#x2F;.hammerspoon&#x2F;config-example.lua ~&#x2F;.hammerspoon&#x2F;private&#x2F;config.lua</span><br></pre></td></tr></table></figure>
+<p>按照注释编辑私有配置文件 <code>~/.hammerspoon/private/config.lua</code> 即可。</p>
+<h2 id="其他功能（后续实现）"><a href="#其他功能（后续实现）" class="headerlink" title="其他功能（后续实现）"></a>其他功能（后续实现）</h2><ul>
+<li>按下前缀键滚动鼠标滚轮调节系统音量</li>
+<li>添加鼠标模式，进入鼠标模式后按下对应按键实现鼠标所有按键。</li>
+<li>切换 wifi 提醒</li>
+<li>显示已安装卷的列表以及桌面上每个指示可用空间的饼图</li>
+<li>连接/断开耳机时播放/暂停音乐播放器</li>
+<li>添加音乐控制模式，进入后通过按键控制 网易云音乐 和 iTunes</li>
+</ul>
+<h4 id="可自定义范围："><a href="#可自定义范围：" class="headerlink" title="可自定义范围："></a>可自定义范围：</h4><ul>
+<li><p>指定要启用模块</p>
+<p>  找到配置文件启用模块，注释对应模块可禁止用对应功能。</p>
+</li>
+<li><p>绑定快速启动 app 及快捷键</p>
+</li>
+<li><p>自定义模式快捷键</p>
+</li>
+<li><p>自定义 hammerspoon 快捷键绑定</p>
+</li>
+</ul>
+<h2 id="自己写配置"><a href="#自己写配置" class="headerlink" title="自己写配置"></a>自己写配置</h2><p>Lua 是一种非常简单的语言，没有编程经验也很容易上手。hammerspoon 官方也提供了一份<a href="http://www.hammerspoon.org/go/" target="_blank" rel="noopener">教程</a>，或者看看<a href="https://www.runoob.com/lua/lua-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a>。</p>
+<p>官方还有很多现成的 <a href="https://www.hammerspoon.org/Spoons/" target="_blank" rel="noopener">Spoons 勺子？</a> 可以用，有些直接拿来绑定一下键位就可以直接用了，如果觉得官方勺子不符合自己的需求，你也可以把它改成自己想要的样子。多看看官方文档和相关的文章，以及官方勺子的源码，就很容易定制一个属于自己独一无二的神器。</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ul>
+<li><a href="https://www.hammerspoon.org/Spoons/" target="_blank" rel="noopener">Hammerspoon Spoons</a></li>
+<li><a href="https://github.com/ashfinal/awesome-hammerspoon" target="_blank" rel="noopener">awesome-hammerspoon</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"># 工具</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/year/06/28/unrar/" rel="prev" title="macOS 轻松愉快的解压 rar 压缩包">
+      <i class="fa fa-chevron-left"></i> macOS 轻松愉快的解压 rar 压缩包
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/year/07/05/Time-becomes-History/" rel="next" title="把”时间“变成”历史“">
+      把”时间“变成”历史“ <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hammerspoon介绍"><span class="nav-number">1.</span> <span class="nav-text">Hammerspoon介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置与升级"><span class="nav-number"></span> <span class="nav-text">配置与升级:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能实现"><span class="nav-number"></span> <span class="nav-text">功能实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口管理"><span class="nav-number">1.</span> <span class="nav-text">窗口管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用快速切换"><span class="nav-number">2.</span> <span class="nav-text">应用快速切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#展示应用快捷键"><span class="nav-number">3.</span> <span class="nav-text">展示应用快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速启动"><span class="nav-number">4.</span> <span class="nav-text">快速启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AClock-显示当前时间"><span class="nav-number">5.</span> <span class="nav-text">AClock - 显示当前时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#倒计时（番茄钟）"><span class="nav-number">6.</span> <span class="nav-text">倒计时（番茄钟）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统剪切板"><span class="nav-number">7.</span> <span class="nav-text">系统剪切板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顶部菜单栏实时显示网速"><span class="nav-number">8.</span> <span class="nav-text">顶部菜单栏实时显示网速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他快捷键"><span class="nav-number">9.</span> <span class="nav-text">其他快捷键</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义配置"><span class="nav-number"></span> <span class="nav-text">自定义配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他功能（后续实现）"><span class="nav-number"></span> <span class="nav-text">其他功能（后续实现）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可自定义范围："><span class="nav-number">0.1.</span> <span class="nav-text">可自定义范围：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自己写配置"><span class="nav-number"></span> <span class="nav-text">自己写配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number"></span> <span class="nav-text">参考：</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zorn"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Zorn</p>
+  <div class="site-description" itemprop="description">你要保持清醒、独立，并且始终活的真实。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zuorn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zuorn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zuorn@qq.com" title="E-Mail → mailto:zuorn@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zorn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

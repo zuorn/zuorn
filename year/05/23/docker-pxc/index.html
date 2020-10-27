@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zuorn.gitee.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Docker 创建 PXC 高可用集群并配置 Harpoxy 负载均衡">
+<meta property="og:url" content="http://zuorn.gitee.io/year/05/23/docker-pxc/index.html">
+<meta property="og:site_name" content="Zorn&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g3b6n7xz6kj327w0j8qah.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3a21d0wupj30si0b2jsk.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g3a1w7txi0j31dk0maagw.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3b67er48cj327y0tqwoh.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3b6ajpic6j317m0sq43v.jpg">
+<meta property="article:published_time" content="2019-05-23T05:22:43.000Z">
+<meta property="article:modified_time" content="2020-07-05T05:28:26.967Z">
+<meta property="article:author" content="Zorn">
+<meta property="article:tag" content="dokcer">
+<meta property="article:tag" content="PXC">
+<meta property="article:tag" content="Haproxy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g3b6n7xz6kj327w0j8qah.jpg">
+
+<link rel="canonical" href="http://zuorn.gitee.io/year/05/23/docker-pxc/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Docker 创建 PXC 高可用集群并配置 Harpoxy 负载均衡 | Zorn's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Zorn's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zuorn.gitee.io/year/05/23/docker-pxc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zorn">
+      <meta itemprop="description" content="你要保持清醒、独立，并且始终活的真实。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zorn's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Docker 创建 PXC 高可用集群并配置 Harpoxy 负载均衡
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-23 13:22:43" itemprop="dateCreated datePublished" datetime="2019-05-23T13:22:43+08:00">2019-05-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-05 13:28:26" itemprop="dateModified" datetime="2020-07-05T13:28:26+08:00">2020-07-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3b6n7xz6kj327w0j8qah.jpg" alt=""></p>
+<a id="more"></a>
+
+<h2 id="创建-PXC-集群环境"><a href="#创建-PXC-集群环境" class="headerlink" title="创建 PXC 集群环境"></a>创建 PXC 集群环境</h2><h3 id="拉取-percona-xtradb-cluster-镜像"><a href="#拉取-percona-xtradb-cluster-镜像" class="headerlink" title="拉取 percona-xtradb-cluster 镜像"></a>拉取 percona-xtradb-cluster 镜像</h3><p>官方镜像地址：<a href="https://hub.docker.com/r/percona/percona-xtradb-cluster" target="_blank" rel="noopener">https://hub.docker.com/r/percona/percona-xtradb-cluster</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull percona&#x2F;percona-xtradb-cluster</span><br></pre></td></tr></table></figure>
+<p>percona/percona-xtradb-cluster 太长，我们换个名字叫做pxc，操作如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker tag percona&#x2F;percona-xtradb-cluster pxc</span><br></pre></td></tr></table></figure>
+
+<p>并将开始拉去的镜像删除，操作如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi percona&#x2F;percona-xtradb-cluster</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建docker网络"><a href="#创建docker网络" class="headerlink" title="创建docker网络"></a>创建docker网络</h4><p>出于安全考虑，将PXC集群放置于docker内部网络中。只需将宿主的端口与之映射并开放出来即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create --subnet&#x3D;172.18.0.0&#x2F;24 net1</span><br></pre></td></tr></table></figure>
+
+<p>其中，–subnet=172.18.0.0/24自定义网段172.18.0.0，24是指24位子网掩码 net1 网段名称。</p>
+<p>执行成功后，我们可以通过<code>sudo docker inspect net1</code>查看内部网络信息。</p>
+<h4 id="创建docker卷"><a href="#创建docker卷" class="headerlink" title="创建docker卷"></a>创建docker卷</h4><p>docker容器的运行规则：通过目录映射的方法，将业务数据写入到宿主机中。好处是如果容器故障，只需将容器删除，重新启用一个容器即可，这样就不会丢失原来的数据。 由于PXC较为特殊，无法直接使用映射目录的方法做映射（使用后会闪退），故使用docker卷。 在命令行使用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker volume create --name v1</span><br><span class="line">docker volume create --name v2</span><br><span class="line">docker volume create --name v3</span><br></pre></td></tr></table></figure>
+<p>计划创建3个数据库节点，所以这里对应创建3个数据卷。</p>
+<h3 id="创建第一个容器节点："><a href="#创建第一个容器节点：" class="headerlink" title="创建第一个容器节点："></a>创建第一个容器节点：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 3306:3306 -v v1:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">    -e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">    -e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">    -e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">    --privileged \</span><br><span class="line">    --name&#x3D;node1 \</span><br><span class="line">    --net&#x3D;net1 \</span><br><span class="line">    --ip 172.18.0.2 \</span><br><span class="line">    pxc</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-d 默认在后台运行, -p 3306（宿主）:3306（容器） 端口映射，将容器3306端口映射到宿主3306端口 -v 目录映射，将第四步创建的v1映射到容器/var/lib/mysql -e MYSQL_ROOT_PASSROWD 创建的用户实例的密码，默认实例root -e CLUSTER_NAME 集群名称， -e XTRABACKUP_PASSWORD 数据库之间同步使用的密码 –privileged 权限.给予最高权限 –name 给容器容命名 –net 使用内部网段 –ip 内部网段分到的地址</p>
+</blockquote>
+<h4 id="测试连接："><a href="#测试连接：" class="headerlink" title="测试连接："></a>测试连接：</h4><p>需要注意的是容器启动的速度虽然很快，但是pxc初始化是需要一点时间的（大概两分钟左右），必须等第一个容器初始化完成后再启动第二个pxc容器，不然会报错。</p>
+<p>测试连接成功后就可以启动其他pxc容器了</p>
+<p>在启动其他容器的时候需要更改映射的宿主机端口、容器的名称，还有指定 IP 地址。</p>
+<h3 id="创建第二个容器节点："><a href="#创建第二个容器节点：" class="headerlink" title="创建第二个容器节点："></a>创建第二个容器节点：</h3><blockquote>
+<p>注意：在启动其他容器的时候需要更改映射的宿主机端口、容器的名称，还有指定 IP 地址。</p>
+<p> -e CLUSTER_JOIN=node1 用于连接第一个数据库节点</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 3307:3306 -v v2:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">-e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_JOIN&#x3D;node1 \</span><br><span class="line">--privileged \</span><br><span class="line">--name&#x3D;node2 \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--ip 172.18.0.3 \</span><br><span class="line">pxc</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="创建第三个容器节点："><a href="#创建第三个容器节点：" class="headerlink" title="创建第三个容器节点："></a>创建第三个容器节点：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 3308:3306 -v v3:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">-e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_JOIN&#x3D;node1 \</span><br><span class="line">--privileged \</span><br><span class="line">--name&#x3D;node3 \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--ip 172.18.0.4 \</span><br><span class="line">pxc</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h4 id="测试："><a href="#测试：" class="headerlink" title="测试："></a>测试：</h4><p>用数据库连接工具连接三个数据库，在node创建数据库<code>test</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">database</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果其他数据库都同步过来那就没有问题了。</p>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3a21d0wupj30si0b2jsk.jpg" alt=""></p>
+<h2 id="Harpoxy-负载均衡"><a href="#Harpoxy-负载均衡" class="headerlink" title="Harpoxy 负载均衡"></a>Harpoxy 负载均衡</h2><p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3a1w7txi0j31dk0maagw.jpg" alt=""></p>
+<h3 id="创建-haproxy-配置文件，并放到指定的宿主机目录。"><a href="#创建-haproxy-配置文件，并放到指定的宿主机目录。" class="headerlink" title="创建 haproxy 配置文件，并放到指定的宿主机目录。"></a>创建 haproxy 配置文件，并放到指定的宿主机目录。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">global</span><br><span class="line">        #工作目录</span><br><span class="line">        chroot &#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy</span><br><span class="line">        #日志文件，使用rsyslog服务中local5日志设备（&#x2F;var&#x2F;log&#x2F;local5），等级info</span><br><span class="line">        log 127.0.0.1 local5 info</span><br><span class="line">        #守护进程运行</span><br><span class="line">        daemon</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">        log     global</span><br><span class="line">        mode    http</span><br><span class="line">        #日志格式</span><br><span class="line">        option  httplog</span><br><span class="line">        #日志中不记录负载均衡的心跳检测记录</span><br><span class="line">        option  dontlognull</span><br><span class="line">        #连接超时（毫秒）</span><br><span class="line">        timeout connect 5000</span><br><span class="line">        #客户端超时（毫秒）</span><br><span class="line">        timeout client  50000</span><br><span class="line">        #服务器超时（毫秒）</span><br><span class="line">        timeout server  50000</span><br><span class="line"></span><br><span class="line">#监控界面   </span><br><span class="line">listen  admin_stats</span><br><span class="line">        #监控界面的访问的IP和端口</span><br><span class="line">        bind  0.0.0.0:8888</span><br><span class="line">        #访问协议</span><br><span class="line">        mode        http</span><br><span class="line">        #URI相对地址</span><br><span class="line">        stats uri   &#x2F;dbs</span><br><span class="line">        #统计报告格式</span><br><span class="line">        stats realm     Global\ statistics</span><br><span class="line">        #登陆帐户信息</span><br><span class="line">        stats auth  admin:123456</span><br><span class="line">#数据库负载均衡</span><br><span class="line">listen  proxy-mysql</span><br><span class="line">        #访问的IP和端口</span><br><span class="line">        bind  0.0.0.0:3306  </span><br><span class="line">        #网络协议</span><br><span class="line">        mode  tcp</span><br><span class="line">        #负载均衡算法（轮询算法）</span><br><span class="line">        #轮询算法：roundrobin</span><br><span class="line">        #权重算法：static-rr</span><br><span class="line">        #最少连接算法：leastconn</span><br><span class="line">        #请求源IP算法：source</span><br><span class="line">        balance  roundrobin</span><br><span class="line">       #日志格式</span><br><span class="line">        option  tcplog</span><br><span class="line">        #在MySQL中创建一个没有权限的haproxy用户，密码为空。Haproxy使用这个账户对MySQL数据库心跳检测</span><br><span class="line">        option  mysql-check user haproxy</span><br><span class="line">        server  MySQL_1 172.18.0.2:3306 check weight 1 maxconn 2000  </span><br><span class="line">        server  MySQL_2 172.18.0.3:3306 check weight 1 maxconn 2000  </span><br><span class="line">        server  MySQL_2 172.18.0.4:3306 check weight 1 maxconn 2000  </span><br><span class="line">        #使用keepalive检测死链</span><br><span class="line">        option  tcpka</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动-haproxy-容器"><a href="#启动-haproxy-容器" class="headerlink" title="启动 haproxy 容器"></a>启动 haproxy 容器</h3><blockquote>
+<p>/Users/xinaogudu/hproxy 是我放置配置文件的目录。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -dit -p 4001:8888 -p 4002:3306 \</span><br><span class="line">-v &#x2F;Users&#x2F;xinaogudu&#x2F;hproxy:&#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy \</span><br><span class="line">--privileged \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--name h1 \</span><br><span class="line">--ip 172.18.0.5 \</span><br><span class="line">haproxy</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入-haproxy-容器指明配置文件"><a href="#进入-haproxy-容器指明配置文件" class="headerlink" title="进入 haproxy 容器指明配置文件"></a>进入 haproxy 容器指明配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it h1 bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 指定 haproxy 配置文件位置</span><br><span class="line">haproxy -c -f &#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy&#x2F;haproxy.cfg</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="在数据库中创建一个没有密码的-haproxy-用户用于心跳检测。"><a href="#在数据库中创建一个没有密码的-haproxy-用户用于心跳检测。" class="headerlink" title="在数据库中创建一个没有密码的 haproxy 用户用于心跳检测。"></a>在数据库中创建一个没有密码的 haproxy 用户用于心跳检测。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user &#39;haproxy&#39;@&#39;%&#39; identified by &#39;&#39;;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><h3 id="登录-haproxy-监控：http-localhost-4001-dbs"><a href="#登录-haproxy-监控：http-localhost-4001-dbs" class="headerlink" title="登录 haproxy 监控：http://localhost:4001/dbs"></a>登录 haproxy 监控：<a href="http://localhost:4001/dbs" target="_blank" rel="noopener">http://localhost:4001/dbs</a></h3><p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3b67er48cj327y0tqwoh.jpg" alt=""></p>
+<h3 id="用数据库管理工具连接-haproxy-端口测试："><a href="#用数据库管理工具连接-haproxy-端口测试：" class="headerlink" title="用数据库管理工具连接 haproxy 端口测试："></a>用数据库管理工具连接 haproxy 端口测试：</h3><p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3b6ajpic6j317m0sq43v.jpg" alt=""></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/dokcer/" rel="tag"># dokcer</a>
+              <a href="/tags/PXC/" rel="tag"># PXC</a>
+              <a href="/tags/Haproxy/" rel="tag"># Haproxy</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/year/05/22/docker-exited/" rel="prev" title="docker run 后容器状态是 Exited 解析">
+      <i class="fa fa-chevron-left"></i> docker run 后容器状态是 Exited 解析
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/year/05/24/mdzwgf/" rel="next" title="MarkDown 中文排版规范">
+      MarkDown 中文排版规范 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建-PXC-集群环境"><span class="nav-number">1.</span> <span class="nav-text">创建 PXC 集群环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拉取-percona-xtradb-cluster-镜像"><span class="nav-number">1.1.</span> <span class="nav-text">拉取 percona-xtradb-cluster 镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建docker网络"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建docker网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建docker卷"><span class="nav-number">1.1.2.</span> <span class="nav-text">创建docker卷</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建第一个容器节点："><span class="nav-number">1.2.</span> <span class="nav-text">创建第一个容器节点：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#测试连接："><span class="nav-number">1.2.1.</span> <span class="nav-text">测试连接：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建第二个容器节点："><span class="nav-number">1.3.</span> <span class="nav-text">创建第二个容器节点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建第三个容器节点："><span class="nav-number">1.4.</span> <span class="nav-text">创建第三个容器节点：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#测试："><span class="nav-number">1.4.1.</span> <span class="nav-text">测试：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Harpoxy-负载均衡"><span class="nav-number">2.</span> <span class="nav-text">Harpoxy 负载均衡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-haproxy-配置文件，并放到指定的宿主机目录。"><span class="nav-number">2.1.</span> <span class="nav-text">创建 haproxy 配置文件，并放到指定的宿主机目录。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动-haproxy-容器"><span class="nav-number">2.2.</span> <span class="nav-text">启动 haproxy 容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入-haproxy-容器指明配置文件"><span class="nav-number">2.3.</span> <span class="nav-text">进入 haproxy 容器指明配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在数据库中创建一个没有密码的-haproxy-用户用于心跳检测。"><span class="nav-number">2.4.</span> <span class="nav-text">在数据库中创建一个没有密码的 haproxy 用户用于心跳检测。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证"><span class="nav-number">3.</span> <span class="nav-text">验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#登录-haproxy-监控：http-localhost-4001-dbs"><span class="nav-number">3.1.</span> <span class="nav-text">登录 haproxy 监控：http:&#x2F;&#x2F;localhost:4001&#x2F;dbs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用数据库管理工具连接-haproxy-端口测试："><span class="nav-number">3.2.</span> <span class="nav-text">用数据库管理工具连接 haproxy 端口测试：</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zorn"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Zorn</p>
+  <div class="site-description" itemprop="description">你要保持清醒、独立，并且始终活的真实。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zuorn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zuorn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zuorn@qq.com" title="E-Mail → mailto:zuorn@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zorn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
