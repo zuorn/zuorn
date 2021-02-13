@@ -1,174 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Alacritty</title>
-    <url>/year/01/20/Alacritty/</url>
-    <content><![CDATA[<p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gmtm45q5qaj31980ekdic.jpg" alt="image-20210120032619740"></p>
-<h2 id="Alacritty-最快的终端模拟器"><a href="#Alacritty-最快的终端模拟器" class="headerlink" title="Alacritty 最快的终端模拟器"></a>Alacritty 最快的终端模拟器</h2><a id="more"></a>
-
-<h3 id="为什么选择-Alacritty"><a href="#为什么选择-Alacritty" class="headerlink" title="为什么选择 Alacritty"></a>为什么选择 Alacritty</h3><p>Alacritty 将自己标榜为最快的终端模拟器。事实上它的确要比 iTerm2 流畅不少，这种情况尤其在使用 neovim 的时候明显。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Mac </span><br><span class="line">brew cask install alacritty</span><br><span class="line"></span><br><span class="line"># Ubuntu</span><br><span class="line">sudo apt install alacritty</span><br><span class="line"></span><br><span class="line"># Arch</span><br><span class="line">sudo pacman -S alacritty</span><br><span class="line"></span><br><span class="line"># Windows</span><br><span class="line">choco install alacritty</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Alacritty 默认不会添加配置文件，需要自己手动添加。</p>
-<ul>
-<li>Linux &amp; Mac</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;alacritty&#x2F;alacritty.yml</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Windows</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">%APPDATA%\alacritty\alacritty.yml</span><br></pre></td></tr></table></figure>
-
-<h3 id="我的配置"><a href="#我的配置" class="headerlink" title="我的配置"></a>我的配置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">colors:</span><br><span class="line"></span><br><span class="line">  primary:</span><br><span class="line">    background: &quot;#1e2127&quot;</span><br><span class="line">    # background: &quot;#2E3440&quot;</span><br><span class="line">    foreground: &quot;#D8DEE9&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  normal:</span><br><span class="line">    black: &quot;#3B4252&quot;</span><br><span class="line">    red: &quot;#BF616A&quot;</span><br><span class="line">    green: &quot;#A3BE8C&quot;</span><br><span class="line">    yellow: &quot;#EBCB8B&quot;</span><br><span class="line">    blue: &quot;#81A1C1&quot;</span><br><span class="line">    magenta: &quot;#B48EAD&quot;</span><br><span class="line">    cyan: &quot;#88C0D0&quot;</span><br><span class="line">    white: &quot;#abb2bf&quot;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  bright:</span><br><span class="line">    black: &quot;#5c6370&quot;</span><br><span class="line">    red: &quot;#e06c75&quot;</span><br><span class="line">    green: &quot;#98c379&quot;</span><br><span class="line">    yellow: &quot;#d19a66&quot;</span><br><span class="line">    blue: &quot;#61afef&quot;</span><br><span class="line">    magenta: &quot;#c678dd&quot;</span><br><span class="line">    cyan: &quot;#56b6c2&quot;</span><br><span class="line">    white: &quot;#ECEFF4&quot;</span><br><span class="line"></span><br><span class="line">background_opacity: 1.0</span><br><span class="line"></span><br><span class="line"># 设置字体</span><br><span class="line">font:</span><br><span class="line">  normal:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Regular</span><br><span class="line">  bold:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Bold</span><br><span class="line">  italic:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Italic</span><br><span class="line">  bold_italic:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Bold Italic</span><br><span class="line"></span><br><span class="line">  # 字大小</span><br><span class="line">  size: 15.0 </span><br><span class="line"></span><br><span class="line">  offset:</span><br><span class="line">    x: 0</span><br><span class="line">    y: 0</span><br><span class="line">  glyph_offset:</span><br><span class="line">    x: 0</span><br><span class="line">    y: 0</span><br><span class="line"></span><br><span class="line">window:</span><br><span class="line">  padding:</span><br><span class="line">    x: 2</span><br><span class="line">    y: 2</span><br><span class="line"></span><br><span class="line">scrolling:</span><br><span class="line"># 回滚缓冲区中的最大行数,指定“0”将禁用滚动。</span><br><span class="line">  history: 10000</span><br><span class="line"></span><br><span class="line">  # 滚动行数 </span><br><span class="line"></span><br><span class="line">  multiplier: 10</span><br><span class="line"></span><br><span class="line"># 如果为‘true’，则使用亮色变体绘制粗体文本。</span><br><span class="line">draw_bold_text_with_bright_colors: true</span><br><span class="line"></span><br><span class="line">selection:</span><br><span class="line">  semantic_escape_chars: &#39;,│&#96;|:&quot;&#39;&#39; ()[]&#123;&#125;&lt;&gt;&#39;</span><br><span class="line">  save_to_clipboard: true</span><br><span class="line"></span><br><span class="line">live_config_reload: true</span><br><span class="line"></span><br><span class="line">key_bindings:</span><br><span class="line">  - &#123; key: V, mods: command, action: Paste &#125;</span><br><span class="line">  - &#123; key: C, mods: command, action: Copy &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
-<li><a href="https://github.com/alacritty/alacritty" target="_blank" rel="noopener">github：alacritty</a></li>
-<li><a href="https://github.com/alacritty/alacritty/wiki/Color-schemes" target="_blank" rel="noopener">Color-schemes</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker学习笔记</title>
-    <url>/year/04/06/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
-<a id="more"></a>
-
-
-
-<h3 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h3><ul>
-<li>启动容器： <code>docker run -dit ubuntu</code></li>
-<li>查看建立的容器： <code>dokcer inspect</code></li>
-<li>自定义容器名：<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">dokcer run --name=自定义名 -i -t IMAGE /bin/bash</span><br></pre></td></tr></table></figure></li>
-<li>重新启动停止的容器：<code>docker start [-i] 容器名</code>。 -i是以交互的方式启动停止的容器</li>
-<li>删除已经停止的容器：<code>docker rm 容器名</code></li>
-</ul>
-<h3 id="守护式容器"><a href="#守护式容器" class="headerlink" title="守护式容器"></a>守护式容器</h3><blockquote>
-<p>能够长期运行<br>没有交互式会话<br>适合运行应用程序和服务</p>
-</blockquote>
-<ul>
-<li>以守护式运行容器：</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker run -i -t IMAGE /bin/bash</span><br><span class="line">同时按ctrl+P和ctrl+q <span class="comment">//退出后容器在后台运行</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>附加到运行中的容器：<code>docker attach 容器名</code></li>
-<li>启动守护式容器：</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//-d 使用后台的方式来执行命令</span><br><span class="line">docker run -d 镜像名 [COMMAND] [ARG...]</span><br><span class="line">``` </span><br><span class="line">* 查看容器日志：</span><br><span class="line"></span><br><span class="line">```js</span><br><span class="line">docker logs [-f] [-t] [--tail] 容器名</span><br><span class="line">	-f --follows=true|false 默认false</span><br><span class="line">	-t timestamps=true|false 默认false</span><br><span class="line">	--tail="all"</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看容器内进程：</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker top 容器名</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在运行中的容器内启动新进程：</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker exec [-d] [-i] [-t] 容器名 [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>停止守护式容器：</p>
-<p>  备注：重启容器后容器的ip和端口映射都会发生改变。</p>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker stop 容器名 <span class="comment">//发送一个信号给容器，等待停止</span></span><br><span class="line">docker kill 容器名 <span class="comment">//直接停止容器</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="设置容器的映射端口"><a href="#设置容器的映射端口" class="headerlink" title="设置容器的映射端口"></a>设置容器的映射端口</h3><h4 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">run [-P] [-p]</span><br><span class="line"></span><br><span class="line"><span class="comment">//将为容器暴露的所有端口进行映射</span></span><br><span class="line">-P,publish-all=<span class="literal">true</span> | <span class="literal">false</span> 默认为<span class="literal">false</span></span><br><span class="line">	docker run -P -i-t ubuntu /bin/bash</span><br><span class="line">	</span><br><span class="line"><span class="comment">//指定映射端口</span></span><br><span class="line">-p,--publish=[]</span><br><span class="line"></span><br><span class="line">containerPort <span class="comment">//只制定容器的端口（宿主机的端口是随机映射的）</span></span><br><span class="line">	docker run -p <span class="number">8080</span>:<span class="number">80</span> -i -t ubuntu /bin/bash</span><br><span class="line"></span><br><span class="line">hostPort:containnerPort <span class="comment">//同时指定宿主机的端口和容器的端口（一一对应）</span></span><br><span class="line">	docker run -p <span class="number">8080</span>:<span class="number">80</span> -i -t ubuntu /bin/bash</span><br><span class="line">	</span><br><span class="line">ip::containerPort <span class="comment">//指定ip和容器的端口</span></span><br><span class="line">	docker run -p <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">80</span> -i -t ubuntu /bin/bash</span><br><span class="line">	</span><br><span class="line">ip:hostPort:containerPort <span class="comment">//ip、宿主机端口和容器端口都进行指定</span></span><br><span class="line">	docker run -p <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">8080</span>:<span class="number">80</span> -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看端口映射"><a href="#查看端口映射" class="headerlink" title="查看端口映射"></a>查看端口映射</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">dokcer port 容器名</span><br></pre></td></tr></table></figure>
-
-<h4 id="练习：在容器中部署静态网站"><a href="#练习：在容器中部署静态网站" class="headerlink" title="练习：在容器中部署静态网站"></a>练习：在容器中部署静态网站</h4><pre><code>//创建映射80端口的交互式容器
-docker run -p 80 --name=web -i -t b2ab0ed558bb /bin/bash    
-//安装Nginx
-yum install -y nginx
-
-//安装文本编辑器vim
-yum install vim
-
-//验证网站访问
-docker port web //查看端口</code></pre><h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><ul>
-<li>列出镜像</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker images [OPTSIONS][REPOSITORY]</span><br><span class="line">		-a,--all=<span class="literal">false</span>  <span class="comment">//默认不显示中间层的镜像</span></span><br><span class="line">		-f,--filter=[]  <span class="comment">//显示时的过滤条件</span></span><br><span class="line">		--no-trunc=<span class="literal">false</span>  <span class="comment">//不使用截断的形式来显示数据（默认会截断唯一id）</span></span><br><span class="line">		-q,--quiet=<span class="literal">false</span>  <span class="comment">//只显示镜像的唯一id</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>镜像的仓库</p>
-<p>REPOSITORY 仓库 镜像的集合</p>
-</li>
-<li><p>TAG 标签 默认使用latest标签</p>
-</li>
-<li><p>查看镜像的详细信息(inspect也支持容器的查看)</p>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker inspect [OPTIONS]CONTAINER|IMAGE[CONTAINER|IMAGE...]</span><br><span class="line">	-f,format=<span class="string">""</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除镜像</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker rmi [OPTIONS]IMAGE[IMAGE...]</span><br><span class="line">	-f,--force=<span class="literal">false</span> 强制删除镜像</span><br><span class="line">	--no-prune=<span class="literal">false</span> 会保留被删镜像中被打标签的父镜像</span><br></pre></td></tr></table></figure>
-
-<h3 id="获取和推送镜像"><a href="#获取和推送镜像" class="headerlink" title="获取和推送镜像"></a>获取和推送镜像</h3><ul>
-<li>查找镜像<br>  Docker Hub<br>  <a href="https://registry.hub.docker.com" target="_blank" rel="noopener">https://registry.hub.docker.com</a></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker search [OPTIONS]TERM</span><br><span class="line">	--automated=<span class="literal">false</span></span><br><span class="line">	--no-trunc=<span class="literal">false</span> </span><br><span class="line">	-s,--stars=<span class="number">0</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>拉取镜像</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker pull [OPTIONS] NAME[:TAG]</span><br><span class="line">	-a,all-tags=<span class="literal">false</span> 下载全部标记的镜像</span><br></pre></td></tr></table></figure>
-<ul>
-<li>推送镜像</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker push NAME[:TAG]</span><br></pre></td></tr></table></figure>
-
-<h3 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h3><blockquote>
-<p>保存对容器的修改，并再次使用<br>自定义镜像的能力<br>以软件的形式打包并分发服务及其运行环境</p>
-</blockquote>
-<ul>
-<li>通过容器构建</li>
-</ul>
-<p>会暂停正在使用的容器</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">	docker commit [OPTIONS] CONTAINER [REPOSITORY][:TAG]</span><br><span class="line">		-a,--author=<span class="string">""</span>  镜像的作者</span><br><span class="line">		-m,-message=<span class="string">""</span> 镜像构建的信息</span><br><span class="line">		-p,--pause=<span class="literal">true</span> 可以不暂停正在使用的容器</span><br><span class="line">	<span class="string">``</span><span class="string">`	</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">* 通过Dockerfile文件构建</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	1. 创建Dockerfile文件</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	2. 运行docker build命令</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line">	docker build [OPTIONS] PATH | URL | -</span><br><span class="line">		--force-rm=<span class="literal">false</span></span><br><span class="line">		--no-cache=<span class="literal">false</span></span><br><span class="line">		-pull==<span class="literal">false</span></span><br><span class="line">		-q,--quiet=<span class="literal">false</span></span><br><span class="line">		--rm=<span class="literal">true</span></span><br><span class="line">		-t,--tag=<span class="string">""</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="dockerC-S模式"><a href="#dockerC-S模式" class="headerlink" title="dockerC/S模式"></a>dockerC/S模式</h3><pre><code>![](https://ws4.sinaimg.cn/large/006tNc79ly1g1tbggmcy8j317s0nsnbb.jpg)</code></pre><p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1g1tbg4n0arj317e0e01ft.jpg" alt=""></p>
-<h4 id="Remote-API"><a href="#Remote-API" class="headerlink" title="Remote API"></a>Remote API</h4><ul>
-<li><p>RESTful风格API</p>
-</li>
-<li><p>STDIN、STDOUT、STDERR<br><img src="https://ws1.sinaimg.cn/large/006tNc79ly1g1tbfr9f67j317g0ewx25.jpg" alt=""></p>
-</li>
-<li><p>Docker官方的Remote APO Reference:</p>
-<p>  <a href="https://docs.docker.com/reference/api/docker_remote_api/" target="_blank" rel="noopener">https://docs.docker.com/reference/api/docker_remote_api/</a></p>
-</li>
-</ul>
-<h4 id="连接方式（客户端与服务端的守护进程）"><a href="#连接方式（客户端与服务端的守护进程）" class="headerlink" title="连接方式（客户端与服务端的守护进程）"></a>连接方式（客户端与服务端的守护进程）</h4><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1g1tbf671nlj316o0c2qet.jpg" alt=""></p>
-<ul>
-<li>unix://var/run/docker.sock</li>
-<li>tcp://host:port</li>
-<li>fd://socketfd</li>
-</ul>
-<h3 id="Docker守护进程的配置和操作"><a href="#Docker守护进程的配置和操作" class="headerlink" title="Docker守护进程的配置和操作"></a>Docker守护进程的配置和操作</h3><ul>
-<li>查看守护进程</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ps -ef |grep docker</span><br><span class="line">sudo status docker</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用service命令管理</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">启动</span><br><span class="line">sudo service docker start</span><br><span class="line"></span><br><span class="line">停止</span><br><span class="line">sudo service docker stop</span><br><span class="line"></span><br><span class="line">重启</span><br><span class="line">sudo service docker restart</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用ADB无线连接Android真机进行调试</title>
     <url>/year/01/05/ADB%E6%97%A0%E7%BA%BF%E8%BF%9E%E6%8E%A5Android%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95/</url>
     <content><![CDATA[<p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-006tKfTcgy1fqa8x1kfm7j30gi08n74m.jpg" alt=""></p>
@@ -223,6 +55,40 @@ docker port web //查看端口</code></pre><h3 id="镜像"><a href="#镜像" cla
       </categories>
       <tags>
         <tag>调试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Alacritty</title>
+    <url>/year/01/20/Alacritty/</url>
+    <content><![CDATA[<p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gmtm45q5qaj31980ekdic.jpg" alt="image-20210120032619740"></p>
+<h2 id="Alacritty-最快的终端模拟器"><a href="#Alacritty-最快的终端模拟器" class="headerlink" title="Alacritty 最快的终端模拟器"></a>Alacritty 最快的终端模拟器</h2><a id="more"></a>
+
+<h3 id="为什么选择-Alacritty"><a href="#为什么选择-Alacritty" class="headerlink" title="为什么选择 Alacritty"></a>为什么选择 Alacritty</h3><p>Alacritty 将自己标榜为最快的终端模拟器。事实上它的确要比 iTerm2 流畅不少，这种情况尤其在使用 neovim 的时候明显。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Mac </span><br><span class="line">brew cask install alacritty</span><br><span class="line"></span><br><span class="line"># Ubuntu</span><br><span class="line">sudo apt install alacritty</span><br><span class="line"></span><br><span class="line"># Arch</span><br><span class="line">sudo pacman -S alacritty</span><br><span class="line"></span><br><span class="line"># Windows</span><br><span class="line">choco install alacritty</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Alacritty 默认不会添加配置文件，需要自己手动添加。</p>
+<ul>
+<li>Linux &amp; Mac</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;alacritty&#x2F;alacritty.yml</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Windows</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">%APPDATA%\alacritty\alacritty.yml</span><br></pre></td></tr></table></figure>
+
+<h3 id="我的配置"><a href="#我的配置" class="headerlink" title="我的配置"></a>我的配置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">colors:</span><br><span class="line"></span><br><span class="line">  primary:</span><br><span class="line">    background: &quot;#1e2127&quot;</span><br><span class="line">    # background: &quot;#2E3440&quot;</span><br><span class="line">    foreground: &quot;#D8DEE9&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  normal:</span><br><span class="line">    black: &quot;#3B4252&quot;</span><br><span class="line">    red: &quot;#BF616A&quot;</span><br><span class="line">    green: &quot;#A3BE8C&quot;</span><br><span class="line">    yellow: &quot;#EBCB8B&quot;</span><br><span class="line">    blue: &quot;#81A1C1&quot;</span><br><span class="line">    magenta: &quot;#B48EAD&quot;</span><br><span class="line">    cyan: &quot;#88C0D0&quot;</span><br><span class="line">    white: &quot;#abb2bf&quot;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  bright:</span><br><span class="line">    black: &quot;#5c6370&quot;</span><br><span class="line">    red: &quot;#e06c75&quot;</span><br><span class="line">    green: &quot;#98c379&quot;</span><br><span class="line">    yellow: &quot;#d19a66&quot;</span><br><span class="line">    blue: &quot;#61afef&quot;</span><br><span class="line">    magenta: &quot;#c678dd&quot;</span><br><span class="line">    cyan: &quot;#56b6c2&quot;</span><br><span class="line">    white: &quot;#ECEFF4&quot;</span><br><span class="line"></span><br><span class="line">background_opacity: 1.0</span><br><span class="line"></span><br><span class="line"># 设置字体</span><br><span class="line">font:</span><br><span class="line">  normal:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Regular</span><br><span class="line">  bold:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Bold</span><br><span class="line">  italic:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Italic</span><br><span class="line">  bold_italic:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Bold Italic</span><br><span class="line"></span><br><span class="line">  # 字大小</span><br><span class="line">  size: 15.0 </span><br><span class="line"></span><br><span class="line">  offset:</span><br><span class="line">    x: 0</span><br><span class="line">    y: 0</span><br><span class="line">  glyph_offset:</span><br><span class="line">    x: 0</span><br><span class="line">    y: 0</span><br><span class="line"></span><br><span class="line">window:</span><br><span class="line">  padding:</span><br><span class="line">    x: 2</span><br><span class="line">    y: 2</span><br><span class="line"></span><br><span class="line">scrolling:</span><br><span class="line"># 回滚缓冲区中的最大行数,指定“0”将禁用滚动。</span><br><span class="line">  history: 10000</span><br><span class="line"></span><br><span class="line">  # 滚动行数 </span><br><span class="line"></span><br><span class="line">  multiplier: 10</span><br><span class="line"></span><br><span class="line"># 如果为‘true’，则使用亮色变体绘制粗体文本。</span><br><span class="line">draw_bold_text_with_bright_colors: true</span><br><span class="line"></span><br><span class="line">selection:</span><br><span class="line">  semantic_escape_chars: &#39;,│&#96;|:&quot;&#39;&#39; ()[]&#123;&#125;&lt;&gt;&#39;</span><br><span class="line">  save_to_clipboard: true</span><br><span class="line"></span><br><span class="line">live_config_reload: true</span><br><span class="line"></span><br><span class="line">key_bindings:</span><br><span class="line">  - &#123; key: V, mods: command, action: Paste &#125;</span><br><span class="line">  - &#123; key: C, mods: command, action: Copy &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
+<li><a href="https://github.com/alacritty/alacritty" target="_blank" rel="noopener">github：alacritty</a></li>
+<li><a href="https://github.com/alacritty/alacritty/wiki/Color-schemes" target="_blank" rel="noopener">Color-schemes</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -613,6 +479,140 @@ docker port web //查看端口</code></pre><h3 id="镜像"><a href="#镜像" cla
       </tags>
   </entry>
   <entry>
+    <title>Docker学习笔记</title>
+    <url>/year/04/06/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
+<a id="more"></a>
+
+
+
+<h3 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h3><ul>
+<li>启动容器： <code>docker run -dit ubuntu</code></li>
+<li>查看建立的容器： <code>dokcer inspect</code></li>
+<li>自定义容器名：<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">dokcer run --name=自定义名 -i -t IMAGE /bin/bash</span><br></pre></td></tr></table></figure></li>
+<li>重新启动停止的容器：<code>docker start [-i] 容器名</code>。 -i是以交互的方式启动停止的容器</li>
+<li>删除已经停止的容器：<code>docker rm 容器名</code></li>
+</ul>
+<h3 id="守护式容器"><a href="#守护式容器" class="headerlink" title="守护式容器"></a>守护式容器</h3><blockquote>
+<p>能够长期运行<br>没有交互式会话<br>适合运行应用程序和服务</p>
+</blockquote>
+<ul>
+<li>以守护式运行容器：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker run -i -t IMAGE /bin/bash</span><br><span class="line">同时按ctrl+P和ctrl+q <span class="comment">//退出后容器在后台运行</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>附加到运行中的容器：<code>docker attach 容器名</code></li>
+<li>启动守护式容器：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//-d 使用后台的方式来执行命令</span><br><span class="line">docker run -d 镜像名 [COMMAND] [ARG...]</span><br><span class="line">``` </span><br><span class="line">* 查看容器日志：</span><br><span class="line"></span><br><span class="line">```js</span><br><span class="line">docker logs [-f] [-t] [--tail] 容器名</span><br><span class="line">	-f --follows=true|false 默认false</span><br><span class="line">	-t timestamps=true|false 默认false</span><br><span class="line">	--tail="all"</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看容器内进程：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker top 容器名</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在运行中的容器内启动新进程：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker exec [-d] [-i] [-t] 容器名 [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>停止守护式容器：</p>
+<p>  备注：重启容器后容器的ip和端口映射都会发生改变。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker stop 容器名 <span class="comment">//发送一个信号给容器，等待停止</span></span><br><span class="line">docker kill 容器名 <span class="comment">//直接停止容器</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="设置容器的映射端口"><a href="#设置容器的映射端口" class="headerlink" title="设置容器的映射端口"></a>设置容器的映射端口</h3><h4 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">run [-P] [-p]</span><br><span class="line"></span><br><span class="line"><span class="comment">//将为容器暴露的所有端口进行映射</span></span><br><span class="line">-P,publish-all=<span class="literal">true</span> | <span class="literal">false</span> 默认为<span class="literal">false</span></span><br><span class="line">	docker run -P -i-t ubuntu /bin/bash</span><br><span class="line">	</span><br><span class="line"><span class="comment">//指定映射端口</span></span><br><span class="line">-p,--publish=[]</span><br><span class="line"></span><br><span class="line">containerPort <span class="comment">//只制定容器的端口（宿主机的端口是随机映射的）</span></span><br><span class="line">	docker run -p <span class="number">8080</span>:<span class="number">80</span> -i -t ubuntu /bin/bash</span><br><span class="line"></span><br><span class="line">hostPort:containnerPort <span class="comment">//同时指定宿主机的端口和容器的端口（一一对应）</span></span><br><span class="line">	docker run -p <span class="number">8080</span>:<span class="number">80</span> -i -t ubuntu /bin/bash</span><br><span class="line">	</span><br><span class="line">ip::containerPort <span class="comment">//指定ip和容器的端口</span></span><br><span class="line">	docker run -p <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">80</span> -i -t ubuntu /bin/bash</span><br><span class="line">	</span><br><span class="line">ip:hostPort:containerPort <span class="comment">//ip、宿主机端口和容器端口都进行指定</span></span><br><span class="line">	docker run -p <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">8080</span>:<span class="number">80</span> -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看端口映射"><a href="#查看端口映射" class="headerlink" title="查看端口映射"></a>查看端口映射</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">dokcer port 容器名</span><br></pre></td></tr></table></figure>
+
+<h4 id="练习：在容器中部署静态网站"><a href="#练习：在容器中部署静态网站" class="headerlink" title="练习：在容器中部署静态网站"></a>练习：在容器中部署静态网站</h4><pre><code>//创建映射80端口的交互式容器
+docker run -p 80 --name=web -i -t b2ab0ed558bb /bin/bash    
+//安装Nginx
+yum install -y nginx
+
+//安装文本编辑器vim
+yum install vim
+
+//验证网站访问
+docker port web //查看端口</code></pre><h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><ul>
+<li>列出镜像</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker images [OPTSIONS][REPOSITORY]</span><br><span class="line">		-a,--all=<span class="literal">false</span>  <span class="comment">//默认不显示中间层的镜像</span></span><br><span class="line">		-f,--filter=[]  <span class="comment">//显示时的过滤条件</span></span><br><span class="line">		--no-trunc=<span class="literal">false</span>  <span class="comment">//不使用截断的形式来显示数据（默认会截断唯一id）</span></span><br><span class="line">		-q,--quiet=<span class="literal">false</span>  <span class="comment">//只显示镜像的唯一id</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>镜像的仓库</p>
+<p>REPOSITORY 仓库 镜像的集合</p>
+</li>
+<li><p>TAG 标签 默认使用latest标签</p>
+</li>
+<li><p>查看镜像的详细信息(inspect也支持容器的查看)</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker inspect [OPTIONS]CONTAINER|IMAGE[CONTAINER|IMAGE...]</span><br><span class="line">	-f,format=<span class="string">""</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除镜像</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker rmi [OPTIONS]IMAGE[IMAGE...]</span><br><span class="line">	-f,--force=<span class="literal">false</span> 强制删除镜像</span><br><span class="line">	--no-prune=<span class="literal">false</span> 会保留被删镜像中被打标签的父镜像</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取和推送镜像"><a href="#获取和推送镜像" class="headerlink" title="获取和推送镜像"></a>获取和推送镜像</h3><ul>
+<li>查找镜像<br>  Docker Hub<br>  <a href="https://registry.hub.docker.com" target="_blank" rel="noopener">https://registry.hub.docker.com</a></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker search [OPTIONS]TERM</span><br><span class="line">	--automated=<span class="literal">false</span></span><br><span class="line">	--no-trunc=<span class="literal">false</span> </span><br><span class="line">	-s,--stars=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>拉取镜像</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker pull [OPTIONS] NAME[:TAG]</span><br><span class="line">	-a,all-tags=<span class="literal">false</span> 下载全部标记的镜像</span><br></pre></td></tr></table></figure>
+<ul>
+<li>推送镜像</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker push NAME[:TAG]</span><br></pre></td></tr></table></figure>
+
+<h3 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h3><blockquote>
+<p>保存对容器的修改，并再次使用<br>自定义镜像的能力<br>以软件的形式打包并分发服务及其运行环境</p>
+</blockquote>
+<ul>
+<li>通过容器构建</li>
+</ul>
+<p>会暂停正在使用的容器</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">	docker commit [OPTIONS] CONTAINER [REPOSITORY][:TAG]</span><br><span class="line">		-a,--author=<span class="string">""</span>  镜像的作者</span><br><span class="line">		-m,-message=<span class="string">""</span> 镜像构建的信息</span><br><span class="line">		-p,--pause=<span class="literal">true</span> 可以不暂停正在使用的容器</span><br><span class="line">	<span class="string">``</span><span class="string">`	</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">* 通过Dockerfile文件构建</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	1. 创建Dockerfile文件</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	2. 运行docker build命令</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line">	docker build [OPTIONS] PATH | URL | -</span><br><span class="line">		--force-rm=<span class="literal">false</span></span><br><span class="line">		--no-cache=<span class="literal">false</span></span><br><span class="line">		-pull==<span class="literal">false</span></span><br><span class="line">		-q,--quiet=<span class="literal">false</span></span><br><span class="line">		--rm=<span class="literal">true</span></span><br><span class="line">		-t,--tag=<span class="string">""</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="dockerC-S模式"><a href="#dockerC-S模式" class="headerlink" title="dockerC/S模式"></a>dockerC/S模式</h3><pre><code>![](https://ws4.sinaimg.cn/large/006tNc79ly1g1tbggmcy8j317s0nsnbb.jpg)</code></pre><p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1g1tbg4n0arj317e0e01ft.jpg" alt=""></p>
+<h4 id="Remote-API"><a href="#Remote-API" class="headerlink" title="Remote API"></a>Remote API</h4><ul>
+<li><p>RESTful风格API</p>
+</li>
+<li><p>STDIN、STDOUT、STDERR<br><img src="https://ws1.sinaimg.cn/large/006tNc79ly1g1tbfr9f67j317g0ewx25.jpg" alt=""></p>
+</li>
+<li><p>Docker官方的Remote APO Reference:</p>
+<p>  <a href="https://docs.docker.com/reference/api/docker_remote_api/" target="_blank" rel="noopener">https://docs.docker.com/reference/api/docker_remote_api/</a></p>
+</li>
+</ul>
+<h4 id="连接方式（客户端与服务端的守护进程）"><a href="#连接方式（客户端与服务端的守护进程）" class="headerlink" title="连接方式（客户端与服务端的守护进程）"></a>连接方式（客户端与服务端的守护进程）</h4><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1g1tbf671nlj316o0c2qet.jpg" alt=""></p>
+<ul>
+<li>unix://var/run/docker.sock</li>
+<li>tcp://host:port</li>
+<li>fd://socketfd</li>
+</ul>
+<h3 id="Docker守护进程的配置和操作"><a href="#Docker守护进程的配置和操作" class="headerlink" title="Docker守护进程的配置和操作"></a>Docker守护进程的配置和操作</h3><ul>
+<li>查看守护进程</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ps -ef |grep docker</span><br><span class="line">sudo status docker</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用service命令管理</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">启动</span><br><span class="line">sudo service docker start</span><br><span class="line"></span><br><span class="line">停止</span><br><span class="line">sudo service docker stop</span><br><span class="line"></span><br><span class="line">重启</span><br><span class="line">sudo service docker restart</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo 添加 SEO</title>
     <url>/year/12/19/Hexo-%E6%B7%BB%E5%8A%A0-SEO/</url>
     <content><![CDATA[<ul>
@@ -691,25 +691,6 @@ hexo g -d</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Next主题指定文章隐藏侧栏</title>
-    <url>/year/01/22/Next%E4%B8%BB%E6%8E%A8%E6%8C%87%E5%AE%9A%E6%96%87%E7%AB%A0%E9%9A%90%E8%97%8F%E4%BE%A7%E6%A0%8F/</url>
-    <content><![CDATA[<h4 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h4><p>可能你需要加一个单独的页面，比如about页面，希望隐藏next主题的侧栏，那么请看下去。</p>
-<a id="more"></a>
-
-<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><p>根据<a href="https://github.com/iissnan/hexo-theme-next/issues/943" target="_blank" rel="noopener">issues-943</a>找到了my-project/themes/next/layout/_marcro/sidebar.swig中找到下一列信息。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">set</span> display_toc = is_post and theme.toc.enable or is_page and theme.toc.enable %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>修改为：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">set</span> display_toc = is_post and theme.toc.enable and !page.no_toc or is_page and theme.toc.enable and !page.no_toc %&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>这样你就可以在不想要显示目录的文章头部加一行：<code>no_toc: true</code>即可。</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mac OS安装 OpenCV(python3)</title>
     <url>/year/01/03/Mac-OS%E5%AE%89%E8%A3%85-OpenCV-python3/</url>
     <content><![CDATA[<p>运行命令：</p>
@@ -742,6 +723,132 @@ hexo g -d</code></pre>
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown入门</title>
+    <url>/year/09/08/Markdown%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener">Markdown</a>是一种<a href="https://zh.wikipedia.org/wiki/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">轻量级标记语言</a>，它的优点在于易于阅读、易于撰写的纯文字格式， 并且可以自由转换成多种格式。目前也被越来越多的写作爱好者，撰稿者广泛使用。</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Markdown旨在尽可能容易阅读和易于写入。</p>
+<p>然而，可读性首先被强调。标记格式的文档应该按照原样发布，而不是像标签或格式化说明一样标记。虽然Markdown的语法受到几个现有的文本到HTML过滤器的影响，包括Setext，atx，Textile，reStructuredText， Grutatext和EtText - Markdown语法的最大灵感来源是纯文本电子邮件的格式。</p>
+<p>为此，Markdown的语法完全由标点符号组成，标点符号被仔细选择，看起来就像它们的意思。例如，一个字上的星号实际上看起来像<em>强调</em>。标记列表看起来好像列表。</p>
+<h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><p>Markdown作为一种轻量级标记语言，它的语法简洁明了、学习起来容易。</p>
+<p>参考：<br><a href="https://daringfireball.net/projects/markdown/syntax" target="_blank" rel="noopener">官方说明</a><br><a href="http://wowubuntu.com/markdown/#list" target="_blank" rel="noopener">Markdown 中文版语法说明 </a></p>
+<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line"># 第一级标题</span><br><span class="line">## 第二级标题</span><br><span class="line">###### 第六级标题</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<h1 id="第一级标题"><a href="#第一级标题" class="headerlink" title="第一级标题"></a>第一级标题</h1><h2 id="第二级标题"><a href="#第二级标题" class="headerlink" title="第二级标题"></a>第二级标题</h2><h6 id="第六级标题"><a href="#第六级标题" class="headerlink" title="第六级标题"></a>第六级标题</h6><h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">*这些文字会生成*</span><br><span class="line">_这些文字会生成<span class="string">`_</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">**这些文字会生成**</span></span><br><span class="line"><span class="string">__这些文字会生成`</span>__</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><em>这些文字会生成</em><br><em>这些文字会生成`</em></p>
+<p><strong>这些文字会生成</strong><br><strong>这些文字会生成`</strong></p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">* 列表一</span><br><span class="line">* 列表二</span><br><span class="line">* 列表三</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<ul>
+<li>列表一</li>
+<li>列表二</li>
+<li>列表三</li>
+</ul>
+<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> 列表一</span><br><span class="line"><span class="number">2.</span> 列表二</span><br><span class="line"><span class="number">3.</span> 列表三</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<ol>
+<li>列表一</li>
+<li>列表二</li>
+<li>列表三</li>
+</ol>
+<h3 id="任务列表（Task-lists）"><a href="#任务列表（Task-lists）" class="headerlink" title="任务列表（Task lists）"></a>任务列表（Task lists）</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">- [ ] 任务一 未做任务</span><br><span class="line">- [x] 任务二 已做任务</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 任务一 未做任务</li>
+<li><input checked="" disabled="" type="checkbox"> 任务二 已做任务</li>
+</ul>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">![图片名称](地址)</span><br></pre></td></tr></table></figure>
+
+<h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[名称](链接地址)</span><br></pre></td></tr></table></figure>
+<h2 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">某某说:</span><br><span class="line">&gt; balabala</span><br></pre></td></tr></table></figure>
+<p>效果：<br>某某说:</p>
+<blockquote>
+<p>balabala</p>
+</blockquote>
+<h2 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`代码`</span></span><br></pre></td></tr></table></figure>
+<p>效果如下：<br><code>代码</code></p>
+<h2 id="多行或者一段代码"><a href="#多行或者一段代码" class="headerlink" title="多行或者一段代码"></a>多行或者一段代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">代码段</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">代码段</span><br></pre></td></tr></table></figure>
+
+<h2 id="顺序图或流程图"><a href="#顺序图或流程图" class="headerlink" title="顺序图或流程图"></a>顺序图或流程图</h2><pre><code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">张三-&gt;李四: 嘿，小四儿, 你妈喊你回家吃饭呢！</span><br><span class="line">Note right of 李四: 李四愣了一下，说：</span><br><span class="line">李四--&gt;张三: 哦，知道啦！</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">st&#x3D;&gt;start: 开始</span><br><span class="line">e&#x3D;&gt;end: 结束</span><br><span class="line">op&#x3D;&gt;operation: 我的操作</span><br><span class="line">cond&#x3D;&gt;condition: 确认？</span><br><span class="line"></span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure></code></pre><p>效果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">张三-&gt;李四: 嘿，小四儿, 你妈喊你回家吃饭呢！</span><br><span class="line">Note right of 李四: 李四愣了一下，说：</span><br><span class="line">李四--&gt;张三: 哦，知道啦！</span><br></pre></td></tr></table></figure>
+
+<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><p>Markdown 语法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">表头一 | 表头二</span><br><span class="line">--------- | -------------</span><br><span class="line">第一列第一格 | 格第二列第一格</span><br><span class="line">第一列第二格 | 格第二列第二格</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<table>
+<thead>
+<tr>
+<th>表头一</th>
+<th>表头二</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一列第一格</td>
+<td>格第二列第一格</td>
+</tr>
+<tr>
+<td>第一列第二格</td>
+<td>格第二列第二格</td>
+</tr>
+</tbody></table>
+<h4 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">~~删除这些~~</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><del>删除这些</del></p>
+<h4 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h4><p>以下三种方式都可以生成分隔线：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">***</span><br><span class="line"></span><br><span class="line">*****</span><br><span class="line"></span><br><span class="line">- - -</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<hr>
+<hr>
+<hr>
+<h4 id="脚注（Footnote）"><a href="#脚注（Footnote）" class="headerlink" title="脚注（Footnote）"></a>脚注（Footnote）</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">这是一个脚注：[^sample_footnote]</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p>这是一个脚注：<a href="这里是脚注信息">^sample_footnote</a></p>
+<h2 id="工具："><a href="#工具：" class="headerlink" title="工具："></a>工具：</h2><p>常见的Markdown工具有<a href="https://ulyssesapp.com/" target="_blank" rel="noopener">Ulysses</a>，<a href="http://25.io/mou/" target="_blank" rel="noopener">Mou</a>，<a href="http://www.sublimetext.com/3" target="_blank" rel="noopener">Sublime Text 3</a>等等。</p>
+<p>个人比较喜欢<a href="https://itunes.apple.com/cn/app/mweb-%E4%B8%93%E4%B8%9A%E7%9A%84markdown%E5%86%99%E4%BD%9C-%E8%AE%B0%E7%AC%94%E8%AE%B0-%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%94%9F%E6%88%90%E8%BD%AF%E4%BB%B6/id954188948?mt=12" target="_blank" rel="noopener">mweb</a>，几乎所有的语法都有对应的快捷键，而且还能一键生成&amp;上传至博客。</p>
+<p>具体使用方法见<a href="http://zh.mweb.im/help.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<p>另外还有一个<a href="https://itunes.apple.com/cn/app/mweb-lite-%E4%B8%93%E4%B8%9A%E7%9A%84markdown%E5%86%99%E4%BD%9C%E8%BD%AF%E4%BB%B6/id979033429?mt=12" target="_blank" rel="noopener">免费版的</a>，<br><img src="http://ovlnt0xy1.bkt.clouddn.com/mweb.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Next主题指定文章隐藏侧栏</title>
+    <url>/year/01/22/Next%E4%B8%BB%E6%8E%A8%E6%8C%87%E5%AE%9A%E6%96%87%E7%AB%A0%E9%9A%90%E8%97%8F%E4%BE%A7%E6%A0%8F/</url>
+    <content><![CDATA[<h4 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h4><p>可能你需要加一个单独的页面，比如about页面，希望隐藏next主题的侧栏，那么请看下去。</p>
+<a id="more"></a>
+
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><p>根据<a href="https://github.com/iissnan/hexo-theme-next/issues/943" target="_blank" rel="noopener">issues-943</a>找到了my-project/themes/next/layout/_marcro/sidebar.swig中找到下一列信息。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">set</span> display_toc = is_post and theme.toc.enable or is_page and theme.toc.enable %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改为：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">set</span> display_toc = is_post and theme.toc.enable and !page.no_toc or is_page and theme.toc.enable and !page.no_toc %&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>这样你就可以在不想要显示目录的文章头部加一行：<code>no_toc: true</code>即可。</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -806,23 +913,6 @@ hexo g -d</code></pre>
       </categories>
       <tags>
         <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>大厦崩塌</title>
-    <url>/year/05/20/dasha/</url>
-    <content><![CDATA[<p>今天，大厦崩塌<br>我的假枪里没有一颗子弹<br>我的整个世界消失在<br>漆黑的夜的噩梦里</p>
-<a id="more"></a>
-
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=386844&auto=1&height=66"></iframe>
-
-
-]]></content>
-      <categories>
-        <category>不可分类</category>
-      </categories>
-      <tags>
-        <tag>不可分类</tag>
       </tags>
   </entry>
   <entry>
@@ -936,6 +1026,55 @@ hexo g -d</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>docker run 后容器状态是 Exited 解析</title>
+    <url>/year/05/22/docker-exited/</url>
+    <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3a6eaacp1j31720c4tf9.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>运行：<code>docker run -dit -p 4001:8888 -p 4002:3306 -v /Users/xinaogudu/hproxy:/usr/local/etc/haproxy --privileged --net=net1 --name h1 --ip 172.18.0.5  haproxy</code> 后容器状态是 <code>Exited</code></p>
+<h2 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h2><blockquote>
+<p>容器的生命周期，要把 docker 容器看做是一个单独的进程及运行环境。容器不等价于一个虚拟的操作系统。Docker的开发人员也一直主张docker容器应该只运行一个进程。</p>
+</blockquote>
+<p>再根据 <a href="https://hub.docker.com/_/haproxy" target="_blank" rel="noopener">hproxy官方镜像</a> 描述，镜像里是没有默认配置的，也就没有进程。这就不难解释为什么docker run 之后容器是 Exited 状态了。</p>
+<p><a href="https://hub.docker.com/_/haproxy" target="_blank" rel="noopener">hproxy官方镜像</a> 描述:</p>
+<blockquote>
+<p>Since no two users of HAProxy are likely to configure it exactly alike, this image does not come with any default configuration.</p>
+</blockquote>
+<p>对于 hproxy 官方是推荐 build 创建自己的镜像然后 docker run 的时候直接指定配置文件的。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3a615jd6zj319b0u00vu.jpg" alt=""></p>
+<h2 id="解决："><a href="#解决：" class="headerlink" title="解决："></a>解决：</h2><p>所以解决办法有两种，一种是在 docker run 后加 bash 这样启动就有一个进程，容器就不是 Exited 状态了，另一种是按照官方的办法。build 自己的镜像然后再启动时指定文。</p>
+<p>在 docker run 后加 bash ：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -dit -p 4001:8888 -p 4002:3306 \</span><br><span class="line">    -v &#x2F;Users&#x2F;xinaogudu&#x2F;hproxy:&#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy \</span><br><span class="line">    --privileged \</span><br><span class="line">    --net&#x3D;net1 \</span><br><span class="line">    --name h1 \</span><br><span class="line">    --ip 172.18.0.5  \</span><br><span class="line">    haproxy bash</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a href="https://segmentfault.com/a/1190000010940432" target="_blank" rel="noopener">Docker随笔记—docker run执行后，容器的状态是Exited的一些困惑</a></p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大厦崩塌</title>
+    <url>/year/05/20/dasha/</url>
+    <content><![CDATA[<p>今天，大厦崩塌<br>我的假枪里没有一颗子弹<br>我的整个世界消失在<br>漆黑的夜的噩梦里</p>
+<a id="more"></a>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=386844&auto=1&height=66"></iframe>
+
+
+]]></content>
+      <categories>
+        <category>不可分类</category>
+      </categories>
+      <tags>
+        <tag>不可分类</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker 安装和配置加速</title>
     <url>/year/04/06/docker-anzhuang/</url>
     <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
@@ -977,38 +1116,6 @@ hexo g -d</code></pre>
 
 
 
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker run 后容器状态是 Exited 解析</title>
-    <url>/year/05/22/docker-exited/</url>
-    <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3a6eaacp1j31720c4tf9.jpg" alt=""></p>
-<a id="more"></a>
-<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>运行：<code>docker run -dit -p 4001:8888 -p 4002:3306 -v /Users/xinaogudu/hproxy:/usr/local/etc/haproxy --privileged --net=net1 --name h1 --ip 172.18.0.5  haproxy</code> 后容器状态是 <code>Exited</code></p>
-<h2 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h2><blockquote>
-<p>容器的生命周期，要把 docker 容器看做是一个单独的进程及运行环境。容器不等价于一个虚拟的操作系统。Docker的开发人员也一直主张docker容器应该只运行一个进程。</p>
-</blockquote>
-<p>再根据 <a href="https://hub.docker.com/_/haproxy" target="_blank" rel="noopener">hproxy官方镜像</a> 描述，镜像里是没有默认配置的，也就没有进程。这就不难解释为什么docker run 之后容器是 Exited 状态了。</p>
-<p><a href="https://hub.docker.com/_/haproxy" target="_blank" rel="noopener">hproxy官方镜像</a> 描述:</p>
-<blockquote>
-<p>Since no two users of HAProxy are likely to configure it exactly alike, this image does not come with any default configuration.</p>
-</blockquote>
-<p>对于 hproxy 官方是推荐 build 创建自己的镜像然后 docker run 的时候直接指定配置文件的。</p>
-<p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3a615jd6zj319b0u00vu.jpg" alt=""></p>
-<h2 id="解决："><a href="#解决：" class="headerlink" title="解决："></a>解决：</h2><p>所以解决办法有两种，一种是在 docker run 后加 bash 这样启动就有一个进程，容器就不是 Exited 状态了，另一种是按照官方的办法。build 自己的镜像然后再启动时指定文。</p>
-<p>在 docker run 后加 bash ：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -dit -p 4001:8888 -p 4002:3306 \</span><br><span class="line">    -v &#x2F;Users&#x2F;xinaogudu&#x2F;hproxy:&#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy \</span><br><span class="line">    --privileged \</span><br><span class="line">    --net&#x3D;net1 \</span><br><span class="line">    --name h1 \</span><br><span class="line">    --ip 172.18.0.5  \</span><br><span class="line">    haproxy bash</span><br></pre></td></tr></table></figure>
-
-
-
-
-<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a href="https://segmentfault.com/a/1190000010940432" target="_blank" rel="noopener">Docker随笔记—docker run执行后，容器的状态是Exited的一些困惑</a></p>
 ]]></content>
       <categories>
         <category>docker</category>
@@ -1540,131 +1647,6 @@ hexo g -d</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Docker 学习笔记 （四） 数据管理</title>
-    <url>/year/05/19/docker4/</url>
-    <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
-<a id="more"></a>
-
-<p>在默认情况下，容器内所有文件都存储在可写容器层中，这意味着：</p>
-<ul>
-<li>当该容器不再存在时，数据不会持久存在，并且如果另一个容器需要数据，则可能很难从容器中获取数据。</li>
-<li>容器的可写层紧密耦合到运行容器的主机。无法轻松地将数据移动到其他位置。</li>
-<li>写入容器的可写层需要 存储驱动程序来管理文件系统。存储驱动程序使用Linux内核提供联合文件系统。与使用直接写入主机文件系统的数据卷相比，这种额外的抽象降低了性能 。</li>
-</ul>
-<p>Docker有两个容器选项可以在主机中存储文件，因此即使在容器停止之后文件仍然会存在：volumes和 bind mounts。在Linux上运行Docker，可以使用tmpfs mount临时挂载。</p>
-<p>无论哪种方式，数据在容器内都是相同的。它作为目录或容器文件系统中的单个文件公开。</p>
-<p>Volumes，Bind mounts和tmpfs 装载之间差异的简单方法是考虑数据在Docker主机上的位置。</p>
-<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g36owkutjrj30u00eyq5e.jpg" alt=""></p>
-<h3 id="三者的区别"><a href="#三者的区别" class="headerlink" title="三者的区别"></a>三者的区别</h3><ul>
-<li><p>Volumes存储在由Docker（/var/lib/docker/volumes/在Linux上）管理的主机文件系统的一部分中。非Docker进程不应修改文件系统的这一部分。卷是在Docker中保留数据的最佳方式。</p>
-</li>
-<li><p>Bind mounts可以存储在主机系统的任何位置。它们甚至可能是重要的系统文件或目录。Docker主机或Docker容器上的非Docker进程可以随时修改它们。</p>
-</li>
-<li><p>tmpfs挂载仅存储在主机系统的内存中，永远不会写入主机系统的文件系统。</p>
-</li>
-</ul>
-<h3 id="Volumes的特点"><a href="#Volumes的特点" class="headerlink" title="Volumes的特点"></a>Volumes的特点</h3><p>卷是在Docker容器和服务中持久保存数据的首选方法。卷的一些用例包括：</p>
-<ul>
-<li><p>在多个运行容器之间共享数据。如果未显式创建它，则会在第一次将其装入容器时创建卷。当该容器停止或被移除时，该卷仍然存在。多个容器可以同时安装相同的卷，可以是读写也可以是只读。仅在您明确删除卷时才会删除卷。</p>
-<p>  当Docker主机不能保证具有给定的目录或文件结构时。卷可帮助您将Docker主机的配置与容器运行时分离。</p>
-</li>
-<li><p>如果要将容器的数据存储在远程主机或云提供程序上，而不是本地存储。</p>
-</li>
-<li><p>当您需要将数据从一个Docker主机备份，还原或迁移到另一个Docker主机时，卷是更好的选择。您可以使用卷停止容器，然后备份卷的目录（例如/var/lib/docker/volumes/<volume-name>）。</p>
-</li>
-</ul>
-<h3 id="Bind-mounts的特点"><a href="#Bind-mounts的特点" class="headerlink" title="Bind mounts的特点"></a>Bind mounts的特点</h3><ul>
-<li><p>将配置文件从主机共享到容器。这就是Docker默认通过/etc/resolv.conf从主机安装到每个容器中来为容器提供DNS解析的方式 。</p>
-</li>
-<li><p>在Docker主机上的开发环境和容器之间共享源代码或构建工件。例如，您可以将Maven target/ 目录挂载到容器中，每次在Docker主机上构建Maven项目时，容器都可以访问重建的工件。</p>
-<p>  如果以这种方式使用Docker进行开发，您的生产Dockerfile会将生产就绪工件直接复制到映像中，而不是依赖于绑定装载。</p>
-</li>
-<li><p>当Docker主机的文件或目录结构保证与容器所需的绑定安装一致时。</p>
-</li>
-</ul>
-<h3 id="tmpfs"><a href="#tmpfs" class="headerlink" title="tmpfs"></a>tmpfs</h3><ul>
-<li>tmpfs 不希望数据在主机或容器内持久存在时，最好使用挂载。这可能是出于安全原因，或者在应用程序需要编写大量非持久状态数据时保护容器的性能。</li>
-</ul>
-<h3 id="Volumes和Bind-mounts需要注意"><a href="#Volumes和Bind-mounts需要注意" class="headerlink" title="Volumes和Bind mounts需要注意"></a>Volumes和Bind mounts需要注意</h3><ul>
-<li><p>如果将空卷装入容器中存在文件或目录的目录中，则会将这些文件或目录传播（复制）到卷中。同样，如果启动容器并指定尚不存在的卷，则会为您创建一个空卷。这是预先填充另一个容器所需数据的好方法。</p>
-</li>
-<li><p>如果将绑定装载或非空卷装入容器中存在某些文件或目录的目录中，则装载会遮盖这些文件或目录，就像将文件保存到/mntLinux主机上然后安装USB驱动器进入/mnt。/mnt在卸载USB驱动器之前，USB驱动器的内容会遮挡内容。隐藏的文件不会被删除或更改，但在安装绑定装载或卷时无法访问。</p>
-</li>
-</ul>
-<h3 id="数据卷（Volumes）"><a href="#数据卷（Volumes）" class="headerlink" title="数据卷（Volumes）"></a>数据卷（Volumes）</h3><p>数据卷 是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：</p>
-<ul>
-<li><p>数据卷 可以在容器之间共享和重用</p>
-</li>
-<li><p>对 数据卷 的修改会立马生效</p>
-</li>
-<li><p>对 数据卷 的更新，不会影响镜像</p>
-</li>
-<li><p>数据卷 默认会一直存在，即使容器被删除</p>
-</li>
-</ul>
-<blockquote>
-<p>注意：数据卷 的使用，类似于 Linux 下对目录或文件进行 mount，镜像中的被指定为挂载点的目录中的文件会隐藏掉，能显示看的是挂载的 数据卷。</p>
-</blockquote>
-<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker volume create my-vol</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看所有的-数据卷"><a href="#查看所有的-数据卷" class="headerlink" title="查看所有的 数据卷"></a>查看所有的 数据卷</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> $ docker volume ls</span><br><span class="line">DRIVER              VOLUME NAME</span><br><span class="line">local               my-vol</span><br></pre></td></tr></table></figure>
-
-<h4 id="在主机里使用以下命令可以查看指定-数据卷-的信息"><a href="#在主机里使用以下命令可以查看指定-数据卷-的信息" class="headerlink" title="在主机里使用以下命令可以查看指定 数据卷 的信息"></a>在主机里使用以下命令可以查看指定 数据卷 的信息</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker volume inspect my-vol</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">"CreatedAt"</span>: <span class="string">"2019-05-19T08:22:09Z"</span>,</span><br><span class="line">        <span class="string">"Driver"</span>: <span class="string">"local"</span>,</span><br><span class="line">        <span class="string">"Labels"</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="string">"Mountpoint"</span>: <span class="string">"/var/lib/docker/volumes/my-vol/_data"</span>,</span><br><span class="line">        <span class="string">"Name"</span>: <span class="string">"my-vol"</span>,</span><br><span class="line">        <span class="string">"Options"</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="string">"Scope"</span>: <span class="string">"local"</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<h4 id="启动一个挂载数据卷的容器"><a href="#启动一个挂载数据卷的容器" class="headerlink" title="启动一个挂载数据卷的容器"></a>启动一个挂载数据卷的容器</h4><p>在用 docker run 命令的时候，使用 -v和–mount 标记来将 数据卷 挂载到容器里。在一次 docker run 中可以挂载多个 数据卷。</p>
-<h5 id="v或–mount的区别："><a href="#v或–mount的区别：" class="headerlink" title="-v或–mount的区别："></a>-v或–mount的区别：</h5><p>如果要指定数据卷的选项，则必须使用–mount。</p>
-<ul>
-<li><p>-v或–volume：由三个字段组成，用冒号字符（:）分隔。字段必须按正确的顺序排列，并且每个字段的含义不是很明显。</p>
-<ul>
-<li>对于命名卷，第一个字段是卷的名称，并且在给定主机上是唯一的。对于匿名卷，省略第一个字段。</li>
-<li>第二个字段是文件或目录在容器中安装的路径。</li>
-<li>第三个字段是可选的，是逗号分隔的选项列表，例如ro。这些选项将在下面讨论。</li>
-</ul>
-</li>
-<li><p>–mount：由多个键值对组成，以逗号分隔，每个键<key>=<value>组由一个元组组成。该–mount语法比更详细的-v或–volume，但按键的顺序并不显著，并且标志的价值更容易理解。</p>
-<ul>
-<li>type是挂载类型，可以是bind，volume，或 tmpfs。本主题讨论卷，因此挂载类型始终是volume。</li>
-<li>source，对于命名卷，这是卷的名称。对于匿名卷，省略此字段。可以指定为source 或src。</li>
-<li>destination 文件或目录在容器中的路径。可以指定为destination，dst或target。</li>
-<li>readonly（如果存在）导致绑定装入以只读方式装入容器中。</li>
-<li>volume-opt 选项可以多次指定，它采用由选项名称及其值组成的键值对。</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>注意：如果启动的容器不存在挂载卷的路径，Docker会自动创建。</p>
-</blockquote>
-<ul>
-<li>-v</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -d \</span><br><span class="line">  --name devtest \</span><br><span class="line">  -v myvol2:<span class="regexp">/app \</span></span><br><span class="line"><span class="regexp">  nginx:latest</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>–mount</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -d \</span><br><span class="line">  --name devtest \</span><br><span class="line">  --mount source=myvol2,target=<span class="regexp">/app \</span></span><br><span class="line"><span class="regexp">  nginx:latest</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="删除数据卷"><a href="#删除数据卷" class="headerlink" title="删除数据卷"></a>删除数据卷</h4><p>删除容器后，Docker数据卷仍然存在。</p>
-<ul>
-<li>例如，命名卷：具有来自容器外部的特定源awesome:/bar</li>
-<li>匿名卷没有特定的源，因此在删除容器时，可以用–rm指令删除。</li>
-</ul>
-<h4 id="删除匿名卷"><a href="#删除匿名卷" class="headerlink" title="删除匿名卷"></a>删除匿名卷</h4><p>要自动删除匿名卷，需要使用–rm选项。例如，创建匿名/foo卷。删除容器后，Docker守护进程会删除/foo卷但不会删除awesome卷。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker run --rm -v /foo -v awesome:<span class="regexp">/bar busybox top</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="删除所有未使用的数据卷并释放空间："><a href="#删除所有未使用的数据卷并释放空间：" class="headerlink" title="删除所有未使用的数据卷并释放空间："></a>删除所有未使用的数据卷并释放空间：</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker volume prune</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>find 命令</title>
     <url>/year/10/11/find-%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<p>find命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</p>
@@ -1895,6 +1877,131 @@ hexo g -d</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Docker 学习笔记 （四） 数据管理</title>
+    <url>/year/05/19/docker4/</url>
+    <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
+<a id="more"></a>
+
+<p>在默认情况下，容器内所有文件都存储在可写容器层中，这意味着：</p>
+<ul>
+<li>当该容器不再存在时，数据不会持久存在，并且如果另一个容器需要数据，则可能很难从容器中获取数据。</li>
+<li>容器的可写层紧密耦合到运行容器的主机。无法轻松地将数据移动到其他位置。</li>
+<li>写入容器的可写层需要 存储驱动程序来管理文件系统。存储驱动程序使用Linux内核提供联合文件系统。与使用直接写入主机文件系统的数据卷相比，这种额外的抽象降低了性能 。</li>
+</ul>
+<p>Docker有两个容器选项可以在主机中存储文件，因此即使在容器停止之后文件仍然会存在：volumes和 bind mounts。在Linux上运行Docker，可以使用tmpfs mount临时挂载。</p>
+<p>无论哪种方式，数据在容器内都是相同的。它作为目录或容器文件系统中的单个文件公开。</p>
+<p>Volumes，Bind mounts和tmpfs 装载之间差异的简单方法是考虑数据在Docker主机上的位置。</p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g36owkutjrj30u00eyq5e.jpg" alt=""></p>
+<h3 id="三者的区别"><a href="#三者的区别" class="headerlink" title="三者的区别"></a>三者的区别</h3><ul>
+<li><p>Volumes存储在由Docker（/var/lib/docker/volumes/在Linux上）管理的主机文件系统的一部分中。非Docker进程不应修改文件系统的这一部分。卷是在Docker中保留数据的最佳方式。</p>
+</li>
+<li><p>Bind mounts可以存储在主机系统的任何位置。它们甚至可能是重要的系统文件或目录。Docker主机或Docker容器上的非Docker进程可以随时修改它们。</p>
+</li>
+<li><p>tmpfs挂载仅存储在主机系统的内存中，永远不会写入主机系统的文件系统。</p>
+</li>
+</ul>
+<h3 id="Volumes的特点"><a href="#Volumes的特点" class="headerlink" title="Volumes的特点"></a>Volumes的特点</h3><p>卷是在Docker容器和服务中持久保存数据的首选方法。卷的一些用例包括：</p>
+<ul>
+<li><p>在多个运行容器之间共享数据。如果未显式创建它，则会在第一次将其装入容器时创建卷。当该容器停止或被移除时，该卷仍然存在。多个容器可以同时安装相同的卷，可以是读写也可以是只读。仅在您明确删除卷时才会删除卷。</p>
+<p>  当Docker主机不能保证具有给定的目录或文件结构时。卷可帮助您将Docker主机的配置与容器运行时分离。</p>
+</li>
+<li><p>如果要将容器的数据存储在远程主机或云提供程序上，而不是本地存储。</p>
+</li>
+<li><p>当您需要将数据从一个Docker主机备份，还原或迁移到另一个Docker主机时，卷是更好的选择。您可以使用卷停止容器，然后备份卷的目录（例如/var/lib/docker/volumes/<volume-name>）。</p>
+</li>
+</ul>
+<h3 id="Bind-mounts的特点"><a href="#Bind-mounts的特点" class="headerlink" title="Bind mounts的特点"></a>Bind mounts的特点</h3><ul>
+<li><p>将配置文件从主机共享到容器。这就是Docker默认通过/etc/resolv.conf从主机安装到每个容器中来为容器提供DNS解析的方式 。</p>
+</li>
+<li><p>在Docker主机上的开发环境和容器之间共享源代码或构建工件。例如，您可以将Maven target/ 目录挂载到容器中，每次在Docker主机上构建Maven项目时，容器都可以访问重建的工件。</p>
+<p>  如果以这种方式使用Docker进行开发，您的生产Dockerfile会将生产就绪工件直接复制到映像中，而不是依赖于绑定装载。</p>
+</li>
+<li><p>当Docker主机的文件或目录结构保证与容器所需的绑定安装一致时。</p>
+</li>
+</ul>
+<h3 id="tmpfs"><a href="#tmpfs" class="headerlink" title="tmpfs"></a>tmpfs</h3><ul>
+<li>tmpfs 不希望数据在主机或容器内持久存在时，最好使用挂载。这可能是出于安全原因，或者在应用程序需要编写大量非持久状态数据时保护容器的性能。</li>
+</ul>
+<h3 id="Volumes和Bind-mounts需要注意"><a href="#Volumes和Bind-mounts需要注意" class="headerlink" title="Volumes和Bind mounts需要注意"></a>Volumes和Bind mounts需要注意</h3><ul>
+<li><p>如果将空卷装入容器中存在文件或目录的目录中，则会将这些文件或目录传播（复制）到卷中。同样，如果启动容器并指定尚不存在的卷，则会为您创建一个空卷。这是预先填充另一个容器所需数据的好方法。</p>
+</li>
+<li><p>如果将绑定装载或非空卷装入容器中存在某些文件或目录的目录中，则装载会遮盖这些文件或目录，就像将文件保存到/mntLinux主机上然后安装USB驱动器进入/mnt。/mnt在卸载USB驱动器之前，USB驱动器的内容会遮挡内容。隐藏的文件不会被删除或更改，但在安装绑定装载或卷时无法访问。</p>
+</li>
+</ul>
+<h3 id="数据卷（Volumes）"><a href="#数据卷（Volumes）" class="headerlink" title="数据卷（Volumes）"></a>数据卷（Volumes）</h3><p>数据卷 是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：</p>
+<ul>
+<li><p>数据卷 可以在容器之间共享和重用</p>
+</li>
+<li><p>对 数据卷 的修改会立马生效</p>
+</li>
+<li><p>对 数据卷 的更新，不会影响镜像</p>
+</li>
+<li><p>数据卷 默认会一直存在，即使容器被删除</p>
+</li>
+</ul>
+<blockquote>
+<p>注意：数据卷 的使用，类似于 Linux 下对目录或文件进行 mount，镜像中的被指定为挂载点的目录中的文件会隐藏掉，能显示看的是挂载的 数据卷。</p>
+</blockquote>
+<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker volume create my-vol</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看所有的-数据卷"><a href="#查看所有的-数据卷" class="headerlink" title="查看所有的 数据卷"></a>查看所有的 数据卷</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> $ docker volume ls</span><br><span class="line">DRIVER              VOLUME NAME</span><br><span class="line">local               my-vol</span><br></pre></td></tr></table></figure>
+
+<h4 id="在主机里使用以下命令可以查看指定-数据卷-的信息"><a href="#在主机里使用以下命令可以查看指定-数据卷-的信息" class="headerlink" title="在主机里使用以下命令可以查看指定 数据卷 的信息"></a>在主机里使用以下命令可以查看指定 数据卷 的信息</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker volume inspect my-vol</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">"CreatedAt"</span>: <span class="string">"2019-05-19T08:22:09Z"</span>,</span><br><span class="line">        <span class="string">"Driver"</span>: <span class="string">"local"</span>,</span><br><span class="line">        <span class="string">"Labels"</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="string">"Mountpoint"</span>: <span class="string">"/var/lib/docker/volumes/my-vol/_data"</span>,</span><br><span class="line">        <span class="string">"Name"</span>: <span class="string">"my-vol"</span>,</span><br><span class="line">        <span class="string">"Options"</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="string">"Scope"</span>: <span class="string">"local"</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动一个挂载数据卷的容器"><a href="#启动一个挂载数据卷的容器" class="headerlink" title="启动一个挂载数据卷的容器"></a>启动一个挂载数据卷的容器</h4><p>在用 docker run 命令的时候，使用 -v和–mount 标记来将 数据卷 挂载到容器里。在一次 docker run 中可以挂载多个 数据卷。</p>
+<h5 id="v或–mount的区别："><a href="#v或–mount的区别：" class="headerlink" title="-v或–mount的区别："></a>-v或–mount的区别：</h5><p>如果要指定数据卷的选项，则必须使用–mount。</p>
+<ul>
+<li><p>-v或–volume：由三个字段组成，用冒号字符（:）分隔。字段必须按正确的顺序排列，并且每个字段的含义不是很明显。</p>
+<ul>
+<li>对于命名卷，第一个字段是卷的名称，并且在给定主机上是唯一的。对于匿名卷，省略第一个字段。</li>
+<li>第二个字段是文件或目录在容器中安装的路径。</li>
+<li>第三个字段是可选的，是逗号分隔的选项列表，例如ro。这些选项将在下面讨论。</li>
+</ul>
+</li>
+<li><p>–mount：由多个键值对组成，以逗号分隔，每个键<key>=<value>组由一个元组组成。该–mount语法比更详细的-v或–volume，但按键的顺序并不显著，并且标志的价值更容易理解。</p>
+<ul>
+<li>type是挂载类型，可以是bind，volume，或 tmpfs。本主题讨论卷，因此挂载类型始终是volume。</li>
+<li>source，对于命名卷，这是卷的名称。对于匿名卷，省略此字段。可以指定为source 或src。</li>
+<li>destination 文件或目录在容器中的路径。可以指定为destination，dst或target。</li>
+<li>readonly（如果存在）导致绑定装入以只读方式装入容器中。</li>
+<li>volume-opt 选项可以多次指定，它采用由选项名称及其值组成的键值对。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意：如果启动的容器不存在挂载卷的路径，Docker会自动创建。</p>
+</blockquote>
+<ul>
+<li>-v</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -d \</span><br><span class="line">  --name devtest \</span><br><span class="line">  -v myvol2:<span class="regexp">/app \</span></span><br><span class="line"><span class="regexp">  nginx:latest</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>–mount</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -d \</span><br><span class="line">  --name devtest \</span><br><span class="line">  --mount source=myvol2,target=<span class="regexp">/app \</span></span><br><span class="line"><span class="regexp">  nginx:latest</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="删除数据卷"><a href="#删除数据卷" class="headerlink" title="删除数据卷"></a>删除数据卷</h4><p>删除容器后，Docker数据卷仍然存在。</p>
+<ul>
+<li>例如，命名卷：具有来自容器外部的特定源awesome:/bar</li>
+<li>匿名卷没有特定的源，因此在删除容器时，可以用–rm指令删除。</li>
+</ul>
+<h4 id="删除匿名卷"><a href="#删除匿名卷" class="headerlink" title="删除匿名卷"></a>删除匿名卷</h4><p>要自动删除匿名卷，需要使用–rm选项。例如，创建匿名/foo卷。删除容器后，Docker守护进程会删除/foo卷但不会删除awesome卷。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker run --rm -v /foo -v awesome:<span class="regexp">/bar busybox top</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="删除所有未使用的数据卷并释放空间："><a href="#删除所有未使用的数据卷并释放空间：" class="headerlink" title="删除所有未使用的数据卷并释放空间："></a>删除所有未使用的数据卷并释放空间：</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker volume prune</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>github pages + Hexo博客域名绑定</title>
     <url>/year/04/13/github-pages-Hexo-%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A/</url>
     <content><![CDATA[<h2 id="终于有自己的域名了！"><a href="#终于有自己的域名了！" class="headerlink" title="终于有自己的域名了！"></a>终于有自己的域名了！</h2><p><img src="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236108756974.jpg" alt=""></p>
@@ -2062,36 +2169,6 @@ hexo g -d</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>黑暗面</title>
-    <url>/year/10/28/heianmian/</url>
-    <content><![CDATA[<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk4hy9ccocj315o0ld0v8.jpg" alt="img"></p>
-<a id="more"></a>
-
-<p>今天看了一部科幻惊悚片——《彗星来的那一夜》。老实讲，第一次看到这个名字我以为是部爱情片，或者至少也应该是个温暖的故事。可观影体验真的很让人头晕，一方面是电影呈现的画面抖动，另一方面是让人摸不着头脑的叙事，所以在刚看完我是一头雾水的。</p>
-<p>现在明白了一些，也明白的不多，因为电影解读的角度可以很多，而且电影涉及的物理学理论真的很难让人有去深入了解的欲望，不过其中的一个点很有趣。就是在多重宇宙，或者平行宇宙由于某些原因相互重叠的情况下，你接触到了好多个平行宇宙中的自己，其中有的宇宙里的你是人生赢家，有的则彻头彻尾的失败，而你正好有机会混入另一个你人生得意的宇宙里来替代自己，而让那个宇宙里的自己来承担自己所面临的不怎么如意的人生，你会这么做吗？</p>
-<p>我的直觉反应当然是不会，可是在我深思之后及电影的表达来看… 可能是会的。</p>
-<p>电影里的一句台词很值得思考——“我们认为某一个世界里存在着另一个更黑暗的自己，其实，我们就是那个黑暗面。”</p>
-<p>我不知道该怎么理解这句话，我首先想到的是自我同一性的问题。即其他宇宙里的我是不是我？如果是，那么问题就比较简单了，也就是说我作为多个我的存在，实际同属于一个我，那么我的黑暗也同属于任何一个平行宇宙里的我的黑暗，自然明亮也是。可问题似乎不是这样，明显其中的我与我存在着巨大的差异，自然有相对黑暗的我和相对光明的我，可为什么我就是那个黑暗面呢？难道说其他的我都比我要光明吗？我想也不是这样。自然每个不同的我自身都存在着黑暗的可能，或者说每个不同的自我都存在着黑暗面。可为什么说我，这个平行宇宙里的我就是那个黑暗面呢？难道每个宇宙里面的我不都是黑暗面吗？</p>
-<p>想到这里我意识到自己忽略了一个很重要的前提，就是句子的前半句，我们以为某个世界里存在着某个更黑暗的自己。或许电影表达的是当我们这样想的时候已经印证了我们就是那个黑暗面。</p>
-<p>另外电影开头的部分的一句台词讲述了电影结尾即将要发生的事情——“不，这不是我丈夫，因为昨天我刚把丈夫杀死了，所以我才知道不是他。”</p>
-<p>可能别人以为她发疯，可看完电影我只能说细思极恐。不是由于她杀死了自己的丈夫，而是他的丈夫也是一个黑暗面。</p>
-<hr>
-<p>没有最黑暗而只有更黑暗的自己。你的观点很有趣，就好比我打算干一件坏事时拿那些比自己干的坏事更坏的人来做对比，然后就心安理得的坏事了。可这是用于同一个人吗？因为我曾经干过更坏的事情所以现在干些小坏事也心安理得吗？</p>
-<p>曾经的我是我吗？显然是的。可为什么曾经我就是我呢？问题在于连续性，就是曾经的我和现在的我无论在那种角度来看都判若两人，但现在的我确实是曾经的我变化而来的，而这种变化是连续的，所以我们只能认为曾经的那个我也是自己。</p>
-<p>再来看平行宇宙中的例子，就好像从我的一开始就有无数个分支同时存在，互不干扰的发生着种种变化。可由于某种原因（量子相干性）某天这种互不干扰纠缠在了一起，于是我神奇的见到我自己，或者说我见到了我自己的分支。当然这并不是主要的问题，因为我有多少个分支就对应有着多少个我所在的宇宙的分支。问题在于道德，在这种相干性的神奇影响下我见到了我自己，从而也唤起了我内心的恶。并且这种恶超越了法律的边界。</p>
-<p>我以谋杀另一个宇宙的自己并取而代之，而大家都以为在我所在的宇宙中是我遭遇了不幸。于是我过上了别人的人生。这正是我所理解的黑暗面。</p>
-<p>当然，这只是电影，饭后余思的故事。在真实的生活中自然不会有这种怪异的事情发生。可是的确有另外一种怪异的事情却确实的存在，就是多重人格。</p>
-<p>想象一个多重人格的患者，他在某些时刻是A人格而某些时刻是B人格。他究竟是谁？假如他犯罪又该怎样去审判？或者我们又如何确切的知道自己不是一个多重人格的患者呢？当我作出那些令人费解的事情时，怎么又能确切的知道那件事就是自己所做而非在自身存在的另一个自己所为而共享了记忆呢？或者干脆自己的从来都没有支配过自己，而始终是一个记忆的容器。</p>
-<p>那个容器是自己吗？</p>
-]]></content>
-      <categories>
-        <category>电影</category>
-      </categories>
-      <tags>
-        <tag>电影</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo n 时默认打开markdown编辑器</title>
     <url>/year/04/10/hexo-n-%E6%97%B6%E5%80%99%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80markdown%E7%BC%96%E8%BE%91%E5%99%A8/</url>
     <content><![CDATA[<p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-006tKfTcgy1fqa9b4cyrwj30m608mq3g.jpg" alt=""></p>
@@ -2128,39 +2205,33 @@ hexo g -d</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>hexo速度优化，gulp压缩静态资源</title>
-    <url>/year/01/25/hexo%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96%EF%BC%8Cgulp%E5%8E%8B%E7%BC%A9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</url>
-    <content><![CDATA[<blockquote>
-<p>hexo生成的的public文件夹里的源文件有很多空白，这些空白占据一定空间。<a href="https://www.gulpjs.com.cn/" target="_blank" rel="noopener">gulp</a>可以高效的压缩这些静态资源，从而提高访问速度。</p>
-</blockquote>
+    <title>黑暗面</title>
+    <url>/year/10/28/heianmian/</url>
+    <content><![CDATA[<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk4hy9ccocj315o0ld0v8.jpg" alt="img"></p>
 <a id="more"></a>
 
-<h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><p>安装<code>gulp</code>工具</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">npm install gulp</span><br></pre></td></tr></table></figure>
-<p>安装gulp模块：</p>
-<pre><code>gulp-htmlclean // 清理html
-gulp-htmlmin // 压缩html
-gulp-minify-css // 压缩css
-gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">npm install gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify --save</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建任务"><a href="#创建任务" class="headerlink" title="创建任务"></a>创建任务</h4><p>在站点根目录下新建<code>gulpfile.js</code>文件，内容如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Plugins模块获取</span></span><br><span class="line"><span class="keyword">var</span> minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>);</span><br><span class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</span><br><span class="line"><span class="keyword">var</span> htmlmin = <span class="built_in">require</span>(<span class="string">'gulp-htmlmin'</span>);</span><br><span class="line"><span class="keyword">var</span> htmlclean = <span class="built_in">require</span>(<span class="string">'gulp-htmlclean'</span>);</span><br><span class="line"><span class="comment">//压缩css</span></span><br><span class="line">gulp.task(<span class="string">'minify-css'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> gulp.src(<span class="string">'./public/**/*.css'</span>)</span><br><span class="line">.pipe(minifycss())</span><br><span class="line">.pipe(gulp.dest(<span class="string">'./public'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//压缩html</span></span><br><span class="line">gulp.task(<span class="string">'minify-html'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> gulp.src(<span class="string">'./public/**/*.html'</span>)</span><br><span class="line">.pipe(htmlclean())</span><br><span class="line">.pipe(htmlmin(&#123;</span><br><span class="line">removeComments: <span class="literal">true</span>,</span><br><span class="line">minifyJS: <span class="literal">true</span>,</span><br><span class="line">minifyCSS: <span class="literal">true</span>,</span><br><span class="line">minifyURLs: <span class="literal">true</span>,</span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line">.pipe(gulp.dest(<span class="string">'./public'</span>))</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//压缩js 不压缩min.js</span></span><br><span class="line">gulp.task(<span class="string">'minify-js'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> gulp.src([<span class="string">'./public/**/*.js'</span>, <span class="string">'!./public/**/*.min.js'</span>])</span><br><span class="line">.pipe(uglify())</span><br><span class="line">.pipe(gulp.dest(<span class="string">'./public'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.0以前的写法 </span></span><br><span class="line"><span class="comment">//gulp.task('default', [</span></span><br><span class="line">  <span class="comment">//  'minify-html', 'minify-css', 'minify-js'</span></span><br><span class="line"><span class="comment">//]);</span></span><br><span class="line"><span class="comment">//4.0以后的写法</span></span><br><span class="line"><span class="comment">// 执行 gulp 命令时执行的任务</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, gulp.parallel(<span class="string">'minify-html'</span>, <span class="string">'minify-css'</span>, <span class="string">'minify-js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Do something after a, b, and c are finished.</span></span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>命令：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">hexo clean <span class="comment">//先清理文件</span></span><br><span class="line">hexo g  <span class="comment">//编译生成静态文件</span></span><br><span class="line">gulp  <span class="comment">//gulp插件执行压缩任务</span></span><br><span class="line">hexo s <span class="comment">//开启服务</span></span><br></pre></td></tr></table></figure>
-
-<p>当然，通过一个命令也可以：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">hexo g &amp;&amp; gulp -d</span><br></pre></td></tr></table></figure>
-
-
-
+<p>今天看了一部科幻惊悚片——《彗星来的那一夜》。老实讲，第一次看到这个名字我以为是部爱情片，或者至少也应该是个温暖的故事。可观影体验真的很让人头晕，一方面是电影呈现的画面抖动，另一方面是让人摸不着头脑的叙事，所以在刚看完我是一头雾水的。</p>
+<p>现在明白了一些，也明白的不多，因为电影解读的角度可以很多，而且电影涉及的物理学理论真的很难让人有去深入了解的欲望，不过其中的一个点很有趣。就是在多重宇宙，或者平行宇宙由于某些原因相互重叠的情况下，你接触到了好多个平行宇宙中的自己，其中有的宇宙里的你是人生赢家，有的则彻头彻尾的失败，而你正好有机会混入另一个你人生得意的宇宙里来替代自己，而让那个宇宙里的自己来承担自己所面临的不怎么如意的人生，你会这么做吗？</p>
+<p>我的直觉反应当然是不会，可是在我深思之后及电影的表达来看… 可能是会的。</p>
+<p>电影里的一句台词很值得思考——“我们认为某一个世界里存在着另一个更黑暗的自己，其实，我们就是那个黑暗面。”</p>
+<p>我不知道该怎么理解这句话，我首先想到的是自我同一性的问题。即其他宇宙里的我是不是我？如果是，那么问题就比较简单了，也就是说我作为多个我的存在，实际同属于一个我，那么我的黑暗也同属于任何一个平行宇宙里的我的黑暗，自然明亮也是。可问题似乎不是这样，明显其中的我与我存在着巨大的差异，自然有相对黑暗的我和相对光明的我，可为什么我就是那个黑暗面呢？难道说其他的我都比我要光明吗？我想也不是这样。自然每个不同的我自身都存在着黑暗的可能，或者说每个不同的自我都存在着黑暗面。可为什么说我，这个平行宇宙里的我就是那个黑暗面呢？难道每个宇宙里面的我不都是黑暗面吗？</p>
+<p>想到这里我意识到自己忽略了一个很重要的前提，就是句子的前半句，我们以为某个世界里存在着某个更黑暗的自己。或许电影表达的是当我们这样想的时候已经印证了我们就是那个黑暗面。</p>
+<p>另外电影开头的部分的一句台词讲述了电影结尾即将要发生的事情——“不，这不是我丈夫，因为昨天我刚把丈夫杀死了，所以我才知道不是他。”</p>
+<p>可能别人以为她发疯，可看完电影我只能说细思极恐。不是由于她杀死了自己的丈夫，而是他的丈夫也是一个黑暗面。</p>
+<hr>
+<p>没有最黑暗而只有更黑暗的自己。你的观点很有趣，就好比我打算干一件坏事时拿那些比自己干的坏事更坏的人来做对比，然后就心安理得的坏事了。可这是用于同一个人吗？因为我曾经干过更坏的事情所以现在干些小坏事也心安理得吗？</p>
+<p>曾经的我是我吗？显然是的。可为什么曾经我就是我呢？问题在于连续性，就是曾经的我和现在的我无论在那种角度来看都判若两人，但现在的我确实是曾经的我变化而来的，而这种变化是连续的，所以我们只能认为曾经的那个我也是自己。</p>
+<p>再来看平行宇宙中的例子，就好像从我的一开始就有无数个分支同时存在，互不干扰的发生着种种变化。可由于某种原因（量子相干性）某天这种互不干扰纠缠在了一起，于是我神奇的见到我自己，或者说我见到了我自己的分支。当然这并不是主要的问题，因为我有多少个分支就对应有着多少个我所在的宇宙的分支。问题在于道德，在这种相干性的神奇影响下我见到了我自己，从而也唤起了我内心的恶。并且这种恶超越了法律的边界。</p>
+<p>我以谋杀另一个宇宙的自己并取而代之，而大家都以为在我所在的宇宙中是我遭遇了不幸。于是我过上了别人的人生。这正是我所理解的黑暗面。</p>
+<p>当然，这只是电影，饭后余思的故事。在真实的生活中自然不会有这种怪异的事情发生。可是的确有另外一种怪异的事情却确实的存在，就是多重人格。</p>
+<p>想象一个多重人格的患者，他在某些时刻是A人格而某些时刻是B人格。他究竟是谁？假如他犯罪又该怎样去审判？或者我们又如何确切的知道自己不是一个多重人格的患者呢？当我作出那些令人费解的事情时，怎么又能确切的知道那件事就是自己所做而非在自身存在的另一个自己所为而共享了记忆呢？或者干脆自己的从来都没有支配过自己，而始终是一个记忆的容器。</p>
+<p>那个容器是自己吗？</p>
 ]]></content>
       <categories>
-        <category>Hexo</category>
+        <category>电影</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
+        <tag>电影</tag>
       </tags>
   </entry>
   <entry>
@@ -2233,6 +2304,42 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </categories>
       <tags>
         <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo速度优化，gulp压缩静态资源</title>
+    <url>/year/01/25/hexo%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96%EF%BC%8Cgulp%E5%8E%8B%E7%BC%A9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</url>
+    <content><![CDATA[<blockquote>
+<p>hexo生成的的public文件夹里的源文件有很多空白，这些空白占据一定空间。<a href="https://www.gulpjs.com.cn/" target="_blank" rel="noopener">gulp</a>可以高效的压缩这些静态资源，从而提高访问速度。</p>
+</blockquote>
+<a id="more"></a>
+
+<h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><p>安装<code>gulp</code>工具</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">npm install gulp</span><br></pre></td></tr></table></figure>
+<p>安装gulp模块：</p>
+<pre><code>gulp-htmlclean // 清理html
+gulp-htmlmin // 压缩html
+gulp-minify-css // 压缩css
+gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">npm install gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify --save</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建任务"><a href="#创建任务" class="headerlink" title="创建任务"></a>创建任务</h4><p>在站点根目录下新建<code>gulpfile.js</code>文件，内容如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Plugins模块获取</span></span><br><span class="line"><span class="keyword">var</span> minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>);</span><br><span class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</span><br><span class="line"><span class="keyword">var</span> htmlmin = <span class="built_in">require</span>(<span class="string">'gulp-htmlmin'</span>);</span><br><span class="line"><span class="keyword">var</span> htmlclean = <span class="built_in">require</span>(<span class="string">'gulp-htmlclean'</span>);</span><br><span class="line"><span class="comment">//压缩css</span></span><br><span class="line">gulp.task(<span class="string">'minify-css'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> gulp.src(<span class="string">'./public/**/*.css'</span>)</span><br><span class="line">.pipe(minifycss())</span><br><span class="line">.pipe(gulp.dest(<span class="string">'./public'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//压缩html</span></span><br><span class="line">gulp.task(<span class="string">'minify-html'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> gulp.src(<span class="string">'./public/**/*.html'</span>)</span><br><span class="line">.pipe(htmlclean())</span><br><span class="line">.pipe(htmlmin(&#123;</span><br><span class="line">removeComments: <span class="literal">true</span>,</span><br><span class="line">minifyJS: <span class="literal">true</span>,</span><br><span class="line">minifyCSS: <span class="literal">true</span>,</span><br><span class="line">minifyURLs: <span class="literal">true</span>,</span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line">.pipe(gulp.dest(<span class="string">'./public'</span>))</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//压缩js 不压缩min.js</span></span><br><span class="line">gulp.task(<span class="string">'minify-js'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> gulp.src([<span class="string">'./public/**/*.js'</span>, <span class="string">'!./public/**/*.min.js'</span>])</span><br><span class="line">.pipe(uglify())</span><br><span class="line">.pipe(gulp.dest(<span class="string">'./public'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.0以前的写法 </span></span><br><span class="line"><span class="comment">//gulp.task('default', [</span></span><br><span class="line">  <span class="comment">//  'minify-html', 'minify-css', 'minify-js'</span></span><br><span class="line"><span class="comment">//]);</span></span><br><span class="line"><span class="comment">//4.0以后的写法</span></span><br><span class="line"><span class="comment">// 执行 gulp 命令时执行的任务</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, gulp.parallel(<span class="string">'minify-html'</span>, <span class="string">'minify-css'</span>, <span class="string">'minify-js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Do something after a, b, and c are finished.</span></span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>命令：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">hexo clean <span class="comment">//先清理文件</span></span><br><span class="line">hexo g  <span class="comment">//编译生成静态文件</span></span><br><span class="line">gulp  <span class="comment">//gulp插件执行压缩任务</span></span><br><span class="line">hexo s <span class="comment">//开启服务</span></span><br></pre></td></tr></table></figure>
+
+<p>当然，通过一个命令也可以：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">hexo g &amp;&amp; gulp -d</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -3032,6 +3139,62 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
+    <title>Mac 10.13 安装中文版 man 命令</title>
+    <url>/year/10/04/man/</url>
+    <content><![CDATA[<h3 id="为什么需要-man-以及-man-怎么使用"><a href="#为什么需要-man-以及-man-怎么使用" class="headerlink" title="为什么需要 man 以及 man 怎么使用"></a>为什么需要 man 以及 man 怎么使用</h3><p><code>linux</code> 或者 <code>mac</code> 系统的命令行工具非常多，可是我们不能记住所有的这些命令，通常只能记住一些我们常用的。遇到不常用的我们需要来查询一下这个命令是怎么使用的。这时候我们就需要使用到 man 命令了。</p>
+<p>使用方法也非常简单，例如我们不清楚 ls 这个命令的使用方法，我们就可以在命令行中输入</p>
+ <a id="more"></a>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">man ls</span><br></pre></td></tr></table></figure>
+
+
+
+<p>来查看这个命令的详情。</p>
+<p>但是默认情况下，输出的内容是英文的。可能很多英文不好的朋友希望有中文版本的 <code>man</code> ，这篇博文就是告诉大家，如何在 mac 上安装中文版本的的 man。</p>
+<p>至于 <code>linux</code> 系统则非常简单，查看 <a href="https://github.com/man-pages-zh/manpages-zh" target="_blank" rel="noopener">https://github.com/man-pages-zh/manpages-zh</a> 中对应的版本，即可用简单的命令安装。</p>
+<h3 id="下载-manpages-zh-编辑安装"><a href="#下载-manpages-zh-编辑安装" class="headerlink" title="下载 manpages-zh 编辑安装"></a>下载 manpages-zh 编辑安装</h3><p>首先，我们打开上面的 github 地址，点击 releases 下载最新版本的 tar.gz 源码包。目前我下载到的是 1.6.3.2 版本的。</p>
+<p>因为需要编译安装，所以你电脑上需要有编译工具，运行下面两个命令安装</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">brew install automake</span><br><span class="line">brew install opencc</span><br></pre></td></tr></table></figure>
+
+<p>我这边是需要安装这两个编译工具，如果你下面编译出错，会提示你需要安装说明编辑工具的。利用 <code>brew</code> 安装即可。</p>
+<p>如果你电脑没有安装 brew 工具，请参考 <a href="http://blog.csdn.net/FungLeo/article/details/57567538" target="_blank" rel="noopener">http://blog.csdn.net/FungLeo/article/details/57567538</a> 这篇博文安装</p>
+<p>好，准备工作做好，我们接着来。    </p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># 进入下载目录</span><br><span class="line">cd ~<span class="regexp">/Downloads/</span></span><br><span class="line"># 下载最新版本的源码包</span><br><span class="line">wget https:<span class="comment">//github.com/man-pages-zh/manpages-zh/archive/v1.6.3.2.tar.gz</span></span><br><span class="line"># 解压源码包(atool命令，推荐安装这个工具，统一所有压缩文档的命令）</span><br><span class="line">atool -x v1<span class="number">.6</span><span class="number">.3</span><span class="number">.2</span>.tar.gz</span><br><span class="line"># 或者使用这个命令解压</span><br><span class="line">tar zxvf v1<span class="number">.6</span><span class="number">.3</span><span class="number">.2</span>.tar.gz</span><br><span class="line"># 进入源码包文件夹</span><br><span class="line">cd manpages-zh<span class="number">-1.6</span><span class="number">.3</span><span class="number">.2</span>/</span><br><span class="line"># 编译安装 1</span><br><span class="line">autoreconf --install --force</span><br><span class="line"># 编译安装 2</span><br><span class="line">./configure</span><br><span class="line"># 编译安装 3</span><br><span class="line">make</span><br><span class="line"># 编译安装 4</span><br><span class="line">sudo make install</span><br><span class="line"># 配置别名</span><br><span class="line">echo <span class="string">"alias cman='man -M /usr/local/share/man/zh_CN'"</span> &gt;&gt; ~<span class="regexp">/.bash_profile</span></span><br><span class="line"><span class="regexp"># 使别名生效</span></span><br><span class="line"><span class="regexp">. ~/</span>.bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>这样，我们就安装上了中文版本的 man 工具了。我们可以使用</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cman ls</span><br></pre></td></tr></table></figure>
+<p>来查看中文版本的解释了。但是由于 mac 上的 groff 工具比较老，所以中文会出现乱码。我们来解决一下这个问题。</p>
+<h3 id="安装-groff-新版本解决中文乱码的问题"><a href="#安装-groff-新版本解决中文乱码的问题" class="headerlink" title="安装 groff 新版本解决中文乱码的问题"></a>安装 groff 新版本解决中文乱码的问题</h3><p>首先，我们到 <a href="http://git.savannah.gnu.org/cgit/groff.git" target="_blank" rel="noopener">http://git.savannah.gnu.org/cgit/groff.git</a> 这个页面下载 1.22 版本的 groff 安装包。我这边用命令行下载，你如果直接复制我的命令，不能下载，请到上面的地址去看看下载地址是否发生变化。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># 进入下载目录</span><br><span class="line">cd ~<span class="regexp">/Downloads/</span></span><br><span class="line"># 下载1.22版本的源码包</span><br><span class="line">wget http:<span class="comment">//git.savannah.gnu.org/cgit/groff.git/snapshot/groff-1.22.tar.gz</span></span><br><span class="line"># 解压</span><br><span class="line">atool -x groff<span class="number">-1.22</span>.tar.gz</span><br><span class="line"># 进入目录</span><br><span class="line">cd groff<span class="number">-1.22</span></span><br><span class="line"># 编译安装</span><br><span class="line">./configure</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br><span class="line"># 添加配置</span><br><span class="line">sudo vim /etc/man.conf</span><br></pre></td></tr></table></figure>
+
+<p>进入编辑之后，在文件末尾添加</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">NROFF preconv -e UTF8 | <span class="regexp">/usr/</span>local/bin/nroff -Tutf8 -mandoc -c</span><br></pre></td></tr></table></figure>
+
+<p>最后 <code>:wq</code>保存退出</p>
+<p>然后，我们在输入</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cman ls</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MarkDown 中文排版规范</title>
     <url>/year/05/24/mdzwgf/</url>
     <content><![CDATA[<p>文档书写一定要遵守规范，统一中文文案、排版的相关用法，降低团队成员之间的沟通成本，增强网站气质。</p>
@@ -3210,62 +3373,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </categories>
       <tags>
         <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac 10.13 安装中文版 man 命令</title>
-    <url>/year/10/04/man/</url>
-    <content><![CDATA[<h3 id="为什么需要-man-以及-man-怎么使用"><a href="#为什么需要-man-以及-man-怎么使用" class="headerlink" title="为什么需要 man 以及 man 怎么使用"></a>为什么需要 man 以及 man 怎么使用</h3><p><code>linux</code> 或者 <code>mac</code> 系统的命令行工具非常多，可是我们不能记住所有的这些命令，通常只能记住一些我们常用的。遇到不常用的我们需要来查询一下这个命令是怎么使用的。这时候我们就需要使用到 man 命令了。</p>
-<p>使用方法也非常简单，例如我们不清楚 ls 这个命令的使用方法，我们就可以在命令行中输入</p>
- <a id="more"></a>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">man ls</span><br></pre></td></tr></table></figure>
-
-
-
-<p>来查看这个命令的详情。</p>
-<p>但是默认情况下，输出的内容是英文的。可能很多英文不好的朋友希望有中文版本的 <code>man</code> ，这篇博文就是告诉大家，如何在 mac 上安装中文版本的的 man。</p>
-<p>至于 <code>linux</code> 系统则非常简单，查看 <a href="https://github.com/man-pages-zh/manpages-zh" target="_blank" rel="noopener">https://github.com/man-pages-zh/manpages-zh</a> 中对应的版本，即可用简单的命令安装。</p>
-<h3 id="下载-manpages-zh-编辑安装"><a href="#下载-manpages-zh-编辑安装" class="headerlink" title="下载 manpages-zh 编辑安装"></a>下载 manpages-zh 编辑安装</h3><p>首先，我们打开上面的 github 地址，点击 releases 下载最新版本的 tar.gz 源码包。目前我下载到的是 1.6.3.2 版本的。</p>
-<p>因为需要编译安装，所以你电脑上需要有编译工具，运行下面两个命令安装</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">brew install automake</span><br><span class="line">brew install opencc</span><br></pre></td></tr></table></figure>
-
-<p>我这边是需要安装这两个编译工具，如果你下面编译出错，会提示你需要安装说明编辑工具的。利用 <code>brew</code> 安装即可。</p>
-<p>如果你电脑没有安装 brew 工具，请参考 <a href="http://blog.csdn.net/FungLeo/article/details/57567538" target="_blank" rel="noopener">http://blog.csdn.net/FungLeo/article/details/57567538</a> 这篇博文安装</p>
-<p>好，准备工作做好，我们接着来。    </p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># 进入下载目录</span><br><span class="line">cd ~<span class="regexp">/Downloads/</span></span><br><span class="line"># 下载最新版本的源码包</span><br><span class="line">wget https:<span class="comment">//github.com/man-pages-zh/manpages-zh/archive/v1.6.3.2.tar.gz</span></span><br><span class="line"># 解压源码包(atool命令，推荐安装这个工具，统一所有压缩文档的命令）</span><br><span class="line">atool -x v1<span class="number">.6</span><span class="number">.3</span><span class="number">.2</span>.tar.gz</span><br><span class="line"># 或者使用这个命令解压</span><br><span class="line">tar zxvf v1<span class="number">.6</span><span class="number">.3</span><span class="number">.2</span>.tar.gz</span><br><span class="line"># 进入源码包文件夹</span><br><span class="line">cd manpages-zh<span class="number">-1.6</span><span class="number">.3</span><span class="number">.2</span>/</span><br><span class="line"># 编译安装 1</span><br><span class="line">autoreconf --install --force</span><br><span class="line"># 编译安装 2</span><br><span class="line">./configure</span><br><span class="line"># 编译安装 3</span><br><span class="line">make</span><br><span class="line"># 编译安装 4</span><br><span class="line">sudo make install</span><br><span class="line"># 配置别名</span><br><span class="line">echo <span class="string">"alias cman='man -M /usr/local/share/man/zh_CN'"</span> &gt;&gt; ~<span class="regexp">/.bash_profile</span></span><br><span class="line"><span class="regexp"># 使别名生效</span></span><br><span class="line"><span class="regexp">. ~/</span>.bash_profile</span><br></pre></td></tr></table></figure>
-
-<p>这样，我们就安装上了中文版本的 man 工具了。我们可以使用</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cman ls</span><br></pre></td></tr></table></figure>
-<p>来查看中文版本的解释了。但是由于 mac 上的 groff 工具比较老，所以中文会出现乱码。我们来解决一下这个问题。</p>
-<h3 id="安装-groff-新版本解决中文乱码的问题"><a href="#安装-groff-新版本解决中文乱码的问题" class="headerlink" title="安装 groff 新版本解决中文乱码的问题"></a>安装 groff 新版本解决中文乱码的问题</h3><p>首先，我们到 <a href="http://git.savannah.gnu.org/cgit/groff.git" target="_blank" rel="noopener">http://git.savannah.gnu.org/cgit/groff.git</a> 这个页面下载 1.22 版本的 groff 安装包。我这边用命令行下载，你如果直接复制我的命令，不能下载，请到上面的地址去看看下载地址是否发生变化。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># 进入下载目录</span><br><span class="line">cd ~<span class="regexp">/Downloads/</span></span><br><span class="line"># 下载1.22版本的源码包</span><br><span class="line">wget http:<span class="comment">//git.savannah.gnu.org/cgit/groff.git/snapshot/groff-1.22.tar.gz</span></span><br><span class="line"># 解压</span><br><span class="line">atool -x groff<span class="number">-1.22</span>.tar.gz</span><br><span class="line"># 进入目录</span><br><span class="line">cd groff<span class="number">-1.22</span></span><br><span class="line"># 编译安装</span><br><span class="line">./configure</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br><span class="line"># 添加配置</span><br><span class="line">sudo vim /etc/man.conf</span><br></pre></td></tr></table></figure>
-
-<p>进入编辑之后，在文件末尾添加</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">NROFF preconv -e UTF8 | <span class="regexp">/usr/</span>local/bin/nroff -Tutf8 -mandoc -c</span><br></pre></td></tr></table></figure>
-
-<p>最后 <code>:wq</code>保存退出</p>
-<p>然后，我们在输入</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cman ls</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -3518,6 +3625,31 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </categories>
       <tags>
         <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac OS 下 Sublime Text 3 运行Java</title>
+    <url>/year/01/12/sublime-text-%E8%BF%90%E8%A1%8C-java/</url>
+    <content><![CDATA[<p>.</p>
+<a id="more"></a>
+
+<h4 id="在Sublime中安装Package-Resource-Viewer，具体操作步骤如下："><a href="#在Sublime中安装Package-Resource-Viewer，具体操作步骤如下：" class="headerlink" title="在Sublime中安装Package Resource Viewer，具体操作步骤如下："></a>在Sublime中安装Package Resource Viewer，具体操作步骤如下：</h4><pre><code>* ctrl+shift+p打开package control； 
+* 输入Install Package； 
+* 搜索Package Resource Viewer并安装。</code></pre><h4 id="修改Javac-sublime-build："><a href="#修改Javac-sublime-build：" class="headerlink" title="修改Javac.sublime-build："></a>修改Javac.sublime-build：</h4><pre><code>安装Package Resource Viewer就是为这一步服务。同上面的步骤，打开package control，输入PackageResourceViewer:Open Resource，回车后输入java，回车后输入Javac.sublime-build,就能够打开我们所需要修改的文件：Google 了下，找到了两种配置文件。</code></pre><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">"shell_cmd": "javac -encoding utf-8 $file_name &amp;&amp; java $file_base_name",</span><br><span class="line"></span><br><span class="line">"file_regex": "^ *\\[javac\\] (.+):([0-9]+):() (.*)$",</span><br><span class="line"></span><br><span class="line">"selector": "source.java",</span><br><span class="line"></span><br><span class="line">"encoding": "utf-8"</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">"cmd": ["javac \"$file_name\" &amp;&amp; java \"$file_base_name\""],</span><br><span class="line"></span><br><span class="line">"working_dir": "$&#123;project_path:$&#123;folder&#125;&#125;",</span><br><span class="line"></span><br><span class="line">"file_regex": "^(...*?):([0-9]*):?([0-9]*)",</span><br><span class="line"></span><br><span class="line">"selector": "source.java",</span><br><span class="line"></span><br><span class="line">"shell": true,</span><br><span class="line"></span><br><span class="line">"encoding": "utf-8"</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="选择Build-System，选择上一步保存的配置文件"><a href="#选择Build-System，选择上一步保存的配置文件" class="headerlink" title="选择Build System，选择上一步保存的配置文件"></a>选择Build System，选择上一步保存的配置文件</h4><p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-su.jpg" alt=""></p>
+<h4 id="Command-B编译运行"><a href="#Command-B编译运行" class="headerlink" title="Command+B编译运行"></a>Command+B编译运行</h4><pre><code>运行的时候会在桌面上生成一个　.class文件，可以通过配置文件将生成的.class文件删除。</code></pre><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">"shell_cmd": "javac -encoding utf-8 $file_name &amp;&amp; java $file_base_name &amp;&amp; rm -rf $file_base_name.class"</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -3821,50 +3953,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
-    <title>《when》</title>
-    <url>/year/12/18/when/</url>
-    <content><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=17657650&auto=1&height=66"></iframe>
-
-
-<p>当我在梦里游荡<br>我爱你</p>
-<a id="more"></a>
-<p>当我醒来 世界面目全非<br>我爱你<br>当最后一个夜晚快要崩塌<br>我爱你<br>当所有真相浮出水面<br>当所有繁花凋落<br>我爱你<br>当你的吻将被我卒逼到没有退路<br>我爱你<br>当你睡着 像个孩子一样<br>我爱你<br>当此恶世要把我们消磨殆尽<br>当再见时你不再吻我<br>我爱你<br>当我欲哭又无泪<br>当春风又绿了柳丝<br>当那个遥远 冰冷 隔绝的星球着起了火<br>雨不停地落 窗户把它们围拥<br>像一双双眼睛<br>永远都在寻觅 却寻不到落在远方的孤苦灵魂<br>当我们的名字被并排写在一起<br>我爱你<br>当我想起我们的初吻<br>当你变得冷漠 不可捉摸<br>我爱你<br>当我张开嘴 却无语<br>当雨滴从天空滴落<br>我爱你<br>当干涸的河床干裂<br>我爱你<br>虽然你没有拥我入怀<br>在那个无休止的狂野海浪不停拍打的海边<br>雨不停地落 窗户把它们围拥<br>像一双双眼睛<br>永远都在寻觅 却寻不到落在远方流浪着的孤苦灵魂<br>当你我相隔两端<br>我爱你<br>当我们彻底和疯狂的世界隔绝<br>我爱你<br>虽然最终这场持久的战斗还是会输<br>我爱你<br>当幕布落下 观众离开<br>当我的灵魂离开这个躯壳<br>你会挺大 我在雨里对你呼唤</p>
-<p><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-12-18-15135777800931.jpg" alt=""></p>
-]]></content>
-      <categories>
-        <category>杂思</category>
-      </categories>
-      <tags>
-        <tag>music</tag>
-        <tag>life</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac OS 下 Sublime Text 3 运行Java</title>
-    <url>/year/01/12/sublime-text-%E8%BF%90%E8%A1%8C-java/</url>
-    <content><![CDATA[<p>.</p>
-<a id="more"></a>
-
-<h4 id="在Sublime中安装Package-Resource-Viewer，具体操作步骤如下："><a href="#在Sublime中安装Package-Resource-Viewer，具体操作步骤如下：" class="headerlink" title="在Sublime中安装Package Resource Viewer，具体操作步骤如下："></a>在Sublime中安装Package Resource Viewer，具体操作步骤如下：</h4><pre><code>* ctrl+shift+p打开package control； 
-* 输入Install Package； 
-* 搜索Package Resource Viewer并安装。</code></pre><h4 id="修改Javac-sublime-build："><a href="#修改Javac-sublime-build：" class="headerlink" title="修改Javac.sublime-build："></a>修改Javac.sublime-build：</h4><pre><code>安装Package Resource Viewer就是为这一步服务。同上面的步骤，打开package control，输入PackageResourceViewer:Open Resource，回车后输入java，回车后输入Javac.sublime-build,就能够打开我们所需要修改的文件：Google 了下，找到了两种配置文件。</code></pre><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">"shell_cmd": "javac -encoding utf-8 $file_name &amp;&amp; java $file_base_name",</span><br><span class="line"></span><br><span class="line">"file_regex": "^ *\\[javac\\] (.+):([0-9]+):() (.*)$",</span><br><span class="line"></span><br><span class="line">"selector": "source.java",</span><br><span class="line"></span><br><span class="line">"encoding": "utf-8"</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">"cmd": ["javac \"$file_name\" &amp;&amp; java \"$file_base_name\""],</span><br><span class="line"></span><br><span class="line">"working_dir": "$&#123;project_path:$&#123;folder&#125;&#125;",</span><br><span class="line"></span><br><span class="line">"file_regex": "^(...*?):([0-9]*):?([0-9]*)",</span><br><span class="line"></span><br><span class="line">"selector": "source.java",</span><br><span class="line"></span><br><span class="line">"shell": true,</span><br><span class="line"></span><br><span class="line">"encoding": "utf-8"</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="选择Build-System，选择上一步保存的配置文件"><a href="#选择Build-System，选择上一步保存的配置文件" class="headerlink" title="选择Build System，选择上一步保存的配置文件"></a>选择Build System，选择上一步保存的配置文件</h4><p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-su.jpg" alt=""></p>
-<h4 id="Command-B编译运行"><a href="#Command-B编译运行" class="headerlink" title="Command+B编译运行"></a>Command+B编译运行</h4><pre><code>运行的时候会在桌面上生成一个　.class文件，可以通过配置文件将生成的.class文件删除。</code></pre><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">"shell_cmd": "javac -encoding utf-8 $file_name &amp;&amp; java $file_base_name &amp;&amp; rm -rf $file_base_name.class"</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>macOS 轻松愉快的解压 rar 压缩包</title>
     <url>/year/06/28/unrar/</url>
     <content><![CDATA[<p>macOS 自带的压缩软件不支持 rar 格式的文件解压缩，于是需要找一个第三方压缩软件。Keka 一个不错的软件，但是它默认的压缩文件图标也太丑了吧。而且我对解压缩并那么多的需求，在用了一段时间之后发现了 unrar 就果断放弃了。</p>
@@ -3886,6 +3974,25 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </categories>
       <tags>
         <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《when》</title>
+    <url>/year/12/18/when/</url>
+    <content><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=17657650&auto=1&height=66"></iframe>
+
+
+<p>当我在梦里游荡<br>我爱你</p>
+<a id="more"></a>
+<p>当我醒来 世界面目全非<br>我爱你<br>当最后一个夜晚快要崩塌<br>我爱你<br>当所有真相浮出水面<br>当所有繁花凋落<br>我爱你<br>当你的吻将被我卒逼到没有退路<br>我爱你<br>当你睡着 像个孩子一样<br>我爱你<br>当此恶世要把我们消磨殆尽<br>当再见时你不再吻我<br>我爱你<br>当我欲哭又无泪<br>当春风又绿了柳丝<br>当那个遥远 冰冷 隔绝的星球着起了火<br>雨不停地落 窗户把它们围拥<br>像一双双眼睛<br>永远都在寻觅 却寻不到落在远方的孤苦灵魂<br>当我们的名字被并排写在一起<br>我爱你<br>当我想起我们的初吻<br>当你变得冷漠 不可捉摸<br>我爱你<br>当我张开嘴 却无语<br>当雨滴从天空滴落<br>我爱你<br>当干涸的河床干裂<br>我爱你<br>虽然你没有拥我入怀<br>在那个无休止的狂野海浪不停拍打的海边<br>雨不停地落 窗户把它们围拥<br>像一双双眼睛<br>永远都在寻觅 却寻不到落在远方流浪着的孤苦灵魂<br>当你我相隔两端<br>我爱你<br>当我们彻底和疯狂的世界隔绝<br>我爱你<br>虽然最终这场持久的战斗还是会输<br>我爱你<br>当幕布落下 观众离开<br>当我的灵魂离开这个躯壳<br>你会挺大 我在雨里对你呼唤</p>
+<p><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-12-18-15135777800931.jpg" alt=""></p>
+]]></content>
+      <categories>
+        <category>杂思</category>
+      </categories>
+      <tags>
+        <tag>music</tag>
+        <tag>life</tag>
       </tags>
   </entry>
   <entry>
@@ -4261,6 +4368,24 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
+    <title>因为你的缘故我没有不曾去爱过就死了</title>
+    <url>/year/11/15/%E5%9B%A0%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BC%98%E6%95%85%E6%88%91%E6%B2%A1%E6%9C%89%E4%B8%8D%E6%9B%BE%E5%8E%BB%E7%88%B1%E8%BF%87%E5%B0%B1%E6%AD%BB%E4%BA%86/</url>
+    <content><![CDATA[<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gkq7y421g0j31kz0u0hdu.jpg" alt=""></p>
+<p>因为你的缘故我没有不曾去爱过就死了。</p>
+<a id="more"></a>
+
+<p>他写到：</p>
+<p>我会乞求你来原谅我，因为你的温柔没有激发我去成就伟大的业绩，而是使得我成了一个因你而失去了我原有的一小点理智，并且常常是在宁静的忧伤之中以哼哼着我所不明白的东西来打发时间的傻蛋，就像一个鬼魂。我日日夜夜地环绕着我所不能进入的地方溜达来溜达去。我所爱恋的啊！就是你，我的一切都是因为你，因为你我失去了理智，我的灵魂受到震颤，我在我的内在本质被惊骇；就是你，因为你我没有走完一生却没有什么东西能够足够震颤我，因为你的缘故我没有不曾去爱过就死了。</p>
+<p>随后他又写到：</p>
+<p>哪怕我的爱情是不幸的，这又算得了什么呢？对你的称赞比我自己生命中最幸福的瞬间更让我热情洋溢，你的不朽比我自己的存在更让我热情洋溢。是的，如果你被拿走了，如果你的名字被磨灭，那么支撑着我的唯一的支柱就被毁灭了。在之前这支柱一直帮我抵挡着，使得一切没有毋塌在一种无限的混乱、一种可怕的虚无之中。</p>
+<p>他是一个爱思考的人，可是这种思考对他来说却是一种折磨。而这种折磨，对他来说是必要的，至少在此刻来说是重要的。因为他反感盲从，甚至恶心。因为他认为盲从本质上是一种掩耳盗铃的行径，是一种彻底的愚蠢。而他需要自己寻找到一种确实的目标，一种感觉他是自己的生活，一种真实，不被虚假谎言欺骗的生活。尽管这种目标和这种生活在别人看来是不可理喻的，甚至是愚蠢的。当然，有时候就连他自己也开始质疑，是否他是为了反抗而反抗，就像他之前所说的，也许对抗不是生活的本质。但他不确定，曾经的他确定过，可那是因为当时无知，现在他明白了他的无知，于是陷入了一种可怕的折磨当中，就像他写下的那段文字，这一切开始于一场失恋。</p>
+<p>这个问题真是复杂到了极点，当然也可以一言以蔽之。就是他需要一种支持他的支柱，就像中世纪的人们需要上帝一样，然而现在信仰没了。</p>
+<p>他还说，总觉得这个问题关乎所有存在的人，不过很多人像是之前的他一样，从没有意识到，而更多的人选择了一种自欺的生活，选择了谎言。</p>
+<p>他接着说，我相信这种近乎自虐式反思有益于我长久的生活，当然，其中最大的风险就是我长久的处于这种折磨当中，而彻底的失去了生活。</p>
+<p>按照他的意思，我想这或许也可以一言以蔽之：因为我的缘故我没有不曾去爱过就死了。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>如何得体跳槽</title>
     <url>/year/10/18/%E5%A6%82%E4%BD%95%E5%BE%97%E4%BD%93%E8%B7%B3%E6%A7%BD/</url>
     <content><![CDATA[<blockquote>
@@ -4309,24 +4434,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       <tags>
         <tag>work</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>因为你的缘故我没有不曾去爱过就死了</title>
-    <url>/year/11/15/%E5%9B%A0%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%BC%98%E6%95%85%E6%88%91%E6%B2%A1%E6%9C%89%E4%B8%8D%E6%9B%BE%E5%8E%BB%E7%88%B1%E8%BF%87%E5%B0%B1%E6%AD%BB%E4%BA%86/</url>
-    <content><![CDATA[<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gkq7y421g0j31kz0u0hdu.jpg" alt=""></p>
-<p>因为你的缘故我没有不曾去爱过就死了。</p>
-<a id="more"></a>
-
-<p>他写到：</p>
-<p>我会乞求你来原谅我，因为你的温柔没有激发我去成就伟大的业绩，而是使得我成了一个因你而失去了我原有的一小点理智，并且常常是在宁静的忧伤之中以哼哼着我所不明白的东西来打发时间的傻蛋，就像一个鬼魂。我日日夜夜地环绕着我所不能进入的地方溜达来溜达去。我所爱恋的啊！就是你，我的一切都是因为你，因为你我失去了理智，我的灵魂受到震颤，我在我的内在本质被惊骇；就是你，因为你我没有走完一生却没有什么东西能够足够震颤我，因为你的缘故我没有不曾去爱过就死了。</p>
-<p>随后他又写到：</p>
-<p>哪怕我的爱情是不幸的，这又算得了什么呢？对你的称赞比我自己生命中最幸福的瞬间更让我热情洋溢，你的不朽比我自己的存在更让我热情洋溢。是的，如果你被拿走了，如果你的名字被磨灭，那么支撑着我的唯一的支柱就被毁灭了。在之前这支柱一直帮我抵挡着，使得一切没有毋塌在一种无限的混乱、一种可怕的虚无之中。</p>
-<p>他是一个爱思考的人，可是这种思考对他来说却是一种折磨。而这种折磨，对他来说是必要的，至少在此刻来说是重要的。因为他反感盲从，甚至恶心。因为他认为盲从本质上是一种掩耳盗铃的行径，是一种彻底的愚蠢。而他需要自己寻找到一种确实的目标，一种感觉他是自己的生活，一种真实，不被虚假谎言欺骗的生活。尽管这种目标和这种生活在别人看来是不可理喻的，甚至是愚蠢的。当然，有时候就连他自己也开始质疑，是否他是为了反抗而反抗，就像他之前所说的，也许对抗不是生活的本质。但他不确定，曾经的他确定过，可那是因为当时无知，现在他明白了他的无知，于是陷入了一种可怕的折磨当中，就像他写下的那段文字，这一切开始于一场失恋。</p>
-<p>这个问题真是复杂到了极点，当然也可以一言以蔽之。就是他需要一种支持他的支柱，就像中世纪的人们需要上帝一样，然而现在信仰没了。</p>
-<p>他还说，总觉得这个问题关乎所有存在的人，不过很多人像是之前的他一样，从没有意识到，而更多的人选择了一种自欺的生活，选择了谎言。</p>
-<p>他接着说，我相信这种近乎自虐式反思有益于我长久的生活，当然，其中最大的风险就是我长久的处于这种折磨当中，而彻底的失去了生活。</p>
-<p>按照他的意思，我想这或许也可以一言以蔽之：因为我的缘故我没有不曾去爱过就死了。</p>
-]]></content>
   </entry>
   <entry>
     <title>小王子的领悟</title>
@@ -4794,21 +4901,28 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
-    <title>狂人日记———— 关于吃人！！！</title>
-    <url>/year/02/08/%E7%8B%82%E4%BA%BA%E6%97%A5%E8%AE%B0/</url>
-    <content><![CDATA[<p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-006tKfTcgy1fqa9h7281yj30qz0chgpg.jpg" alt=""></p>
+    <title>王小波《爱你就像爱生命》</title>
+    <url>/year/12/08/%E7%8E%8B%E5%B0%8F%E6%B3%A2%E3%80%8A%E7%88%B1%E4%BD%A0%E5%B0%B1%E5%83%8F%E7%88%B1%E7%94%9F%E5%91%BD%E3%80%8B/</url>
+    <content><![CDATA[<p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-165250.jpg" alt=""></p>
 <a id="more"></a>
 
-
-<p>“他们——也有给知县打枷过的，也有给绅士掌过嘴的，也有衙役占了他妻子的，也有老子娘被债主逼死的；他们那时候的脸色，全没有昨天这么怕，也没有这么凶。</p>
-<p>自己想吃人，又怕被别人吃了，都用着疑心极深的眼光，面面相觑。……</p>
-<p>去了这心思，放心做事走路吃饭睡觉，何等舒服。这只是一条门槛，一个关头。他们可是父子兄弟夫妇朋友师生仇敌和各不相识的人，都结成一伙，互相劝勉，互相牵掣，死也不肯跨过这一步。</p>
-<p>我认识他们是一伙，都是吃人的人。可是也晓得他们心思很不一样，一种是以为从来如此，应该吃的；一种是知道不该吃，可是仍然要吃，又怕别人说破他，所以听了我的话，越发气愤不过，可是抿着嘴冷笑。”</p>
-<p>………………</p>
-<p>封建礼教吃了几千年的“人”，突然有个人不吃了，还阻止别人吃。当我们站在狂人的视角看时，周边的人乃至整个社会都是扭曲的，然而站在吃人者身上看，这个“狂人”无疑是个真正的狂人——我们怎么会吃人呢？</p>
-<br />
-
-<h4 id="凡事总须研究，才能明白！"><a href="#凡事总须研究，才能明白！" class="headerlink" title="凡事总须研究，才能明白！"></a>凡事总须研究，才能明白！</h4><p>凡事总须研究，才能明白。古来时常吃人，我也还记得，可是不甚清楚。我翻开历史一查，这里是没有年代，歪歪斜斜的每夜上都写着“仁义道德”几个字。我横竖睡不着，仔细看了半夜，才从字缝里看出字来，满本都是写着两个字是“吃人”！</p>
+<blockquote>
+<p>我的灵魂里有许多玩世不恭，对人傲慢无礼，但是它有一个核心。这个核心害怕黑暗，柔弱的像绵羊一样。只有顶平等的友爱才能使他得到安慰。你对我是属于这个核心的。我是爱你的，看见就爱上了。我爱你到不自私的地步。我会不爱你吗？不爱你？不会。爱你就像爱生命。</p>
+</blockquote>
+<p>你要是愿意，我就永远爱你，你要是不愿意，我就永远相思。</p>
+<p>你要是喜欢了别人我会哭，但是还是喜欢你。</p>
+<p>你是非常可爱的人，真应该遇到最好的人，我也真希望我就是。</p>
+<p>我是爱你的，看见就爱上了，我爱你爱到不自私的地步，就像一个人手里一只鸽子飞走了，他从心里祝福那只鸽子的飞翔。你也飞吧，我会难过，也会高兴，到底会怎么样我也不知道。</p>
+<p>不管我本人多么平庸，我总觉得我对你的爱很美。</p>
+<p>我现在已经养成了一种习惯，就是每天要对你说几句不想对别人说的话。</p>
+<p>有时候你难过了，这个时候我更爱你，只要你不拒绝我我就拥抱你，我会告诉你这是因为什么，就是我不知道是为了什么。</p>
+<p>我爱你，这是我的命运。</p>
+<p>我决不为了仪式爱你，我是正经爱你呢。我一正经起来，就觉得自己不坏，生活也真不坏。真的，也许不坏？我觉得信心就在这里。</p>
+<p>但愿我和你，是一支唱不完的歌。</p>
+<p>我真的是个好人，我对好多人怀有最深的感情，尤其是对你。我很想为别人做好事，尤其是对你，我真想把我做出的一切好事全献给你了。</p>
+<p>我们是两个在宇宙里游荡的灵魂，我们不愿孤独，走到一起来，别人与我们无关。我把我的整个灵魂给你，连同它的怪癖耍小脾气，忽明忽暗，一千八百种坏毛病。它真讨厌，只有一点好，爱你。</p>
+<p>只希望你和我好，互不猜忌，也互不称誉，安如平日，你和我说话像对自己说话一样，我和你说话也像对自己说话一样。</p>
+<p>说吧，和我好吗？</p>
 ]]></content>
       <categories>
         <category>阅读</category>
@@ -4891,37 +5005,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
-    <title>王小波《爱你就像爱生命》</title>
-    <url>/year/12/08/%E7%8E%8B%E5%B0%8F%E6%B3%A2%E3%80%8A%E7%88%B1%E4%BD%A0%E5%B0%B1%E5%83%8F%E7%88%B1%E7%94%9F%E5%91%BD%E3%80%8B/</url>
-    <content><![CDATA[<p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-165250.jpg" alt=""></p>
-<a id="more"></a>
-
-<blockquote>
-<p>我的灵魂里有许多玩世不恭，对人傲慢无礼，但是它有一个核心。这个核心害怕黑暗，柔弱的像绵羊一样。只有顶平等的友爱才能使他得到安慰。你对我是属于这个核心的。我是爱你的，看见就爱上了。我爱你到不自私的地步。我会不爱你吗？不爱你？不会。爱你就像爱生命。</p>
-</blockquote>
-<p>你要是愿意，我就永远爱你，你要是不愿意，我就永远相思。</p>
-<p>你要是喜欢了别人我会哭，但是还是喜欢你。</p>
-<p>你是非常可爱的人，真应该遇到最好的人，我也真希望我就是。</p>
-<p>我是爱你的，看见就爱上了，我爱你爱到不自私的地步，就像一个人手里一只鸽子飞走了，他从心里祝福那只鸽子的飞翔。你也飞吧，我会难过，也会高兴，到底会怎么样我也不知道。</p>
-<p>不管我本人多么平庸，我总觉得我对你的爱很美。</p>
-<p>我现在已经养成了一种习惯，就是每天要对你说几句不想对别人说的话。</p>
-<p>有时候你难过了，这个时候我更爱你，只要你不拒绝我我就拥抱你，我会告诉你这是因为什么，就是我不知道是为了什么。</p>
-<p>我爱你，这是我的命运。</p>
-<p>我决不为了仪式爱你，我是正经爱你呢。我一正经起来，就觉得自己不坏，生活也真不坏。真的，也许不坏？我觉得信心就在这里。</p>
-<p>但愿我和你，是一支唱不完的歌。</p>
-<p>我真的是个好人，我对好多人怀有最深的感情，尤其是对你。我很想为别人做好事，尤其是对你，我真想把我做出的一切好事全献给你了。</p>
-<p>我们是两个在宇宙里游荡的灵魂，我们不愿孤独，走到一起来，别人与我们无关。我把我的整个灵魂给你，连同它的怪癖耍小脾气，忽明忽暗，一千八百种坏毛病。它真讨厌，只有一点好，爱你。</p>
-<p>只希望你和我好，互不猜忌，也互不称誉，安如平日，你和我说话像对自己说话一样，我和你说话也像对自己说话一样。</p>
-<p>说吧，和我好吗？</p>
-]]></content>
-      <categories>
-        <category>阅读</category>
-      </categories>
-      <tags>
-        <tag>读书</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>社交中的用户价值、状态评估及算法匹配模型</title>
     <url>/year/01/19/%E7%A4%BE%E4%BA%A4%E5%8C%B9%E9%85%8D%E6%A8%A1%E5%9E%8B/</url>
     <content><![CDATA[<blockquote>
@@ -4963,6 +5046,30 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </categories>
       <tags>
         <tag>转载</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>狂人日记———— 关于吃人！！！</title>
+    <url>/year/02/08/%E7%8B%82%E4%BA%BA%E6%97%A5%E8%AE%B0/</url>
+    <content><![CDATA[<p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-006tKfTcgy1fqa9h7281yj30qz0chgpg.jpg" alt=""></p>
+<a id="more"></a>
+
+
+<p>“他们——也有给知县打枷过的，也有给绅士掌过嘴的，也有衙役占了他妻子的，也有老子娘被债主逼死的；他们那时候的脸色，全没有昨天这么怕，也没有这么凶。</p>
+<p>自己想吃人，又怕被别人吃了，都用着疑心极深的眼光，面面相觑。……</p>
+<p>去了这心思，放心做事走路吃饭睡觉，何等舒服。这只是一条门槛，一个关头。他们可是父子兄弟夫妇朋友师生仇敌和各不相识的人，都结成一伙，互相劝勉，互相牵掣，死也不肯跨过这一步。</p>
+<p>我认识他们是一伙，都是吃人的人。可是也晓得他们心思很不一样，一种是以为从来如此，应该吃的；一种是知道不该吃，可是仍然要吃，又怕别人说破他，所以听了我的话，越发气愤不过，可是抿着嘴冷笑。”</p>
+<p>………………</p>
+<p>封建礼教吃了几千年的“人”，突然有个人不吃了，还阻止别人吃。当我们站在狂人的视角看时，周边的人乃至整个社会都是扭曲的，然而站在吃人者身上看，这个“狂人”无疑是个真正的狂人——我们怎么会吃人呢？</p>
+<br />
+
+<h4 id="凡事总须研究，才能明白！"><a href="#凡事总须研究，才能明白！" class="headerlink" title="凡事总须研究，才能明白！"></a>凡事总须研究，才能明白！</h4><p>凡事总须研究，才能明白。古来时常吃人，我也还记得，可是不甚清楚。我翻开历史一查，这里是没有年代，歪歪斜斜的每夜上都写着“仁义道德”几个字。我横竖睡不着，仔细看了半夜，才从字缝里看出字来，满本都是写着两个字是“吃人”！</p>
+]]></content>
+      <categories>
+        <category>阅读</category>
+      </categories>
+      <tags>
+        <tag>读书</tag>
       </tags>
   </entry>
   <entry>
@@ -5222,82 +5329,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
-    <title>自由</title>
-    <url>/year/10/09/%E8%87%AA%E7%94%B1/</url>
-    <content><![CDATA[<blockquote>
-<p>当我们说想要自由的时候，意思是说，我想要挣脱我不喜欢的束缚，奔向另一场我想要的归属。绝对自由是不存在的，只存在想要的约束。</p>
-</blockquote>
-<p>人生而自由，却又无往而不在枷锁之中。           ——卢梭</p>
-<a id="more"></a>
-
-<br>
-
-
-<p>一个所谓能适应社会的正常人远不如一个所谓人类价值角度意义上的精神病症患者健康。前者很好地适应社会，其代价就是放弃自我，以便成为别人期望的样子。……相反，精神病症患者则可以被视为在争夺自我的战斗中不准备彻底投降的人。</p>
-<br>
-
-<p>按照他人的要求对自己的一切作出规划，被孤独感，恐惧感和各种直接威胁着我们的自由，生命和舒适的力量所驱使.</p>
-<p>我们欺骗自己找到了为之拼命奋斗的自我，最后却发现那只不过是社会中的自我。</p>
-<p><strong>安全感</strong></p>
-<p>自发性的活动，爱和创造的活动。</p>
-<p>逃避自由，还是忍受孤独？</p>
-<blockquote>
-<p>我们多数人至少可以在刹那间察觉到我们自身的自发性，而正是在这刹那间，我们获得了真正的欢乐。</p>
-</blockquote>
-<p>逃避自由机制：</p>
-<ul>
-<li>权威主义</li>
-<li>破坏欲</li>
-<li>机械趋同。（伪自我）</li>
-</ul>
-<p>读完 一本书后，就是能够站在更高的地方看我们与世界的关系。感觉自己很沧海一粟，却又是撬动世界的支点。</p>
-]]></content>
-      <categories>
-        <category>思考</category>
-      </categories>
-      <tags>
-        <tag>自由</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>叔本华：菲利斯特人</title>
-    <url>/year/01/18/%E8%8F%B2%E5%88%A9%E6%96%AF%E7%89%B9%E4%BA%BA/</url>
-    <content><![CDATA[<blockquote>
-<p>Philister ———— 菲利斯特人</p>
-<p>原义：被文艺女神抛弃的人</p>
-<p>特质：没有精神需求的人，也没有精神上的乐趣</p>
-</blockquote>
-<a id="more"></a>
-
-<p>在这里，我得提及这样一类人：他们由于仅仅具备了那常规的、有限的智力配给，所以，他们并没有精神思想上的要求，他们也就是德语里的Philister——“菲利斯特人”。这名称源自德国的大学生词汇。后来，这一名称有了更深一层的含义，虽然它和原来的意思依然相似；“菲利斯特人”指的是和“缪斯的孩子”恰恰相反的意思，那就是“被文艺女神抛弃的人”。确实，从更高的角度审视，我应该把菲利斯特人的定义确定为所有那些总是严肃古板地关注着那并非现实之现实的人。不过，这样一个超验的定义却跟大众视角不相吻合——而我在这本书里所采用的就是大众视角——所以，这样的定义或者不会被每一个读者所透彻理解。相比之下，这名称的第一定义更加容易解释清楚，它也详细表现了菲利斯特人的特质及其根源。因此，菲利斯特人就是一个没有精神需求的人。</p>
-<p>根据我提及过的原则，“没有真正的需求也就没真正的快乐”就可以推断：首先，在他们的自身方面，菲利斯特人并没有什么精神上的乐趣。他的存在并没有受到任何对知识的追求和对真理的探索这一强烈欲望的驱动，也没有要享受真正的美的热望——美的享受与对知识、真理的追求密切相关。但如果时尚或者权威把这一类快乐强加给他们，那他们就会像应付强制性苦役般地尽快把它们打发了事。对这种人来说，真正的快乐只能是感官上的快乐。牡蛎和香槟就是他们生存的最高境界。他们生活的目的，也就是为自己获得所有能为他们带来身体上安逸和舒适的东西。如果这些事情把他们忙得晕头转向，那他们就的确快乐了！因为如果从一开始就把这些好东西大量提供给他们，他们就会不可避免地陷入无聊之中，而为了对抗无聊，他们是无所不用其极的：舞会、社交、看戏、玩牌、赌博、饮酒、旅行、马匹、女人，等等。但所有这些都不足以赶走无聊，因为缺少了精神的需求，精神的快乐也就是不可能的。因此，菲利斯特人都有一个奇异的特征，那就是：他们都有一副呆滞、干巴巴的类似于动物的一本正经和严肃表情。没有什么事情能使他们愉快、激动，能提起他们的兴趣。感官的乐趣很快就会烟消云散。由同样的菲利斯特人所组成的社交聚会，很快就变得乏味无聊，纸牌游戏到最后也变得令人厌倦。</p>
-<p>不管怎样，这种人最终还剩下虚荣心。他们以各自不同的方式享受虚荣心所带给他们的乐趣，那就是：他们尽力在财富或者社会地位，或者权力和影响力方面胜人一筹，并藉此获得他人对自己的尊崇。又或者，他们至少可以追随那些拥有上述本事的人，以沐浴在这些人身上折射出来的余辉之中。从我们提到的这些菲利斯特人的本质，可以引出第二点：对于他人，由于菲利斯特人没有精神上的需求，而只有身体上的需要，所以，他们在与他人的交往中，会寻求那些能够满足自己身体上的需要，而不是精神上的需求的人。因此，在他们对别人的诸多要求当中，最不重要的，就是别人必须具备一定的头脑思想。当他看见别人具有突出头脑思想时，那反而只会引起菲利斯特人的反感，甚至憎恨。因为他们有着一股可憎的自卑感，以及呆笨的、不为人知的嫉妒心——他们小心翼翼地试图把它们掩饰起来，甚至对自己也是这样。但这样一来，这种嫉妒有时候就会变成某种私下里的苦涩和愤怒。因此，他们永远也不会想到要对卓越的精神思想给予恰如其分的尊崇和敬意；他们一心一意地把尊崇和敬意留给拥有地位、财富、权力、影响力的人，因为这些东西在他们的眼中才是真正优越的东西。在这些方面出风头也就成了他们的愿望。所有这一切都源于这一事实：他们是一个没有精神需求的人。</p>
-<p>菲利斯特人的巨大痛苦，就在于任何理念性的东西都无法带给他们愉快。他们为了逃避无聊，不断需要现实性的事物。但由于现实性的东西很快就会被穷尽，一旦这样，它们就不但不再提供快乐，反而会使人厌烦；并且，这些东西还会带来各种祸殃。相比较而言，理念性的东西却是不可穷尽的，它们本身既无邪也无害。</p>
-<p>摘自叔本华的《人生的智慧》</p>
-]]></content>
-      <categories>
-        <category>阅读</category>
-      </categories>
-      <tags>
-        <tag>读书</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>跟一只蜘蛛讲了很久的心事，然后把她拍死了</title>
-    <url>/year/11/19/%E8%B7%9F%E4%B8%80%E5%8F%AA%E8%9C%98%E8%9B%9B%E8%AE%B2%E4%BA%86%E5%BE%88%E4%B9%85%E7%9A%84%E5%BF%83%E4%BA%8B%EF%BC%8C%E7%84%B6%E5%90%8E%E6%8A%8A%E4%BB%96%E6%8B%8D%E6%AD%BB%E4%BA%86/</url>
-    <content><![CDATA[<p>我没有办法，我向来经不住别人的哀求，是她一再的要求我这样做的。二十多年里这不是第一次了，从小到大她都陪在我身边，聆听了我生活中的所有喜怒哀乐。所有的黑色情绪我都丢给她，她也安静的接受着我的每一次生气和大哭。今晚我照常和她说起一些令人难过的事，又一次提起想要一场车祸，或是从天桥上坠下后选择性失忆，或者吞下一大把阿普唑仑被抢救后，忘记之前的生活，过去太让人痛苦了，我真是难以承受……</p>
-<a id="more"></a>
-<p>听着听着她突然打断我，你真的想要这样吗？忘记过去你会幸福吗？唔，或许吧！她说，既然这样，那你杀死我吧。我背负了你所有的过去，杀死我，丢掉过去以后好好生活。 我一时语塞，心里却有些动摇。这未尝不是一个好办法，过去压的我喘不过气来，要杀死她吗？要和过去说再见吗？我犹豫不决站在原地。动手吧，做个了断，她往前走了走，也不知道沉默了多久，终于我还是随手抓起一本书，我知道我还是对这些伤人的过往依依不舍，手里的书缓缓下落，这样轻易应该是杀不死她的，我侥幸想着，但当书接触到桌面的那一刹，我还是听到了爆裂的“噗呲”声，忽然，我的四肢开始无力，身体支撑不住的瘫倒在地，瞳孔慢慢扩散，皮肤也渐渐干瘪至骨缝，蜘蛛死了，过去真的消失了，我也不存在了，真好。</p>
-<p><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-11-19-Snip20171119_110.png" alt="Snip20171119_110"></p>
-]]></content>
-      <categories>
-        <category>思考</category>
-      </categories>
-      <tags>
-        <tag>脑洞</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>软件测试学习整理</title>
     <url>/year/10/10/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/</url>
     <content><![CDATA[<pre><code>&lt;!--more--&gt;</code></pre><p><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-09-22-ST.png" alt="ST"></p>
@@ -5458,6 +5489,82 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </categories>
       <tags>
         <tag>软件测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自由</title>
+    <url>/year/10/09/%E8%87%AA%E7%94%B1/</url>
+    <content><![CDATA[<blockquote>
+<p>当我们说想要自由的时候，意思是说，我想要挣脱我不喜欢的束缚，奔向另一场我想要的归属。绝对自由是不存在的，只存在想要的约束。</p>
+</blockquote>
+<p>人生而自由，却又无往而不在枷锁之中。           ——卢梭</p>
+<a id="more"></a>
+
+<br>
+
+
+<p>一个所谓能适应社会的正常人远不如一个所谓人类价值角度意义上的精神病症患者健康。前者很好地适应社会，其代价就是放弃自我，以便成为别人期望的样子。……相反，精神病症患者则可以被视为在争夺自我的战斗中不准备彻底投降的人。</p>
+<br>
+
+<p>按照他人的要求对自己的一切作出规划，被孤独感，恐惧感和各种直接威胁着我们的自由，生命和舒适的力量所驱使.</p>
+<p>我们欺骗自己找到了为之拼命奋斗的自我，最后却发现那只不过是社会中的自我。</p>
+<p><strong>安全感</strong></p>
+<p>自发性的活动，爱和创造的活动。</p>
+<p>逃避自由，还是忍受孤独？</p>
+<blockquote>
+<p>我们多数人至少可以在刹那间察觉到我们自身的自发性，而正是在这刹那间，我们获得了真正的欢乐。</p>
+</blockquote>
+<p>逃避自由机制：</p>
+<ul>
+<li>权威主义</li>
+<li>破坏欲</li>
+<li>机械趋同。（伪自我）</li>
+</ul>
+<p>读完 一本书后，就是能够站在更高的地方看我们与世界的关系。感觉自己很沧海一粟，却又是撬动世界的支点。</p>
+]]></content>
+      <categories>
+        <category>思考</category>
+      </categories>
+      <tags>
+        <tag>自由</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>跟一只蜘蛛讲了很久的心事，然后把她拍死了</title>
+    <url>/year/11/19/%E8%B7%9F%E4%B8%80%E5%8F%AA%E8%9C%98%E8%9B%9B%E8%AE%B2%E4%BA%86%E5%BE%88%E4%B9%85%E7%9A%84%E5%BF%83%E4%BA%8B%EF%BC%8C%E7%84%B6%E5%90%8E%E6%8A%8A%E4%BB%96%E6%8B%8D%E6%AD%BB%E4%BA%86/</url>
+    <content><![CDATA[<p>我没有办法，我向来经不住别人的哀求，是她一再的要求我这样做的。二十多年里这不是第一次了，从小到大她都陪在我身边，聆听了我生活中的所有喜怒哀乐。所有的黑色情绪我都丢给她，她也安静的接受着我的每一次生气和大哭。今晚我照常和她说起一些令人难过的事，又一次提起想要一场车祸，或是从天桥上坠下后选择性失忆，或者吞下一大把阿普唑仑被抢救后，忘记之前的生活，过去太让人痛苦了，我真是难以承受……</p>
+<a id="more"></a>
+<p>听着听着她突然打断我，你真的想要这样吗？忘记过去你会幸福吗？唔，或许吧！她说，既然这样，那你杀死我吧。我背负了你所有的过去，杀死我，丢掉过去以后好好生活。 我一时语塞，心里却有些动摇。这未尝不是一个好办法，过去压的我喘不过气来，要杀死她吗？要和过去说再见吗？我犹豫不决站在原地。动手吧，做个了断，她往前走了走，也不知道沉默了多久，终于我还是随手抓起一本书，我知道我还是对这些伤人的过往依依不舍，手里的书缓缓下落，这样轻易应该是杀不死她的，我侥幸想着，但当书接触到桌面的那一刹，我还是听到了爆裂的“噗呲”声，忽然，我的四肢开始无力，身体支撑不住的瘫倒在地，瞳孔慢慢扩散，皮肤也渐渐干瘪至骨缝，蜘蛛死了，过去真的消失了，我也不存在了，真好。</p>
+<p><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-11-19-Snip20171119_110.png" alt="Snip20171119_110"></p>
+]]></content>
+      <categories>
+        <category>思考</category>
+      </categories>
+      <tags>
+        <tag>脑洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>叔本华：菲利斯特人</title>
+    <url>/year/01/18/%E8%8F%B2%E5%88%A9%E6%96%AF%E7%89%B9%E4%BA%BA/</url>
+    <content><![CDATA[<blockquote>
+<p>Philister ———— 菲利斯特人</p>
+<p>原义：被文艺女神抛弃的人</p>
+<p>特质：没有精神需求的人，也没有精神上的乐趣</p>
+</blockquote>
+<a id="more"></a>
+
+<p>在这里，我得提及这样一类人：他们由于仅仅具备了那常规的、有限的智力配给，所以，他们并没有精神思想上的要求，他们也就是德语里的Philister——“菲利斯特人”。这名称源自德国的大学生词汇。后来，这一名称有了更深一层的含义，虽然它和原来的意思依然相似；“菲利斯特人”指的是和“缪斯的孩子”恰恰相反的意思，那就是“被文艺女神抛弃的人”。确实，从更高的角度审视，我应该把菲利斯特人的定义确定为所有那些总是严肃古板地关注着那并非现实之现实的人。不过，这样一个超验的定义却跟大众视角不相吻合——而我在这本书里所采用的就是大众视角——所以，这样的定义或者不会被每一个读者所透彻理解。相比之下，这名称的第一定义更加容易解释清楚，它也详细表现了菲利斯特人的特质及其根源。因此，菲利斯特人就是一个没有精神需求的人。</p>
+<p>根据我提及过的原则，“没有真正的需求也就没真正的快乐”就可以推断：首先，在他们的自身方面，菲利斯特人并没有什么精神上的乐趣。他的存在并没有受到任何对知识的追求和对真理的探索这一强烈欲望的驱动，也没有要享受真正的美的热望——美的享受与对知识、真理的追求密切相关。但如果时尚或者权威把这一类快乐强加给他们，那他们就会像应付强制性苦役般地尽快把它们打发了事。对这种人来说，真正的快乐只能是感官上的快乐。牡蛎和香槟就是他们生存的最高境界。他们生活的目的，也就是为自己获得所有能为他们带来身体上安逸和舒适的东西。如果这些事情把他们忙得晕头转向，那他们就的确快乐了！因为如果从一开始就把这些好东西大量提供给他们，他们就会不可避免地陷入无聊之中，而为了对抗无聊，他们是无所不用其极的：舞会、社交、看戏、玩牌、赌博、饮酒、旅行、马匹、女人，等等。但所有这些都不足以赶走无聊，因为缺少了精神的需求，精神的快乐也就是不可能的。因此，菲利斯特人都有一个奇异的特征，那就是：他们都有一副呆滞、干巴巴的类似于动物的一本正经和严肃表情。没有什么事情能使他们愉快、激动，能提起他们的兴趣。感官的乐趣很快就会烟消云散。由同样的菲利斯特人所组成的社交聚会，很快就变得乏味无聊，纸牌游戏到最后也变得令人厌倦。</p>
+<p>不管怎样，这种人最终还剩下虚荣心。他们以各自不同的方式享受虚荣心所带给他们的乐趣，那就是：他们尽力在财富或者社会地位，或者权力和影响力方面胜人一筹，并藉此获得他人对自己的尊崇。又或者，他们至少可以追随那些拥有上述本事的人，以沐浴在这些人身上折射出来的余辉之中。从我们提到的这些菲利斯特人的本质，可以引出第二点：对于他人，由于菲利斯特人没有精神上的需求，而只有身体上的需要，所以，他们在与他人的交往中，会寻求那些能够满足自己身体上的需要，而不是精神上的需求的人。因此，在他们对别人的诸多要求当中，最不重要的，就是别人必须具备一定的头脑思想。当他看见别人具有突出头脑思想时，那反而只会引起菲利斯特人的反感，甚至憎恨。因为他们有着一股可憎的自卑感，以及呆笨的、不为人知的嫉妒心——他们小心翼翼地试图把它们掩饰起来，甚至对自己也是这样。但这样一来，这种嫉妒有时候就会变成某种私下里的苦涩和愤怒。因此，他们永远也不会想到要对卓越的精神思想给予恰如其分的尊崇和敬意；他们一心一意地把尊崇和敬意留给拥有地位、财富、权力、影响力的人，因为这些东西在他们的眼中才是真正优越的东西。在这些方面出风头也就成了他们的愿望。所有这一切都源于这一事实：他们是一个没有精神需求的人。</p>
+<p>菲利斯特人的巨大痛苦，就在于任何理念性的东西都无法带给他们愉快。他们为了逃避无聊，不断需要现实性的事物。但由于现实性的东西很快就会被穷尽，一旦这样，它们就不但不再提供快乐，反而会使人厌烦；并且，这些东西还会带来各种祸殃。相比较而言，理念性的东西却是不可穷尽的，它们本身既无邪也无害。</p>
+<p>摘自叔本华的《人生的智慧》</p>
+]]></content>
+      <categories>
+        <category>阅读</category>
+      </categories>
+      <tags>
+        <tag>读书</tag>
       </tags>
   </entry>
   <entry>
@@ -5926,6 +6033,61 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
 ]]></content>
   </entry>
   <entry>
+    <title>弗洛姆-《逃避自由》</title>
+    <url>/year/12/17/%E9%80%83%E9%81%BF%E8%87%AA%E7%94%B1/</url>
+    <content><![CDATA[<blockquote>
+<p>我没有身份，根本没有我自己，我不过是他人希望我什么的一种反映；我是「如同你希望的」。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>自由意志的虚幻性，它的可怕之处就在于很多人都没有意识到这一点。 </p>
+<p>在现代社会中，人们似乎拥有了「可以不做什么」的自由，似乎可以按照自己的想法而活，但真是如此吗？想想我们自己所做的那些决定吧，学习，工作，赚钱，买房，结婚，生子……究竟是出自内心的真实想法还是仅仅为了过上他人眼中「正常的生活」？我们拼命工作，戴上面具进行各种表演，为了「责任」而放弃乐趣和幸福，难道真是为了不愧对自己这一生？ </p>
+<p>与外在权威相对应，弗洛姆把公共舆论和大众意识称为「匿名权威」，这股看不见的力量正是操控我们生活的幕后黑手，一举剥夺了我们感觉，思考和意志的真实性。我们无可救药地「按照他人的要求对自己的一切作出规划，被孤独感，恐惧感和各种直接威胁着我们的自由，生命和舒适的力量所驱使」；我们欺骗自己找到了为之拼命奋斗的自我，最后却发现那只不过是社会的自我。 </p>
+<p>金钱，地位，权力，家庭，民族，偶像……支撑起了我们脆弱的生活，依靠这些外在的力量，我们获得了安全感，当然同时也放弃了自由。但是，「这种安全感只是表面上的，一旦支撑它的那些因素不存在了，安全感也随之消失」。 可是另一条路也布满了荆棘，物质上的损失倒是小事，不被人理解的孤独和不安定的生活并不是每个人都能坦然接受的。 </p>
+<p>弗洛姆给出的药方是投身于自发性的活动，也即爱和创造性活动，在这种积极的自由状态下，我们按自己内心生活，同时也能感知和世界，他人的紧密联系。他觉得艺术家和小孩子是积极自由的典型代表。 </p>
+<p>但我觉得弗洛姆太过理想化了，要不怎么会在七十多年后的今天，很多人依旧会迷茫，会不快乐呢？对于绝大多数人来说，这就是一个残酷的选择题：逃避自由，还是忍受孤独？而很多人还是会选择前者，也正常，追寻自由的代价太大，倒不如糊涂一世来得安稳。「为自己而活」这几个字说得轻巧，真要做到太不容易，所以每个人的选择我也都能理解。只是可笑人们追寻了那么久的自由，到头来仍是镜花水月。 </p>
+<p>但希望总是有的，正如弗洛姆说到自发性给我们带来的欢乐：「我们多数人至少可以在刹那间察觉到我们自身的自发性，而正是在这刹那间，我们获得了真正的欢乐。」 </p>
+<p>幸运的是，还有人愿意坚持把这一刹那变为永恒。这样的人从来都不会很多，但有这么一群人就足够了。</p>
+]]></content>
+      <categories>
+        <category>阅读</category>
+      </categories>
+      <tags>
+        <tag>读书</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>阿飞正传台词</title>
+    <url>/year/01/10/%E9%98%BF%E9%A3%9E%E6%AD%A3%E4%BC%A0%E5%8F%B0%E8%AF%8D/</url>
+    <content><![CDATA[<blockquote>
+<p>“我听别人说这世界上有一种鸟是没有脚的，它只能够一直的飞呀飞呀，飞累了就在风里面睡觉，这种鸟一辈子只能下地一次，那一次就是它死的时候。”</p>
+<p>“以前我以为有一种鸟从一开始飞就可以飞到死的一天才落地，其实他什么地方都没有去过，这只鸟从一开始就已经死了。”</p>
+</blockquote>
+<a id="more"></a>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1944473&auto=1&height=66"></iframe>
+
+<h4 id="一分钟"><a href="#一分钟" class="headerlink" title="一分钟:"></a>一分钟:</h4><p>张国荣：十六号，四月十六号。一九六零年四月十六号下午三点之前的一分钟你和我在一起，因为你我会记住这一分钟。从现在开始我们就是一分钟的朋友，这是事实，你改变不了，因为已经过去了。我明天会再来。<br>　　<br>张曼玉独白：我不知道他有没有因为我而记住那一分钟，但我一直都记住这个人。之后他真的每天都来，我们就从一分钟的朋友变成两分钟的朋友，没多久，我们每天至少见一个小时。 </p>
+<p>张曼玉：我以前以为一分钟很快就会过去，其实是可以很长的。有一天有个人指着手表跟我说，他说会因为那一分钟而永远记住我，那时候我觉得很动听…但现在我看着时钟，我就告诉自己，我要从这一分钟开始忘掉这个人。 </p>
+<p>刘德华：“去年四月十六号三点你在做什么？”<br>张国荣说：“她告诉你的啊”<br>　　<br>“要记得的我永远都会记得。”</p>
+<h4 id="妥协"><a href="#妥协" class="headerlink" title="妥协:"></a>妥协:</h4><p>张曼玉：我想搬到这里和你一起住。<br>张国荣：好。<br>张曼玉：那我怎样跟我爸说呀？<br>张国荣：说什么？<br>张曼玉：我们的事呀。<br>张国荣：我们的什么事？<br>。。。<br>张曼玉：你会不会和我结婚？<br>张国荣：不会<br>张曼玉：我以后不会再来了</p>
+<p>张曼玉：我还是想搬到这里和你一起住。<br>张国荣：我不会和你结婚<br>张曼玉：不结婚也没关系，我就是想和你在一起<br>张国荣：你能容忍一刻，难道你一辈子不结婚？ </p>
+<h4 id="那只鸟"><a href="#那只鸟" class="headerlink" title="那只鸟:"></a>那只鸟:</h4><p>“我听别人说这世界上有一种鸟是没有脚的，它只能够一直的飞呀飞呀，飞累了就在风里面睡觉，这种鸟一辈子只能下地一次，那一次就是它死的时候。”</p>
+<p>“以前我以为有一种鸟从一开始飞就可以飞到死的一天才落地，其实他什么地方都没有去过，这只鸟从一开始就已经死了。” </p>
+<h4 id="生母"><a href="#生母" class="headerlink" title="生母:"></a>生母:</h4><p>张国荣从母亲家里出来后，那一段的独白：我终于来到亲生母亲的家了，但是她不肯见我，佣人说她已经不住这里了。当我离开这房子的时候，我知道身后有一双眼睛盯着我，但我是一定不会回头的。我只不过想见见她，看看她的样子，既然她不给我机会，我也一定不会给她机会。</p>
+<h4 id="无情"><a href="#无情" class="headerlink" title="无情:"></a>无情:</h4><p> 张国荣：你走出去以后就不要再回来了。<br> 刘嘉玲：你是不是对每个女人都是这样子。</p>
+<p>  张国荣：我这一辈子不知道还会喜欢多少个女人，不到最后我也不知道会喜欢哪一个。 </p>
+<h4 id="两个女人"><a href="#两个女人" class="headerlink" title="两个女人:"></a>两个女人:</h4><p>张曼玉：坐一会儿好了，过会我们要关门了。 </p>
+<p>刘嘉玲：其实我不应该来的，我不应该给你一个痛快的机会。不过我始终觉得他爱我多一点，说到底他是因为我而离开你的。<br>张曼玉：这种事，早点知道比晚点知道要好。现在哭的是你又不是我。我已经没事很久了。 </p>
+]]></content>
+      <categories>
+        <category>电影</category>
+      </categories>
+      <tags>
+        <tag>电影</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>逃避自由书摘</title>
     <url>/year/11/27/%E9%80%83%E9%81%BF%E8%87%AA%E7%94%B1%E4%B9%A6%E6%91%98/</url>
     <content><![CDATA[<ul>
@@ -6088,168 +6250,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
 ]]></content>
       <tags>
         <tag>诗</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>阿飞正传台词</title>
-    <url>/year/01/10/%E9%98%BF%E9%A3%9E%E6%AD%A3%E4%BC%A0%E5%8F%B0%E8%AF%8D/</url>
-    <content><![CDATA[<blockquote>
-<p>“我听别人说这世界上有一种鸟是没有脚的，它只能够一直的飞呀飞呀，飞累了就在风里面睡觉，这种鸟一辈子只能下地一次，那一次就是它死的时候。”</p>
-<p>“以前我以为有一种鸟从一开始飞就可以飞到死的一天才落地，其实他什么地方都没有去过，这只鸟从一开始就已经死了。”</p>
-</blockquote>
-<a id="more"></a>
-
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1944473&auto=1&height=66"></iframe>
-
-<h4 id="一分钟"><a href="#一分钟" class="headerlink" title="一分钟:"></a>一分钟:</h4><p>张国荣：十六号，四月十六号。一九六零年四月十六号下午三点之前的一分钟你和我在一起，因为你我会记住这一分钟。从现在开始我们就是一分钟的朋友，这是事实，你改变不了，因为已经过去了。我明天会再来。<br>　　<br>张曼玉独白：我不知道他有没有因为我而记住那一分钟，但我一直都记住这个人。之后他真的每天都来，我们就从一分钟的朋友变成两分钟的朋友，没多久，我们每天至少见一个小时。 </p>
-<p>张曼玉：我以前以为一分钟很快就会过去，其实是可以很长的。有一天有个人指着手表跟我说，他说会因为那一分钟而永远记住我，那时候我觉得很动听…但现在我看着时钟，我就告诉自己，我要从这一分钟开始忘掉这个人。 </p>
-<p>刘德华：“去年四月十六号三点你在做什么？”<br>张国荣说：“她告诉你的啊”<br>　　<br>“要记得的我永远都会记得。”</p>
-<h4 id="妥协"><a href="#妥协" class="headerlink" title="妥协:"></a>妥协:</h4><p>张曼玉：我想搬到这里和你一起住。<br>张国荣：好。<br>张曼玉：那我怎样跟我爸说呀？<br>张国荣：说什么？<br>张曼玉：我们的事呀。<br>张国荣：我们的什么事？<br>。。。<br>张曼玉：你会不会和我结婚？<br>张国荣：不会<br>张曼玉：我以后不会再来了</p>
-<p>张曼玉：我还是想搬到这里和你一起住。<br>张国荣：我不会和你结婚<br>张曼玉：不结婚也没关系，我就是想和你在一起<br>张国荣：你能容忍一刻，难道你一辈子不结婚？ </p>
-<h4 id="那只鸟"><a href="#那只鸟" class="headerlink" title="那只鸟:"></a>那只鸟:</h4><p>“我听别人说这世界上有一种鸟是没有脚的，它只能够一直的飞呀飞呀，飞累了就在风里面睡觉，这种鸟一辈子只能下地一次，那一次就是它死的时候。”</p>
-<p>“以前我以为有一种鸟从一开始飞就可以飞到死的一天才落地，其实他什么地方都没有去过，这只鸟从一开始就已经死了。” </p>
-<h4 id="生母"><a href="#生母" class="headerlink" title="生母:"></a>生母:</h4><p>张国荣从母亲家里出来后，那一段的独白：我终于来到亲生母亲的家了，但是她不肯见我，佣人说她已经不住这里了。当我离开这房子的时候，我知道身后有一双眼睛盯着我，但我是一定不会回头的。我只不过想见见她，看看她的样子，既然她不给我机会，我也一定不会给她机会。</p>
-<h4 id="无情"><a href="#无情" class="headerlink" title="无情:"></a>无情:</h4><p> 张国荣：你走出去以后就不要再回来了。<br> 刘嘉玲：你是不是对每个女人都是这样子。</p>
-<p>  张国荣：我这一辈子不知道还会喜欢多少个女人，不到最后我也不知道会喜欢哪一个。 </p>
-<h4 id="两个女人"><a href="#两个女人" class="headerlink" title="两个女人:"></a>两个女人:</h4><p>张曼玉：坐一会儿好了，过会我们要关门了。 </p>
-<p>刘嘉玲：其实我不应该来的，我不应该给你一个痛快的机会。不过我始终觉得他爱我多一点，说到底他是因为我而离开你的。<br>张曼玉：这种事，早点知道比晚点知道要好。现在哭的是你又不是我。我已经没事很久了。 </p>
-]]></content>
-      <categories>
-        <category>电影</category>
-      </categories>
-      <tags>
-        <tag>电影</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>弗洛姆-《逃避自由》</title>
-    <url>/year/12/17/%E9%80%83%E9%81%BF%E8%87%AA%E7%94%B1/</url>
-    <content><![CDATA[<blockquote>
-<p>我没有身份，根本没有我自己，我不过是他人希望我什么的一种反映；我是「如同你希望的」。</p>
-</blockquote>
-<a id="more"></a>
-
-<p>自由意志的虚幻性，它的可怕之处就在于很多人都没有意识到这一点。 </p>
-<p>在现代社会中，人们似乎拥有了「可以不做什么」的自由，似乎可以按照自己的想法而活，但真是如此吗？想想我们自己所做的那些决定吧，学习，工作，赚钱，买房，结婚，生子……究竟是出自内心的真实想法还是仅仅为了过上他人眼中「正常的生活」？我们拼命工作，戴上面具进行各种表演，为了「责任」而放弃乐趣和幸福，难道真是为了不愧对自己这一生？ </p>
-<p>与外在权威相对应，弗洛姆把公共舆论和大众意识称为「匿名权威」，这股看不见的力量正是操控我们生活的幕后黑手，一举剥夺了我们感觉，思考和意志的真实性。我们无可救药地「按照他人的要求对自己的一切作出规划，被孤独感，恐惧感和各种直接威胁着我们的自由，生命和舒适的力量所驱使」；我们欺骗自己找到了为之拼命奋斗的自我，最后却发现那只不过是社会的自我。 </p>
-<p>金钱，地位，权力，家庭，民族，偶像……支撑起了我们脆弱的生活，依靠这些外在的力量，我们获得了安全感，当然同时也放弃了自由。但是，「这种安全感只是表面上的，一旦支撑它的那些因素不存在了，安全感也随之消失」。 可是另一条路也布满了荆棘，物质上的损失倒是小事，不被人理解的孤独和不安定的生活并不是每个人都能坦然接受的。 </p>
-<p>弗洛姆给出的药方是投身于自发性的活动，也即爱和创造性活动，在这种积极的自由状态下，我们按自己内心生活，同时也能感知和世界，他人的紧密联系。他觉得艺术家和小孩子是积极自由的典型代表。 </p>
-<p>但我觉得弗洛姆太过理想化了，要不怎么会在七十多年后的今天，很多人依旧会迷茫，会不快乐呢？对于绝大多数人来说，这就是一个残酷的选择题：逃避自由，还是忍受孤独？而很多人还是会选择前者，也正常，追寻自由的代价太大，倒不如糊涂一世来得安稳。「为自己而活」这几个字说得轻巧，真要做到太不容易，所以每个人的选择我也都能理解。只是可笑人们追寻了那么久的自由，到头来仍是镜花水月。 </p>
-<p>但希望总是有的，正如弗洛姆说到自发性给我们带来的欢乐：「我们多数人至少可以在刹那间察觉到我们自身的自发性，而正是在这刹那间，我们获得了真正的欢乐。」 </p>
-<p>幸运的是，还有人愿意坚持把这一刹那变为永恒。这样的人从来都不会很多，但有这么一群人就足够了。</p>
-]]></content>
-      <categories>
-        <category>阅读</category>
-      </categories>
-      <tags>
-        <tag>读书</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Markdown入门</title>
-    <url>/year/09/08/Markdown%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<blockquote>
-<p><a href="https://zh.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener">Markdown</a>是一种<a href="https://zh.wikipedia.org/wiki/%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">轻量级标记语言</a>，它的优点在于易于阅读、易于撰写的纯文字格式， 并且可以自由转换成多种格式。目前也被越来越多的写作爱好者，撰稿者广泛使用。</p>
-</blockquote>
-<a id="more"></a>
-
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Markdown旨在尽可能容易阅读和易于写入。</p>
-<p>然而，可读性首先被强调。标记格式的文档应该按照原样发布，而不是像标签或格式化说明一样标记。虽然Markdown的语法受到几个现有的文本到HTML过滤器的影响，包括Setext，atx，Textile，reStructuredText， Grutatext和EtText - Markdown语法的最大灵感来源是纯文本电子邮件的格式。</p>
-<p>为此，Markdown的语法完全由标点符号组成，标点符号被仔细选择，看起来就像它们的意思。例如，一个字上的星号实际上看起来像<em>强调</em>。标记列表看起来好像列表。</p>
-<h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><p>Markdown作为一种轻量级标记语言，它的语法简洁明了、学习起来容易。</p>
-<p>参考：<br><a href="https://daringfireball.net/projects/markdown/syntax" target="_blank" rel="noopener">官方说明</a><br><a href="http://wowubuntu.com/markdown/#list" target="_blank" rel="noopener">Markdown 中文版语法说明 </a></p>
-<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line"># 第一级标题</span><br><span class="line">## 第二级标题</span><br><span class="line">###### 第六级标题</span><br></pre></td></tr></table></figure>
-
-<p>效果如下：</p>
-<h1 id="第一级标题"><a href="#第一级标题" class="headerlink" title="第一级标题"></a>第一级标题</h1><h2 id="第二级标题"><a href="#第二级标题" class="headerlink" title="第二级标题"></a>第二级标题</h2><h6 id="第六级标题"><a href="#第六级标题" class="headerlink" title="第六级标题"></a>第六级标题</h6><h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">*这些文字会生成*</span><br><span class="line">_这些文字会生成<span class="string">`_</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">**这些文字会生成**</span></span><br><span class="line"><span class="string">__这些文字会生成`</span>__</span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<p><em>这些文字会生成</em><br><em>这些文字会生成`</em></p>
-<p><strong>这些文字会生成</strong><br><strong>这些文字会生成`</strong></p>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">* 列表一</span><br><span class="line">* 列表二</span><br><span class="line">* 列表三</span><br></pre></td></tr></table></figure>
-<p>效果：</p>
-<ul>
-<li>列表一</li>
-<li>列表二</li>
-<li>列表三</li>
-</ul>
-<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> 列表一</span><br><span class="line"><span class="number">2.</span> 列表二</span><br><span class="line"><span class="number">3.</span> 列表三</span><br></pre></td></tr></table></figure>
-
-<p>效果如下：</p>
-<ol>
-<li>列表一</li>
-<li>列表二</li>
-<li>列表三</li>
-</ol>
-<h3 id="任务列表（Task-lists）"><a href="#任务列表（Task-lists）" class="headerlink" title="任务列表（Task lists）"></a>任务列表（Task lists）</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">- [ ] 任务一 未做任务</span><br><span class="line">- [x] 任务二 已做任务</span><br></pre></td></tr></table></figure>
-
-<p>效果如下：</p>
-<ul>
-<li><input disabled="" type="checkbox"> 任务一 未做任务</li>
-<li><input checked="" disabled="" type="checkbox"> 任务二 已做任务</li>
-</ul>
-<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">![图片名称](地址)</span><br></pre></td></tr></table></figure>
-
-<h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[名称](链接地址)</span><br></pre></td></tr></table></figure>
-<h2 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">某某说:</span><br><span class="line">&gt; balabala</span><br></pre></td></tr></table></figure>
-<p>效果：<br>某某说:</p>
-<blockquote>
-<p>balabala</p>
-</blockquote>
-<h2 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">`代码`</span></span><br></pre></td></tr></table></figure>
-<p>效果如下：<br><code>代码</code></p>
-<h2 id="多行或者一段代码"><a href="#多行或者一段代码" class="headerlink" title="多行或者一段代码"></a>多行或者一段代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">代码段</span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">代码段</span><br></pre></td></tr></table></figure>
-
-<h2 id="顺序图或流程图"><a href="#顺序图或流程图" class="headerlink" title="顺序图或流程图"></a>顺序图或流程图</h2><pre><code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">张三-&gt;李四: 嘿，小四儿, 你妈喊你回家吃饭呢！</span><br><span class="line">Note right of 李四: 李四愣了一下，说：</span><br><span class="line">李四--&gt;张三: 哦，知道啦！</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">st&#x3D;&gt;start: 开始</span><br><span class="line">e&#x3D;&gt;end: 结束</span><br><span class="line">op&#x3D;&gt;operation: 我的操作</span><br><span class="line">cond&#x3D;&gt;condition: 确认？</span><br><span class="line"></span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure></code></pre><p>效果：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">张三-&gt;李四: 嘿，小四儿, 你妈喊你回家吃饭呢！</span><br><span class="line">Note right of 李四: 李四愣了一下，说：</span><br><span class="line">李四--&gt;张三: 哦，知道啦！</span><br></pre></td></tr></table></figure>
-
-<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><p>Markdown 语法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">表头一 | 表头二</span><br><span class="line">--------- | -------------</span><br><span class="line">第一列第一格 | 格第二列第一格</span><br><span class="line">第一列第二格 | 格第二列第二格</span><br></pre></td></tr></table></figure>
-
-<p>效果如下：</p>
-<table>
-<thead>
-<tr>
-<th>表头一</th>
-<th>表头二</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>第一列第一格</td>
-<td>格第二列第一格</td>
-</tr>
-<tr>
-<td>第一列第二格</td>
-<td>格第二列第二格</td>
-</tr>
-</tbody></table>
-<h4 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">~~删除这些~~</span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<p><del>删除这些</del></p>
-<h4 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h4><p>以下三种方式都可以生成分隔线：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">***</span><br><span class="line"></span><br><span class="line">*****</span><br><span class="line"></span><br><span class="line">- - -</span><br></pre></td></tr></table></figure>
-
-<p>效果如下：</p>
-<hr>
-<hr>
-<hr>
-<h4 id="脚注（Footnote）"><a href="#脚注（Footnote）" class="headerlink" title="脚注（Footnote）"></a>脚注（Footnote）</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">这是一个脚注：[^sample_footnote]</span><br></pre></td></tr></table></figure>
-
-<p>效果如下：</p>
-<p>这是一个脚注：<a href="这里是脚注信息">^sample_footnote</a></p>
-<h2 id="工具："><a href="#工具：" class="headerlink" title="工具："></a>工具：</h2><p>常见的Markdown工具有<a href="https://ulyssesapp.com/" target="_blank" rel="noopener">Ulysses</a>，<a href="http://25.io/mou/" target="_blank" rel="noopener">Mou</a>，<a href="http://www.sublimetext.com/3" target="_blank" rel="noopener">Sublime Text 3</a>等等。</p>
-<p>个人比较喜欢<a href="https://itunes.apple.com/cn/app/mweb-%E4%B8%93%E4%B8%9A%E7%9A%84markdown%E5%86%99%E4%BD%9C-%E8%AE%B0%E7%AC%94%E8%AE%B0-%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%94%9F%E6%88%90%E8%BD%AF%E4%BB%B6/id954188948?mt=12" target="_blank" rel="noopener">mweb</a>，几乎所有的语法都有对应的快捷键，而且还能一键生成&amp;上传至博客。</p>
-<p>具体使用方法见<a href="http://zh.mweb.im/help.html" target="_blank" rel="noopener">官方文档</a>。</p>
-<p>另外还有一个<a href="https://itunes.apple.com/cn/app/mweb-lite-%E4%B8%93%E4%B8%9A%E7%9A%84markdown%E5%86%99%E4%BD%9C%E8%BD%AF%E4%BB%B6/id979033429?mt=12" target="_blank" rel="noopener">免费版的</a>，<br><img src="http://ovlnt0xy1.bkt.clouddn.com/mweb.png" alt=""></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Markdown</tag>
       </tags>
   </entry>
   <entry>
