@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用ADB无线连接Android真机进行调试</title>
+    <url>/year/01/05/ADB%E6%97%A0%E7%BA%BF%E8%BF%9E%E6%8E%A5Android%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95/</url>
+    <content><![CDATA[<p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-006tKfTcgy1fqa8x1kfm7j30gi08n74m.jpg" alt=""></p>
+<a id="more"></a>
+
+<h2 id="什么是-ADB"><a href="#什么是-ADB" class="headerlink" title="什么是 ADB?"></a>什么是 ADB?</h2><p>Android调试桥（ adb ）是一个开发工具，帮助安卓设备和个人计算机之间的通信。 这种通信大多是在USB电缆下进行，但是也支持Wi-Fi连接。 adb 还可被用来与电脑上运行的安卓模拟器交流通信。 adb 对于安卓开发来说就像一把“瑞士军刀”。</p>
+<h2 id="通过-Homebrew-安装"><a href="#通过-Homebrew-安装" class="headerlink" title="通过 Homebrew 安装"></a>通过 Homebrew 安装</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">brew cask install android-platform-tools</span><br></pre></td></tr></table></figure>
+
+<p>测试是否安装正常</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+
+<h2 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h2><ul>
+<li>手机和电脑处于同一个局域网内</li>
+<li>电脑上已经安装好ADB工具</li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1、打开手机"><a href="#1、打开手机" class="headerlink" title="1、打开手机"></a>1、打开手机</h3><p>让手机在指定的端口可以接收到TCP/IP连接。</p>
+<ol>
+<li>确保手机开启了usb调试</li>
+<li>用usb线把手机和电脑连接起来</li>
+<li>执行命令：adb tcpip 5555</li>
+</ol>
+<p>执行成功后就可以把usb线拔掉了，端口可以不是5555，这个官方默认使用的。</p>
+<h3 id="2、找到手机的的IP地址"><a href="#2、找到手机的的IP地址" class="headerlink" title="2、找到手机的的IP地址"></a>2、找到手机的的IP地址</h3><p>执行命令</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">192.168</span><span class="number">.1</span><span class="number">.100</span>:<span class="number">5555</span></span><br></pre></td></tr></table></figure>
+<p>如果提示：</p>
+<blockquote>
+<p>connected to 192.160.1.100:5555</p>
+</blockquote>
+<p>则表示连接成功，如果端口号是5555可以省略，直接：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db connect <span class="number">192.168</span><span class="number">.1</span><span class="number">.100</span></span><br></pre></td></tr></table></figure>
+<h3 id="如果没有连接成功"><a href="#如果没有连接成功" class="headerlink" title="如果没有连接成功"></a>如果没有连接成功</h3><p>如果确定你的网络和端口都没问题，可以尝试重启一下adb服务：</p>
+<blockquote>
+<p>adb kill-server</p>
+</blockquote>
+<p>然后再进行连接，实在还是不行就Google吧。</p>
+<h3 id="连接成功"><a href="#连接成功" class="headerlink" title="连接成功"></a>连接成功</h3><p>如果连接成功的话，执行以下命令查看当前连接的设备列表：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+<p>可以看到连接的设备，像这样</p>
+<blockquote>
+<p>$ adb devices<br>List of devices attached<br>192.168.1.100:5555 device</p>
+</blockquote>
+<p>以后没有数据线也可以调试手机或者在上面运行自动化测试了。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>更换一个网络环境需要使用新IP重新connect即可。</li>
+<li>但是如果手机重启了，就需要重新连接数据线再次开启端口。</li>
+<li>开启端口可以通过adb，也可以直接在手机上打开，但一般需要root权限和特殊软件。</li>
+</ol>
+<p>原文地址：<a href="https://betacat.online/posts/2017-12-12/connect-adb-via-wifi/" target="_blank" rel="noopener">戳这里</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>调试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Alacritty</title>
     <url>/year/01/20/Alacritty/</url>
     <content><![CDATA[<p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gmtm45q5qaj31980ekdic.jpg" alt="image-20210120032619740"></p>
@@ -166,63 +223,6 @@ docker port web //查看端口</code></pre><h3 id="镜像"><a href="#镜像" cla
       </categories>
       <tags>
         <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用ADB无线连接Android真机进行调试</title>
-    <url>/year/01/05/ADB%E6%97%A0%E7%BA%BF%E8%BF%9E%E6%8E%A5Android%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95/</url>
-    <content><![CDATA[<p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-006tKfTcgy1fqa8x1kfm7j30gi08n74m.jpg" alt=""></p>
-<a id="more"></a>
-
-<h2 id="什么是-ADB"><a href="#什么是-ADB" class="headerlink" title="什么是 ADB?"></a>什么是 ADB?</h2><p>Android调试桥（ adb ）是一个开发工具，帮助安卓设备和个人计算机之间的通信。 这种通信大多是在USB电缆下进行，但是也支持Wi-Fi连接。 adb 还可被用来与电脑上运行的安卓模拟器交流通信。 adb 对于安卓开发来说就像一把“瑞士军刀”。</p>
-<h2 id="通过-Homebrew-安装"><a href="#通过-Homebrew-安装" class="headerlink" title="通过 Homebrew 安装"></a>通过 Homebrew 安装</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">brew cask install android-platform-tools</span><br></pre></td></tr></table></figure>
-
-<p>测试是否安装正常</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
-
-<h2 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h2><ul>
-<li>手机和电脑处于同一个局域网内</li>
-<li>电脑上已经安装好ADB工具</li>
-</ul>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1、打开手机"><a href="#1、打开手机" class="headerlink" title="1、打开手机"></a>1、打开手机</h3><p>让手机在指定的端口可以接收到TCP/IP连接。</p>
-<ol>
-<li>确保手机开启了usb调试</li>
-<li>用usb线把手机和电脑连接起来</li>
-<li>执行命令：adb tcpip 5555</li>
-</ol>
-<p>执行成功后就可以把usb线拔掉了，端口可以不是5555，这个官方默认使用的。</p>
-<h3 id="2、找到手机的的IP地址"><a href="#2、找到手机的的IP地址" class="headerlink" title="2、找到手机的的IP地址"></a>2、找到手机的的IP地址</h3><p>执行命令</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">adb connect <span class="number">192.168</span><span class="number">.1</span><span class="number">.100</span>:<span class="number">5555</span></span><br></pre></td></tr></table></figure>
-<p>如果提示：</p>
-<blockquote>
-<p>connected to 192.160.1.100:5555</p>
-</blockquote>
-<p>则表示连接成功，如果端口号是5555可以省略，直接：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">db connect <span class="number">192.168</span><span class="number">.1</span><span class="number">.100</span></span><br></pre></td></tr></table></figure>
-<h3 id="如果没有连接成功"><a href="#如果没有连接成功" class="headerlink" title="如果没有连接成功"></a>如果没有连接成功</h3><p>如果确定你的网络和端口都没问题，可以尝试重启一下adb服务：</p>
-<blockquote>
-<p>adb kill-server</p>
-</blockquote>
-<p>然后再进行连接，实在还是不行就Google吧。</p>
-<h3 id="连接成功"><a href="#连接成功" class="headerlink" title="连接成功"></a>连接成功</h3><p>如果连接成功的话，执行以下命令查看当前连接的设备列表：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
-<p>可以看到连接的设备，像这样</p>
-<blockquote>
-<p>$ adb devices<br>List of devices attached<br>192.168.1.100:5555 device</p>
-</blockquote>
-<p>以后没有数据线也可以调试手机或者在上面运行自动化测试了。</p>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
-<li>更换一个网络环境需要使用新IP重新connect即可。</li>
-<li>但是如果手机重启了，就需要重新连接数据线再次开启端口。</li>
-<li>开启端口可以通过adb，也可以直接在手机上打开，但一般需要root权限和特殊软件。</li>
-</ol>
-<p>原文地址：<a href="https://betacat.online/posts/2017-12-12/connect-adb-via-wifi/" target="_blank" rel="noopener">戳这里</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>调试</tag>
       </tags>
   </entry>
   <entry>
@@ -833,6 +833,25 @@ hexo g -d</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Next主题指定文章隐藏侧栏</title>
+    <url>/year/01/22/Next%E4%B8%BB%E6%8E%A8%E6%8C%87%E5%AE%9A%E6%96%87%E7%AB%A0%E9%9A%90%E8%97%8F%E4%BE%A7%E6%A0%8F/</url>
+    <content><![CDATA[<h4 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h4><p>可能你需要加一个单独的页面，比如about页面，希望隐藏next主题的侧栏，那么请看下去。</p>
+<a id="more"></a>
+
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><p>根据<a href="https://github.com/iissnan/hexo-theme-next/issues/943" target="_blank" rel="noopener">issues-943</a>找到了my-project/themes/next/layout/_marcro/sidebar.swig中找到下一列信息。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">set</span> display_toc = is_post and theme.toc.enable or is_page and theme.toc.enable %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改为：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">set</span> display_toc = is_post and theme.toc.enable and !page.no_toc or is_page and theme.toc.enable and !page.no_toc %&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>这样你就可以在不想要显示目录的文章头部加一行：<code>no_toc: true</code>即可。</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>把”时间“变成”历史“</title>
     <url>/year/07/05/Time-becomes-History/</url>
     <content><![CDATA[<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggg0zcma45j30sr0c0kb8.jpg" alt=""></p>
@@ -1089,82 +1108,6 @@ hexo g -d</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Docker 创建 PXC 高可用集群并配置 Harpoxy 负载均衡</title>
-    <url>/year/05/23/docker-pxc/</url>
-    <content><![CDATA[<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3b6n7xz6kj327w0j8qah.jpg" alt=""></p>
-<a id="more"></a>
-
-<h2 id="创建-PXC-集群环境"><a href="#创建-PXC-集群环境" class="headerlink" title="创建 PXC 集群环境"></a>创建 PXC 集群环境</h2><h3 id="拉取-percona-xtradb-cluster-镜像"><a href="#拉取-percona-xtradb-cluster-镜像" class="headerlink" title="拉取 percona-xtradb-cluster 镜像"></a>拉取 percona-xtradb-cluster 镜像</h3><p>官方镜像地址：<a href="https://hub.docker.com/r/percona/percona-xtradb-cluster" target="_blank" rel="noopener">https://hub.docker.com/r/percona/percona-xtradb-cluster</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull percona&#x2F;percona-xtradb-cluster</span><br></pre></td></tr></table></figure>
-<p>percona/percona-xtradb-cluster 太长，我们换个名字叫做pxc，操作如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker tag percona&#x2F;percona-xtradb-cluster pxc</span><br></pre></td></tr></table></figure>
-
-<p>并将开始拉去的镜像删除，操作如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi percona&#x2F;percona-xtradb-cluster</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建docker网络"><a href="#创建docker网络" class="headerlink" title="创建docker网络"></a>创建docker网络</h4><p>出于安全考虑，将PXC集群放置于docker内部网络中。只需将宿主的端口与之映射并开放出来即可。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker network create --subnet&#x3D;172.18.0.0&#x2F;24 net1</span><br></pre></td></tr></table></figure>
-
-<p>其中，–subnet=172.18.0.0/24自定义网段172.18.0.0，24是指24位子网掩码 net1 网段名称。</p>
-<p>执行成功后，我们可以通过<code>sudo docker inspect net1</code>查看内部网络信息。</p>
-<h4 id="创建docker卷"><a href="#创建docker卷" class="headerlink" title="创建docker卷"></a>创建docker卷</h4><p>docker容器的运行规则：通过目录映射的方法，将业务数据写入到宿主机中。好处是如果容器故障，只需将容器删除，重新启用一个容器即可，这样就不会丢失原来的数据。 由于PXC较为特殊，无法直接使用映射目录的方法做映射（使用后会闪退），故使用docker卷。 在命令行使用如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker volume create --name v1</span><br><span class="line">docker volume create --name v2</span><br><span class="line">docker volume create --name v3</span><br></pre></td></tr></table></figure>
-<p>计划创建3个数据库节点，所以这里对应创建3个数据卷。</p>
-<h3 id="创建第一个容器节点："><a href="#创建第一个容器节点：" class="headerlink" title="创建第一个容器节点："></a>创建第一个容器节点：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3306:3306 -v v1:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">    -e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">    -e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">    -e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">    --privileged \</span><br><span class="line">    --name&#x3D;node1 \</span><br><span class="line">    --net&#x3D;net1 \</span><br><span class="line">    --ip 172.18.0.2 \</span><br><span class="line">    pxc</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>-d 默认在后台运行, -p 3306（宿主）:3306（容器） 端口映射，将容器3306端口映射到宿主3306端口 -v 目录映射，将第四步创建的v1映射到容器/var/lib/mysql -e MYSQL_ROOT_PASSROWD 创建的用户实例的密码，默认实例root -e CLUSTER_NAME 集群名称， -e XTRABACKUP_PASSWORD 数据库之间同步使用的密码 –privileged 权限.给予最高权限 –name 给容器容命名 –net 使用内部网段 –ip 内部网段分到的地址</p>
-</blockquote>
-<h4 id="测试连接："><a href="#测试连接：" class="headerlink" title="测试连接："></a>测试连接：</h4><p>需要注意的是容器启动的速度虽然很快，但是pxc初始化是需要一点时间的（大概两分钟左右），必须等第一个容器初始化完成后再启动第二个pxc容器，不然会报错。</p>
-<p>测试连接成功后就可以启动其他pxc容器了</p>
-<p>在启动其他容器的时候需要更改映射的宿主机端口、容器的名称，还有指定 IP 地址。</p>
-<h3 id="创建第二个容器节点："><a href="#创建第二个容器节点：" class="headerlink" title="创建第二个容器节点："></a>创建第二个容器节点：</h3><blockquote>
-<p>注意：在启动其他容器的时候需要更改映射的宿主机端口、容器的名称，还有指定 IP 地址。</p>
-<p> -e CLUSTER_JOIN=node1 用于连接第一个数据库节点</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3307:3306 -v v2:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">-e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_JOIN&#x3D;node1 \</span><br><span class="line">--privileged \</span><br><span class="line">--name&#x3D;node2 \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--ip 172.18.0.3 \</span><br><span class="line">pxc</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="创建第三个容器节点："><a href="#创建第三个容器节点：" class="headerlink" title="创建第三个容器节点："></a>创建第三个容器节点：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3308:3306 -v v3:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">-e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_JOIN&#x3D;node1 \</span><br><span class="line">--privileged \</span><br><span class="line">--name&#x3D;node3 \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--ip 172.18.0.4 \</span><br><span class="line">pxc</span><br></pre></td></tr></table></figure>
-
-
-
-
-<h4 id="测试："><a href="#测试：" class="headerlink" title="测试："></a>测试：</h4><p>用数据库连接工具连接三个数据库，在node创建数据库<code>test</code></p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">database</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure>
-
-<p>如果其他数据库都同步过来那就没有问题了。</p>
-<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3a21d0wupj30si0b2jsk.jpg" alt=""></p>
-<h2 id="Harpoxy-负载均衡"><a href="#Harpoxy-负载均衡" class="headerlink" title="Harpoxy 负载均衡"></a>Harpoxy 负载均衡</h2><p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3a1w7txi0j31dk0maagw.jpg" alt=""></p>
-<h3 id="创建-haproxy-配置文件，并放到指定的宿主机目录。"><a href="#创建-haproxy-配置文件，并放到指定的宿主机目录。" class="headerlink" title="创建 haproxy 配置文件，并放到指定的宿主机目录。"></a>创建 haproxy 配置文件，并放到指定的宿主机目录。</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">global</span><br><span class="line">        #工作目录</span><br><span class="line">        chroot &#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy</span><br><span class="line">        #日志文件，使用rsyslog服务中local5日志设备（&#x2F;var&#x2F;log&#x2F;local5），等级info</span><br><span class="line">        log 127.0.0.1 local5 info</span><br><span class="line">        #守护进程运行</span><br><span class="line">        daemon</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">        log     global</span><br><span class="line">        mode    http</span><br><span class="line">        #日志格式</span><br><span class="line">        option  httplog</span><br><span class="line">        #日志中不记录负载均衡的心跳检测记录</span><br><span class="line">        option  dontlognull</span><br><span class="line">        #连接超时（毫秒）</span><br><span class="line">        timeout connect 5000</span><br><span class="line">        #客户端超时（毫秒）</span><br><span class="line">        timeout client  50000</span><br><span class="line">        #服务器超时（毫秒）</span><br><span class="line">        timeout server  50000</span><br><span class="line"></span><br><span class="line">#监控界面   </span><br><span class="line">listen  admin_stats</span><br><span class="line">        #监控界面的访问的IP和端口</span><br><span class="line">        bind  0.0.0.0:8888</span><br><span class="line">        #访问协议</span><br><span class="line">        mode        http</span><br><span class="line">        #URI相对地址</span><br><span class="line">        stats uri   &#x2F;dbs</span><br><span class="line">        #统计报告格式</span><br><span class="line">        stats realm     Global\ statistics</span><br><span class="line">        #登陆帐户信息</span><br><span class="line">        stats auth  admin:123456</span><br><span class="line">#数据库负载均衡</span><br><span class="line">listen  proxy-mysql</span><br><span class="line">        #访问的IP和端口</span><br><span class="line">        bind  0.0.0.0:3306  </span><br><span class="line">        #网络协议</span><br><span class="line">        mode  tcp</span><br><span class="line">        #负载均衡算法（轮询算法）</span><br><span class="line">        #轮询算法：roundrobin</span><br><span class="line">        #权重算法：static-rr</span><br><span class="line">        #最少连接算法：leastconn</span><br><span class="line">        #请求源IP算法：source</span><br><span class="line">        balance  roundrobin</span><br><span class="line">       #日志格式</span><br><span class="line">        option  tcplog</span><br><span class="line">        #在MySQL中创建一个没有权限的haproxy用户，密码为空。Haproxy使用这个账户对MySQL数据库心跳检测</span><br><span class="line">        option  mysql-check user haproxy</span><br><span class="line">        server  MySQL_1 172.18.0.2:3306 check weight 1 maxconn 2000  </span><br><span class="line">        server  MySQL_2 172.18.0.3:3306 check weight 1 maxconn 2000  </span><br><span class="line">        server  MySQL_2 172.18.0.4:3306 check weight 1 maxconn 2000  </span><br><span class="line">        #使用keepalive检测死链</span><br><span class="line">        option  tcpka</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动-haproxy-容器"><a href="#启动-haproxy-容器" class="headerlink" title="启动 haproxy 容器"></a>启动 haproxy 容器</h3><blockquote>
-<p>/Users/xinaogudu/hproxy 是我放置配置文件的目录。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -dit -p 4001:8888 -p 4002:3306 \</span><br><span class="line">-v &#x2F;Users&#x2F;xinaogudu&#x2F;hproxy:&#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy \</span><br><span class="line">--privileged \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--name h1 \</span><br><span class="line">--ip 172.18.0.5 \</span><br><span class="line">haproxy</span><br></pre></td></tr></table></figure>
-
-<h3 id="进入-haproxy-容器指明配置文件"><a href="#进入-haproxy-容器指明配置文件" class="headerlink" title="进入 haproxy 容器指明配置文件"></a>进入 haproxy 容器指明配置文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it h1 bash</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 指定 haproxy 配置文件位置</span><br><span class="line">haproxy -c -f &#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy&#x2F;haproxy.cfg</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="在数据库中创建一个没有密码的-haproxy-用户用于心跳检测。"><a href="#在数据库中创建一个没有密码的-haproxy-用户用于心跳检测。" class="headerlink" title="在数据库中创建一个没有密码的 haproxy 用户用于心跳检测。"></a>在数据库中创建一个没有密码的 haproxy 用户用于心跳检测。</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create user &#39;haproxy&#39;@&#39;%&#39; identified by &#39;&#39;;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><h3 id="登录-haproxy-监控：http-localhost-4001-dbs"><a href="#登录-haproxy-监控：http-localhost-4001-dbs" class="headerlink" title="登录 haproxy 监控：http://localhost:4001/dbs"></a>登录 haproxy 监控：<a href="http://localhost:4001/dbs" target="_blank" rel="noopener">http://localhost:4001/dbs</a></h3><p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3b67er48cj327y0tqwoh.jpg" alt=""></p>
-<h3 id="用数据库管理工具连接-haproxy-端口测试："><a href="#用数据库管理工具连接-haproxy-端口测试：" class="headerlink" title="用数据库管理工具连接 haproxy 端口测试："></a>用数据库管理工具连接 haproxy 端口测试：</h3><p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3b6ajpic6j317m0sq43v.jpg" alt=""></p>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>dokcer</tag>
-        <tag>PXC</tag>
-        <tag>Haproxy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker 学习笔记 （一） 基本原理</title>
     <url>/year/04/06/docker1/</url>
     <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
@@ -1255,6 +1198,82 @@ hexo g -d</code></pre>
       </categories>
       <tags>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 创建 PXC 高可用集群并配置 Harpoxy 负载均衡</title>
+    <url>/year/05/23/docker-pxc/</url>
+    <content><![CDATA[<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3b6n7xz6kj327w0j8qah.jpg" alt=""></p>
+<a id="more"></a>
+
+<h2 id="创建-PXC-集群环境"><a href="#创建-PXC-集群环境" class="headerlink" title="创建 PXC 集群环境"></a>创建 PXC 集群环境</h2><h3 id="拉取-percona-xtradb-cluster-镜像"><a href="#拉取-percona-xtradb-cluster-镜像" class="headerlink" title="拉取 percona-xtradb-cluster 镜像"></a>拉取 percona-xtradb-cluster 镜像</h3><p>官方镜像地址：<a href="https://hub.docker.com/r/percona/percona-xtradb-cluster" target="_blank" rel="noopener">https://hub.docker.com/r/percona/percona-xtradb-cluster</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull percona&#x2F;percona-xtradb-cluster</span><br></pre></td></tr></table></figure>
+<p>percona/percona-xtradb-cluster 太长，我们换个名字叫做pxc，操作如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker tag percona&#x2F;percona-xtradb-cluster pxc</span><br></pre></td></tr></table></figure>
+
+<p>并将开始拉去的镜像删除，操作如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi percona&#x2F;percona-xtradb-cluster</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建docker网络"><a href="#创建docker网络" class="headerlink" title="创建docker网络"></a>创建docker网络</h4><p>出于安全考虑，将PXC集群放置于docker内部网络中。只需将宿主的端口与之映射并开放出来即可。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker network create --subnet&#x3D;172.18.0.0&#x2F;24 net1</span><br></pre></td></tr></table></figure>
+
+<p>其中，–subnet=172.18.0.0/24自定义网段172.18.0.0，24是指24位子网掩码 net1 网段名称。</p>
+<p>执行成功后，我们可以通过<code>sudo docker inspect net1</code>查看内部网络信息。</p>
+<h4 id="创建docker卷"><a href="#创建docker卷" class="headerlink" title="创建docker卷"></a>创建docker卷</h4><p>docker容器的运行规则：通过目录映射的方法，将业务数据写入到宿主机中。好处是如果容器故障，只需将容器删除，重新启用一个容器即可，这样就不会丢失原来的数据。 由于PXC较为特殊，无法直接使用映射目录的方法做映射（使用后会闪退），故使用docker卷。 在命令行使用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker volume create --name v1</span><br><span class="line">docker volume create --name v2</span><br><span class="line">docker volume create --name v3</span><br></pre></td></tr></table></figure>
+<p>计划创建3个数据库节点，所以这里对应创建3个数据卷。</p>
+<h3 id="创建第一个容器节点："><a href="#创建第一个容器节点：" class="headerlink" title="创建第一个容器节点："></a>创建第一个容器节点：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3306:3306 -v v1:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">    -e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">    -e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">    -e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">    --privileged \</span><br><span class="line">    --name&#x3D;node1 \</span><br><span class="line">    --net&#x3D;net1 \</span><br><span class="line">    --ip 172.18.0.2 \</span><br><span class="line">    pxc</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-d 默认在后台运行, -p 3306（宿主）:3306（容器） 端口映射，将容器3306端口映射到宿主3306端口 -v 目录映射，将第四步创建的v1映射到容器/var/lib/mysql -e MYSQL_ROOT_PASSROWD 创建的用户实例的密码，默认实例root -e CLUSTER_NAME 集群名称， -e XTRABACKUP_PASSWORD 数据库之间同步使用的密码 –privileged 权限.给予最高权限 –name 给容器容命名 –net 使用内部网段 –ip 内部网段分到的地址</p>
+</blockquote>
+<h4 id="测试连接："><a href="#测试连接：" class="headerlink" title="测试连接："></a>测试连接：</h4><p>需要注意的是容器启动的速度虽然很快，但是pxc初始化是需要一点时间的（大概两分钟左右），必须等第一个容器初始化完成后再启动第二个pxc容器，不然会报错。</p>
+<p>测试连接成功后就可以启动其他pxc容器了</p>
+<p>在启动其他容器的时候需要更改映射的宿主机端口、容器的名称，还有指定 IP 地址。</p>
+<h3 id="创建第二个容器节点："><a href="#创建第二个容器节点：" class="headerlink" title="创建第二个容器节点："></a>创建第二个容器节点：</h3><blockquote>
+<p>注意：在启动其他容器的时候需要更改映射的宿主机端口、容器的名称，还有指定 IP 地址。</p>
+<p> -e CLUSTER_JOIN=node1 用于连接第一个数据库节点</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3307:3306 -v v2:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">-e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_JOIN&#x3D;node1 \</span><br><span class="line">--privileged \</span><br><span class="line">--name&#x3D;node2 \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--ip 172.18.0.3 \</span><br><span class="line">pxc</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="创建第三个容器节点："><a href="#创建第三个容器节点：" class="headerlink" title="创建第三个容器节点："></a>创建第三个容器节点：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3308:3306 -v v3:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">-e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_JOIN&#x3D;node1 \</span><br><span class="line">--privileged \</span><br><span class="line">--name&#x3D;node3 \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--ip 172.18.0.4 \</span><br><span class="line">pxc</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h4 id="测试："><a href="#测试：" class="headerlink" title="测试："></a>测试：</h4><p>用数据库连接工具连接三个数据库，在node创建数据库<code>test</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">database</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果其他数据库都同步过来那就没有问题了。</p>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3a21d0wupj30si0b2jsk.jpg" alt=""></p>
+<h2 id="Harpoxy-负载均衡"><a href="#Harpoxy-负载均衡" class="headerlink" title="Harpoxy 负载均衡"></a>Harpoxy 负载均衡</h2><p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3a1w7txi0j31dk0maagw.jpg" alt=""></p>
+<h3 id="创建-haproxy-配置文件，并放到指定的宿主机目录。"><a href="#创建-haproxy-配置文件，并放到指定的宿主机目录。" class="headerlink" title="创建 haproxy 配置文件，并放到指定的宿主机目录。"></a>创建 haproxy 配置文件，并放到指定的宿主机目录。</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">global</span><br><span class="line">        #工作目录</span><br><span class="line">        chroot &#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy</span><br><span class="line">        #日志文件，使用rsyslog服务中local5日志设备（&#x2F;var&#x2F;log&#x2F;local5），等级info</span><br><span class="line">        log 127.0.0.1 local5 info</span><br><span class="line">        #守护进程运行</span><br><span class="line">        daemon</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">        log     global</span><br><span class="line">        mode    http</span><br><span class="line">        #日志格式</span><br><span class="line">        option  httplog</span><br><span class="line">        #日志中不记录负载均衡的心跳检测记录</span><br><span class="line">        option  dontlognull</span><br><span class="line">        #连接超时（毫秒）</span><br><span class="line">        timeout connect 5000</span><br><span class="line">        #客户端超时（毫秒）</span><br><span class="line">        timeout client  50000</span><br><span class="line">        #服务器超时（毫秒）</span><br><span class="line">        timeout server  50000</span><br><span class="line"></span><br><span class="line">#监控界面   </span><br><span class="line">listen  admin_stats</span><br><span class="line">        #监控界面的访问的IP和端口</span><br><span class="line">        bind  0.0.0.0:8888</span><br><span class="line">        #访问协议</span><br><span class="line">        mode        http</span><br><span class="line">        #URI相对地址</span><br><span class="line">        stats uri   &#x2F;dbs</span><br><span class="line">        #统计报告格式</span><br><span class="line">        stats realm     Global\ statistics</span><br><span class="line">        #登陆帐户信息</span><br><span class="line">        stats auth  admin:123456</span><br><span class="line">#数据库负载均衡</span><br><span class="line">listen  proxy-mysql</span><br><span class="line">        #访问的IP和端口</span><br><span class="line">        bind  0.0.0.0:3306  </span><br><span class="line">        #网络协议</span><br><span class="line">        mode  tcp</span><br><span class="line">        #负载均衡算法（轮询算法）</span><br><span class="line">        #轮询算法：roundrobin</span><br><span class="line">        #权重算法：static-rr</span><br><span class="line">        #最少连接算法：leastconn</span><br><span class="line">        #请求源IP算法：source</span><br><span class="line">        balance  roundrobin</span><br><span class="line">       #日志格式</span><br><span class="line">        option  tcplog</span><br><span class="line">        #在MySQL中创建一个没有权限的haproxy用户，密码为空。Haproxy使用这个账户对MySQL数据库心跳检测</span><br><span class="line">        option  mysql-check user haproxy</span><br><span class="line">        server  MySQL_1 172.18.0.2:3306 check weight 1 maxconn 2000  </span><br><span class="line">        server  MySQL_2 172.18.0.3:3306 check weight 1 maxconn 2000  </span><br><span class="line">        server  MySQL_2 172.18.0.4:3306 check weight 1 maxconn 2000  </span><br><span class="line">        #使用keepalive检测死链</span><br><span class="line">        option  tcpka</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动-haproxy-容器"><a href="#启动-haproxy-容器" class="headerlink" title="启动 haproxy 容器"></a>启动 haproxy 容器</h3><blockquote>
+<p>/Users/xinaogudu/hproxy 是我放置配置文件的目录。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -dit -p 4001:8888 -p 4002:3306 \</span><br><span class="line">-v &#x2F;Users&#x2F;xinaogudu&#x2F;hproxy:&#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy \</span><br><span class="line">--privileged \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--name h1 \</span><br><span class="line">--ip 172.18.0.5 \</span><br><span class="line">haproxy</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入-haproxy-容器指明配置文件"><a href="#进入-haproxy-容器指明配置文件" class="headerlink" title="进入 haproxy 容器指明配置文件"></a>进入 haproxy 容器指明配置文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it h1 bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 指定 haproxy 配置文件位置</span><br><span class="line">haproxy -c -f &#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy&#x2F;haproxy.cfg</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="在数据库中创建一个没有密码的-haproxy-用户用于心跳检测。"><a href="#在数据库中创建一个没有密码的-haproxy-用户用于心跳检测。" class="headerlink" title="在数据库中创建一个没有密码的 haproxy 用户用于心跳检测。"></a>在数据库中创建一个没有密码的 haproxy 用户用于心跳检测。</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create user &#39;haproxy&#39;@&#39;%&#39; identified by &#39;&#39;;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><h3 id="登录-haproxy-监控：http-localhost-4001-dbs"><a href="#登录-haproxy-监控：http-localhost-4001-dbs" class="headerlink" title="登录 haproxy 监控：http://localhost:4001/dbs"></a>登录 haproxy 监控：<a href="http://localhost:4001/dbs" target="_blank" rel="noopener">http://localhost:4001/dbs</a></h3><p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3b67er48cj327y0tqwoh.jpg" alt=""></p>
+<h3 id="用数据库管理工具连接-haproxy-端口测试："><a href="#用数据库管理工具连接-haproxy-端口测试：" class="headerlink" title="用数据库管理工具连接 haproxy 端口测试："></a>用数据库管理工具连接 haproxy 端口测试：</h3><p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3b6ajpic6j317m0sq43v.jpg" alt=""></p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>dokcer</tag>
+        <tag>PXC</tag>
+        <tag>Haproxy</tag>
       </tags>
   </entry>
   <entry>
@@ -1427,25 +1446,6 @@ hexo g -d</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Next主题指定文章隐藏侧栏</title>
-    <url>/year/01/22/Next%E4%B8%BB%E6%8E%A8%E6%8C%87%E5%AE%9A%E6%96%87%E7%AB%A0%E9%9A%90%E8%97%8F%E4%BE%A7%E6%A0%8F/</url>
-    <content><![CDATA[<h4 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h4><p>可能你需要加一个单独的页面，比如about页面，希望隐藏next主题的侧栏，那么请看下去。</p>
-<a id="more"></a>
-
-<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><p>根据<a href="https://github.com/iissnan/hexo-theme-next/issues/943" target="_blank" rel="noopener">issues-943</a>找到了my-project/themes/next/layout/_marcro/sidebar.swig中找到下一列信息。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">set</span> display_toc = is_post and theme.toc.enable or is_page and theme.toc.enable %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>修改为：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">set</span> display_toc = is_post and theme.toc.enable and !page.no_toc or is_page and theme.toc.enable and !page.no_toc %&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>这样你就可以在不想要显示目录的文章头部加一行：<code>no_toc: true</code>即可。</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker 学习笔记 （四） 数据管理</title>
     <url>/year/05/19/docker4/</url>
     <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
@@ -1568,6 +1568,420 @@ hexo g -d</code></pre>
       </categories>
       <tags>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 学习笔记（三）网络配置</title>
+    <url>/year/05/19/docker3/</url>
+    <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
+<a id="more"></a>
+
+
+<h3 id="容器与外部网络的连接"><a href="#容器与外部网络的连接" class="headerlink" title="容器与外部网络的连接"></a>容器与外部网络的连接</h3><hr>
+<p>容器在启动时可以通过 -P 或 -p 参数来指定端口映射。</p>
+<p>当使用 -P 标记时，Docker 会随机映射一个 49000~49900 的端口到内部容器开放的网络端口。</p>
+<p><code>-p</code> 则指定要映射的端口，并且，在一个指定端口上只可以绑定一个容器。支持的格式有<br><code>ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort</code>。</p>
+<h4 id="映射所有接口地址"><a href="#映射所有接口地址" class="headerlink" title="映射所有接口地址"></a>映射所有接口地址</h4><p>使用 <code>hostPort:containerPort</code> 格式本地的 5000 端口映射到容器的 5000 端口，可以执行</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -d -p <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">5000</span>:<span class="number">5000</span> ubuntu</span><br></pre></td></tr></table></figure>
+<h5 id="映射到指定地址的任意端口"><a href="#映射到指定地址的任意端口" class="headerlink" title="映射到指定地址的任意端口"></a>映射到指定地址的任意端口</h5><p>使用 <code>ip::containerPort</code> 绑定 <code>localhost</code> 的任意端口到容器的 5000 端口，本地主机会自动分配一个端口。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -d -p <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>::<span class="number">5000</span> ubuntu</span><br></pre></td></tr></table></figure>
+
+<p>使用 udp 标记来指定 udp 端口</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker run -d -p <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">5000</span>:<span class="number">5000</span>/udp ubuntu</span><br></pre></td></tr></table></figure>
+
+<h3 id="容器互联"><a href="#容器互联" class="headerlink" title="容器互联"></a>容器互联</h3><hr>
+<p>随着 <code>Docker</code> 网络的完善，强烈建议将容器加入自定义的 <code>Docker</code> 网络来连接多个容器。</p>
+<h4 id="新建网络"><a href="#新建网络" class="headerlink" title="新建网络"></a>新建网络</h4><p>新建 docker 网络</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker network create -d bridge my-net</span><br></pre></td></tr></table></figure>
+
+<p>-d 参数指定 Docker 网络类型，有 <code>bridge overlay</code>。其中 <code>overlay</code> 网络类型用于 <code>Swarm mode</code>。</p>
+<h4 id="连接容器"><a href="#连接容器" class="headerlink" title="连接容器"></a>连接容器</h4><p>运行一个容器并连接到新建的 <code>my-net</code> 网络</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -it --rm --name busybox1 --network my-net busybox sh</span><br></pre></td></tr></table></figure>
+
+<p>打开新的终端，再运行一个容器并加入到 <code>my-net</code> 网络</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -it --rm --name busybox2 --network my-net busybox sh</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置DNS"><a href="#配置DNS" class="headerlink" title="配置DNS"></a>配置DNS</h4><hr>
+<h4 id="容器访问控制"><a href="#容器访问控制" class="headerlink" title="容器访问控制"></a>容器访问控制</h4><p>容器的访问机制，主要通过 <code>Linux</code>上的 <code>Iptables</code> 防火墙来实现。</p>
+<h4 id="容器访问外部网络"><a href="#容器访问外部网络" class="headerlink" title="容器访问外部网络"></a>容器访问外部网络</h4><p> 容器想要访问外部网络，就需要本地系统转发支持，肩擦好转发是否打开。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$sysctl net.ipv4.ip_forward</span><br><span class="line">net.ipv4.ip_forward = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>如果为0，shaming没有开启转发，需要手动打开。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$sysctl -w net.ipv4.ip_forward=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>如果启动 Docker 服务的时候设定<code>--ip-forward=true</code> ，Docker就会自动设定系统的 <code>ip_forward</code><br>参数替换为1。</p>
+<h4 id="容器之间的访问"><a href="#容器之间的访问" class="headerlink" title="容器之间的访问"></a>容器之间的访问</h4><p>容器之间相互访问，需要两方面的支持。</p>
+<ul>
+<li>容器的网络拓扑是否已经互联。默认情况下，所有容器都会被连接到 docker0 网桥上。</li>
+<li>本地系统的防火墙软件 – iptables 是否允许通过。</li>
+</ul>
+<h4 id="访问所有端口"><a href="#访问所有端口" class="headerlink" title="访问所有端口"></a>访问所有端口</h4><p>启动 Docker 服务（即 <code>dockerd</code>）的时候，默认会添加一条转发策略到本地主机 <code>iptables</code> 的 FORWARD 链上。策略为通过（ACCEPT）还是禁止（DROP）取决于配置<code>--icc=true</code>（缺省值）还是 <code>--icc=false</code>。当然，如果手动指定 <code>--iptables=false</code> 则不会添加 <code>iptables</code> 规则。</p>
+<p>可见，默认情况下，不同容器之间是允许网络互通的。如果为了安全考虑，可以在 <code>/etc/docker/daemon.json</code>文件中配置 {“icc”: false} 来禁止它。</p>
+<h4 id="访问指定端口"><a href="#访问指定端口" class="headerlink" title="访问指定端口"></a>访问指定端口</h4><p>在通过 <code>-icc=false</code>  关闭网络访问后，还可以通过 <code>--link=CONTAINER_NAME:ALIAS</code> 选项来访问开放端口。</p>
+<p>可以同时使用 <code>icc=false --iptables=true</code> 参数来关闭允许相互的网络访问，并让 Docker 可以修改系统中的 <code>iptables</code> 规则。</p>
+<p>使用 <code>--link=CONTAINER_NAME:ALIAS</code>选项。Docker 会在 <code>iptable</code> 中为 两个容器分别添加一条 ACCEPT 规则，允许相互访问开放的端口（取决于 Dockerfile 中的 EXPOSE 指令）。</p>
+<p>注意：<code>--link=CONTAINER_NAME:ALIAS</code> 中的 <code>CONTAINER_NAME</code> 目前必须是 Docker 分配的名字，或使用 –name 参数指定的名字。主机名则不会被识别。</p>
+<h3 id="Docker-网络相关的命令列表。"><a href="#Docker-网络相关的命令列表。" class="headerlink" title="Docker 网络相关的命令列表。"></a>Docker 网络相关的命令列表。</h3><hr>
+<p>其中有些命令选项只有在 Docker 服务启动的时候才能配置，而且不能马上生效。</p>
+<ul>
+<li><p>-b BRIDGE 或 –bridge=BRIDGE 指定容器挂载的网桥</p>
+</li>
+<li><p>–bip=CIDR 定制 docker0 的掩码</p>
+</li>
+<li><p>-H SOCKET… 或 –host=SOCKET… Docker 服务端接收命令的通道</p>
+</li>
+<li><p>–icc=true|false 是否支持容器之间进行通信</p>
+</li>
+<li><p>–ip-forward=true|false 请看下文容器之间的通信</p>
+</li>
+<li><p>–iptables=true|false 是否允许 Docker 添加 iptables 规则</p>
+</li>
+<li><p>–mtu=BYTES 容器网络中的 MTU<br>下面2个命令选项既可以在启动服务时指定，也可以在启动容器时指定。在 Docker 服务启动的时候指定则会成为默认值，后面执行 docker run 时可以覆盖设置的默认值。</p>
+</li>
+<li><p>–dns=IP_ADDRESS… 使用指定的DNS服务器</p>
+</li>
+<li><p>–dns-search=DOMAIN… 指定DNS搜索域<br>最后这些选项只有在 docker run 执行时使用，因为它是针对容器的特性内容。</p>
+</li>
+<li><p>-h HOSTNAME 或 –hostname=HOSTNAME 配置容器主机名</p>
+</li>
+<li><p>–link=CONTAINER_NAME:ALIAS 添加到另一个容器的连接</p>
+</li>
+<li><p>–net=bridge|none|container:NAME_or_ID|host 配置容器的桥接模式</p>
+</li>
+<li><p>-p SPEC 或 –publish=SPEC 映射容器端口到宿主主机</p>
+</li>
+<li><p>-P or –publish-all=true|false 映射容器所有端口到宿主主机</p>
+</li>
+</ul>
+<h3 id="容器访问控制-1"><a href="#容器访问控制-1" class="headerlink" title="容器访问控制"></a>容器访问控制</h3><hr>
+<p>容器的访问控制，主要通过 <code>Linux</code> 上的 <code>iptables</code> 防火墙来进行管理和实现。 iptables 是 Linux 上默认的防火墙软件，在大部分发行版中都自带。</p>
+<h4 id="容器访问外部网络-1"><a href="#容器访问外部网络-1" class="headerlink" title="容器访问外部网络"></a>容器访问外部网络</h4><p>容器要想访问外部网络，需要本地系统的转发支持。在Linux 系统中，检查转发是否打开。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$sysctl net.ipv4.ip_forward</span><br><span class="line">net.ipv4.ip_forward = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>如果为 0，说明没有开启转发，则需要手动打开。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$sysctl -w net.ipv4.ip_forward=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>如果在启动 Docker 服务的时候设定 –ip-forward=true, Docker 就会自动设定系统的 ip_forward 参数为 1。</p>
+<h4 id="容器之间的访问-1"><a href="#容器之间的访问-1" class="headerlink" title="容器之间的访问"></a>容器之间的访问</h4><p>容器之间相互访问，需要两方面的支持。</p>
+<ul>
+<li>容器的网络拓扑是否已经互联。默认情况下，所有容器都会被连接到 docker0 网桥上。</li>
+<li>本地系统的防火墙软件 – iptables 是否允许通过。</li>
+</ul>
+<h5 id="访问所有端口-1"><a href="#访问所有端口-1" class="headerlink" title="访问所有端口"></a>访问所有端口</h5><p>当启动 Docker 服务（即 dockerd）的时候，默认会添加一条转发策略到本地主机 iptables 的 FORWARD 链上。策略为通过（ACCEPT）还是禁止（DROP）取决于配置–icc=true（缺省值）还是 –icc=false。当然，如果手动指定 –iptables=false 则不会添加 iptables 规则。</p>
+<p>默认情况下，不同容器之间是允许网络互通的。如果为了安全考虑，可以在 /etc/docker/daemon.json 文件中配置 {“icc”: false} 来禁止它。</p>
+<h5 id="访问指定端口-1"><a href="#访问指定端口-1" class="headerlink" title="访问指定端口"></a>访问指定端口</h5><p>在通过 -icc=false 关闭网络访问后，还可以通过 –link=CONTAINER_NAME:ALIAS 选项来访问容器的开放端口。</p>
+<p>可以同时使用 icc=false –iptables=true 参数来关闭允许相互的网络访问，并让 Docker 可以修改系统中的 iptables 规则。</p>
+<p>使用 –link=CONTAINER_NAME:ALIAS 选项。Docker 会在 iptable 中为 两个容器分别添加一条 ACCEPT 规则，允许相互访问开放的端口（取决于 Dockerfile 中的 EXPOSE 指令）。</p>
+<p>注意：–link=CONTAINER_NAME:ALIAS 中的 CONTAINER_NAME 目前必须是 Docker 分配的名字，或使用 –name 参数指定的名字。主机名则不会被识别。</p>
+<h3 id="映射容器端口到宿主机"><a href="#映射容器端口到宿主机" class="headerlink" title="映射容器端口到宿主机"></a>映射容器端口到宿主机</h3><blockquote>
+<p>默认情况下，容器可以主动访问到外部网络连接，但是外部连接无法访问到容器。</p>
+</blockquote>
+<h5 id="容器访问外部实现"><a href="#容器访问外部实现" class="headerlink" title="容器访问外部实现"></a>容器访问外部实现</h5><p>容器所有到外部网络的连接，源地址都会被 NAT 成本地系统的 IP 地址。这是使用 iptables 的源地址伪装操作实现的。</p>
+<p>查看主机的 NAT 规则：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ sudo iptables -t nat -nL</span><br><span class="line">...</span><br><span class="line">Chain POSTROUTING (policy ACCEPT)</span><br><span class="line">target     prot opt source               destination</span><br><span class="line">MASQUERADE  all  --  <span class="number">172.17</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">16</span>       !<span class="number">172.17</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">16</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>其中，上述规则将所有源地址在 172.17.0.0/16 网段，目标地址为其他网段（外部网络）的流量动态伪装为从系统网卡发出。MASQUERADE 跟传统 SNAT 的好处是它能动态从网卡获取地址。</p>
+<h5 id="外部访问容器实现"><a href="#外部访问容器实现" class="headerlink" title="外部访问容器实现"></a>外部访问容器实现</h5><p>容器允许外部访问，可以在 <code>docker run</code> 时候通过 -p 或 -P 参数来启用。</p>
+<p>不管用那种办法，其实也是在本地的 iptable 的 nat 表中添加相应的规则。</p>
+<p>使用 -P 时：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ iptables -t nat -nL</span><br><span class="line">...</span><br><span class="line">Chain DOCKER (<span class="number">2</span> references)</span><br><span class="line">target     prot opt source               destination</span><br><span class="line">DNAT       tcp  --  <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">0</span>            <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">0</span>            tcp dpt:<span class="number">49153</span> to:<span class="number">172.17</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 -p 80:80 时：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ iptables -t nat -nL</span><br><span class="line">Chain DOCKER (<span class="number">2</span> references)</span><br><span class="line">target     prot opt source               destination</span><br><span class="line">DNAT       tcp  --  <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">0</span>            <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">0</span>            tcp dpt:<span class="number">80</span> to:<span class="number">172.17</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ul>
+<li><p>这里的规则映射了 0.0.0.0，意味着将接受主机来自所有接口的流量。用户可以通过 -p IP:host_port:container_port 或 -p IP::port 来指定允许访问容器的主机上的 IP、接口等，以制定更严格的规则。</p>
+</li>
+<li><p>如果希望永久绑定到某个固定的 IP 地址，可以在 Docker 配置文件 /etc/docker/daemon.json 中添加如下内容。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"ip"</span>: <span class="string">"0.0.0.0"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="配置-docker0-网桥"><a href="#配置-docker0-网桥" class="headerlink" title="配置 docker0 网桥"></a>配置 docker0 网桥</h3><hr>
+<p>Docker 服务默认会创建一个 <code>docker0</code> 网桥（其上有一个 docker0 内部接口），它在内核层连通了其他的物理或虚拟网卡，这就将所有容器和本地主机都放到同一个物理网络。</p>
+<p>Docker 默认指定了 <code>docker0</code> 接口 的 IP 地址和子网掩码，让主机和容器之间可以通过网桥相互通信，它还给出了 MTU（接口允许接收的最大传输单元），通常是 1500 Bytes，或宿主主机网络路由上支持的默认值。这些值都可以在服务启动的时候进行配置。</p>
+<ul>
+<li><code>-bip=CIDR IP</code>地址加掩码格式，例如 192.168.1.5/24</li>
+<li><code>--mtu=BYTES</code>覆盖默认的 Docker mtu 配置</li>
+</ul>
+<p>也可以在配置文件中配置 DOCKER_OPTS，然后重启服务。</p>
+<p>由于目前 Docker 网桥是 Linux 网桥，用户可以使用 brctl show 来查看网桥和端口连接信息。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ sudo brctl show</span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">docker0         <span class="number">8000.3</span>a1d7362b4ee       no              veth65f9</span><br><span class="line">                                             vethdda6</span><br></pre></td></tr></table></figure>
+<p>注：<code>brctl</code> 命令在 <code>Debian、Ubuntu</code> 中可以使用 <code>sudo apt-get install bridge-utils</code> 来安装。</p>
+<p>每次创建一个新容器的时候，Docker 从可用的地址段中选择一个空闲的 IP 地址分配给容器的 eth0 端口。使用本地主机上 <code>docker0</code> 接口的 IP 作为所有容器的默认网关。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ sudo docker run -i -t --rm base /bin/bash</span><br><span class="line">$ ip addr show eth0</span><br><span class="line"><span class="number">24</span>: eth0: <span class="xml"><span class="tag">&lt;<span class="name">BROADCAST,UP,LOWER_UP</span>&gt;</span> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000</span></span><br><span class="line"><span class="xml">    link/ether 32:6f:e0:35:57:91 brd ff:ff:ff:ff:ff:ff</span></span><br><span class="line"><span class="xml">    inet 172.17.0.3/16 scope global eth0</span></span><br><span class="line"><span class="xml">       valid_lft forever preferred_lft forever</span></span><br><span class="line"><span class="xml">    inet6 fe80::306f:e0ff:fe35:5791/64 scope link</span></span><br><span class="line"><span class="xml">       valid_lft forever preferred_lft forever</span></span><br><span class="line"><span class="xml">$ ip route</span></span><br><span class="line"><span class="xml">default via 172.17.42.1 dev eth0</span></span><br><span class="line"><span class="xml">172.17.0.0/16 dev eth0  proto kernel  scope link  src 172.17.0.3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义网桥"><a href="#自定义网桥" class="headerlink" title="自定义网桥"></a>自定义网桥</h3><hr>
+<p>除了默认的 docker0 网桥，用户也可以指定网桥来连接各个容器。</p>
+<p>在启动 Docker 服务的时候，使用 -b BRIDGE或–bridge=BRIDGE 来指定使用的网桥。</p>
+<p>如果服务已经运行，那需要先停止服务，并删除旧的网桥。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl stop docker</span><br><span class="line">$ sudo ip link <span class="keyword">set</span> dev docker0 down</span><br><span class="line">$ sudo brctl delbr docker0</span><br></pre></td></tr></table></figure>
+
+<p>然后创建一个网桥 <code>bridge0</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ sudo brctl addbr bridge0</span><br><span class="line">$ sudo ip addr add <span class="number">192.168</span><span class="number">.5</span><span class="number">.1</span>/<span class="number">24</span> dev bridge0</span><br><span class="line">$ sudo ip link <span class="keyword">set</span> dev bridge0 up</span><br></pre></td></tr></table></figure>
+
+<p>查看确认网桥创建并启动。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ ip addr show bridge0</span><br><span class="line"><span class="number">4</span>: bridge0: <span class="xml"><span class="tag">&lt;<span class="name">BROADCAST,MULTICAST</span>&gt;</span> mtu 1500 qdisc noop state UP group default</span></span><br><span class="line"><span class="xml">    link/ether 66:38:d0:0d:76:18 brd ff:ff:ff:ff:ff:ff</span></span><br><span class="line"><span class="xml">    inet 192.168.5.1/24 scope global bridge0</span></span><br><span class="line"><span class="xml">       valid_lft forever preferred_lft forever</span></span><br></pre></td></tr></table></figure>
+<p>在 Docker 配置文件 /etc/docker/daemon.json 中添加如下内容，即可将 Docker 默认桥接到创建的网桥上。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"bridge"</span>: <span class="string">"bridge0"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>启动 Docker 服务。</p>
+<p>新建一个容器，可以看到它已经桥接到了 bridge0 上。</p>
+<p>可以继续用 <code>brctl show</code> 命令查看桥接的信息。另外，在容器中可以使用 <code>ip addr</code> 和 <code>ip route</code> 命令来查看 IP 地址配置和路由信息。</p>
+<h3 id="编辑网络配置文件"><a href="#编辑网络配置文件" class="headerlink" title="编辑网络配置文件"></a>编辑网络配置文件</h3><hr>
+<p>Docker 1.2.0 开始支持在运行中的容器里编辑 <code>/etc/hosts, /etc/hostname</code> 和 <code>/etc/resolv.conf</code> 文件。</p>
+<p>但是这些修改是临时的，只在运行的容器中保留，容器终止或重启后并不会被保存下来，也不会被 <code>docker commit</code> 提交。</p>
+<h3 id="创建一个点到点的连接"><a href="#创建一个点到点的连接" class="headerlink" title="创建一个点到点的连接"></a>创建一个点到点的连接</h3><p>默认情况下，Docker 会将所有容器连接到由 docker0 提供的虚拟子网中。</p>
+<p>用户有时候需要两个容器之间可以直连通信，而不用通过主机网桥进行桥接。</p>
+<p>解决办法很简单：创建一对 peer 接口，分别放到两个容器中，配置成点到点链路类型即可。</p>
+<p>首先启动 2 个容器：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -i -t --rm --net=none base /bin/bash</span><br><span class="line">root@<span class="number">1</span>f1f4c1f931a:<span class="regexp">/#</span></span><br><span class="line"><span class="regexp">$ docker run -i -t --rm --net=none base /</span>bin/bash</span><br><span class="line">root@<span class="number">12e343489</span>d2f:<span class="regexp">/#</span></span><br></pre></td></tr></table></figure>
+
+<p>找到进程号，然后创建网络命名空间的跟踪文件。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker inspect -f <span class="string">'&#123;&#123;.State.Pid&#125;&#125;'</span> <span class="number">1</span>f1f4c1f931a</span><br><span class="line"><span class="number">2989</span></span><br><span class="line">$ docker inspect -f <span class="string">'&#123;&#123;.State.Pid&#125;&#125;'</span> <span class="number">12e343489</span>d2f</span><br><span class="line"><span class="number">3004</span></span><br><span class="line">$ sudo mkdir -p /<span class="keyword">var</span>/run/netns</span><br><span class="line">$ sudo ln -s /proc/<span class="number">2989</span>/ns/net /<span class="keyword">var</span>/run/netns/<span class="number">2989</span></span><br><span class="line">$ sudo ln -s /proc/<span class="number">3004</span>/ns/net /<span class="keyword">var</span>/run/netns/<span class="number">3004</span></span><br></pre></td></tr></table></figure>
+
+<p>创建一对 peer 接口，然后配置路由</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ sudo ip link add A type veth peer name B</span><br><span class="line"></span><br><span class="line">$ sudo ip link <span class="keyword">set</span> A netns 2989</span><br><span class="line">$ sudo ip netns exec 2989 ip addr add 10.1.1.1/32 dev A</span><br><span class="line">$ sudo ip netns exec 2989 ip link <span class="keyword">set</span> A up</span><br><span class="line">$ sudo ip netns exec 2989 ip route add 10.1.1.2/32 dev A</span><br><span class="line"></span><br><span class="line">$ sudo ip link <span class="keyword">set</span> B netns 3004</span><br><span class="line">$ sudo ip netns exec 3004 ip addr add 10.1.1.2/32 dev B</span><br><span class="line">$ sudo ip netns exec 3004 ip link <span class="keyword">set</span> B up</span><br><span class="line">$ sudo ip netns exec 3004 ip route add 10.1.1.1/32 dev B</span><br></pre></td></tr></table></figure>
+
+<p>现在这 2 个容器就可以相互 ping 通，并成功建立连接。点到点链路不需要子网和子网掩码。</p>
+<p>此外，也可以不指定 –net=none 来创建点到点链路。这样容器还可以通过原先的网络来通信。</p>
+<p>利用类似的办法，可以创建一个只跟主机通信的容器。但是一般情况下，更推荐使用 –icc=false 来关闭容器之间的通信。</p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>find 命令</title>
+    <url>/year/10/11/find-%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>find命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</p>
+<a id="more"></a>
+
+<h4 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h4><blockquote>
+<p>find(选项)(参数)</p>
+</blockquote>
+<h4 id="选项："><a href="#选项：" class="headerlink" title="选项："></a>选项：</h4><blockquote>
+<p>-amin&lt;分钟&gt;：查找在指定时间曾被存取过的文件或目录，单位以分钟计算；</p>
+<p>-anewer&lt;参考文件或目录&gt;：查找其存取时间较指定文件或目录的存取时间更接近现在的文件或目录；</p>
+<p>-atime&lt;24小时数&gt;：查找在指定时间曾被存取过的文件或目录，单位以24小时计算；</p>
+<p>-cmin&lt;分钟&gt;：查找在指定时间之时被更改过的文件或目录；</p>
+<p>-cnewer&lt;参考文件或目录&gt;查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</p>
+<p>-ctime&lt;24小时数&gt;：查找在指定时间之时被更改的文件或目录，单位以24小时计算；</p>
+<p>-daystart：从本日开始计算时间； -depth：从指定目录下最深层的子目录开始查找；</p>
+<p>-expty：寻找文件大小为0 Byte的文件，或目录下没有任何子目录或文件的空目录；</p>
+<p>-exec&lt;执行指令&gt;：假设find指令的回传值为True，就执行该指令；</p>
+<p>-false：将find指令的回传值皆设为False；</p>
+<p>-fls&lt;列表文件&gt;：此参数的效果和指定“-ls”参数类似，但会把结果保存为指定的列表文件； -follow：排除符号连接；</p>
+<p>-fprint&lt;列表文件&gt;：此参数的效果和指定“-print”参数类似，但会把结果保存成指定的列表文件； -fprint0&lt;列表文件&gt;：此参数的效果和指定“</p>
+<p>-print0”参数类似，但会把结果保存成指定的列表文件；</p>
+<p>-fprintf&lt;列表文件&gt;&lt;输出格式&gt;：此参数的效果和指定“-printf”参数类似，但会把结果保存成指定的列表文件；</p>
+<p>-fstype&lt;文件系统类型&gt;：只寻找该文件系统类型下的文件或目录；</p>
+<p>-gid&lt;群组识别码&gt;：查找符合指定之群组识别码的文件或目录；</p>
+<p>-group&lt;群组名称&gt;：查找符合指定之群组名称的文件或目录； -help或——help：在线帮助；</p>
+<p>-ilname&lt;范本样式&gt;：此参数的效果和指定“-lname”参数类似，但忽略字符大小写的差别； -iname&lt;范本样式&gt;：此参数的效果和指定“-name”参数类似，但忽略字符大小写的差别；</p>
+<p>-inum：查找符合指定的inode编号的文件或目录；</p>
+<p>-ipath&lt;范本样式&gt;：此参数的效果和指定“-path”参数类似，但忽略字符大小写的差别；</p>
+<p>-iregex&lt;范本样式&gt;：此参数的效果和指定“-regexe”参数类似，但忽略字符大小写的差别；</p>
+<p>-links&lt;连接数目&gt;：查找符合指定的硬连接数目的文件或目录；</p>
+<p>-iname&lt;范本样式&gt;：指定字符串作为寻找符号连接的范本样式；</p>
+<p>-ls：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出；</p>
+<p>-maxdepth&lt;目录层级&gt;：设置最大目录层级；</p>
+<p>-mindepth&lt;目录层级&gt;：设置最小目录层级；</p>
+<p>-mmin&lt;分钟&gt;：查找在指定时间曾被更改过的文件或目录，单位以分钟计算；</p>
+<p>-mount：此参数的效果和指定“-xdev”相同； -mtime&lt;24小时数&gt;：查找在指定时间曾被更改过的文件或目录，单位以24小时计算；</p>
+<p>-name&lt;范本样式&gt;：指定字符串作为寻找文件或目录的范本样式；</p>
+<p>-newer&lt;参考文件或目录&gt;：查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</p>
+<p>-nogroup：找出不属于本地主机群组识别码的文件或目录；</p>
+<p>-noleaf：不去考虑目录至少需拥有两个硬连接存在；</p>
+<p>-nouser：找出不属于本地主机用户识别码的文件或目录；</p>
+<p>-ok&lt;执行指令&gt;：此参数的效果和指定“-exec”类似，但在执行指令之前会先询问用户，若回答“y”或“Y”，则放弃执行命令；</p>
+<p>-path&lt;范本样式&gt;：指定字符串作为寻找目录的范本样式；</p>
+<p>-perm&lt;权限数值&gt;：查找符合指定的权限数值的文件或目录；</p>
+<p>-print：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式为每列一个名称，每个名称前皆有“./”字符串；</p>
+<p>-print0：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式为全部的名称皆在同一行；</p>
+<p>-printf&lt;输出格式&gt;：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式可以自行指定；</p>
+<p>-prune：不寻找字符串作为寻找文件或目录的范本样式;</p>
+<p>-regex&lt;范本样式&gt;：指定字符串作为寻找文件或目录的范本样式；</p>
+<p>-size&lt;文件大小&gt;：查找符合指定的文件大小的文件； -true：将find指令的回传值皆设为True；</p>
+<p>-typ&lt;文件类型&gt;：只寻找符合指定的文件类型的文件；</p>
+<p>-uid&lt;用户识别码&gt;：查找符合指定的用户识别码的文件或目录；</p>
+</blockquote>
+<blockquote>
+<p>-used&lt;日数&gt;：查找文件或目录被更改之后在指定时间曾被存取过的文件或目录，单位以日计算；</p>
+<p>-user&lt;拥有者名称&gt;：查找符和指定的拥有者名称的文件或目录；</p>
+<p>-version或——version：显示版本信息；</p>
+<p>-xdev：将范围局限在先行的文件系统中；</p>
+<p>-xtype&lt;文件类型&gt;：此参数的效果和指定“-type”参数类似，差别在于它针对符号连接检查。</p>
+</blockquote>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>起始目录：查找文件的起始目录。</p>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p><strong>根据文件或者正则表达式进行匹配</strong></p>
+<p>列出当前目录及子目录下所有文件和文件夹</p>
+<blockquote>
+<p>find .</p>
+</blockquote>
+<p>在<code>/home</code>目录下查找以.txt结尾的文件名</p>
+<blockquote>
+<p>find /home -name “*.txt”</p>
+</blockquote>
+<p>同上，但忽略大小写</p>
+<blockquote>
+<p>find /home iname “*.txt”</p>
+</blockquote>
+<p>当前目录及子目录下查找所有以.txt和.pdf结尾的文件</p>
+<blockquote>
+<p>find . ( -name “<em>.txt” -o -name “</em>.pdf” )<br>或<br>find . -name “<em>.txt” -o -name “</em>.pdf”</p>
+</blockquote>
+<p>匹配文件路径或者文件</p>
+<blockquote>
+<p>find /usr/ -path “<em>local</em>“</p>
+</blockquote>
+<p>基于正则表达式匹配文件路径</p>
+<blockquote>
+<p>find . -regex “.*(.txt|.pdf)$”</p>
+</blockquote>
+<p>同上，但忽略大小写</p>
+<blockquote>
+<p>find . -iregex “.*(.txt|.pdf)$”</p>
+</blockquote>
+<h4 id="否定参数"><a href="#否定参数" class="headerlink" title="否定参数"></a>否定参数</h4><p>找<code>/home</code>路径下不是以.txt结尾的文件</p>
+<blockquote>
+<p>find /home ! -name “*.txt”</p>
+</blockquote>
+<p>根据文件类型进行搜索</p>
+<blockquote>
+<p>find . -type 类型参数</p>
+</blockquote>
+<h5 id="类型参数列表"><a href="#类型参数列表" class="headerlink" title="类型参数列表"></a>类型参数列表</h5><ul>
+<li>f 普通文件</li>
+<li>l 符号连接</li>
+<li>d 目录</li>
+<li>c 字符设备</li>
+<li>b 块设备</li>
+<li>s 套接字</li>
+<li>p Fifo</li>
+</ul>
+<h4 id="基于目录深度搜索"><a href="#基于目录深度搜索" class="headerlink" title="基于目录深度搜索"></a>基于目录深度搜索</h4><p>向下最大深度限制为3</p>
+<blockquote>
+<p>find . -maxdepth 3 -type f</p>
+</blockquote>
+<p>搜索出深度距离当前目录至少2个子目录的所有文件</p>
+<blockquote>
+<p>find . -mindepth 2 -type f</p>
+</blockquote>
+<p>根据文件时间戳进行搜索</p>
+<blockquote>
+<p>find . -type f 时间戳</p>
+</blockquote>
+<p>UNIX/Linux文件系统每个文件都有三种时间戳：</p>
+<ul>
+<li>访问时间（-atime/天，-amin/分钟）：用户最近一次访问时间。</li>
+<li>修改时间（-mtime/天，-mmin/分钟）：文件最后一次修改时间。</li>
+<li>变化时间（-ctime/天，-cmin/分钟）：文件数据元（例如权限等）最后一次修改时间。</li>
+</ul>
+<p>搜索最近七天内被访问过的所有文件</p>
+<blockquote>
+<p>find . -type f -atime -7</p>
+</blockquote>
+<p>搜索恰好在七天前被访问过的所有文件</p>
+<blockquote>
+<p>find . -type f -atime 7</p>
+</blockquote>
+<p>搜索超过七天内被访问过的所有文件</p>
+<blockquote>
+<p>find . -type f -atime +7</p>
+</blockquote>
+<p>搜索访问时间超过10分钟的所有文件</p>
+<blockquote>
+<p>find . -type f -amin +10</p>
+</blockquote>
+<p>找出比file.log修改时间更长的所有文件</p>
+<blockquote>
+<p>find . -type f -newer file.log</p>
+</blockquote>
+<p>文件大小单元：</p>
+<ul>
+<li>b —— 块（512字节）</li>
+<li>c —— 字节</li>
+<li>w —— 字（2字节）</li>
+<li>k —— 千字节</li>
+<li>M —— 兆字节</li>
+<li>G —— 吉字节</li>
+</ul>
+<p>搜索大于10KB的文件</p>
+<blockquote>
+<p>find . -type f -size +10k</p>
+</blockquote>
+<p>搜索小于10KB的文件</p>
+<blockquote>
+<p>find . -type f -size -10k \</p>
+</blockquote>
+<p>搜索等于10KB的文件</p>
+<blockquote>
+<p>find . -type f -size 10k</p>
+</blockquote>
+<h4 id="删除匹配文件"><a href="#删除匹配文件" class="headerlink" title="删除匹配文件"></a>删除匹配文件</h4><p>删除当前目录下所有.txt文件</p>
+<blockquote>
+<p>find . -type f -name “*.txt” -delete</p>
+</blockquote>
+<h3 id="根据文件权限-所有权进行匹配"><a href="#根据文件权限-所有权进行匹配" class="headerlink" title="根据文件权限/所有权进行匹配"></a>根据文件权限/所有权进行匹配</h3><p>当前目录下搜索出权限为777的文件</p>
+<blockquote>
+<p>find . -type f -perm 777</p>
+</blockquote>
+<p>找出当前目录下权限不是644的php文件</p>
+<blockquote>
+<p>find . -type f -name “*.php” ! -perm 644</p>
+</blockquote>
+<p>找出当前目录用户tom拥有的所有文件</p>
+<blockquote>
+<p>find . -type f -user tom</p>
+</blockquote>
+<p>找出当前目录用户组sunk拥有的所有文件</p>
+<blockquote>
+<p>find . -type f -group sunk</p>
+</blockquote>
+<h4 id="借助-exec选项与其他命令结合使用"><a href="#借助-exec选项与其他命令结合使用" class="headerlink" title="借助-exec选项与其他命令结合使用"></a>借助-exec选项与其他命令结合使用</h4><p>找出当前目录下所有root的文件，并把所有权更改为用户tom</p>
+<blockquote>
+<p>find .-type f -user root -exec chown tom {} ;</p>
+</blockquote>
+<p>上例中，{} 用于与-exec选项结合使用来匹配所有文件，然后会被替换为相应的文件名。 找出自己家目录下所有的.txt文件并删除</p>
+<blockquote>
+<p>find $HOME/. -name “*.txt” -ok rm {} ;</p>
+</blockquote>
+<p>上例中，-ok和-exec行为一样，不过它会给出提示，是否执行相应的操作。 查找当前目录下所有.txt文件并把他们拼接起来写入到all.txt文件中</p>
+<blockquote>
+<p>find . -type f -name “*.txt” -exec cat {} ;&gt; all.txt</p>
+</blockquote>
+<p>将30天前的.log文件移动到old目录中</p>
+<blockquote>
+<p>find . -type f -mtime +30 -name “*.log” -exec cp {} old ;</p>
+</blockquote>
+<p>找出当前目录下所有.txt文件并以“File:文件名”的形式打印出来</p>
+<blockquote>
+<p>find . -type f -name “*.txt” -exec printf “File: %s\n” {} ;</p>
+</blockquote>
+<p>因为单行命令中-exec参数中无法使用多个命令，以下方法可以实现在-exec之后接受多条命令</p>
+<blockquote>
+<p>-exec ./text.sh {} ;</p>
+</blockquote>
+<p>搜索但跳出指定的目录 查找当前目录或者子目录下所有.txt文件，但是跳过子目录sk</p>
+<blockquote>
+<p>find . -path “./sk” -prune -o -name “*.txt” -print</p>
+</blockquote>
+<p>####find其他技巧收集</p>
+<p>要列出所有长度为零的文件</p>
+<blockquote>
+<p>find . -empty</p>
+</blockquote>
+<p>转自: <a href="http://man.linuxde.net/find" target="_blank" rel="noopener">http://man.linuxde.net/find</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1768,190 +2182,6 @@ hexo g -d</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Docker 学习笔记（三）网络配置</title>
-    <url>/year/05/19/docker3/</url>
-    <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
-<a id="more"></a>
-
-
-<h3 id="容器与外部网络的连接"><a href="#容器与外部网络的连接" class="headerlink" title="容器与外部网络的连接"></a>容器与外部网络的连接</h3><hr>
-<p>容器在启动时可以通过 -P 或 -p 参数来指定端口映射。</p>
-<p>当使用 -P 标记时，Docker 会随机映射一个 49000~49900 的端口到内部容器开放的网络端口。</p>
-<p><code>-p</code> 则指定要映射的端口，并且，在一个指定端口上只可以绑定一个容器。支持的格式有<br><code>ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort</code>。</p>
-<h4 id="映射所有接口地址"><a href="#映射所有接口地址" class="headerlink" title="映射所有接口地址"></a>映射所有接口地址</h4><p>使用 <code>hostPort:containerPort</code> 格式本地的 5000 端口映射到容器的 5000 端口，可以执行</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -d -p <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">5000</span>:<span class="number">5000</span> ubuntu</span><br></pre></td></tr></table></figure>
-<h5 id="映射到指定地址的任意端口"><a href="#映射到指定地址的任意端口" class="headerlink" title="映射到指定地址的任意端口"></a>映射到指定地址的任意端口</h5><p>使用 <code>ip::containerPort</code> 绑定 <code>localhost</code> 的任意端口到容器的 5000 端口，本地主机会自动分配一个端口。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -d -p <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>::<span class="number">5000</span> ubuntu</span><br></pre></td></tr></table></figure>
-
-<p>使用 udp 标记来指定 udp 端口</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker run -d -p <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">5000</span>:<span class="number">5000</span>/udp ubuntu</span><br></pre></td></tr></table></figure>
-
-<h3 id="容器互联"><a href="#容器互联" class="headerlink" title="容器互联"></a>容器互联</h3><hr>
-<p>随着 <code>Docker</code> 网络的完善，强烈建议将容器加入自定义的 <code>Docker</code> 网络来连接多个容器。</p>
-<h4 id="新建网络"><a href="#新建网络" class="headerlink" title="新建网络"></a>新建网络</h4><p>新建 docker 网络</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker network create -d bridge my-net</span><br></pre></td></tr></table></figure>
-
-<p>-d 参数指定 Docker 网络类型，有 <code>bridge overlay</code>。其中 <code>overlay</code> 网络类型用于 <code>Swarm mode</code>。</p>
-<h4 id="连接容器"><a href="#连接容器" class="headerlink" title="连接容器"></a>连接容器</h4><p>运行一个容器并连接到新建的 <code>my-net</code> 网络</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -it --rm --name busybox1 --network my-net busybox sh</span><br></pre></td></tr></table></figure>
-
-<p>打开新的终端，再运行一个容器并加入到 <code>my-net</code> 网络</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -it --rm --name busybox2 --network my-net busybox sh</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置DNS"><a href="#配置DNS" class="headerlink" title="配置DNS"></a>配置DNS</h4><hr>
-<h4 id="容器访问控制"><a href="#容器访问控制" class="headerlink" title="容器访问控制"></a>容器访问控制</h4><p>容器的访问机制，主要通过 <code>Linux</code>上的 <code>Iptables</code> 防火墙来实现。</p>
-<h4 id="容器访问外部网络"><a href="#容器访问外部网络" class="headerlink" title="容器访问外部网络"></a>容器访问外部网络</h4><p> 容器想要访问外部网络，就需要本地系统转发支持，肩擦好转发是否打开。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$sysctl net.ipv4.ip_forward</span><br><span class="line">net.ipv4.ip_forward = <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>如果为0，shaming没有开启转发，需要手动打开。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$sysctl -w net.ipv4.ip_forward=<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>如果启动 Docker 服务的时候设定<code>--ip-forward=true</code> ，Docker就会自动设定系统的 <code>ip_forward</code><br>参数替换为1。</p>
-<h4 id="容器之间的访问"><a href="#容器之间的访问" class="headerlink" title="容器之间的访问"></a>容器之间的访问</h4><p>容器之间相互访问，需要两方面的支持。</p>
-<ul>
-<li>容器的网络拓扑是否已经互联。默认情况下，所有容器都会被连接到 docker0 网桥上。</li>
-<li>本地系统的防火墙软件 – iptables 是否允许通过。</li>
-</ul>
-<h4 id="访问所有端口"><a href="#访问所有端口" class="headerlink" title="访问所有端口"></a>访问所有端口</h4><p>启动 Docker 服务（即 <code>dockerd</code>）的时候，默认会添加一条转发策略到本地主机 <code>iptables</code> 的 FORWARD 链上。策略为通过（ACCEPT）还是禁止（DROP）取决于配置<code>--icc=true</code>（缺省值）还是 <code>--icc=false</code>。当然，如果手动指定 <code>--iptables=false</code> 则不会添加 <code>iptables</code> 规则。</p>
-<p>可见，默认情况下，不同容器之间是允许网络互通的。如果为了安全考虑，可以在 <code>/etc/docker/daemon.json</code>文件中配置 {“icc”: false} 来禁止它。</p>
-<h4 id="访问指定端口"><a href="#访问指定端口" class="headerlink" title="访问指定端口"></a>访问指定端口</h4><p>在通过 <code>-icc=false</code>  关闭网络访问后，还可以通过 <code>--link=CONTAINER_NAME:ALIAS</code> 选项来访问开放端口。</p>
-<p>可以同时使用 <code>icc=false --iptables=true</code> 参数来关闭允许相互的网络访问，并让 Docker 可以修改系统中的 <code>iptables</code> 规则。</p>
-<p>使用 <code>--link=CONTAINER_NAME:ALIAS</code>选项。Docker 会在 <code>iptable</code> 中为 两个容器分别添加一条 ACCEPT 规则，允许相互访问开放的端口（取决于 Dockerfile 中的 EXPOSE 指令）。</p>
-<p>注意：<code>--link=CONTAINER_NAME:ALIAS</code> 中的 <code>CONTAINER_NAME</code> 目前必须是 Docker 分配的名字，或使用 –name 参数指定的名字。主机名则不会被识别。</p>
-<h3 id="Docker-网络相关的命令列表。"><a href="#Docker-网络相关的命令列表。" class="headerlink" title="Docker 网络相关的命令列表。"></a>Docker 网络相关的命令列表。</h3><hr>
-<p>其中有些命令选项只有在 Docker 服务启动的时候才能配置，而且不能马上生效。</p>
-<ul>
-<li><p>-b BRIDGE 或 –bridge=BRIDGE 指定容器挂载的网桥</p>
-</li>
-<li><p>–bip=CIDR 定制 docker0 的掩码</p>
-</li>
-<li><p>-H SOCKET… 或 –host=SOCKET… Docker 服务端接收命令的通道</p>
-</li>
-<li><p>–icc=true|false 是否支持容器之间进行通信</p>
-</li>
-<li><p>–ip-forward=true|false 请看下文容器之间的通信</p>
-</li>
-<li><p>–iptables=true|false 是否允许 Docker 添加 iptables 规则</p>
-</li>
-<li><p>–mtu=BYTES 容器网络中的 MTU<br>下面2个命令选项既可以在启动服务时指定，也可以在启动容器时指定。在 Docker 服务启动的时候指定则会成为默认值，后面执行 docker run 时可以覆盖设置的默认值。</p>
-</li>
-<li><p>–dns=IP_ADDRESS… 使用指定的DNS服务器</p>
-</li>
-<li><p>–dns-search=DOMAIN… 指定DNS搜索域<br>最后这些选项只有在 docker run 执行时使用，因为它是针对容器的特性内容。</p>
-</li>
-<li><p>-h HOSTNAME 或 –hostname=HOSTNAME 配置容器主机名</p>
-</li>
-<li><p>–link=CONTAINER_NAME:ALIAS 添加到另一个容器的连接</p>
-</li>
-<li><p>–net=bridge|none|container:NAME_or_ID|host 配置容器的桥接模式</p>
-</li>
-<li><p>-p SPEC 或 –publish=SPEC 映射容器端口到宿主主机</p>
-</li>
-<li><p>-P or –publish-all=true|false 映射容器所有端口到宿主主机</p>
-</li>
-</ul>
-<h3 id="容器访问控制-1"><a href="#容器访问控制-1" class="headerlink" title="容器访问控制"></a>容器访问控制</h3><hr>
-<p>容器的访问控制，主要通过 <code>Linux</code> 上的 <code>iptables</code> 防火墙来进行管理和实现。 iptables 是 Linux 上默认的防火墙软件，在大部分发行版中都自带。</p>
-<h4 id="容器访问外部网络-1"><a href="#容器访问外部网络-1" class="headerlink" title="容器访问外部网络"></a>容器访问外部网络</h4><p>容器要想访问外部网络，需要本地系统的转发支持。在Linux 系统中，检查转发是否打开。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$sysctl net.ipv4.ip_forward</span><br><span class="line">net.ipv4.ip_forward = <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>如果为 0，说明没有开启转发，则需要手动打开。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$sysctl -w net.ipv4.ip_forward=<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>如果在启动 Docker 服务的时候设定 –ip-forward=true, Docker 就会自动设定系统的 ip_forward 参数为 1。</p>
-<h4 id="容器之间的访问-1"><a href="#容器之间的访问-1" class="headerlink" title="容器之间的访问"></a>容器之间的访问</h4><p>容器之间相互访问，需要两方面的支持。</p>
-<ul>
-<li>容器的网络拓扑是否已经互联。默认情况下，所有容器都会被连接到 docker0 网桥上。</li>
-<li>本地系统的防火墙软件 – iptables 是否允许通过。</li>
-</ul>
-<h5 id="访问所有端口-1"><a href="#访问所有端口-1" class="headerlink" title="访问所有端口"></a>访问所有端口</h5><p>当启动 Docker 服务（即 dockerd）的时候，默认会添加一条转发策略到本地主机 iptables 的 FORWARD 链上。策略为通过（ACCEPT）还是禁止（DROP）取决于配置–icc=true（缺省值）还是 –icc=false。当然，如果手动指定 –iptables=false 则不会添加 iptables 规则。</p>
-<p>默认情况下，不同容器之间是允许网络互通的。如果为了安全考虑，可以在 /etc/docker/daemon.json 文件中配置 {“icc”: false} 来禁止它。</p>
-<h5 id="访问指定端口-1"><a href="#访问指定端口-1" class="headerlink" title="访问指定端口"></a>访问指定端口</h5><p>在通过 -icc=false 关闭网络访问后，还可以通过 –link=CONTAINER_NAME:ALIAS 选项来访问容器的开放端口。</p>
-<p>可以同时使用 icc=false –iptables=true 参数来关闭允许相互的网络访问，并让 Docker 可以修改系统中的 iptables 规则。</p>
-<p>使用 –link=CONTAINER_NAME:ALIAS 选项。Docker 会在 iptable 中为 两个容器分别添加一条 ACCEPT 规则，允许相互访问开放的端口（取决于 Dockerfile 中的 EXPOSE 指令）。</p>
-<p>注意：–link=CONTAINER_NAME:ALIAS 中的 CONTAINER_NAME 目前必须是 Docker 分配的名字，或使用 –name 参数指定的名字。主机名则不会被识别。</p>
-<h3 id="映射容器端口到宿主机"><a href="#映射容器端口到宿主机" class="headerlink" title="映射容器端口到宿主机"></a>映射容器端口到宿主机</h3><blockquote>
-<p>默认情况下，容器可以主动访问到外部网络连接，但是外部连接无法访问到容器。</p>
-</blockquote>
-<h5 id="容器访问外部实现"><a href="#容器访问外部实现" class="headerlink" title="容器访问外部实现"></a>容器访问外部实现</h5><p>容器所有到外部网络的连接，源地址都会被 NAT 成本地系统的 IP 地址。这是使用 iptables 的源地址伪装操作实现的。</p>
-<p>查看主机的 NAT 规则：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ sudo iptables -t nat -nL</span><br><span class="line">...</span><br><span class="line">Chain POSTROUTING (policy ACCEPT)</span><br><span class="line">target     prot opt source               destination</span><br><span class="line">MASQUERADE  all  --  <span class="number">172.17</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">16</span>       !<span class="number">172.17</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">16</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>其中，上述规则将所有源地址在 172.17.0.0/16 网段，目标地址为其他网段（外部网络）的流量动态伪装为从系统网卡发出。MASQUERADE 跟传统 SNAT 的好处是它能动态从网卡获取地址。</p>
-<h5 id="外部访问容器实现"><a href="#外部访问容器实现" class="headerlink" title="外部访问容器实现"></a>外部访问容器实现</h5><p>容器允许外部访问，可以在 <code>docker run</code> 时候通过 -p 或 -P 参数来启用。</p>
-<p>不管用那种办法，其实也是在本地的 iptable 的 nat 表中添加相应的规则。</p>
-<p>使用 -P 时：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ iptables -t nat -nL</span><br><span class="line">...</span><br><span class="line">Chain DOCKER (<span class="number">2</span> references)</span><br><span class="line">target     prot opt source               destination</span><br><span class="line">DNAT       tcp  --  <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">0</span>            <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">0</span>            tcp dpt:<span class="number">49153</span> to:<span class="number">172.17</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">80</span></span><br></pre></td></tr></table></figure>
-
-<p>使用 -p 80:80 时：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ iptables -t nat -nL</span><br><span class="line">Chain DOCKER (<span class="number">2</span> references)</span><br><span class="line">target     prot opt source               destination</span><br><span class="line">DNAT       tcp  --  <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">0</span>            <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">0</span>            tcp dpt:<span class="number">80</span> to:<span class="number">172.17</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">80</span></span><br></pre></td></tr></table></figure>
-
-<p>注意：</p>
-<ul>
-<li><p>这里的规则映射了 0.0.0.0，意味着将接受主机来自所有接口的流量。用户可以通过 -p IP:host_port:container_port 或 -p IP::port 来指定允许访问容器的主机上的 IP、接口等，以制定更严格的规则。</p>
-</li>
-<li><p>如果希望永久绑定到某个固定的 IP 地址，可以在 Docker 配置文件 /etc/docker/daemon.json 中添加如下内容。</p>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"ip"</span>: <span class="string">"0.0.0.0"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="配置-docker0-网桥"><a href="#配置-docker0-网桥" class="headerlink" title="配置 docker0 网桥"></a>配置 docker0 网桥</h3><hr>
-<p>Docker 服务默认会创建一个 <code>docker0</code> 网桥（其上有一个 docker0 内部接口），它在内核层连通了其他的物理或虚拟网卡，这就将所有容器和本地主机都放到同一个物理网络。</p>
-<p>Docker 默认指定了 <code>docker0</code> 接口 的 IP 地址和子网掩码，让主机和容器之间可以通过网桥相互通信，它还给出了 MTU（接口允许接收的最大传输单元），通常是 1500 Bytes，或宿主主机网络路由上支持的默认值。这些值都可以在服务启动的时候进行配置。</p>
-<ul>
-<li><code>-bip=CIDR IP</code>地址加掩码格式，例如 192.168.1.5/24</li>
-<li><code>--mtu=BYTES</code>覆盖默认的 Docker mtu 配置</li>
-</ul>
-<p>也可以在配置文件中配置 DOCKER_OPTS，然后重启服务。</p>
-<p>由于目前 Docker 网桥是 Linux 网桥，用户可以使用 brctl show 来查看网桥和端口连接信息。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ sudo brctl show</span><br><span class="line">bridge name     bridge id               STP enabled     interfaces</span><br><span class="line">docker0         <span class="number">8000.3</span>a1d7362b4ee       no              veth65f9</span><br><span class="line">                                             vethdda6</span><br></pre></td></tr></table></figure>
-<p>注：<code>brctl</code> 命令在 <code>Debian、Ubuntu</code> 中可以使用 <code>sudo apt-get install bridge-utils</code> 来安装。</p>
-<p>每次创建一个新容器的时候，Docker 从可用的地址段中选择一个空闲的 IP 地址分配给容器的 eth0 端口。使用本地主机上 <code>docker0</code> 接口的 IP 作为所有容器的默认网关。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ sudo docker run -i -t --rm base /bin/bash</span><br><span class="line">$ ip addr show eth0</span><br><span class="line"><span class="number">24</span>: eth0: <span class="xml"><span class="tag">&lt;<span class="name">BROADCAST,UP,LOWER_UP</span>&gt;</span> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000</span></span><br><span class="line"><span class="xml">    link/ether 32:6f:e0:35:57:91 brd ff:ff:ff:ff:ff:ff</span></span><br><span class="line"><span class="xml">    inet 172.17.0.3/16 scope global eth0</span></span><br><span class="line"><span class="xml">       valid_lft forever preferred_lft forever</span></span><br><span class="line"><span class="xml">    inet6 fe80::306f:e0ff:fe35:5791/64 scope link</span></span><br><span class="line"><span class="xml">       valid_lft forever preferred_lft forever</span></span><br><span class="line"><span class="xml">$ ip route</span></span><br><span class="line"><span class="xml">default via 172.17.42.1 dev eth0</span></span><br><span class="line"><span class="xml">172.17.0.0/16 dev eth0  proto kernel  scope link  src 172.17.0.3</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="自定义网桥"><a href="#自定义网桥" class="headerlink" title="自定义网桥"></a>自定义网桥</h3><hr>
-<p>除了默认的 docker0 网桥，用户也可以指定网桥来连接各个容器。</p>
-<p>在启动 Docker 服务的时候，使用 -b BRIDGE或–bridge=BRIDGE 来指定使用的网桥。</p>
-<p>如果服务已经运行，那需要先停止服务，并删除旧的网桥。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl stop docker</span><br><span class="line">$ sudo ip link <span class="keyword">set</span> dev docker0 down</span><br><span class="line">$ sudo brctl delbr docker0</span><br></pre></td></tr></table></figure>
-
-<p>然后创建一个网桥 <code>bridge0</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ sudo brctl addbr bridge0</span><br><span class="line">$ sudo ip addr add <span class="number">192.168</span><span class="number">.5</span><span class="number">.1</span>/<span class="number">24</span> dev bridge0</span><br><span class="line">$ sudo ip link <span class="keyword">set</span> dev bridge0 up</span><br></pre></td></tr></table></figure>
-
-<p>查看确认网桥创建并启动。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ ip addr show bridge0</span><br><span class="line"><span class="number">4</span>: bridge0: <span class="xml"><span class="tag">&lt;<span class="name">BROADCAST,MULTICAST</span>&gt;</span> mtu 1500 qdisc noop state UP group default</span></span><br><span class="line"><span class="xml">    link/ether 66:38:d0:0d:76:18 brd ff:ff:ff:ff:ff:ff</span></span><br><span class="line"><span class="xml">    inet 192.168.5.1/24 scope global bridge0</span></span><br><span class="line"><span class="xml">       valid_lft forever preferred_lft forever</span></span><br></pre></td></tr></table></figure>
-<p>在 Docker 配置文件 /etc/docker/daemon.json 中添加如下内容，即可将 Docker 默认桥接到创建的网桥上。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"bridge"</span>: <span class="string">"bridge0"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>启动 Docker 服务。</p>
-<p>新建一个容器，可以看到它已经桥接到了 bridge0 上。</p>
-<p>可以继续用 <code>brctl show</code> 命令查看桥接的信息。另外，在容器中可以使用 <code>ip addr</code> 和 <code>ip route</code> 命令来查看 IP 地址配置和路由信息。</p>
-<h3 id="编辑网络配置文件"><a href="#编辑网络配置文件" class="headerlink" title="编辑网络配置文件"></a>编辑网络配置文件</h3><hr>
-<p>Docker 1.2.0 开始支持在运行中的容器里编辑 <code>/etc/hosts, /etc/hostname</code> 和 <code>/etc/resolv.conf</code> 文件。</p>
-<p>但是这些修改是临时的，只在运行的容器中保留，容器终止或重启后并不会被保存下来，也不会被 <code>docker commit</code> 提交。</p>
-<h3 id="创建一个点到点的连接"><a href="#创建一个点到点的连接" class="headerlink" title="创建一个点到点的连接"></a>创建一个点到点的连接</h3><p>默认情况下，Docker 会将所有容器连接到由 docker0 提供的虚拟子网中。</p>
-<p>用户有时候需要两个容器之间可以直连通信，而不用通过主机网桥进行桥接。</p>
-<p>解决办法很简单：创建一对 peer 接口，分别放到两个容器中，配置成点到点链路类型即可。</p>
-<p>首先启动 2 个容器：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -i -t --rm --net=none base /bin/bash</span><br><span class="line">root@<span class="number">1</span>f1f4c1f931a:<span class="regexp">/#</span></span><br><span class="line"><span class="regexp">$ docker run -i -t --rm --net=none base /</span>bin/bash</span><br><span class="line">root@<span class="number">12e343489</span>d2f:<span class="regexp">/#</span></span><br></pre></td></tr></table></figure>
-
-<p>找到进程号，然后创建网络命名空间的跟踪文件。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker inspect -f <span class="string">'&#123;&#123;.State.Pid&#125;&#125;'</span> <span class="number">1</span>f1f4c1f931a</span><br><span class="line"><span class="number">2989</span></span><br><span class="line">$ docker inspect -f <span class="string">'&#123;&#123;.State.Pid&#125;&#125;'</span> <span class="number">12e343489</span>d2f</span><br><span class="line"><span class="number">3004</span></span><br><span class="line">$ sudo mkdir -p /<span class="keyword">var</span>/run/netns</span><br><span class="line">$ sudo ln -s /proc/<span class="number">2989</span>/ns/net /<span class="keyword">var</span>/run/netns/<span class="number">2989</span></span><br><span class="line">$ sudo ln -s /proc/<span class="number">3004</span>/ns/net /<span class="keyword">var</span>/run/netns/<span class="number">3004</span></span><br></pre></td></tr></table></figure>
-
-<p>创建一对 peer 接口，然后配置路由</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ sudo ip link add A type veth peer name B</span><br><span class="line"></span><br><span class="line">$ sudo ip link <span class="keyword">set</span> A netns 2989</span><br><span class="line">$ sudo ip netns exec 2989 ip addr add 10.1.1.1/32 dev A</span><br><span class="line">$ sudo ip netns exec 2989 ip link <span class="keyword">set</span> A up</span><br><span class="line">$ sudo ip netns exec 2989 ip route add 10.1.1.2/32 dev A</span><br><span class="line"></span><br><span class="line">$ sudo ip link <span class="keyword">set</span> B netns 3004</span><br><span class="line">$ sudo ip netns exec 3004 ip addr add 10.1.1.2/32 dev B</span><br><span class="line">$ sudo ip netns exec 3004 ip link <span class="keyword">set</span> B up</span><br><span class="line">$ sudo ip netns exec 3004 ip route add 10.1.1.1/32 dev B</span><br></pre></td></tr></table></figure>
-
-<p>现在这 2 个容器就可以相互 ping 通，并成功建立连接。点到点链路不需要子网和子网掩码。</p>
-<p>此外，也可以不指定 –net=none 来创建点到点链路。这样容器还可以通过原先的网络来通信。</p>
-<p>利用类似的办法，可以创建一个只跟主机通信的容器。但是一般情况下，更推荐使用 –icc=false 来关闭容器之间的通信。</p>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo n 时默认打开markdown编辑器</title>
     <url>/year/04/10/hexo-n-%E6%97%B6%E5%80%99%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80markdown%E7%BC%96%E8%BE%91%E5%99%A8/</url>
     <content><![CDATA[<p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-006tKfTcgy1fqa9b4cyrwj30m608mq3g.jpg" alt=""></p>
@@ -2021,6 +2251,45 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </categories>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>更换 HomeBrew 镜像源及常用命令</title>
+    <url>/year/05/22/homebrew-yuan/</url>
+    <content><![CDATA[<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g39tijtyf5j31fe0do0ut.jpg" alt=""></p>
+<blockquote>
+<p>解决 brew install xxx 慢的问题。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>HomeBrew 官网： <a href="https://brew.sh" target="_blank" rel="noopener">https://brew.sh</a></p>
+<h2 id="更换brew镜像源"><a href="#更换brew镜像源" class="headerlink" title="更换brew镜像源"></a>更换brew镜像源</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 进入brew主目录</span><br><span class="line">$ cd &#96;brew --repo&#96;</span><br><span class="line"></span><br><span class="line"># 更换镜像</span><br><span class="line">$ git remote set-url origin https:&#x2F;&#x2F;git.coding.net&#x2F;homebrew&#x2F;homebrew.git</span><br><span class="line"></span><br><span class="line"># 测试效果</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="几个镜像"><a href="#几个镜像" class="headerlink" title="几个镜像:"></a>几个镜像:</h3><ul>
+<li><a href="https://git.coding.net/homebrew/homebrew.git" target="_blank" rel="noopener">https://git.coding.net/homebrew/homebrew.git</a> - Coding</li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</a> - 清华</li>
+<li><a href="https://mirrors.ustc.edu.cn/brew.git" target="_blank" rel="noopener">https://mirrors.ustc.edu.cn/brew.git</a> - 中科大</li>
+</ul>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
+<li><a href="https://blog.csdn.net/lwplwf/article/details/79097565" target="_blank" rel="noopener">Mac下更换Homebrew镜像源</a></li>
+</ul>
+<h2 id="附——常用命令"><a href="#附——常用命令" class="headerlink" title="附——常用命令"></a>附——常用命令</h2><p>安装卸载</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew search text 搜索本地远程仓库的软件，已安装会显示绿色的勾</span><br><span class="line">brew install &lt;formula&gt; 安装指定软件</span><br><span class="line">brew unistall &lt;formula 卸载指定软件</span><br><span class="line">brew list 显示所有的已安装的软件</span><br></pre></td></tr></table></figure>
+
+<p>升级软件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew update 自动升级homebrew（从github下载最新版本）</span><br><span class="line">brew outdated 检测已经过时的软件</span><br><span class="line">brew upgrade 升级所有已过时的软件，即列出的以过时软件</span><br><span class="line">brew upgrade &lt;formula&gt;升级指定的软件</span><br><span class="line">brew pin &lt;formula&gt; 禁止指定软件升级</span><br><span class="line">brew unpin &lt;formula&gt; 解锁禁止升级</span><br><span class="line">brew upgrade --all 升级所有的软件包，包括未清理干净的旧版本的包</span><br></pre></td></tr></table></figure>
+
+
+<p>清理相关</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew cleanup -n 列出需要清理的内容</span><br><span class="line">brew cleanup &lt;formula&gt; 清理指定的软件过时包</span><br><span class="line">brew cleanup 清理所有的过时软件</span><br><span class="line">brew unistall &lt;formula&gt; 卸载指定软件</span><br><span class="line">brew unistall &lt;fromula&gt; --force 彻底卸载指定软件，包括旧版本</span><br></pre></td></tr></table></figure>
+
+<h4 id="参考：HomeBrew常规使用教程"><a href="#参考：HomeBrew常规使用教程" class="headerlink" title="参考：HomeBrew常规使用教程"></a>参考：<a href="https://juejin.im/post/5a559b9f6fb9a01cba42772f" target="_blank" rel="noopener">HomeBrew常规使用教程</a></h4>]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2754,233 +3023,88 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
-    <title>find 命令</title>
-    <url>/year/10/11/find-%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p>find命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</p>
-<a id="more"></a>
+    <title>Mac 10.13 安装中文版 man 命令</title>
+    <url>/year/10/04/man/</url>
+    <content><![CDATA[<h3 id="为什么需要-man-以及-man-怎么使用"><a href="#为什么需要-man-以及-man-怎么使用" class="headerlink" title="为什么需要 man 以及 man 怎么使用"></a>为什么需要 man 以及 man 怎么使用</h3><p><code>linux</code> 或者 <code>mac</code> 系统的命令行工具非常多，可是我们不能记住所有的这些命令，通常只能记住一些我们常用的。遇到不常用的我们需要来查询一下这个命令是怎么使用的。这时候我们就需要使用到 man 命令了。</p>
+<p>使用方法也非常简单，例如我们不清楚 ls 这个命令的使用方法，我们就可以在命令行中输入</p>
+ <a id="more"></a>
 
-<h4 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h4><blockquote>
-<p>find(选项)(参数)</p>
-</blockquote>
-<h4 id="选项："><a href="#选项：" class="headerlink" title="选项："></a>选项：</h4><blockquote>
-<p>-amin&lt;分钟&gt;：查找在指定时间曾被存取过的文件或目录，单位以分钟计算；</p>
-<p>-anewer&lt;参考文件或目录&gt;：查找其存取时间较指定文件或目录的存取时间更接近现在的文件或目录；</p>
-<p>-atime&lt;24小时数&gt;：查找在指定时间曾被存取过的文件或目录，单位以24小时计算；</p>
-<p>-cmin&lt;分钟&gt;：查找在指定时间之时被更改过的文件或目录；</p>
-<p>-cnewer&lt;参考文件或目录&gt;查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</p>
-<p>-ctime&lt;24小时数&gt;：查找在指定时间之时被更改的文件或目录，单位以24小时计算；</p>
-<p>-daystart：从本日开始计算时间； -depth：从指定目录下最深层的子目录开始查找；</p>
-<p>-expty：寻找文件大小为0 Byte的文件，或目录下没有任何子目录或文件的空目录；</p>
-<p>-exec&lt;执行指令&gt;：假设find指令的回传值为True，就执行该指令；</p>
-<p>-false：将find指令的回传值皆设为False；</p>
-<p>-fls&lt;列表文件&gt;：此参数的效果和指定“-ls”参数类似，但会把结果保存为指定的列表文件； -follow：排除符号连接；</p>
-<p>-fprint&lt;列表文件&gt;：此参数的效果和指定“-print”参数类似，但会把结果保存成指定的列表文件； -fprint0&lt;列表文件&gt;：此参数的效果和指定“</p>
-<p>-print0”参数类似，但会把结果保存成指定的列表文件；</p>
-<p>-fprintf&lt;列表文件&gt;&lt;输出格式&gt;：此参数的效果和指定“-printf”参数类似，但会把结果保存成指定的列表文件；</p>
-<p>-fstype&lt;文件系统类型&gt;：只寻找该文件系统类型下的文件或目录；</p>
-<p>-gid&lt;群组识别码&gt;：查找符合指定之群组识别码的文件或目录；</p>
-<p>-group&lt;群组名称&gt;：查找符合指定之群组名称的文件或目录； -help或——help：在线帮助；</p>
-<p>-ilname&lt;范本样式&gt;：此参数的效果和指定“-lname”参数类似，但忽略字符大小写的差别； -iname&lt;范本样式&gt;：此参数的效果和指定“-name”参数类似，但忽略字符大小写的差别；</p>
-<p>-inum：查找符合指定的inode编号的文件或目录；</p>
-<p>-ipath&lt;范本样式&gt;：此参数的效果和指定“-path”参数类似，但忽略字符大小写的差别；</p>
-<p>-iregex&lt;范本样式&gt;：此参数的效果和指定“-regexe”参数类似，但忽略字符大小写的差别；</p>
-<p>-links&lt;连接数目&gt;：查找符合指定的硬连接数目的文件或目录；</p>
-<p>-iname&lt;范本样式&gt;：指定字符串作为寻找符号连接的范本样式；</p>
-<p>-ls：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出；</p>
-<p>-maxdepth&lt;目录层级&gt;：设置最大目录层级；</p>
-<p>-mindepth&lt;目录层级&gt;：设置最小目录层级；</p>
-<p>-mmin&lt;分钟&gt;：查找在指定时间曾被更改过的文件或目录，单位以分钟计算；</p>
-<p>-mount：此参数的效果和指定“-xdev”相同； -mtime&lt;24小时数&gt;：查找在指定时间曾被更改过的文件或目录，单位以24小时计算；</p>
-<p>-name&lt;范本样式&gt;：指定字符串作为寻找文件或目录的范本样式；</p>
-<p>-newer&lt;参考文件或目录&gt;：查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</p>
-<p>-nogroup：找出不属于本地主机群组识别码的文件或目录；</p>
-<p>-noleaf：不去考虑目录至少需拥有两个硬连接存在；</p>
-<p>-nouser：找出不属于本地主机用户识别码的文件或目录；</p>
-<p>-ok&lt;执行指令&gt;：此参数的效果和指定“-exec”类似，但在执行指令之前会先询问用户，若回答“y”或“Y”，则放弃执行命令；</p>
-<p>-path&lt;范本样式&gt;：指定字符串作为寻找目录的范本样式；</p>
-<p>-perm&lt;权限数值&gt;：查找符合指定的权限数值的文件或目录；</p>
-<p>-print：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式为每列一个名称，每个名称前皆有“./”字符串；</p>
-<p>-print0：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式为全部的名称皆在同一行；</p>
-<p>-printf&lt;输出格式&gt;：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式可以自行指定；</p>
-<p>-prune：不寻找字符串作为寻找文件或目录的范本样式;</p>
-<p>-regex&lt;范本样式&gt;：指定字符串作为寻找文件或目录的范本样式；</p>
-<p>-size&lt;文件大小&gt;：查找符合指定的文件大小的文件； -true：将find指令的回传值皆设为True；</p>
-<p>-typ&lt;文件类型&gt;：只寻找符合指定的文件类型的文件；</p>
-<p>-uid&lt;用户识别码&gt;：查找符合指定的用户识别码的文件或目录；</p>
-</blockquote>
-<blockquote>
-<p>-used&lt;日数&gt;：查找文件或目录被更改之后在指定时间曾被存取过的文件或目录，单位以日计算；</p>
-<p>-user&lt;拥有者名称&gt;：查找符和指定的拥有者名称的文件或目录；</p>
-<p>-version或——version：显示版本信息；</p>
-<p>-xdev：将范围局限在先行的文件系统中；</p>
-<p>-xtype&lt;文件类型&gt;：此参数的效果和指定“-type”参数类似，差别在于它针对符号连接检查。</p>
-</blockquote>
-<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>起始目录：查找文件的起始目录。</p>
-<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p><strong>根据文件或者正则表达式进行匹配</strong></p>
-<p>列出当前目录及子目录下所有文件和文件夹</p>
-<blockquote>
-<p>find .</p>
-</blockquote>
-<p>在<code>/home</code>目录下查找以.txt结尾的文件名</p>
-<blockquote>
-<p>find /home -name “*.txt”</p>
-</blockquote>
-<p>同上，但忽略大小写</p>
-<blockquote>
-<p>find /home iname “*.txt”</p>
-</blockquote>
-<p>当前目录及子目录下查找所有以.txt和.pdf结尾的文件</p>
-<blockquote>
-<p>find . ( -name “<em>.txt” -o -name “</em>.pdf” )<br>或<br>find . -name “<em>.txt” -o -name “</em>.pdf”</p>
-</blockquote>
-<p>匹配文件路径或者文件</p>
-<blockquote>
-<p>find /usr/ -path “<em>local</em>“</p>
-</blockquote>
-<p>基于正则表达式匹配文件路径</p>
-<blockquote>
-<p>find . -regex “.*(.txt|.pdf)$”</p>
-</blockquote>
-<p>同上，但忽略大小写</p>
-<blockquote>
-<p>find . -iregex “.*(.txt|.pdf)$”</p>
-</blockquote>
-<h4 id="否定参数"><a href="#否定参数" class="headerlink" title="否定参数"></a>否定参数</h4><p>找<code>/home</code>路径下不是以.txt结尾的文件</p>
-<blockquote>
-<p>find /home ! -name “*.txt”</p>
-</blockquote>
-<p>根据文件类型进行搜索</p>
-<blockquote>
-<p>find . -type 类型参数</p>
-</blockquote>
-<h5 id="类型参数列表"><a href="#类型参数列表" class="headerlink" title="类型参数列表"></a>类型参数列表</h5><ul>
-<li>f 普通文件</li>
-<li>l 符号连接</li>
-<li>d 目录</li>
-<li>c 字符设备</li>
-<li>b 块设备</li>
-<li>s 套接字</li>
-<li>p Fifo</li>
-</ul>
-<h4 id="基于目录深度搜索"><a href="#基于目录深度搜索" class="headerlink" title="基于目录深度搜索"></a>基于目录深度搜索</h4><p>向下最大深度限制为3</p>
-<blockquote>
-<p>find . -maxdepth 3 -type f</p>
-</blockquote>
-<p>搜索出深度距离当前目录至少2个子目录的所有文件</p>
-<blockquote>
-<p>find . -mindepth 2 -type f</p>
-</blockquote>
-<p>根据文件时间戳进行搜索</p>
-<blockquote>
-<p>find . -type f 时间戳</p>
-</blockquote>
-<p>UNIX/Linux文件系统每个文件都有三种时间戳：</p>
-<ul>
-<li>访问时间（-atime/天，-amin/分钟）：用户最近一次访问时间。</li>
-<li>修改时间（-mtime/天，-mmin/分钟）：文件最后一次修改时间。</li>
-<li>变化时间（-ctime/天，-cmin/分钟）：文件数据元（例如权限等）最后一次修改时间。</li>
-</ul>
-<p>搜索最近七天内被访问过的所有文件</p>
-<blockquote>
-<p>find . -type f -atime -7</p>
-</blockquote>
-<p>搜索恰好在七天前被访问过的所有文件</p>
-<blockquote>
-<p>find . -type f -atime 7</p>
-</blockquote>
-<p>搜索超过七天内被访问过的所有文件</p>
-<blockquote>
-<p>find . -type f -atime +7</p>
-</blockquote>
-<p>搜索访问时间超过10分钟的所有文件</p>
-<blockquote>
-<p>find . -type f -amin +10</p>
-</blockquote>
-<p>找出比file.log修改时间更长的所有文件</p>
-<blockquote>
-<p>find . -type f -newer file.log</p>
-</blockquote>
-<p>文件大小单元：</p>
-<ul>
-<li>b —— 块（512字节）</li>
-<li>c —— 字节</li>
-<li>w —— 字（2字节）</li>
-<li>k —— 千字节</li>
-<li>M —— 兆字节</li>
-<li>G —— 吉字节</li>
-</ul>
-<p>搜索大于10KB的文件</p>
-<blockquote>
-<p>find . -type f -size +10k</p>
-</blockquote>
-<p>搜索小于10KB的文件</p>
-<blockquote>
-<p>find . -type f -size -10k \</p>
-</blockquote>
-<p>搜索等于10KB的文件</p>
-<blockquote>
-<p>find . -type f -size 10k</p>
-</blockquote>
-<h4 id="删除匹配文件"><a href="#删除匹配文件" class="headerlink" title="删除匹配文件"></a>删除匹配文件</h4><p>删除当前目录下所有.txt文件</p>
-<blockquote>
-<p>find . -type f -name “*.txt” -delete</p>
-</blockquote>
-<h3 id="根据文件权限-所有权进行匹配"><a href="#根据文件权限-所有权进行匹配" class="headerlink" title="根据文件权限/所有权进行匹配"></a>根据文件权限/所有权进行匹配</h3><p>当前目录下搜索出权限为777的文件</p>
-<blockquote>
-<p>find . -type f -perm 777</p>
-</blockquote>
-<p>找出当前目录下权限不是644的php文件</p>
-<blockquote>
-<p>find . -type f -name “*.php” ! -perm 644</p>
-</blockquote>
-<p>找出当前目录用户tom拥有的所有文件</p>
-<blockquote>
-<p>find . -type f -user tom</p>
-</blockquote>
-<p>找出当前目录用户组sunk拥有的所有文件</p>
-<blockquote>
-<p>find . -type f -group sunk</p>
-</blockquote>
-<h4 id="借助-exec选项与其他命令结合使用"><a href="#借助-exec选项与其他命令结合使用" class="headerlink" title="借助-exec选项与其他命令结合使用"></a>借助-exec选项与其他命令结合使用</h4><p>找出当前目录下所有root的文件，并把所有权更改为用户tom</p>
-<blockquote>
-<p>find .-type f -user root -exec chown tom {} ;</p>
-</blockquote>
-<p>上例中，{} 用于与-exec选项结合使用来匹配所有文件，然后会被替换为相应的文件名。 找出自己家目录下所有的.txt文件并删除</p>
-<blockquote>
-<p>find $HOME/. -name “*.txt” -ok rm {} ;</p>
-</blockquote>
-<p>上例中，-ok和-exec行为一样，不过它会给出提示，是否执行相应的操作。 查找当前目录下所有.txt文件并把他们拼接起来写入到all.txt文件中</p>
-<blockquote>
-<p>find . -type f -name “*.txt” -exec cat {} ;&gt; all.txt</p>
-</blockquote>
-<p>将30天前的.log文件移动到old目录中</p>
-<blockquote>
-<p>find . -type f -mtime +30 -name “*.log” -exec cp {} old ;</p>
-</blockquote>
-<p>找出当前目录下所有.txt文件并以“File:文件名”的形式打印出来</p>
-<blockquote>
-<p>find . -type f -name “*.txt” -exec printf “File: %s\n” {} ;</p>
-</blockquote>
-<p>因为单行命令中-exec参数中无法使用多个命令，以下方法可以实现在-exec之后接受多条命令</p>
-<blockquote>
-<p>-exec ./text.sh {} ;</p>
-</blockquote>
-<p>搜索但跳出指定的目录 查找当前目录或者子目录下所有.txt文件，但是跳过子目录sk</p>
-<blockquote>
-<p>find . -path “./sk” -prune -o -name “*.txt” -print</p>
-</blockquote>
-<p>####find其他技巧收集</p>
-<p>要列出所有长度为零的文件</p>
-<blockquote>
-<p>find . -empty</p>
-</blockquote>
-<p>转自: <a href="http://man.linuxde.net/find" target="_blank" rel="noopener">http://man.linuxde.net/find</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">man ls</span><br></pre></td></tr></table></figure>
+
+
+
+<p>来查看这个命令的详情。</p>
+<p>但是默认情况下，输出的内容是英文的。可能很多英文不好的朋友希望有中文版本的 <code>man</code> ，这篇博文就是告诉大家，如何在 mac 上安装中文版本的的 man。</p>
+<p>至于 <code>linux</code> 系统则非常简单，查看 <a href="https://github.com/man-pages-zh/manpages-zh" target="_blank" rel="noopener">https://github.com/man-pages-zh/manpages-zh</a> 中对应的版本，即可用简单的命令安装。</p>
+<h3 id="下载-manpages-zh-编辑安装"><a href="#下载-manpages-zh-编辑安装" class="headerlink" title="下载 manpages-zh 编辑安装"></a>下载 manpages-zh 编辑安装</h3><p>首先，我们打开上面的 github 地址，点击 releases 下载最新版本的 tar.gz 源码包。目前我下载到的是 1.6.3.2 版本的。</p>
+<p>因为需要编译安装，所以你电脑上需要有编译工具，运行下面两个命令安装</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">brew install automake</span><br><span class="line">brew install opencc</span><br></pre></td></tr></table></figure>
+
+<p>我这边是需要安装这两个编译工具，如果你下面编译出错，会提示你需要安装说明编辑工具的。利用 <code>brew</code> 安装即可。</p>
+<p>如果你电脑没有安装 brew 工具，请参考 <a href="http://blog.csdn.net/FungLeo/article/details/57567538" target="_blank" rel="noopener">http://blog.csdn.net/FungLeo/article/details/57567538</a> 这篇博文安装</p>
+<p>好，准备工作做好，我们接着来。    </p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># 进入下载目录</span><br><span class="line">cd ~<span class="regexp">/Downloads/</span></span><br><span class="line"># 下载最新版本的源码包</span><br><span class="line">wget https:<span class="comment">//github.com/man-pages-zh/manpages-zh/archive/v1.6.3.2.tar.gz</span></span><br><span class="line"># 解压源码包(atool命令，推荐安装这个工具，统一所有压缩文档的命令）</span><br><span class="line">atool -x v1<span class="number">.6</span><span class="number">.3</span><span class="number">.2</span>.tar.gz</span><br><span class="line"># 或者使用这个命令解压</span><br><span class="line">tar zxvf v1<span class="number">.6</span><span class="number">.3</span><span class="number">.2</span>.tar.gz</span><br><span class="line"># 进入源码包文件夹</span><br><span class="line">cd manpages-zh<span class="number">-1.6</span><span class="number">.3</span><span class="number">.2</span>/</span><br><span class="line"># 编译安装 1</span><br><span class="line">autoreconf --install --force</span><br><span class="line"># 编译安装 2</span><br><span class="line">./configure</span><br><span class="line"># 编译安装 3</span><br><span class="line">make</span><br><span class="line"># 编译安装 4</span><br><span class="line">sudo make install</span><br><span class="line"># 配置别名</span><br><span class="line">echo <span class="string">"alias cman='man -M /usr/local/share/man/zh_CN'"</span> &gt;&gt; ~<span class="regexp">/.bash_profile</span></span><br><span class="line"><span class="regexp"># 使别名生效</span></span><br><span class="line"><span class="regexp">. ~/</span>.bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>这样，我们就安装上了中文版本的 man 工具了。我们可以使用</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cman ls</span><br></pre></td></tr></table></figure>
+<p>来查看中文版本的解释了。但是由于 mac 上的 groff 工具比较老，所以中文会出现乱码。我们来解决一下这个问题。</p>
+<h3 id="安装-groff-新版本解决中文乱码的问题"><a href="#安装-groff-新版本解决中文乱码的问题" class="headerlink" title="安装 groff 新版本解决中文乱码的问题"></a>安装 groff 新版本解决中文乱码的问题</h3><p>首先，我们到 <a href="http://git.savannah.gnu.org/cgit/groff.git" target="_blank" rel="noopener">http://git.savannah.gnu.org/cgit/groff.git</a> 这个页面下载 1.22 版本的 groff 安装包。我这边用命令行下载，你如果直接复制我的命令，不能下载，请到上面的地址去看看下载地址是否发生变化。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># 进入下载目录</span><br><span class="line">cd ~<span class="regexp">/Downloads/</span></span><br><span class="line"># 下载1.22版本的源码包</span><br><span class="line">wget http:<span class="comment">//git.savannah.gnu.org/cgit/groff.git/snapshot/groff-1.22.tar.gz</span></span><br><span class="line"># 解压</span><br><span class="line">atool -x groff<span class="number">-1.22</span>.tar.gz</span><br><span class="line"># 进入目录</span><br><span class="line">cd groff<span class="number">-1.22</span></span><br><span class="line"># 编译安装</span><br><span class="line">./configure</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br><span class="line"># 添加配置</span><br><span class="line">sudo vim /etc/man.conf</span><br></pre></td></tr></table></figure>
+
+<p>进入编辑之后，在文件末尾添加</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">NROFF preconv -e UTF8 | <span class="regexp">/usr/</span>local/bin/nroff -Tutf8 -mandoc -c</span><br></pre></td></tr></table></figure>
+
+<p>最后 <code>:wq</code>保存退出</p>
+<p>然后，我们在输入</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cman ls</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>工具</category>
       </categories>
       <tags>
-        <tag>linux</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Next主题自动更换背景</title>
+    <url>/year/10/06/next%E6%9B%B4%E6%8D%A2%E8%83%8C%E6%99%AF/</url>
+    <content><![CDATA[<blockquote>
+<p>如果觉得next的空白主题看腻了或者太多人用觉得不够个性化，那么不妨试试自动更新背景图片。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="图片来源"><a href="#图片来源" class="headerlink" title="图片来源"></a>图片来源</h2><p>自动更换背景的实现是修改添加背景的css样式实现。图片来源是</p>
+<p><a href="https://source.unsplash.com/" target="_blank" rel="noopener">https://source.unsplash.com/</a></p>
+<p>这个网站，里面不仅免费提供了很多高清美图，而且还提供api接口调用，实在是良心。这里实现的原理也是调用了这个网站的接口。</p>
+<h2 id="修改背景样式"><a href="#修改背景样式" class="headerlink" title="修改背景样式"></a>修改背景样式</h2><p>修改<code>themes\next\source\css\_custom\custom.styl</code>文件，这个是Next故意留给用户自己个性化定制一些样式的文件，添加以下代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"></span><br><span class="line">    background:url(https:<span class="comment">//source.unsplash.com/random/1600x900);</span></span><br><span class="line"></span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line"></span><br><span class="line">    background-attachment:fixed;</span><br><span class="line"></span><br><span class="line">    background-position:<span class="number">50</span>% <span class="number">50</span>%;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果自己不喜欢这个网址提供的图片做背景，那么修改url()里面的路径即可。repeat、attachment、position就是调整图片的位置，不重复出现、不滚动等等。</p>
+<h2 id="修改不透明度"><a href="#修改不透明度" class="headerlink" title="修改不透明度"></a>修改不透明度</h2><p>完成这一步其实背景就会自动更换了，但是会出现一个问题，因为next主题的背景是纯透明的，这样子就造成背景图片的影响看不见文字，这对于博客来说肯定不行。</p>
+<p>那么就需要调整背景的不透明度了。同样是修改t<code>hemes\next\source\css _custom\custom.styl</code>文件。在后面添加如下代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">.main-inner &#123; </span><br><span class="line"></span><br><span class="line">    margin-top: <span class="number">60</span>px;</span><br><span class="line"></span><br><span class="line">    padding: <span class="number">60</span>px <span class="number">60</span>px <span class="number">60</span>px <span class="number">60</span>px;</span><br><span class="line"></span><br><span class="line">    background: #fff;</span><br><span class="line"></span><br><span class="line">	opacity: <span class="number">0.8</span>;</span><br><span class="line"></span><br><span class="line">    min-height: <span class="number">500</span>px;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>* background: #fff; 白色
+* opacity: 0.8;不透明度</code></pre><h2 id="效果："><a href="#效果：" class="headerlink" title="效果："></a>效果：</h2><p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-006tNbRwgy1fvxvc6azb4j31kw0vknpd.jpg" alt=""></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -3100,71 +3224,54 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
-    <title>更换 HomeBrew 镜像源及常用命令</title>
-    <url>/year/05/22/homebrew-yuan/</url>
-    <content><![CDATA[<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g39tijtyf5j31fe0do0ut.jpg" alt=""></p>
-<blockquote>
-<p>解决 brew install xxx 慢的问题。</p>
-</blockquote>
+    <title>Docker 图形界面管理工具 -- Portainer</title>
+    <url>/year/05/19/portainer/</url>
+    <content><![CDATA[<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g36jl1fll4j31fg0fkgnv.jpg" alt=""></p>
 <a id="more"></a>
 
-<p>HomeBrew 官网： <a href="https://brew.sh" target="_blank" rel="noopener">https://brew.sh</a></p>
-<h2 id="更换brew镜像源"><a href="#更换brew镜像源" class="headerlink" title="更换brew镜像源"></a>更换brew镜像源</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 进入brew主目录</span><br><span class="line">$ cd &#96;brew --repo&#96;</span><br><span class="line"></span><br><span class="line"># 更换镜像</span><br><span class="line">$ git remote set-url origin https:&#x2F;&#x2F;git.coding.net&#x2F;homebrew&#x2F;homebrew.git</span><br><span class="line"></span><br><span class="line"># 测试效果</span><br><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/portainer/portainer" target="_blank" rel="noopener">Portainer</a>（基于 Go）是一个轻量级的管理界面，可让您轻松管理Docker主机或Swarm集群。</p>
+<p>Portainer的使用意图是简单部署。它包含可以在任何 Docker 引擎上运行的单个容器（Docker for Linux 和 Docker for Windows）。</p>
+<p>Portainer允许您管理 Docker 容器、image、volume、network 等。 它与独立的 Docker 引擎和 Docker Swarm 兼容。</p>
+<h4 id="Docker-命令安装："><a href="#Docker-命令安装：" class="headerlink" title="Docker 命令安装："></a>Docker 命令安装：</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker volume create portainer_data</span><br><span class="line"></span><br><span class="line">docker run -d -p <span class="number">9000</span>:<span class="number">9000</span> --name Portainer -v /<span class="keyword">var</span>/run/docker.sock:<span class="regexp">/var/</span>run/docker.sock -v portainer_data:<span class="regexp">/data portainer/</span>portainer</span><br></pre></td></tr></table></figure>
+
+<h4 id="Swarm集群部署："><a href="#Swarm集群部署：" class="headerlink" title="Swarm集群部署："></a>Swarm集群部署：</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker volume create portainer_data</span><br><span class="line">$ docker service create \</span><br><span class="line">--name portainer \</span><br><span class="line">--publish <span class="number">9000</span>:<span class="number">9000</span> \</span><br><span class="line">--replicas=<span class="number">1</span> \</span><br><span class="line">--constraint <span class="string">'node.role == manager'</span> \</span><br><span class="line">--mount type=bind,src=<span class="comment">//var/run/docker.sock,dst=/var/run/docker.sock \</span></span><br><span class="line">--mount type=volume,src=portainer_data,dst=<span class="regexp">/data \</span></span><br><span class="line"><span class="regexp">portainer/</span>portainer \</span><br><span class="line">-H unix:<span class="comment">///var/run/docker.sock</span></span><br></pre></td></tr></table></figure>
 
 
-<h3 id="几个镜像"><a href="#几个镜像" class="headerlink" title="几个镜像:"></a>几个镜像:</h3><ul>
-<li><a href="https://git.coding.net/homebrew/homebrew.git" target="_blank" rel="noopener">https://git.coding.net/homebrew/homebrew.git</a> - Coding</li>
-<li><a href="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</a> - 清华</li>
-<li><a href="https://mirrors.ustc.edu.cn/brew.git" target="_blank" rel="noopener">https://mirrors.ustc.edu.cn/brew.git</a> - 中科大</li>
-</ul>
-<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
-<li><a href="https://blog.csdn.net/lwplwf/article/details/79097565" target="_blank" rel="noopener">Mac下更换Homebrew镜像源</a></li>
-</ul>
-<h2 id="附——常用命令"><a href="#附——常用命令" class="headerlink" title="附——常用命令"></a>附——常用命令</h2><p>安装卸载</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew search text 搜索本地远程仓库的软件，已安装会显示绿色的勾</span><br><span class="line">brew install &lt;formula&gt; 安装指定软件</span><br><span class="line">brew unistall &lt;formula 卸载指定软件</span><br><span class="line">brew list 显示所有的已安装的软件</span><br></pre></td></tr></table></figure>
-
-<p>升级软件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew update 自动升级homebrew（从github下载最新版本）</span><br><span class="line">brew outdated 检测已经过时的软件</span><br><span class="line">brew upgrade 升级所有已过时的软件，即列出的以过时软件</span><br><span class="line">brew upgrade &lt;formula&gt;升级指定的软件</span><br><span class="line">brew pin &lt;formula&gt; 禁止指定软件升级</span><br><span class="line">brew unpin &lt;formula&gt; 解锁禁止升级</span><br><span class="line">brew upgrade --all 升级所有的软件包，包括未清理干净的旧版本的包</span><br></pre></td></tr></table></figure>
+<h4 id="Docker-Compose-部署："><a href="#Docker-Compose-部署：" class="headerlink" title="Docker Compose 部署："></a>Docker Compose 部署：</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">version: <span class="string">'2'</span></span><br><span class="line">services:</span><br><span class="line">  portainer:</span><br><span class="line">    image: portainer/portainer</span><br><span class="line">    command: -H unix:<span class="comment">///var/run/docker.sock</span></span><br><span class="line">    volumes:</span><br><span class="line">      - <span class="regexp">/var/</span>run/docker.sock:<span class="regexp">/var/</span>run/docker.sock</span><br><span class="line">      - portainer_data:<span class="regexp">/data</span></span><br><span class="line"><span class="regexp">volumes:</span></span><br><span class="line"><span class="regexp">  portainer_data:</span></span><br></pre></td></tr></table></figure>
 
 
-<p>清理相关</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew cleanup -n 列出需要清理的内容</span><br><span class="line">brew cleanup &lt;formula&gt; 清理指定的软件过时包</span><br><span class="line">brew cleanup 清理所有的过时软件</span><br><span class="line">brew unistall &lt;formula&gt; 卸载指定软件</span><br><span class="line">brew unistall &lt;fromula&gt; --force 彻底卸载指定软件，包括旧版本</span><br></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>访问 <a href="http://localhost:9000/" target="_blank" rel="noopener">http://localhost:9000/</a></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g36cm04aidj31i20u0466.jpg" alt=""></p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>macOS 如何像 Windows 一样使用鼠标</title>
+    <url>/year/06/02/shubiao/</url>
+    <content><![CDATA[<p>虽然 mac 本身的触摸板很好用，但有时候还是忍不住用鼠标，或者你外接显示器的时候。推荐两款软件，让鼠标在 mac 下和 win 一样顺滑。</p>
+<a id="more"></a>
 
-<h4 id="参考：HomeBrew常规使用教程"><a href="#参考：HomeBrew常规使用教程" class="headerlink" title="参考：HomeBrew常规使用教程"></a>参考：<a href="https://juejin.im/post/5a559b9f6fb9a01cba42772f" target="_blank" rel="noopener">HomeBrew常规使用教程</a></h4>]]></content>
+<h2 id="SteerMouse"><a href="#SteerMouse" class="headerlink" title="SteerMouse"></a>SteerMouse</h2><p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3ji2oedahj311c0u07ka.jpg" alt=""></p>
+<blockquote>
+<p>SteerMouse可以分配不同的功能按钮，包括双点击点击，改性剂，应用切换，快捷键的分配，“对齐”，光标移动，光标移动的目标（如OK按钮），和更多。<br>SteerMouse可以让你控制光标的灵敏度上的跟踪速度。（苹果的软件只允许跟踪速度。调整）调整配置，您可以自定义光标到适合你的手的运动的理想环境。</p>
+</blockquote>
+<p>官网地址： <a href="http://plentycom.jp/en/steermouse/" target="_blank" rel="noopener">http://plentycom.jp/en/steermouse/</a><br>破解版地址：<a href="https://xclient.info/s/steermouse.html" target="_blank" rel="noopener">https://xclient.info/s/steermouse.html</a></p>
+<h2 id="SmoothScroll"><a href="#SmoothScroll" class="headerlink" title="SmoothScroll"></a>SmoothScroll</h2><p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3ji5q6mlrj30ww0i0afv.jpg" alt=""></p>
+<p>鼠标滚轮一格一格的滚动效果总是没有触摸板来的顺滑，Smooth Scroll 可以让平滑滚动应用到系统的每个角落，让鼠标滚轮用起来也有触摸板的感觉。</p>
+<p>官网地址：<a href="https://www.smoothscroll.net/mac/" target="_blank" rel="noopener">https://www.smoothscroll.net/mac/</a></p>
+<p>破解版地址： <a href="https://xclient.info/s/smoothscroll.html" target="_blank" rel="noopener">https://xclient.info/s/smoothscroll.html</a></p>
+<p>参考： <a href="https://sspai.com/post/32832" target="_blank" rel="noopener">8 款 App 全面提升你的 Mac 鼠标体验</a></p>
+]]></content>
       <categories>
         <category>工具</category>
       </categories>
       <tags>
         <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Next主题自动更换背景</title>
-    <url>/year/10/06/next%E6%9B%B4%E6%8D%A2%E8%83%8C%E6%99%AF/</url>
-    <content><![CDATA[<blockquote>
-<p>如果觉得next的空白主题看腻了或者太多人用觉得不够个性化，那么不妨试试自动更新背景图片。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="图片来源"><a href="#图片来源" class="headerlink" title="图片来源"></a>图片来源</h2><p>自动更换背景的实现是修改添加背景的css样式实现。图片来源是</p>
-<p><a href="https://source.unsplash.com/" target="_blank" rel="noopener">https://source.unsplash.com/</a></p>
-<p>这个网站，里面不仅免费提供了很多高清美图，而且还提供api接口调用，实在是良心。这里实现的原理也是调用了这个网站的接口。</p>
-<h2 id="修改背景样式"><a href="#修改背景样式" class="headerlink" title="修改背景样式"></a>修改背景样式</h2><p>修改<code>themes\next\source\css\_custom\custom.styl</code>文件，这个是Next故意留给用户自己个性化定制一些样式的文件，添加以下代码：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"></span><br><span class="line">    background:url(https:<span class="comment">//source.unsplash.com/random/1600x900);</span></span><br><span class="line"></span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line"></span><br><span class="line">    background-attachment:fixed;</span><br><span class="line"></span><br><span class="line">    background-position:<span class="number">50</span>% <span class="number">50</span>%;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果自己不喜欢这个网址提供的图片做背景，那么修改url()里面的路径即可。repeat、attachment、position就是调整图片的位置，不重复出现、不滚动等等。</p>
-<h2 id="修改不透明度"><a href="#修改不透明度" class="headerlink" title="修改不透明度"></a>修改不透明度</h2><p>完成这一步其实背景就会自动更换了，但是会出现一个问题，因为next主题的背景是纯透明的，这样子就造成背景图片的影响看不见文字，这对于博客来说肯定不行。</p>
-<p>那么就需要调整背景的不透明度了。同样是修改t<code>hemes\next\source\css _custom\custom.styl</code>文件。在后面添加如下代码：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">.main-inner &#123; </span><br><span class="line"></span><br><span class="line">    margin-top: <span class="number">60</span>px;</span><br><span class="line"></span><br><span class="line">    padding: <span class="number">60</span>px <span class="number">60</span>px <span class="number">60</span>px <span class="number">60</span>px;</span><br><span class="line"></span><br><span class="line">    background: #fff;</span><br><span class="line"></span><br><span class="line">	opacity: <span class="number">0.8</span>;</span><br><span class="line"></span><br><span class="line">    min-height: <span class="number">500</span>px;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<pre><code>* background: #fff; 白色
-* opacity: 0.8;不透明度</code></pre><h2 id="效果："><a href="#效果：" class="headerlink" title="效果："></a>效果：</h2><p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-006tNbRwgy1fvxvc6azb4j31kw0vknpd.jpg" alt=""></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -3199,21 +3306,22 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
-    <title>macOS 如何像 Windows 一样使用鼠标</title>
-    <url>/year/06/02/shubiao/</url>
-    <content><![CDATA[<p>虽然 mac 本身的触摸板很好用，但有时候还是忍不住用鼠标，或者你外接显示器的时候。推荐两款软件，让鼠标在 mac 下和 win 一样顺滑。</p>
+    <title>Mac OS 下 Sublime Text 3 运行Java</title>
+    <url>/year/01/12/sublime-text-%E8%BF%90%E8%A1%8C-java/</url>
+    <content><![CDATA[<p>.</p>
 <a id="more"></a>
 
-<h2 id="SteerMouse"><a href="#SteerMouse" class="headerlink" title="SteerMouse"></a>SteerMouse</h2><p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3ji2oedahj311c0u07ka.jpg" alt=""></p>
-<blockquote>
-<p>SteerMouse可以分配不同的功能按钮，包括双点击点击，改性剂，应用切换，快捷键的分配，“对齐”，光标移动，光标移动的目标（如OK按钮），和更多。<br>SteerMouse可以让你控制光标的灵敏度上的跟踪速度。（苹果的软件只允许跟踪速度。调整）调整配置，您可以自定义光标到适合你的手的运动的理想环境。</p>
-</blockquote>
-<p>官网地址： <a href="http://plentycom.jp/en/steermouse/" target="_blank" rel="noopener">http://plentycom.jp/en/steermouse/</a><br>破解版地址：<a href="https://xclient.info/s/steermouse.html" target="_blank" rel="noopener">https://xclient.info/s/steermouse.html</a></p>
-<h2 id="SmoothScroll"><a href="#SmoothScroll" class="headerlink" title="SmoothScroll"></a>SmoothScroll</h2><p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3ji5q6mlrj30ww0i0afv.jpg" alt=""></p>
-<p>鼠标滚轮一格一格的滚动效果总是没有触摸板来的顺滑，Smooth Scroll 可以让平滑滚动应用到系统的每个角落，让鼠标滚轮用起来也有触摸板的感觉。</p>
-<p>官网地址：<a href="https://www.smoothscroll.net/mac/" target="_blank" rel="noopener">https://www.smoothscroll.net/mac/</a></p>
-<p>破解版地址： <a href="https://xclient.info/s/smoothscroll.html" target="_blank" rel="noopener">https://xclient.info/s/smoothscroll.html</a></p>
-<p>参考： <a href="https://sspai.com/post/32832" target="_blank" rel="noopener">8 款 App 全面提升你的 Mac 鼠标体验</a></p>
+<h4 id="在Sublime中安装Package-Resource-Viewer，具体操作步骤如下："><a href="#在Sublime中安装Package-Resource-Viewer，具体操作步骤如下：" class="headerlink" title="在Sublime中安装Package Resource Viewer，具体操作步骤如下："></a>在Sublime中安装Package Resource Viewer，具体操作步骤如下：</h4><pre><code>* ctrl+shift+p打开package control； 
+* 输入Install Package； 
+* 搜索Package Resource Viewer并安装。</code></pre><h4 id="修改Javac-sublime-build："><a href="#修改Javac-sublime-build：" class="headerlink" title="修改Javac.sublime-build："></a>修改Javac.sublime-build：</h4><pre><code>安装Package Resource Viewer就是为这一步服务。同上面的步骤，打开package control，输入PackageResourceViewer:Open Resource，回车后输入java，回车后输入Javac.sublime-build,就能够打开我们所需要修改的文件：Google 了下，找到了两种配置文件。</code></pre><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">"shell_cmd": "javac -encoding utf-8 $file_name &amp;&amp; java $file_base_name",</span><br><span class="line"></span><br><span class="line">"file_regex": "^ *\\[javac\\] (.+):([0-9]+):() (.*)$",</span><br><span class="line"></span><br><span class="line">"selector": "source.java",</span><br><span class="line"></span><br><span class="line">"encoding": "utf-8"</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">"cmd": ["javac \"$file_name\" &amp;&amp; java \"$file_base_name\""],</span><br><span class="line"></span><br><span class="line">"working_dir": "$&#123;project_path:$&#123;folder&#125;&#125;",</span><br><span class="line"></span><br><span class="line">"file_regex": "^(...*?):([0-9]*):?([0-9]*)",</span><br><span class="line"></span><br><span class="line">"selector": "source.java",</span><br><span class="line"></span><br><span class="line">"shell": true,</span><br><span class="line"></span><br><span class="line">"encoding": "utf-8"</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="选择Build-System，选择上一步保存的配置文件"><a href="#选择Build-System，选择上一步保存的配置文件" class="headerlink" title="选择Build System，选择上一步保存的配置文件"></a>选择Build System，选择上一步保存的配置文件</h4><p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-su.jpg" alt=""></p>
+<h4 id="Command-B编译运行"><a href="#Command-B编译运行" class="headerlink" title="Command+B编译运行"></a>Command+B编译运行</h4><pre><code>运行的时候会在桌面上生成一个　.class文件，可以通过配置文件将生成的.class文件删除。</code></pre><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">"shell_cmd": "javac -encoding utf-8 $file_name &amp;&amp; java $file_base_name &amp;&amp; rm -rf $file_base_name.class"</span><br></pre></td></tr></table></figure>
+
+
 ]]></content>
       <categories>
         <category>工具</category>
@@ -3223,50 +3331,18 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
-    <title>Mac 10.13 安装中文版 man 命令</title>
-    <url>/year/10/04/man/</url>
-    <content><![CDATA[<h3 id="为什么需要-man-以及-man-怎么使用"><a href="#为什么需要-man-以及-man-怎么使用" class="headerlink" title="为什么需要 man 以及 man 怎么使用"></a>为什么需要 man 以及 man 怎么使用</h3><p><code>linux</code> 或者 <code>mac</code> 系统的命令行工具非常多，可是我们不能记住所有的这些命令，通常只能记住一些我们常用的。遇到不常用的我们需要来查询一下这个命令是怎么使用的。这时候我们就需要使用到 man 命令了。</p>
-<p>使用方法也非常简单，例如我们不清楚 ls 这个命令的使用方法，我们就可以在命令行中输入</p>
- <a id="more"></a>
+    <title>macOS 轻松愉快的解压 rar 压缩包</title>
+    <url>/year/06/28/unrar/</url>
+    <content><![CDATA[<p>macOS 自带的压缩软件不支持 rar 格式的文件解压缩，于是需要找一个第三方压缩软件。Keka 一个不错的软件，但是它默认的压缩文件图标也太丑了吧。而且我对解压缩并那么多的需求，在用了一段时间之后发现了 unrar 就果断放弃了。</p>
+<a id="more"></a>
 
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">man ls</span><br></pre></td></tr></table></figure>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用 homebrew 安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install unrar</span><br></pre></td></tr></table></figure>
 
+<h2 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unrar 参数 压缩文件名 路径</span><br></pre></td></tr></table></figure>
 
-
-<p>来查看这个命令的详情。</p>
-<p>但是默认情况下，输出的内容是英文的。可能很多英文不好的朋友希望有中文版本的 <code>man</code> ，这篇博文就是告诉大家，如何在 mac 上安装中文版本的的 man。</p>
-<p>至于 <code>linux</code> 系统则非常简单，查看 <a href="https://github.com/man-pages-zh/manpages-zh" target="_blank" rel="noopener">https://github.com/man-pages-zh/manpages-zh</a> 中对应的版本，即可用简单的命令安装。</p>
-<h3 id="下载-manpages-zh-编辑安装"><a href="#下载-manpages-zh-编辑安装" class="headerlink" title="下载 manpages-zh 编辑安装"></a>下载 manpages-zh 编辑安装</h3><p>首先，我们打开上面的 github 地址，点击 releases 下载最新版本的 tar.gz 源码包。目前我下载到的是 1.6.3.2 版本的。</p>
-<p>因为需要编译安装，所以你电脑上需要有编译工具，运行下面两个命令安装</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">brew install automake</span><br><span class="line">brew install opencc</span><br></pre></td></tr></table></figure>
-
-<p>我这边是需要安装这两个编译工具，如果你下面编译出错，会提示你需要安装说明编辑工具的。利用 <code>brew</code> 安装即可。</p>
-<p>如果你电脑没有安装 brew 工具，请参考 <a href="http://blog.csdn.net/FungLeo/article/details/57567538" target="_blank" rel="noopener">http://blog.csdn.net/FungLeo/article/details/57567538</a> 这篇博文安装</p>
-<p>好，准备工作做好，我们接着来。    </p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># 进入下载目录</span><br><span class="line">cd ~<span class="regexp">/Downloads/</span></span><br><span class="line"># 下载最新版本的源码包</span><br><span class="line">wget https:<span class="comment">//github.com/man-pages-zh/manpages-zh/archive/v1.6.3.2.tar.gz</span></span><br><span class="line"># 解压源码包(atool命令，推荐安装这个工具，统一所有压缩文档的命令）</span><br><span class="line">atool -x v1<span class="number">.6</span><span class="number">.3</span><span class="number">.2</span>.tar.gz</span><br><span class="line"># 或者使用这个命令解压</span><br><span class="line">tar zxvf v1<span class="number">.6</span><span class="number">.3</span><span class="number">.2</span>.tar.gz</span><br><span class="line"># 进入源码包文件夹</span><br><span class="line">cd manpages-zh<span class="number">-1.6</span><span class="number">.3</span><span class="number">.2</span>/</span><br><span class="line"># 编译安装 1</span><br><span class="line">autoreconf --install --force</span><br><span class="line"># 编译安装 2</span><br><span class="line">./configure</span><br><span class="line"># 编译安装 3</span><br><span class="line">make</span><br><span class="line"># 编译安装 4</span><br><span class="line">sudo make install</span><br><span class="line"># 配置别名</span><br><span class="line">echo <span class="string">"alias cman='man -M /usr/local/share/man/zh_CN'"</span> &gt;&gt; ~<span class="regexp">/.bash_profile</span></span><br><span class="line"><span class="regexp"># 使别名生效</span></span><br><span class="line"><span class="regexp">. ~/</span>.bash_profile</span><br></pre></td></tr></table></figure>
-
-<p>这样，我们就安装上了中文版本的 man 工具了。我们可以使用</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cman ls</span><br></pre></td></tr></table></figure>
-<p>来查看中文版本的解释了。但是由于 mac 上的 groff 工具比较老，所以中文会出现乱码。我们来解决一下这个问题。</p>
-<h3 id="安装-groff-新版本解决中文乱码的问题"><a href="#安装-groff-新版本解决中文乱码的问题" class="headerlink" title="安装 groff 新版本解决中文乱码的问题"></a>安装 groff 新版本解决中文乱码的问题</h3><p>首先，我们到 <a href="http://git.savannah.gnu.org/cgit/groff.git" target="_blank" rel="noopener">http://git.savannah.gnu.org/cgit/groff.git</a> 这个页面下载 1.22 版本的 groff 安装包。我这边用命令行下载，你如果直接复制我的命令，不能下载，请到上面的地址去看看下载地址是否发生变化。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># 进入下载目录</span><br><span class="line">cd ~<span class="regexp">/Downloads/</span></span><br><span class="line"># 下载1.22版本的源码包</span><br><span class="line">wget http:<span class="comment">//git.savannah.gnu.org/cgit/groff.git/snapshot/groff-1.22.tar.gz</span></span><br><span class="line"># 解压</span><br><span class="line">atool -x groff<span class="number">-1.22</span>.tar.gz</span><br><span class="line"># 进入目录</span><br><span class="line">cd groff<span class="number">-1.22</span></span><br><span class="line"># 编译安装</span><br><span class="line">./configure</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br><span class="line"># 添加配置</span><br><span class="line">sudo vim /etc/man.conf</span><br></pre></td></tr></table></figure>
-
-<p>进入编辑之后，在文件末尾添加</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">NROFF preconv -e UTF8 | <span class="regexp">/usr/</span>local/bin/nroff -Tutf8 -mandoc -c</span><br></pre></td></tr></table></figure>
-
-<p>最后 <code>:wq</code>保存退出</p>
-<p>然后，我们在输入</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cman ls</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
+<p>解压参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">e             解压压缩文件到当前目录</span><br><span class="line">x             用绝对路径解压文件</span><br></pre></td></tr></table></figure>
 
 
 
@@ -3579,58 +3655,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
-    <title>Mac OS 下 Sublime Text 3 运行Java</title>
-    <url>/year/01/12/sublime-text-%E8%BF%90%E8%A1%8C-java/</url>
-    <content><![CDATA[<p>.</p>
-<a id="more"></a>
-
-<h4 id="在Sublime中安装Package-Resource-Viewer，具体操作步骤如下："><a href="#在Sublime中安装Package-Resource-Viewer，具体操作步骤如下：" class="headerlink" title="在Sublime中安装Package Resource Viewer，具体操作步骤如下："></a>在Sublime中安装Package Resource Viewer，具体操作步骤如下：</h4><pre><code>* ctrl+shift+p打开package control； 
-* 输入Install Package； 
-* 搜索Package Resource Viewer并安装。</code></pre><h4 id="修改Javac-sublime-build："><a href="#修改Javac-sublime-build：" class="headerlink" title="修改Javac.sublime-build："></a>修改Javac.sublime-build：</h4><pre><code>安装Package Resource Viewer就是为这一步服务。同上面的步骤，打开package control，输入PackageResourceViewer:Open Resource，回车后输入java，回车后输入Javac.sublime-build,就能够打开我们所需要修改的文件：Google 了下，找到了两种配置文件。</code></pre><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">"shell_cmd": "javac -encoding utf-8 $file_name &amp;&amp; java $file_base_name",</span><br><span class="line"></span><br><span class="line">"file_regex": "^ *\\[javac\\] (.+):([0-9]+):() (.*)$",</span><br><span class="line"></span><br><span class="line">"selector": "source.java",</span><br><span class="line"></span><br><span class="line">"encoding": "utf-8"</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">"cmd": ["javac \"$file_name\" &amp;&amp; java \"$file_base_name\""],</span><br><span class="line"></span><br><span class="line">"working_dir": "$&#123;project_path:$&#123;folder&#125;&#125;",</span><br><span class="line"></span><br><span class="line">"file_regex": "^(...*?):([0-9]*):?([0-9]*)",</span><br><span class="line"></span><br><span class="line">"selector": "source.java",</span><br><span class="line"></span><br><span class="line">"shell": true,</span><br><span class="line"></span><br><span class="line">"encoding": "utf-8"</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="选择Build-System，选择上一步保存的配置文件"><a href="#选择Build-System，选择上一步保存的配置文件" class="headerlink" title="选择Build System，选择上一步保存的配置文件"></a>选择Build System，选择上一步保存的配置文件</h4><p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-su.jpg" alt=""></p>
-<h4 id="Command-B编译运行"><a href="#Command-B编译运行" class="headerlink" title="Command+B编译运行"></a>Command+B编译运行</h4><pre><code>运行的时候会在桌面上生成一个　.class文件，可以通过配置文件将生成的.class文件删除。</code></pre><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">"shell_cmd": "javac -encoding utf-8 $file_name &amp;&amp; java $file_base_name &amp;&amp; rm -rf $file_base_name.class"</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker 图形界面管理工具 -- Portainer</title>
-    <url>/year/05/19/portainer/</url>
-    <content><![CDATA[<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g36jl1fll4j31fg0fkgnv.jpg" alt=""></p>
-<a id="more"></a>
-
-<p><a href="https://github.com/portainer/portainer" target="_blank" rel="noopener">Portainer</a>（基于 Go）是一个轻量级的管理界面，可让您轻松管理Docker主机或Swarm集群。</p>
-<p>Portainer的使用意图是简单部署。它包含可以在任何 Docker 引擎上运行的单个容器（Docker for Linux 和 Docker for Windows）。</p>
-<p>Portainer允许您管理 Docker 容器、image、volume、network 等。 它与独立的 Docker 引擎和 Docker Swarm 兼容。</p>
-<h4 id="Docker-命令安装："><a href="#Docker-命令安装：" class="headerlink" title="Docker 命令安装："></a>Docker 命令安装：</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker volume create portainer_data</span><br><span class="line"></span><br><span class="line">docker run -d -p <span class="number">9000</span>:<span class="number">9000</span> --name Portainer -v /<span class="keyword">var</span>/run/docker.sock:<span class="regexp">/var/</span>run/docker.sock -v portainer_data:<span class="regexp">/data portainer/</span>portainer</span><br></pre></td></tr></table></figure>
-
-<h4 id="Swarm集群部署："><a href="#Swarm集群部署：" class="headerlink" title="Swarm集群部署："></a>Swarm集群部署：</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker volume create portainer_data</span><br><span class="line">$ docker service create \</span><br><span class="line">--name portainer \</span><br><span class="line">--publish <span class="number">9000</span>:<span class="number">9000</span> \</span><br><span class="line">--replicas=<span class="number">1</span> \</span><br><span class="line">--constraint <span class="string">'node.role == manager'</span> \</span><br><span class="line">--mount type=bind,src=<span class="comment">//var/run/docker.sock,dst=/var/run/docker.sock \</span></span><br><span class="line">--mount type=volume,src=portainer_data,dst=<span class="regexp">/data \</span></span><br><span class="line"><span class="regexp">portainer/</span>portainer \</span><br><span class="line">-H unix:<span class="comment">///var/run/docker.sock</span></span><br></pre></td></tr></table></figure>
-
-
-<h4 id="Docker-Compose-部署："><a href="#Docker-Compose-部署：" class="headerlink" title="Docker Compose 部署："></a>Docker Compose 部署：</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">version: <span class="string">'2'</span></span><br><span class="line">services:</span><br><span class="line">  portainer:</span><br><span class="line">    image: portainer/portainer</span><br><span class="line">    command: -H unix:<span class="comment">///var/run/docker.sock</span></span><br><span class="line">    volumes:</span><br><span class="line">      - <span class="regexp">/var/</span>run/docker.sock:<span class="regexp">/var/</span>run/docker.sock</span><br><span class="line">      - portainer_data:<span class="regexp">/data</span></span><br><span class="line"><span class="regexp">volumes:</span></span><br><span class="line"><span class="regexp">  portainer_data:</span></span><br></pre></td></tr></table></figure>
-
-
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>访问 <a href="http://localhost:9000/" target="_blank" rel="noopener">http://localhost:9000/</a></p>
-<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g36cm04aidj31i20u0466.jpg" alt=""></p>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>记一次误删系统文件</title>
     <url>/year/05/20/wushan/</url>
     <content><![CDATA[<p><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g37stwytfcj313803y3zc.jpg" alt=""></p>
@@ -3650,6 +3674,36 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </categories>
       <tags>
         <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>流动性藏私</title>
+    <url>/year/11/23/%E6%B5%81%E5%8A%A8%E6%80%A7%E8%97%8F%E7%A7%81/</url>
+    <content><![CDATA[<blockquote>
+<p>当代社交的行为模式是极为变动、流动的，不管是匿名聊天、随机交友，或是流连于多种实体、软件的传播媒介，都呈现出一种非常多变且轻盈的状态。</p>
+</blockquote>
+<a id="more"></a>
+
+<p><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-11-23-S71120-10032474.jpg" alt="S71120-10032474-w540"><br><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-11-23-S71120-10033447.jpg" alt="S71120-10033447-w540"><br><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-11-23-S71120-10034431.jpg" alt="S71120-10034431-w540"><br><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-11-23-S71120-10035332.jpg" alt="S71120-10035332-w540"></p>
+<p>Raymond Williams 曾提出很好的理论观点——“流动的藏私”（mobile privatization），此理论表达一种既能“流动”于外在世界，又能“藏有个人财货”并且达到“隐私”目的的现象，如同人们通过网络、手机等媒介，观看游走于一个较活跃且公开的社交媒体，也同时通过相同的媒介，得以另辟一个如同匿名通讯般安静、较私人的空间，达到藏私的享受。</p>
+<p>每个人都对个人空间有欲求，需要有个较为隐密的私人空间，如同人文地理学中，人们对的地方与空间的概念，反映的是人类对安全与自由的基本需求，即人类需要“开放的空间”，也需要“安顿宁静的地方”，二者皆不可缺。通过媒介屏幕，流动于公私空间之中，这种移动的私有化，有赖通讯科技的发展与允许，使新的移动自由形式成为可能。</p>
+<p>学者Altman 和 Taylor 曾提出，只有当人们确信不会再碰到陌生人的时候，才会与其产生亲密感。但有别于传统的亲密关系中强调地理接近性或是面对面沟通，此处的匿名社交，通过网络即可轻易的、随时随地的与陌生人产生联系。</p>
+<p>互联网上的陌生人，能使我们有扮演各种角色的自由，摆脱社会伦理与眼光的束缚。匿名的陌生人在互联网的空间中，与用户的连结是偶然性的(contingent)，且绝对的陌生人是与空洞的自由（empty freedom）个体化社会特征联系在一起的；这种空洞的自由赋予了我们挣脱社区中的伦理义务的自由，我们可以成为各种我们想要成为的角色，它是完全个人意义上的自由。另外，网络的匿名性具有激起（flaming）, 非抑制（inhibited）, 平等（equality）, 去个人化（depersonalised）等效果，由于社会线索(social cues)的减弱，因此人们将更于解放趋向自由，让用户不必担心真实身份被认出来，因此也能够和陌生人建立更加亲密的关系。</p>
+<p>当代社交的行为模式是极为变动、流动的，不管是匿名聊天、随机交友，或是流连于多种实体、软件的传播媒介，都呈现出一种非常多变且轻盈的状态。关于这种状态，后现代性预言家 Bauman 曾提出“液态现代性”的主张，认为流动与易变等液态性特质能较描绘当代社会本质：人们对于瞬时与快速的追求，取代了对连续持久的期待，流动性与速度成为社会分层的决定性因素；既有的规则与标准都正快速液化，不再存有稳固的单一权威；对比于过往固态、坚固的现代性是以空间的占有为主、以先前的工业革命和资本主义体制发展为代表，而今的液态现代性，则基于技术在速度上的进一步提升，尤其是运输传播媒介的发展，以至于空间、地域的限制不再是现代社会文化的关键因素。生活于当前液态现代性社会中，人们凭借的各种传统、规则、规范与互动模式正以无法控制之势不断液化、流动与变化。</p>
+<p>人们对于手机的“连结与不连结”，以及各种拉扯于个人与社会之间的爱恨心理状态，即是手机利用其“Mobile”特性，凸显出移动设备做为一种媒介现象在液态现代性脉络下所展现的流动特质。而匿名交友软件，也呈现出此液态性的传播特质 ，且从单一硬件的移动电话，转移至多种软件间的流动。用户一方面在社交媒体与亲朋好友等强连结联系，建立亲密关系，一方面又基于藏私需求，通过交友软件进行匿名交友；用户会通过不只一种匿名交友软件来进行藏私行为，且会和作为与外界联系的亲密社交软件一起交替使用；两者公开与隐匿的社交媒体之间，更因着软件的特性，只需在一只手指的点击之间，就能轻易达到多种场景间的流动。</p>
+<p>随着传播科技的发展与用户的需求行为改变，液态的现代性仍然不断持续著，并且有了越来越多元丰富的表现。</p>
+<p>然而，除了传播媒介与液态现代性的关系，Bauman也试图指出，在液态化影响下，一种新主体的诞生，即<strong>“没有连带的人”(the man with no bonds)</strong>。这个新主体，并非完全没有任何连带，而是在与他人相互依存的连带中，并不存有一种牢不可破、永恒不变的关系，而是倾向于一种宽松的连系状态(loosely tied)；也正因为如此，才能允诺再一次的分离(be untied again)。</p>
+<p>这种稀释的、开放的关系，如同匿名交友软件中，<strong>用户允许随机配对的模式，同时也允许自己被随意的联系、中断或中止一段社交关系；他们免去了社交礼节，在匿名通讯中能够恣意的切换所不想接触的聊天对象，同时也接受了他人对自己进行相同的行为；双方心照不宣的保持着一种忽远忽近、忽冷忽热的互动关系，并且默允了这种宽松的联系状态存在于彼此之间。此经过稀释般的人际互动关系，正好呼应了现代液态性的轻盈、多变特质，呈现出后现代用户在人际互动上特有的流动关系</strong></p>
+<p>Sherry Turkle 曾在一场 TED 的演讲上提及，当代的用户受新传播科技的影响，彼此已经形成一种新的相处模式：一起独处（Being alone together），人们在同一个饭桌上，却各自刷着手机，或是学生们坐在教室里，心神却早已游荡在外。意即，人们仍然习惯群聚在一起，但待在一起时，又同时希望能够置身在别处；看似地理上的群聚，实际上却是彼此遥远的。这样的模式作用下，使得“没人聆听（No one is listening）”的现象普遍存在我们的人际关系之中。人们开始享受随心游走于任何场所的快感，在意自己能够掌控和分配多少的注意力，但即便彼此持续地维系连结的关系，却无法从他人身上得到全神的关注。Turkle 也批评，社交媒体快速兴起的时代，人们忽略了对话（conversation），只在意连结（connection），我们倾向找寻更多的连结，却无法从中找到自己；我们已经无法去欣赏周围的人，我们只是在利用这些人，把他们当作是零件，用来支持我们脆弱自我的零件。</p>
+<p>Turkle的观点虽然悲观，但一语道破了传播科技与人际关系的现实。不过，科技始于人性，人们也会通过不断地更新传媒技术来改善现状。匿名社交软件弥补了现实生活中“没人聆听（No one is listening）”的现象，匿名聊天因为彼此的使用动机相近，也几乎能够保证彼此的先决条件便是比较愿意聆听。另外，有别于社交媒体的一对多，匿名交友以不公开且一对一的谈话式呈现，暂缓了人们连结的压力和焦虑，转而聚焦于彼此的对话内容，正好与 Turkle 所诟病当代人际关系之情况相反，人们回到了对话中沉淀自己，以弥补现实生活中过度空泛的连结关系。然而，这也可能造成一种危险现象，如 Turkle 所说，当人们对科技抱着越来越大的期待，对彼此的人际关系就越来越不抱希望——它给了我们不需要友谊（friendship），却有人陪伴（companionship）的错觉。</p>
+<p>用户会认为匿名交友中的聊天对象是不重要的，甚至可以被忽略的，他们在意的是有人陪伴、倾听的感觉，通过这种感觉从而找寻、建立自我价值。这种短暂的陪伴可以是一次性的、任意中断的、随心所欲的，人们可以在不同陌生人之间游移，因为一切的重点在于自我吐露、彼此陪伴，而不是急于建立友谊，或是担心再次失去一段关系。渐渐地，人们误将线上的陪伴视为真实且令人舒适的存在，然一旦独处，便立刻变得空虚、孤单、徬徨，立刻要把手机拿出来用，用互相连线来解决；人们开始将对现实的不满足转向寻求科技的慰藉，沉迷于科技的好，而忘了现实层面。</p>
+<p>正如 Turkle 所说，科技在人性最弱的点上展现致命的吸引力，或许是人们因为害怕自己不够被喜欢、生活不够丰富，转而寻求科技的帮助，但我们和科技一同成长，应该建立更多有自我意识的关系，在人与人、人与科技之间，以防止迷失在变化多端的传播科技潮流之中。</p>
+]]></content>
+      <categories>
+        <category>思考</category>
+      </categories>
+      <tags>
+        <tag>live</tag>
       </tags>
   </entry>
   <entry>
@@ -4318,40 +4372,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
-    <title>轻</title>
-    <url>/year/11/15/%E8%BD%BB/</url>
-    <content><![CDATA[<p>意义的原因很可能是意义本身。干吗要有意义？干吗要有生命？干吗要有存在？干吗要有有？重量的原因是引力，引力的原因呢？又是重量。学物理的人告诉我：千万别把运动和能量，以及和时空分割开来理解。我随即得了启发：也千万别把人和意义分割开来理解。不是人有欲望，而是人即欲望。这欲望就是能量，是能量就是运动，是运动就走去前面或者未来。前面和未来都是什么和都是为什么？这必来的疑问使意义诞生，上帝便在第六天把人造成。上帝比靡菲斯特更有力量，任何魔法和咒语都不能把这一天的成就删除。在这一天以后所有的光阴里，你逃得开某种意义，但逃不开意义，如同你逃得开一次旅行但逃不开生命之旅。</p>
-<a id="more"></a>
-
-<p>你不是这种意义，就是那种意义。什么意义都不是，就掉进昆德拉所说的“生命不能承受之轻”。你是一个什么呢？生命算是个什么玩意儿呢？轻得称不出一点儿重量你可就要消失。我向L讨回那件东西，归途中的惶茫因年幼而无以名状，如今想来，分明就是为了一个“轻”字：珍宝转眼被处理成垃圾，一段生命轻得飘散了，没有了，以为是什么原来什么也不是，轻易、简单、灰飞烟灭。一段生命之轻，威胁了生命全面之重，惶茫往灵魂里渗透：是不是生命的所有段落都会落此下场啊？人的根本恐惧就在这个“轻”字上，比如歧视和漠视，比如嘲笑，比如穷人手里作废的股票，比如失恋和死亡。轻，最是可怕。</p>
-<p>要求意义就是要求生命的重量。各种重量。各种重量在撞墙之时被真正测量。但很多重量，在死神的秤盘上还是轻，秤砣平衡在荒诞的准星上。因而得有一种重量，你愿意为之生也愿意为之死，愿意为之累，愿意在它的引力下耗尽性命。不是强言不悔，是清醒地从命。神圣是上帝对心魂的测量，是心魂被确认的重量。死亡光临时有一个仪式，灰和土都好，看往日轻轻地蒸发，但能听见，有什么东西沉沉地还在。不期还在现实中，只望还在美丽的位置上。我与L的情谊，可否还在美丽的位置上沉沉地有着重量？</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>macOS 轻松愉快的解压 rar 压缩包</title>
-    <url>/year/06/28/unrar/</url>
-    <content><![CDATA[<p>macOS 自带的压缩软件不支持 rar 格式的文件解压缩，于是需要找一个第三方压缩软件。Keka 一个不错的软件，但是它默认的压缩文件图标也太丑了吧。而且我对解压缩并那么多的需求，在用了一段时间之后发现了 unrar 就果断放弃了。</p>
-<a id="more"></a>
-
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用 homebrew 安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install unrar</span><br></pre></td></tr></table></figure>
-
-<h2 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unrar 参数 压缩文件名 路径</span><br></pre></td></tr></table></figure>
-
-<p>解压参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">e             解压压缩文件到当前目录</span><br><span class="line">x             用绝对路径解压文件</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>软件测试（一）</title>
     <url>/year/09/18/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h3 id="术语："><a href="#术语：" class="headerlink" title="术语："></a>术语：</h3><blockquote>
@@ -4386,34 +4406,14 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
-    <title>流动性藏私</title>
-    <url>/year/11/23/%E6%B5%81%E5%8A%A8%E6%80%A7%E8%97%8F%E7%A7%81/</url>
-    <content><![CDATA[<blockquote>
-<p>当代社交的行为模式是极为变动、流动的，不管是匿名聊天、随机交友，或是流连于多种实体、软件的传播媒介，都呈现出一种非常多变且轻盈的状态。</p>
-</blockquote>
+    <title>轻</title>
+    <url>/year/11/15/%E8%BD%BB/</url>
+    <content><![CDATA[<p>意义的原因很可能是意义本身。干吗要有意义？干吗要有生命？干吗要有存在？干吗要有有？重量的原因是引力，引力的原因呢？又是重量。学物理的人告诉我：千万别把运动和能量，以及和时空分割开来理解。我随即得了启发：也千万别把人和意义分割开来理解。不是人有欲望，而是人即欲望。这欲望就是能量，是能量就是运动，是运动就走去前面或者未来。前面和未来都是什么和都是为什么？这必来的疑问使意义诞生，上帝便在第六天把人造成。上帝比靡菲斯特更有力量，任何魔法和咒语都不能把这一天的成就删除。在这一天以后所有的光阴里，你逃得开某种意义，但逃不开意义，如同你逃得开一次旅行但逃不开生命之旅。</p>
 <a id="more"></a>
 
-<p><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-11-23-S71120-10032474.jpg" alt="S71120-10032474-w540"><br><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-11-23-S71120-10033447.jpg" alt="S71120-10033447-w540"><br><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-11-23-S71120-10034431.jpg" alt="S71120-10034431-w540"><br><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-11-23-S71120-10035332.jpg" alt="S71120-10035332-w540"></p>
-<p>Raymond Williams 曾提出很好的理论观点——“流动的藏私”（mobile privatization），此理论表达一种既能“流动”于外在世界，又能“藏有个人财货”并且达到“隐私”目的的现象，如同人们通过网络、手机等媒介，观看游走于一个较活跃且公开的社交媒体，也同时通过相同的媒介，得以另辟一个如同匿名通讯般安静、较私人的空间，达到藏私的享受。</p>
-<p>每个人都对个人空间有欲求，需要有个较为隐密的私人空间，如同人文地理学中，人们对的地方与空间的概念，反映的是人类对安全与自由的基本需求，即人类需要“开放的空间”，也需要“安顿宁静的地方”，二者皆不可缺。通过媒介屏幕，流动于公私空间之中，这种移动的私有化，有赖通讯科技的发展与允许，使新的移动自由形式成为可能。</p>
-<p>学者Altman 和 Taylor 曾提出，只有当人们确信不会再碰到陌生人的时候，才会与其产生亲密感。但有别于传统的亲密关系中强调地理接近性或是面对面沟通，此处的匿名社交，通过网络即可轻易的、随时随地的与陌生人产生联系。</p>
-<p>互联网上的陌生人，能使我们有扮演各种角色的自由，摆脱社会伦理与眼光的束缚。匿名的陌生人在互联网的空间中，与用户的连结是偶然性的(contingent)，且绝对的陌生人是与空洞的自由（empty freedom）个体化社会特征联系在一起的；这种空洞的自由赋予了我们挣脱社区中的伦理义务的自由，我们可以成为各种我们想要成为的角色，它是完全个人意义上的自由。另外，网络的匿名性具有激起（flaming）, 非抑制（inhibited）, 平等（equality）, 去个人化（depersonalised）等效果，由于社会线索(social cues)的减弱，因此人们将更于解放趋向自由，让用户不必担心真实身份被认出来，因此也能够和陌生人建立更加亲密的关系。</p>
-<p>当代社交的行为模式是极为变动、流动的，不管是匿名聊天、随机交友，或是流连于多种实体、软件的传播媒介，都呈现出一种非常多变且轻盈的状态。关于这种状态，后现代性预言家 Bauman 曾提出“液态现代性”的主张，认为流动与易变等液态性特质能较描绘当代社会本质：人们对于瞬时与快速的追求，取代了对连续持久的期待，流动性与速度成为社会分层的决定性因素；既有的规则与标准都正快速液化，不再存有稳固的单一权威；对比于过往固态、坚固的现代性是以空间的占有为主、以先前的工业革命和资本主义体制发展为代表，而今的液态现代性，则基于技术在速度上的进一步提升，尤其是运输传播媒介的发展，以至于空间、地域的限制不再是现代社会文化的关键因素。生活于当前液态现代性社会中，人们凭借的各种传统、规则、规范与互动模式正以无法控制之势不断液化、流动与变化。</p>
-<p>人们对于手机的“连结与不连结”，以及各种拉扯于个人与社会之间的爱恨心理状态，即是手机利用其“Mobile”特性，凸显出移动设备做为一种媒介现象在液态现代性脉络下所展现的流动特质。而匿名交友软件，也呈现出此液态性的传播特质 ，且从单一硬件的移动电话，转移至多种软件间的流动。用户一方面在社交媒体与亲朋好友等强连结联系，建立亲密关系，一方面又基于藏私需求，通过交友软件进行匿名交友；用户会通过不只一种匿名交友软件来进行藏私行为，且会和作为与外界联系的亲密社交软件一起交替使用；两者公开与隐匿的社交媒体之间，更因着软件的特性，只需在一只手指的点击之间，就能轻易达到多种场景间的流动。</p>
-<p>随着传播科技的发展与用户的需求行为改变，液态的现代性仍然不断持续著，并且有了越来越多元丰富的表现。</p>
-<p>然而，除了传播媒介与液态现代性的关系，Bauman也试图指出，在液态化影响下，一种新主体的诞生，即<strong>“没有连带的人”(the man with no bonds)</strong>。这个新主体，并非完全没有任何连带，而是在与他人相互依存的连带中，并不存有一种牢不可破、永恒不变的关系，而是倾向于一种宽松的连系状态(loosely tied)；也正因为如此，才能允诺再一次的分离(be untied again)。</p>
-<p>这种稀释的、开放的关系，如同匿名交友软件中，<strong>用户允许随机配对的模式，同时也允许自己被随意的联系、中断或中止一段社交关系；他们免去了社交礼节，在匿名通讯中能够恣意的切换所不想接触的聊天对象，同时也接受了他人对自己进行相同的行为；双方心照不宣的保持着一种忽远忽近、忽冷忽热的互动关系，并且默允了这种宽松的联系状态存在于彼此之间。此经过稀释般的人际互动关系，正好呼应了现代液态性的轻盈、多变特质，呈现出后现代用户在人际互动上特有的流动关系</strong></p>
-<p>Sherry Turkle 曾在一场 TED 的演讲上提及，当代的用户受新传播科技的影响，彼此已经形成一种新的相处模式：一起独处（Being alone together），人们在同一个饭桌上，却各自刷着手机，或是学生们坐在教室里，心神却早已游荡在外。意即，人们仍然习惯群聚在一起，但待在一起时，又同时希望能够置身在别处；看似地理上的群聚，实际上却是彼此遥远的。这样的模式作用下，使得“没人聆听（No one is listening）”的现象普遍存在我们的人际关系之中。人们开始享受随心游走于任何场所的快感，在意自己能够掌控和分配多少的注意力，但即便彼此持续地维系连结的关系，却无法从他人身上得到全神的关注。Turkle 也批评，社交媒体快速兴起的时代，人们忽略了对话（conversation），只在意连结（connection），我们倾向找寻更多的连结，却无法从中找到自己；我们已经无法去欣赏周围的人，我们只是在利用这些人，把他们当作是零件，用来支持我们脆弱自我的零件。</p>
-<p>Turkle的观点虽然悲观，但一语道破了传播科技与人际关系的现实。不过，科技始于人性，人们也会通过不断地更新传媒技术来改善现状。匿名社交软件弥补了现实生活中“没人聆听（No one is listening）”的现象，匿名聊天因为彼此的使用动机相近，也几乎能够保证彼此的先决条件便是比较愿意聆听。另外，有别于社交媒体的一对多，匿名交友以不公开且一对一的谈话式呈现，暂缓了人们连结的压力和焦虑，转而聚焦于彼此的对话内容，正好与 Turkle 所诟病当代人际关系之情况相反，人们回到了对话中沉淀自己，以弥补现实生活中过度空泛的连结关系。然而，这也可能造成一种危险现象，如 Turkle 所说，当人们对科技抱着越来越大的期待，对彼此的人际关系就越来越不抱希望——它给了我们不需要友谊（friendship），却有人陪伴（companionship）的错觉。</p>
-<p>用户会认为匿名交友中的聊天对象是不重要的，甚至可以被忽略的，他们在意的是有人陪伴、倾听的感觉，通过这种感觉从而找寻、建立自我价值。这种短暂的陪伴可以是一次性的、任意中断的、随心所欲的，人们可以在不同陌生人之间游移，因为一切的重点在于自我吐露、彼此陪伴，而不是急于建立友谊，或是担心再次失去一段关系。渐渐地，人们误将线上的陪伴视为真实且令人舒适的存在，然一旦独处，便立刻变得空虚、孤单、徬徨，立刻要把手机拿出来用，用互相连线来解决；人们开始将对现实的不满足转向寻求科技的慰藉，沉迷于科技的好，而忘了现实层面。</p>
-<p>正如 Turkle 所说，科技在人性最弱的点上展现致命的吸引力，或许是人们因为害怕自己不够被喜欢、生活不够丰富，转而寻求科技的帮助，但我们和科技一同成长，应该建立更多有自我意识的关系，在人与人、人与科技之间，以防止迷失在变化多端的传播科技潮流之中。</p>
+<p>你不是这种意义，就是那种意义。什么意义都不是，就掉进昆德拉所说的“生命不能承受之轻”。你是一个什么呢？生命算是个什么玩意儿呢？轻得称不出一点儿重量你可就要消失。我向L讨回那件东西，归途中的惶茫因年幼而无以名状，如今想来，分明就是为了一个“轻”字：珍宝转眼被处理成垃圾，一段生命轻得飘散了，没有了，以为是什么原来什么也不是，轻易、简单、灰飞烟灭。一段生命之轻，威胁了生命全面之重，惶茫往灵魂里渗透：是不是生命的所有段落都会落此下场啊？人的根本恐惧就在这个“轻”字上，比如歧视和漠视，比如嘲笑，比如穷人手里作废的股票，比如失恋和死亡。轻，最是可怕。</p>
+<p>要求意义就是要求生命的重量。各种重量。各种重量在撞墙之时被真正测量。但很多重量，在死神的秤盘上还是轻，秤砣平衡在荒诞的准星上。因而得有一种重量，你愿意为之生也愿意为之死，愿意为之累，愿意在它的引力下耗尽性命。不是强言不悔，是清醒地从命。神圣是上帝对心魂的测量，是心魂被确认的重量。死亡光临时有一个仪式，灰和土都好，看往日轻轻地蒸发，但能听见，有什么东西沉沉地还在。不期还在现实中，只望还在美丽的位置上。我与L的情谊，可否还在美丽的位置上沉沉地有着重量？</p>
 ]]></content>
-      <categories>
-        <category>思考</category>
-      </categories>
-      <tags>
-        <tag>live</tag>
-      </tags>
   </entry>
   <entry>
     <title>【转】Vim from zero to hero - Vim 从入门到精通</title>
