@@ -58,40 +58,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Alacritty</title>
-    <url>/year/01/20/Alacritty/</url>
-    <content><![CDATA[<p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gmtm45q5qaj31980ekdic.jpg" alt="image-20210120032619740"></p>
-<h2 id="Alacritty-最快的终端模拟器"><a href="#Alacritty-最快的终端模拟器" class="headerlink" title="Alacritty 最快的终端模拟器"></a>Alacritty 最快的终端模拟器</h2><a id="more"></a>
-
-<h3 id="为什么选择-Alacritty"><a href="#为什么选择-Alacritty" class="headerlink" title="为什么选择 Alacritty"></a>为什么选择 Alacritty</h3><p>Alacritty 将自己标榜为最快的终端模拟器。事实上它的确要比 iTerm2 流畅不少，这种情况尤其在使用 neovim 的时候明显。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Mac </span><br><span class="line">brew cask install alacritty</span><br><span class="line"></span><br><span class="line"># Ubuntu</span><br><span class="line">sudo apt install alacritty</span><br><span class="line"></span><br><span class="line"># Arch</span><br><span class="line">sudo pacman -S alacritty</span><br><span class="line"></span><br><span class="line"># Windows</span><br><span class="line">choco install alacritty</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Alacritty 默认不会添加配置文件，需要自己手动添加。</p>
-<ul>
-<li>Linux &amp; Mac</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;alacritty&#x2F;alacritty.yml</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Windows</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">%APPDATA%\alacritty\alacritty.yml</span><br></pre></td></tr></table></figure>
-
-<h3 id="我的配置"><a href="#我的配置" class="headerlink" title="我的配置"></a>我的配置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">colors:</span><br><span class="line"></span><br><span class="line">  primary:</span><br><span class="line">    background: &quot;#1e2127&quot;</span><br><span class="line">    # background: &quot;#2E3440&quot;</span><br><span class="line">    foreground: &quot;#D8DEE9&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  normal:</span><br><span class="line">    black: &quot;#3B4252&quot;</span><br><span class="line">    red: &quot;#BF616A&quot;</span><br><span class="line">    green: &quot;#A3BE8C&quot;</span><br><span class="line">    yellow: &quot;#EBCB8B&quot;</span><br><span class="line">    blue: &quot;#81A1C1&quot;</span><br><span class="line">    magenta: &quot;#B48EAD&quot;</span><br><span class="line">    cyan: &quot;#88C0D0&quot;</span><br><span class="line">    white: &quot;#abb2bf&quot;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  bright:</span><br><span class="line">    black: &quot;#5c6370&quot;</span><br><span class="line">    red: &quot;#e06c75&quot;</span><br><span class="line">    green: &quot;#98c379&quot;</span><br><span class="line">    yellow: &quot;#d19a66&quot;</span><br><span class="line">    blue: &quot;#61afef&quot;</span><br><span class="line">    magenta: &quot;#c678dd&quot;</span><br><span class="line">    cyan: &quot;#56b6c2&quot;</span><br><span class="line">    white: &quot;#ECEFF4&quot;</span><br><span class="line"></span><br><span class="line">background_opacity: 1.0</span><br><span class="line"></span><br><span class="line"># 设置字体</span><br><span class="line">font:</span><br><span class="line">  normal:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Regular</span><br><span class="line">  bold:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Bold</span><br><span class="line">  italic:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Italic</span><br><span class="line">  bold_italic:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Bold Italic</span><br><span class="line"></span><br><span class="line">  # 字大小</span><br><span class="line">  size: 15.0 </span><br><span class="line"></span><br><span class="line">  offset:</span><br><span class="line">    x: 0</span><br><span class="line">    y: 0</span><br><span class="line">  glyph_offset:</span><br><span class="line">    x: 0</span><br><span class="line">    y: 0</span><br><span class="line"></span><br><span class="line">window:</span><br><span class="line">  padding:</span><br><span class="line">    x: 2</span><br><span class="line">    y: 2</span><br><span class="line"></span><br><span class="line">scrolling:</span><br><span class="line"># 回滚缓冲区中的最大行数,指定“0”将禁用滚动。</span><br><span class="line">  history: 10000</span><br><span class="line"></span><br><span class="line">  # 滚动行数 </span><br><span class="line"></span><br><span class="line">  multiplier: 10</span><br><span class="line"></span><br><span class="line"># 如果为‘true’，则使用亮色变体绘制粗体文本。</span><br><span class="line">draw_bold_text_with_bright_colors: true</span><br><span class="line"></span><br><span class="line">selection:</span><br><span class="line">  semantic_escape_chars: &#39;,│&#96;|:&quot;&#39;&#39; ()[]&#123;&#125;&lt;&gt;&#39;</span><br><span class="line">  save_to_clipboard: true</span><br><span class="line"></span><br><span class="line">live_config_reload: true</span><br><span class="line"></span><br><span class="line">key_bindings:</span><br><span class="line">  - &#123; key: V, mods: command, action: Paste &#125;</span><br><span class="line">  - &#123; key: C, mods: command, action: Copy &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
-<li><a href="https://github.com/alacritty/alacritty" target="_blank" rel="noopener">github：alacritty</a></li>
-<li><a href="https://github.com/alacritty/alacritty/wiki/Color-schemes" target="_blank" rel="noopener">Color-schemes</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker学习笔记</title>
     <url>/year/04/06/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
@@ -223,6 +189,40 @@ docker port web //查看端口</code></pre><h3 id="镜像"><a href="#镜像" cla
       </categories>
       <tags>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Alacritty</title>
+    <url>/year/01/20/Alacritty/</url>
+    <content><![CDATA[<p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gmtm45q5qaj31980ekdic.jpg" alt="image-20210120032619740"></p>
+<h2 id="Alacritty-最快的终端模拟器"><a href="#Alacritty-最快的终端模拟器" class="headerlink" title="Alacritty 最快的终端模拟器"></a>Alacritty 最快的终端模拟器</h2><a id="more"></a>
+
+<h3 id="为什么选择-Alacritty"><a href="#为什么选择-Alacritty" class="headerlink" title="为什么选择 Alacritty"></a>为什么选择 Alacritty</h3><p>Alacritty 将自己标榜为最快的终端模拟器。事实上它的确要比 iTerm2 流畅不少，这种情况尤其在使用 neovim 的时候明显。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Mac </span><br><span class="line">brew cask install alacritty</span><br><span class="line"></span><br><span class="line"># Ubuntu</span><br><span class="line">sudo apt install alacritty</span><br><span class="line"></span><br><span class="line"># Arch</span><br><span class="line">sudo pacman -S alacritty</span><br><span class="line"></span><br><span class="line"># Windows</span><br><span class="line">choco install alacritty</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Alacritty 默认不会添加配置文件，需要自己手动添加。</p>
+<ul>
+<li>Linux &amp; Mac</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;alacritty&#x2F;alacritty.yml</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Windows</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">%APPDATA%\alacritty\alacritty.yml</span><br></pre></td></tr></table></figure>
+
+<h3 id="我的配置"><a href="#我的配置" class="headerlink" title="我的配置"></a>我的配置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">colors:</span><br><span class="line"></span><br><span class="line">  primary:</span><br><span class="line">    background: &quot;#1e2127&quot;</span><br><span class="line">    # background: &quot;#2E3440&quot;</span><br><span class="line">    foreground: &quot;#D8DEE9&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  normal:</span><br><span class="line">    black: &quot;#3B4252&quot;</span><br><span class="line">    red: &quot;#BF616A&quot;</span><br><span class="line">    green: &quot;#A3BE8C&quot;</span><br><span class="line">    yellow: &quot;#EBCB8B&quot;</span><br><span class="line">    blue: &quot;#81A1C1&quot;</span><br><span class="line">    magenta: &quot;#B48EAD&quot;</span><br><span class="line">    cyan: &quot;#88C0D0&quot;</span><br><span class="line">    white: &quot;#abb2bf&quot;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  bright:</span><br><span class="line">    black: &quot;#5c6370&quot;</span><br><span class="line">    red: &quot;#e06c75&quot;</span><br><span class="line">    green: &quot;#98c379&quot;</span><br><span class="line">    yellow: &quot;#d19a66&quot;</span><br><span class="line">    blue: &quot;#61afef&quot;</span><br><span class="line">    magenta: &quot;#c678dd&quot;</span><br><span class="line">    cyan: &quot;#56b6c2&quot;</span><br><span class="line">    white: &quot;#ECEFF4&quot;</span><br><span class="line"></span><br><span class="line">background_opacity: 1.0</span><br><span class="line"></span><br><span class="line"># 设置字体</span><br><span class="line">font:</span><br><span class="line">  normal:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Regular</span><br><span class="line">  bold:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Bold</span><br><span class="line">  italic:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Italic</span><br><span class="line">  bold_italic:</span><br><span class="line">    family: &quot;Hack Nerd Font&quot;</span><br><span class="line">    style: Bold Italic</span><br><span class="line"></span><br><span class="line">  # 字大小</span><br><span class="line">  size: 15.0 </span><br><span class="line"></span><br><span class="line">  offset:</span><br><span class="line">    x: 0</span><br><span class="line">    y: 0</span><br><span class="line">  glyph_offset:</span><br><span class="line">    x: 0</span><br><span class="line">    y: 0</span><br><span class="line"></span><br><span class="line">window:</span><br><span class="line">  padding:</span><br><span class="line">    x: 2</span><br><span class="line">    y: 2</span><br><span class="line"></span><br><span class="line">scrolling:</span><br><span class="line"># 回滚缓冲区中的最大行数,指定“0”将禁用滚动。</span><br><span class="line">  history: 10000</span><br><span class="line"></span><br><span class="line">  # 滚动行数 </span><br><span class="line"></span><br><span class="line">  multiplier: 10</span><br><span class="line"></span><br><span class="line"># 如果为‘true’，则使用亮色变体绘制粗体文本。</span><br><span class="line">draw_bold_text_with_bright_colors: true</span><br><span class="line"></span><br><span class="line">selection:</span><br><span class="line">  semantic_escape_chars: &#39;,│&#96;|:&quot;&#39;&#39; ()[]&#123;&#125;&lt;&gt;&#39;</span><br><span class="line">  save_to_clipboard: true</span><br><span class="line"></span><br><span class="line">live_config_reload: true</span><br><span class="line"></span><br><span class="line">key_bindings:</span><br><span class="line">  - &#123; key: V, mods: command, action: Paste &#125;</span><br><span class="line">  - &#123; key: C, mods: command, action: Copy &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
+<li><a href="https://github.com/alacritty/alacritty" target="_blank" rel="noopener">github：alacritty</a></li>
+<li><a href="https://github.com/alacritty/alacritty/wiki/Color-schemes" target="_blank" rel="noopener">Color-schemes</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1026,38 +1026,6 @@ hexo g -d</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>docker run 后容器状态是 Exited 解析</title>
-    <url>/year/05/22/docker-exited/</url>
-    <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3a6eaacp1j31720c4tf9.jpg" alt=""></p>
-<a id="more"></a>
-<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>运行：<code>docker run -dit -p 4001:8888 -p 4002:3306 -v /Users/xinaogudu/hproxy:/usr/local/etc/haproxy --privileged --net=net1 --name h1 --ip 172.18.0.5  haproxy</code> 后容器状态是 <code>Exited</code></p>
-<h2 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h2><blockquote>
-<p>容器的生命周期，要把 docker 容器看做是一个单独的进程及运行环境。容器不等价于一个虚拟的操作系统。Docker的开发人员也一直主张docker容器应该只运行一个进程。</p>
-</blockquote>
-<p>再根据 <a href="https://hub.docker.com/_/haproxy" target="_blank" rel="noopener">hproxy官方镜像</a> 描述，镜像里是没有默认配置的，也就没有进程。这就不难解释为什么docker run 之后容器是 Exited 状态了。</p>
-<p><a href="https://hub.docker.com/_/haproxy" target="_blank" rel="noopener">hproxy官方镜像</a> 描述:</p>
-<blockquote>
-<p>Since no two users of HAProxy are likely to configure it exactly alike, this image does not come with any default configuration.</p>
-</blockquote>
-<p>对于 hproxy 官方是推荐 build 创建自己的镜像然后 docker run 的时候直接指定配置文件的。</p>
-<p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3a615jd6zj319b0u00vu.jpg" alt=""></p>
-<h2 id="解决："><a href="#解决：" class="headerlink" title="解决："></a>解决：</h2><p>所以解决办法有两种，一种是在 docker run 后加 bash 这样启动就有一个进程，容器就不是 Exited 状态了，另一种是按照官方的办法。build 自己的镜像然后再启动时指定文。</p>
-<p>在 docker run 后加 bash ：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -dit -p 4001:8888 -p 4002:3306 \</span><br><span class="line">    -v &#x2F;Users&#x2F;xinaogudu&#x2F;hproxy:&#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy \</span><br><span class="line">    --privileged \</span><br><span class="line">    --net&#x3D;net1 \</span><br><span class="line">    --name h1 \</span><br><span class="line">    --ip 172.18.0.5  \</span><br><span class="line">    haproxy bash</span><br></pre></td></tr></table></figure>
-
-
-
-
-<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a href="https://segmentfault.com/a/1190000010940432" target="_blank" rel="noopener">Docker随笔记—docker run执行后，容器的状态是Exited的一些困惑</a></p>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker 安装和配置加速</title>
     <url>/year/04/06/docker-anzhuang/</url>
     <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
@@ -1105,6 +1073,114 @@ hexo g -d</code></pre>
       </categories>
       <tags>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker run 后容器状态是 Exited 解析</title>
+    <url>/year/05/22/docker-exited/</url>
+    <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3a6eaacp1j31720c4tf9.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>运行：<code>docker run -dit -p 4001:8888 -p 4002:3306 -v /Users/xinaogudu/hproxy:/usr/local/etc/haproxy --privileged --net=net1 --name h1 --ip 172.18.0.5  haproxy</code> 后容器状态是 <code>Exited</code></p>
+<h2 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h2><blockquote>
+<p>容器的生命周期，要把 docker 容器看做是一个单独的进程及运行环境。容器不等价于一个虚拟的操作系统。Docker的开发人员也一直主张docker容器应该只运行一个进程。</p>
+</blockquote>
+<p>再根据 <a href="https://hub.docker.com/_/haproxy" target="_blank" rel="noopener">hproxy官方镜像</a> 描述，镜像里是没有默认配置的，也就没有进程。这就不难解释为什么docker run 之后容器是 Exited 状态了。</p>
+<p><a href="https://hub.docker.com/_/haproxy" target="_blank" rel="noopener">hproxy官方镜像</a> 描述:</p>
+<blockquote>
+<p>Since no two users of HAProxy are likely to configure it exactly alike, this image does not come with any default configuration.</p>
+</blockquote>
+<p>对于 hproxy 官方是推荐 build 创建自己的镜像然后 docker run 的时候直接指定配置文件的。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3a615jd6zj319b0u00vu.jpg" alt=""></p>
+<h2 id="解决："><a href="#解决：" class="headerlink" title="解决："></a>解决：</h2><p>所以解决办法有两种，一种是在 docker run 后加 bash 这样启动就有一个进程，容器就不是 Exited 状态了，另一种是按照官方的办法。build 自己的镜像然后再启动时指定文。</p>
+<p>在 docker run 后加 bash ：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -dit -p 4001:8888 -p 4002:3306 \</span><br><span class="line">    -v &#x2F;Users&#x2F;xinaogudu&#x2F;hproxy:&#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy \</span><br><span class="line">    --privileged \</span><br><span class="line">    --net&#x3D;net1 \</span><br><span class="line">    --name h1 \</span><br><span class="line">    --ip 172.18.0.5  \</span><br><span class="line">    haproxy bash</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a href="https://segmentfault.com/a/1190000010940432" target="_blank" rel="noopener">Docker随笔记—docker run执行后，容器的状态是Exited的一些困惑</a></p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 创建 PXC 高可用集群并配置 Harpoxy 负载均衡</title>
+    <url>/year/05/23/docker-pxc/</url>
+    <content><![CDATA[<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3b6n7xz6kj327w0j8qah.jpg" alt=""></p>
+<a id="more"></a>
+
+<h2 id="创建-PXC-集群环境"><a href="#创建-PXC-集群环境" class="headerlink" title="创建 PXC 集群环境"></a>创建 PXC 集群环境</h2><h3 id="拉取-percona-xtradb-cluster-镜像"><a href="#拉取-percona-xtradb-cluster-镜像" class="headerlink" title="拉取 percona-xtradb-cluster 镜像"></a>拉取 percona-xtradb-cluster 镜像</h3><p>官方镜像地址：<a href="https://hub.docker.com/r/percona/percona-xtradb-cluster" target="_blank" rel="noopener">https://hub.docker.com/r/percona/percona-xtradb-cluster</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull percona&#x2F;percona-xtradb-cluster</span><br></pre></td></tr></table></figure>
+<p>percona/percona-xtradb-cluster 太长，我们换个名字叫做pxc，操作如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker tag percona&#x2F;percona-xtradb-cluster pxc</span><br></pre></td></tr></table></figure>
+
+<p>并将开始拉去的镜像删除，操作如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi percona&#x2F;percona-xtradb-cluster</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建docker网络"><a href="#创建docker网络" class="headerlink" title="创建docker网络"></a>创建docker网络</h4><p>出于安全考虑，将PXC集群放置于docker内部网络中。只需将宿主的端口与之映射并开放出来即可。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker network create --subnet&#x3D;172.18.0.0&#x2F;24 net1</span><br></pre></td></tr></table></figure>
+
+<p>其中，–subnet=172.18.0.0/24自定义网段172.18.0.0，24是指24位子网掩码 net1 网段名称。</p>
+<p>执行成功后，我们可以通过<code>sudo docker inspect net1</code>查看内部网络信息。</p>
+<h4 id="创建docker卷"><a href="#创建docker卷" class="headerlink" title="创建docker卷"></a>创建docker卷</h4><p>docker容器的运行规则：通过目录映射的方法，将业务数据写入到宿主机中。好处是如果容器故障，只需将容器删除，重新启用一个容器即可，这样就不会丢失原来的数据。 由于PXC较为特殊，无法直接使用映射目录的方法做映射（使用后会闪退），故使用docker卷。 在命令行使用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker volume create --name v1</span><br><span class="line">docker volume create --name v2</span><br><span class="line">docker volume create --name v3</span><br></pre></td></tr></table></figure>
+<p>计划创建3个数据库节点，所以这里对应创建3个数据卷。</p>
+<h3 id="创建第一个容器节点："><a href="#创建第一个容器节点：" class="headerlink" title="创建第一个容器节点："></a>创建第一个容器节点：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3306:3306 -v v1:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">    -e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">    -e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">    -e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">    --privileged \</span><br><span class="line">    --name&#x3D;node1 \</span><br><span class="line">    --net&#x3D;net1 \</span><br><span class="line">    --ip 172.18.0.2 \</span><br><span class="line">    pxc</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-d 默认在后台运行, -p 3306（宿主）:3306（容器） 端口映射，将容器3306端口映射到宿主3306端口 -v 目录映射，将第四步创建的v1映射到容器/var/lib/mysql -e MYSQL_ROOT_PASSROWD 创建的用户实例的密码，默认实例root -e CLUSTER_NAME 集群名称， -e XTRABACKUP_PASSWORD 数据库之间同步使用的密码 –privileged 权限.给予最高权限 –name 给容器容命名 –net 使用内部网段 –ip 内部网段分到的地址</p>
+</blockquote>
+<h4 id="测试连接："><a href="#测试连接：" class="headerlink" title="测试连接："></a>测试连接：</h4><p>需要注意的是容器启动的速度虽然很快，但是pxc初始化是需要一点时间的（大概两分钟左右），必须等第一个容器初始化完成后再启动第二个pxc容器，不然会报错。</p>
+<p>测试连接成功后就可以启动其他pxc容器了</p>
+<p>在启动其他容器的时候需要更改映射的宿主机端口、容器的名称，还有指定 IP 地址。</p>
+<h3 id="创建第二个容器节点："><a href="#创建第二个容器节点：" class="headerlink" title="创建第二个容器节点："></a>创建第二个容器节点：</h3><blockquote>
+<p>注意：在启动其他容器的时候需要更改映射的宿主机端口、容器的名称，还有指定 IP 地址。</p>
+<p> -e CLUSTER_JOIN=node1 用于连接第一个数据库节点</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3307:3306 -v v2:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">-e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_JOIN&#x3D;node1 \</span><br><span class="line">--privileged \</span><br><span class="line">--name&#x3D;node2 \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--ip 172.18.0.3 \</span><br><span class="line">pxc</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="创建第三个容器节点："><a href="#创建第三个容器节点：" class="headerlink" title="创建第三个容器节点："></a>创建第三个容器节点：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3308:3306 -v v3:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">-e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_JOIN&#x3D;node1 \</span><br><span class="line">--privileged \</span><br><span class="line">--name&#x3D;node3 \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--ip 172.18.0.4 \</span><br><span class="line">pxc</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h4 id="测试："><a href="#测试：" class="headerlink" title="测试："></a>测试：</h4><p>用数据库连接工具连接三个数据库，在node创建数据库<code>test</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">database</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果其他数据库都同步过来那就没有问题了。</p>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3a21d0wupj30si0b2jsk.jpg" alt=""></p>
+<h2 id="Harpoxy-负载均衡"><a href="#Harpoxy-负载均衡" class="headerlink" title="Harpoxy 负载均衡"></a>Harpoxy 负载均衡</h2><p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3a1w7txi0j31dk0maagw.jpg" alt=""></p>
+<h3 id="创建-haproxy-配置文件，并放到指定的宿主机目录。"><a href="#创建-haproxy-配置文件，并放到指定的宿主机目录。" class="headerlink" title="创建 haproxy 配置文件，并放到指定的宿主机目录。"></a>创建 haproxy 配置文件，并放到指定的宿主机目录。</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">global</span><br><span class="line">        #工作目录</span><br><span class="line">        chroot &#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy</span><br><span class="line">        #日志文件，使用rsyslog服务中local5日志设备（&#x2F;var&#x2F;log&#x2F;local5），等级info</span><br><span class="line">        log 127.0.0.1 local5 info</span><br><span class="line">        #守护进程运行</span><br><span class="line">        daemon</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">        log     global</span><br><span class="line">        mode    http</span><br><span class="line">        #日志格式</span><br><span class="line">        option  httplog</span><br><span class="line">        #日志中不记录负载均衡的心跳检测记录</span><br><span class="line">        option  dontlognull</span><br><span class="line">        #连接超时（毫秒）</span><br><span class="line">        timeout connect 5000</span><br><span class="line">        #客户端超时（毫秒）</span><br><span class="line">        timeout client  50000</span><br><span class="line">        #服务器超时（毫秒）</span><br><span class="line">        timeout server  50000</span><br><span class="line"></span><br><span class="line">#监控界面   </span><br><span class="line">listen  admin_stats</span><br><span class="line">        #监控界面的访问的IP和端口</span><br><span class="line">        bind  0.0.0.0:8888</span><br><span class="line">        #访问协议</span><br><span class="line">        mode        http</span><br><span class="line">        #URI相对地址</span><br><span class="line">        stats uri   &#x2F;dbs</span><br><span class="line">        #统计报告格式</span><br><span class="line">        stats realm     Global\ statistics</span><br><span class="line">        #登陆帐户信息</span><br><span class="line">        stats auth  admin:123456</span><br><span class="line">#数据库负载均衡</span><br><span class="line">listen  proxy-mysql</span><br><span class="line">        #访问的IP和端口</span><br><span class="line">        bind  0.0.0.0:3306  </span><br><span class="line">        #网络协议</span><br><span class="line">        mode  tcp</span><br><span class="line">        #负载均衡算法（轮询算法）</span><br><span class="line">        #轮询算法：roundrobin</span><br><span class="line">        #权重算法：static-rr</span><br><span class="line">        #最少连接算法：leastconn</span><br><span class="line">        #请求源IP算法：source</span><br><span class="line">        balance  roundrobin</span><br><span class="line">       #日志格式</span><br><span class="line">        option  tcplog</span><br><span class="line">        #在MySQL中创建一个没有权限的haproxy用户，密码为空。Haproxy使用这个账户对MySQL数据库心跳检测</span><br><span class="line">        option  mysql-check user haproxy</span><br><span class="line">        server  MySQL_1 172.18.0.2:3306 check weight 1 maxconn 2000  </span><br><span class="line">        server  MySQL_2 172.18.0.3:3306 check weight 1 maxconn 2000  </span><br><span class="line">        server  MySQL_2 172.18.0.4:3306 check weight 1 maxconn 2000  </span><br><span class="line">        #使用keepalive检测死链</span><br><span class="line">        option  tcpka</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动-haproxy-容器"><a href="#启动-haproxy-容器" class="headerlink" title="启动 haproxy 容器"></a>启动 haproxy 容器</h3><blockquote>
+<p>/Users/xinaogudu/hproxy 是我放置配置文件的目录。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -dit -p 4001:8888 -p 4002:3306 \</span><br><span class="line">-v &#x2F;Users&#x2F;xinaogudu&#x2F;hproxy:&#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy \</span><br><span class="line">--privileged \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--name h1 \</span><br><span class="line">--ip 172.18.0.5 \</span><br><span class="line">haproxy</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入-haproxy-容器指明配置文件"><a href="#进入-haproxy-容器指明配置文件" class="headerlink" title="进入 haproxy 容器指明配置文件"></a>进入 haproxy 容器指明配置文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it h1 bash</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 指定 haproxy 配置文件位置</span><br><span class="line">haproxy -c -f &#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy&#x2F;haproxy.cfg</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="在数据库中创建一个没有密码的-haproxy-用户用于心跳检测。"><a href="#在数据库中创建一个没有密码的-haproxy-用户用于心跳检测。" class="headerlink" title="在数据库中创建一个没有密码的 haproxy 用户用于心跳检测。"></a>在数据库中创建一个没有密码的 haproxy 用户用于心跳检测。</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create user &#39;haproxy&#39;@&#39;%&#39; identified by &#39;&#39;;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><h3 id="登录-haproxy-监控：http-localhost-4001-dbs"><a href="#登录-haproxy-监控：http-localhost-4001-dbs" class="headerlink" title="登录 haproxy 监控：http://localhost:4001/dbs"></a>登录 haproxy 监控：<a href="http://localhost:4001/dbs" target="_blank" rel="noopener">http://localhost:4001/dbs</a></h3><p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3b67er48cj327y0tqwoh.jpg" alt=""></p>
+<h3 id="用数据库管理工具连接-haproxy-端口测试："><a href="#用数据库管理工具连接-haproxy-端口测试：" class="headerlink" title="用数据库管理工具连接 haproxy 端口测试："></a>用数据库管理工具连接 haproxy 端口测试：</h3><p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3b6ajpic6j317m0sq43v.jpg" alt=""></p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>dokcer</tag>
+        <tag>PXC</tag>
+        <tag>Haproxy</tag>
       </tags>
   </entry>
   <entry>
@@ -1198,82 +1274,6 @@ hexo g -d</code></pre>
       </categories>
       <tags>
         <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker 创建 PXC 高可用集群并配置 Harpoxy 负载均衡</title>
-    <url>/year/05/23/docker-pxc/</url>
-    <content><![CDATA[<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3b6n7xz6kj327w0j8qah.jpg" alt=""></p>
-<a id="more"></a>
-
-<h2 id="创建-PXC-集群环境"><a href="#创建-PXC-集群环境" class="headerlink" title="创建 PXC 集群环境"></a>创建 PXC 集群环境</h2><h3 id="拉取-percona-xtradb-cluster-镜像"><a href="#拉取-percona-xtradb-cluster-镜像" class="headerlink" title="拉取 percona-xtradb-cluster 镜像"></a>拉取 percona-xtradb-cluster 镜像</h3><p>官方镜像地址：<a href="https://hub.docker.com/r/percona/percona-xtradb-cluster" target="_blank" rel="noopener">https://hub.docker.com/r/percona/percona-xtradb-cluster</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull percona&#x2F;percona-xtradb-cluster</span><br></pre></td></tr></table></figure>
-<p>percona/percona-xtradb-cluster 太长，我们换个名字叫做pxc，操作如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker tag percona&#x2F;percona-xtradb-cluster pxc</span><br></pre></td></tr></table></figure>
-
-<p>并将开始拉去的镜像删除，操作如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi percona&#x2F;percona-xtradb-cluster</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建docker网络"><a href="#创建docker网络" class="headerlink" title="创建docker网络"></a>创建docker网络</h4><p>出于安全考虑，将PXC集群放置于docker内部网络中。只需将宿主的端口与之映射并开放出来即可。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker network create --subnet&#x3D;172.18.0.0&#x2F;24 net1</span><br></pre></td></tr></table></figure>
-
-<p>其中，–subnet=172.18.0.0/24自定义网段172.18.0.0，24是指24位子网掩码 net1 网段名称。</p>
-<p>执行成功后，我们可以通过<code>sudo docker inspect net1</code>查看内部网络信息。</p>
-<h4 id="创建docker卷"><a href="#创建docker卷" class="headerlink" title="创建docker卷"></a>创建docker卷</h4><p>docker容器的运行规则：通过目录映射的方法，将业务数据写入到宿主机中。好处是如果容器故障，只需将容器删除，重新启用一个容器即可，这样就不会丢失原来的数据。 由于PXC较为特殊，无法直接使用映射目录的方法做映射（使用后会闪退），故使用docker卷。 在命令行使用如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker volume create --name v1</span><br><span class="line">docker volume create --name v2</span><br><span class="line">docker volume create --name v3</span><br></pre></td></tr></table></figure>
-<p>计划创建3个数据库节点，所以这里对应创建3个数据卷。</p>
-<h3 id="创建第一个容器节点："><a href="#创建第一个容器节点：" class="headerlink" title="创建第一个容器节点："></a>创建第一个容器节点：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3306:3306 -v v1:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">    -e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">    -e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">    -e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">    --privileged \</span><br><span class="line">    --name&#x3D;node1 \</span><br><span class="line">    --net&#x3D;net1 \</span><br><span class="line">    --ip 172.18.0.2 \</span><br><span class="line">    pxc</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>-d 默认在后台运行, -p 3306（宿主）:3306（容器） 端口映射，将容器3306端口映射到宿主3306端口 -v 目录映射，将第四步创建的v1映射到容器/var/lib/mysql -e MYSQL_ROOT_PASSROWD 创建的用户实例的密码，默认实例root -e CLUSTER_NAME 集群名称， -e XTRABACKUP_PASSWORD 数据库之间同步使用的密码 –privileged 权限.给予最高权限 –name 给容器容命名 –net 使用内部网段 –ip 内部网段分到的地址</p>
-</blockquote>
-<h4 id="测试连接："><a href="#测试连接：" class="headerlink" title="测试连接："></a>测试连接：</h4><p>需要注意的是容器启动的速度虽然很快，但是pxc初始化是需要一点时间的（大概两分钟左右），必须等第一个容器初始化完成后再启动第二个pxc容器，不然会报错。</p>
-<p>测试连接成功后就可以启动其他pxc容器了</p>
-<p>在启动其他容器的时候需要更改映射的宿主机端口、容器的名称，还有指定 IP 地址。</p>
-<h3 id="创建第二个容器节点："><a href="#创建第二个容器节点：" class="headerlink" title="创建第二个容器节点："></a>创建第二个容器节点：</h3><blockquote>
-<p>注意：在启动其他容器的时候需要更改映射的宿主机端口、容器的名称，还有指定 IP 地址。</p>
-<p> -e CLUSTER_JOIN=node1 用于连接第一个数据库节点</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3307:3306 -v v2:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">-e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_JOIN&#x3D;node1 \</span><br><span class="line">--privileged \</span><br><span class="line">--name&#x3D;node2 \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--ip 172.18.0.3 \</span><br><span class="line">pxc</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="创建第三个容器节点："><a href="#创建第三个容器节点：" class="headerlink" title="创建第三个容器节点："></a>创建第三个容器节点：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3308:3306 -v v3:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_NAME&#x3D;PXC \</span><br><span class="line">-e XTRABACKUP_PASSWORD&#x3D;123456 \</span><br><span class="line">-e CLUSTER_JOIN&#x3D;node1 \</span><br><span class="line">--privileged \</span><br><span class="line">--name&#x3D;node3 \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--ip 172.18.0.4 \</span><br><span class="line">pxc</span><br></pre></td></tr></table></figure>
-
-
-
-
-<h4 id="测试："><a href="#测试：" class="headerlink" title="测试："></a>测试：</h4><p>用数据库连接工具连接三个数据库，在node创建数据库<code>test</code></p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">database</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure>
-
-<p>如果其他数据库都同步过来那就没有问题了。</p>
-<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3a21d0wupj30si0b2jsk.jpg" alt=""></p>
-<h2 id="Harpoxy-负载均衡"><a href="#Harpoxy-负载均衡" class="headerlink" title="Harpoxy 负载均衡"></a>Harpoxy 负载均衡</h2><p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3a1w7txi0j31dk0maagw.jpg" alt=""></p>
-<h3 id="创建-haproxy-配置文件，并放到指定的宿主机目录。"><a href="#创建-haproxy-配置文件，并放到指定的宿主机目录。" class="headerlink" title="创建 haproxy 配置文件，并放到指定的宿主机目录。"></a>创建 haproxy 配置文件，并放到指定的宿主机目录。</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">global</span><br><span class="line">        #工作目录</span><br><span class="line">        chroot &#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy</span><br><span class="line">        #日志文件，使用rsyslog服务中local5日志设备（&#x2F;var&#x2F;log&#x2F;local5），等级info</span><br><span class="line">        log 127.0.0.1 local5 info</span><br><span class="line">        #守护进程运行</span><br><span class="line">        daemon</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">        log     global</span><br><span class="line">        mode    http</span><br><span class="line">        #日志格式</span><br><span class="line">        option  httplog</span><br><span class="line">        #日志中不记录负载均衡的心跳检测记录</span><br><span class="line">        option  dontlognull</span><br><span class="line">        #连接超时（毫秒）</span><br><span class="line">        timeout connect 5000</span><br><span class="line">        #客户端超时（毫秒）</span><br><span class="line">        timeout client  50000</span><br><span class="line">        #服务器超时（毫秒）</span><br><span class="line">        timeout server  50000</span><br><span class="line"></span><br><span class="line">#监控界面   </span><br><span class="line">listen  admin_stats</span><br><span class="line">        #监控界面的访问的IP和端口</span><br><span class="line">        bind  0.0.0.0:8888</span><br><span class="line">        #访问协议</span><br><span class="line">        mode        http</span><br><span class="line">        #URI相对地址</span><br><span class="line">        stats uri   &#x2F;dbs</span><br><span class="line">        #统计报告格式</span><br><span class="line">        stats realm     Global\ statistics</span><br><span class="line">        #登陆帐户信息</span><br><span class="line">        stats auth  admin:123456</span><br><span class="line">#数据库负载均衡</span><br><span class="line">listen  proxy-mysql</span><br><span class="line">        #访问的IP和端口</span><br><span class="line">        bind  0.0.0.0:3306  </span><br><span class="line">        #网络协议</span><br><span class="line">        mode  tcp</span><br><span class="line">        #负载均衡算法（轮询算法）</span><br><span class="line">        #轮询算法：roundrobin</span><br><span class="line">        #权重算法：static-rr</span><br><span class="line">        #最少连接算法：leastconn</span><br><span class="line">        #请求源IP算法：source</span><br><span class="line">        balance  roundrobin</span><br><span class="line">       #日志格式</span><br><span class="line">        option  tcplog</span><br><span class="line">        #在MySQL中创建一个没有权限的haproxy用户，密码为空。Haproxy使用这个账户对MySQL数据库心跳检测</span><br><span class="line">        option  mysql-check user haproxy</span><br><span class="line">        server  MySQL_1 172.18.0.2:3306 check weight 1 maxconn 2000  </span><br><span class="line">        server  MySQL_2 172.18.0.3:3306 check weight 1 maxconn 2000  </span><br><span class="line">        server  MySQL_2 172.18.0.4:3306 check weight 1 maxconn 2000  </span><br><span class="line">        #使用keepalive检测死链</span><br><span class="line">        option  tcpka</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动-haproxy-容器"><a href="#启动-haproxy-容器" class="headerlink" title="启动 haproxy 容器"></a>启动 haproxy 容器</h3><blockquote>
-<p>/Users/xinaogudu/hproxy 是我放置配置文件的目录。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -dit -p 4001:8888 -p 4002:3306 \</span><br><span class="line">-v &#x2F;Users&#x2F;xinaogudu&#x2F;hproxy:&#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy \</span><br><span class="line">--privileged \</span><br><span class="line">--net&#x3D;net1 \</span><br><span class="line">--name h1 \</span><br><span class="line">--ip 172.18.0.5 \</span><br><span class="line">haproxy</span><br></pre></td></tr></table></figure>
-
-<h3 id="进入-haproxy-容器指明配置文件"><a href="#进入-haproxy-容器指明配置文件" class="headerlink" title="进入 haproxy 容器指明配置文件"></a>进入 haproxy 容器指明配置文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it h1 bash</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 指定 haproxy 配置文件位置</span><br><span class="line">haproxy -c -f &#x2F;usr&#x2F;local&#x2F;etc&#x2F;haproxy&#x2F;haproxy.cfg</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="在数据库中创建一个没有密码的-haproxy-用户用于心跳检测。"><a href="#在数据库中创建一个没有密码的-haproxy-用户用于心跳检测。" class="headerlink" title="在数据库中创建一个没有密码的 haproxy 用户用于心跳检测。"></a>在数据库中创建一个没有密码的 haproxy 用户用于心跳检测。</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create user &#39;haproxy&#39;@&#39;%&#39; identified by &#39;&#39;;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><h3 id="登录-haproxy-监控：http-localhost-4001-dbs"><a href="#登录-haproxy-监控：http-localhost-4001-dbs" class="headerlink" title="登录 haproxy 监控：http://localhost:4001/dbs"></a>登录 haproxy 监控：<a href="http://localhost:4001/dbs" target="_blank" rel="noopener">http://localhost:4001/dbs</a></h3><p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3b67er48cj327y0tqwoh.jpg" alt=""></p>
-<h3 id="用数据库管理工具连接-haproxy-端口测试："><a href="#用数据库管理工具连接-haproxy-端口测试：" class="headerlink" title="用数据库管理工具连接 haproxy 端口测试："></a>用数据库管理工具连接 haproxy 端口测试：</h3><p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3b6ajpic6j317m0sq43v.jpg" alt=""></p>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>dokcer</tag>
-        <tag>PXC</tag>
-        <tag>Haproxy</tag>
       </tags>
   </entry>
   <entry>
@@ -1437,131 +1437,6 @@ hexo g -d</code></pre>
 <p>首先我们要理解 docker build 的工作原理。Docker 在运行时分为 Docker 引擎（也就是服务端守护进程）和客户端工具。Docker 的引擎提供了一组 REST API，被称为 Docker Remote API，而如 docker 命令这样的客户端工具，则是通过这组 API 与 Docker 引擎交互，从而完成各种功能。因此，虽然表面上我们好像是在本机执行各种 docker 功能，但实际上，一切都是使用的远程调用形式在服务端（Docker 引擎）完成。也因为这种 C/S 设计，让我们操作远程服务器的 Docker 引擎变得轻而易举。</p>
 <p>当我们进行镜像构建的时候，并非所有定制都会通过 RUN 指令完成，经常会需要将一些本地文件复制进镜像，比如通过 COPY 指令、ADD 指令等。而 docker build 命令构建镜像，其实并非在本地构建，而是在服务端，也就是 Docker 引擎中构建的。那么在这种客户端/服务端的架构中，如何才能让服务端获得本地文件呢？</p>
 <p>这就引入了上下文的概念。当构建的时候，用户会指定构建镜像上下文的路径，docker build 命令得知这个路径后，会将路径下的所有内容打包，然后上传给 Docker 引擎。这样 Docker 引擎收到这个上下文包后，展开就会获得构建镜像所需的一切文件。</p>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker 学习笔记 （四） 数据管理</title>
-    <url>/year/05/19/docker4/</url>
-    <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
-<a id="more"></a>
-
-<p>在默认情况下，容器内所有文件都存储在可写容器层中，这意味着：</p>
-<ul>
-<li>当该容器不再存在时，数据不会持久存在，并且如果另一个容器需要数据，则可能很难从容器中获取数据。</li>
-<li>容器的可写层紧密耦合到运行容器的主机。无法轻松地将数据移动到其他位置。</li>
-<li>写入容器的可写层需要 存储驱动程序来管理文件系统。存储驱动程序使用Linux内核提供联合文件系统。与使用直接写入主机文件系统的数据卷相比，这种额外的抽象降低了性能 。</li>
-</ul>
-<p>Docker有两个容器选项可以在主机中存储文件，因此即使在容器停止之后文件仍然会存在：volumes和 bind mounts。在Linux上运行Docker，可以使用tmpfs mount临时挂载。</p>
-<p>无论哪种方式，数据在容器内都是相同的。它作为目录或容器文件系统中的单个文件公开。</p>
-<p>Volumes，Bind mounts和tmpfs 装载之间差异的简单方法是考虑数据在Docker主机上的位置。</p>
-<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g36owkutjrj30u00eyq5e.jpg" alt=""></p>
-<h3 id="三者的区别"><a href="#三者的区别" class="headerlink" title="三者的区别"></a>三者的区别</h3><ul>
-<li><p>Volumes存储在由Docker（/var/lib/docker/volumes/在Linux上）管理的主机文件系统的一部分中。非Docker进程不应修改文件系统的这一部分。卷是在Docker中保留数据的最佳方式。</p>
-</li>
-<li><p>Bind mounts可以存储在主机系统的任何位置。它们甚至可能是重要的系统文件或目录。Docker主机或Docker容器上的非Docker进程可以随时修改它们。</p>
-</li>
-<li><p>tmpfs挂载仅存储在主机系统的内存中，永远不会写入主机系统的文件系统。</p>
-</li>
-</ul>
-<h3 id="Volumes的特点"><a href="#Volumes的特点" class="headerlink" title="Volumes的特点"></a>Volumes的特点</h3><p>卷是在Docker容器和服务中持久保存数据的首选方法。卷的一些用例包括：</p>
-<ul>
-<li><p>在多个运行容器之间共享数据。如果未显式创建它，则会在第一次将其装入容器时创建卷。当该容器停止或被移除时，该卷仍然存在。多个容器可以同时安装相同的卷，可以是读写也可以是只读。仅在您明确删除卷时才会删除卷。</p>
-<p>  当Docker主机不能保证具有给定的目录或文件结构时。卷可帮助您将Docker主机的配置与容器运行时分离。</p>
-</li>
-<li><p>如果要将容器的数据存储在远程主机或云提供程序上，而不是本地存储。</p>
-</li>
-<li><p>当您需要将数据从一个Docker主机备份，还原或迁移到另一个Docker主机时，卷是更好的选择。您可以使用卷停止容器，然后备份卷的目录（例如/var/lib/docker/volumes/<volume-name>）。</p>
-</li>
-</ul>
-<h3 id="Bind-mounts的特点"><a href="#Bind-mounts的特点" class="headerlink" title="Bind mounts的特点"></a>Bind mounts的特点</h3><ul>
-<li><p>将配置文件从主机共享到容器。这就是Docker默认通过/etc/resolv.conf从主机安装到每个容器中来为容器提供DNS解析的方式 。</p>
-</li>
-<li><p>在Docker主机上的开发环境和容器之间共享源代码或构建工件。例如，您可以将Maven target/ 目录挂载到容器中，每次在Docker主机上构建Maven项目时，容器都可以访问重建的工件。</p>
-<p>  如果以这种方式使用Docker进行开发，您的生产Dockerfile会将生产就绪工件直接复制到映像中，而不是依赖于绑定装载。</p>
-</li>
-<li><p>当Docker主机的文件或目录结构保证与容器所需的绑定安装一致时。</p>
-</li>
-</ul>
-<h3 id="tmpfs"><a href="#tmpfs" class="headerlink" title="tmpfs"></a>tmpfs</h3><ul>
-<li>tmpfs 不希望数据在主机或容器内持久存在时，最好使用挂载。这可能是出于安全原因，或者在应用程序需要编写大量非持久状态数据时保护容器的性能。</li>
-</ul>
-<h3 id="Volumes和Bind-mounts需要注意"><a href="#Volumes和Bind-mounts需要注意" class="headerlink" title="Volumes和Bind mounts需要注意"></a>Volumes和Bind mounts需要注意</h3><ul>
-<li><p>如果将空卷装入容器中存在文件或目录的目录中，则会将这些文件或目录传播（复制）到卷中。同样，如果启动容器并指定尚不存在的卷，则会为您创建一个空卷。这是预先填充另一个容器所需数据的好方法。</p>
-</li>
-<li><p>如果将绑定装载或非空卷装入容器中存在某些文件或目录的目录中，则装载会遮盖这些文件或目录，就像将文件保存到/mntLinux主机上然后安装USB驱动器进入/mnt。/mnt在卸载USB驱动器之前，USB驱动器的内容会遮挡内容。隐藏的文件不会被删除或更改，但在安装绑定装载或卷时无法访问。</p>
-</li>
-</ul>
-<h3 id="数据卷（Volumes）"><a href="#数据卷（Volumes）" class="headerlink" title="数据卷（Volumes）"></a>数据卷（Volumes）</h3><p>数据卷 是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：</p>
-<ul>
-<li><p>数据卷 可以在容器之间共享和重用</p>
-</li>
-<li><p>对 数据卷 的修改会立马生效</p>
-</li>
-<li><p>对 数据卷 的更新，不会影响镜像</p>
-</li>
-<li><p>数据卷 默认会一直存在，即使容器被删除</p>
-</li>
-</ul>
-<blockquote>
-<p>注意：数据卷 的使用，类似于 Linux 下对目录或文件进行 mount，镜像中的被指定为挂载点的目录中的文件会隐藏掉，能显示看的是挂载的 数据卷。</p>
-</blockquote>
-<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker volume create my-vol</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看所有的-数据卷"><a href="#查看所有的-数据卷" class="headerlink" title="查看所有的 数据卷"></a>查看所有的 数据卷</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> $ docker volume ls</span><br><span class="line">DRIVER              VOLUME NAME</span><br><span class="line">local               my-vol</span><br></pre></td></tr></table></figure>
-
-<h4 id="在主机里使用以下命令可以查看指定-数据卷-的信息"><a href="#在主机里使用以下命令可以查看指定-数据卷-的信息" class="headerlink" title="在主机里使用以下命令可以查看指定 数据卷 的信息"></a>在主机里使用以下命令可以查看指定 数据卷 的信息</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker volume inspect my-vol</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">"CreatedAt"</span>: <span class="string">"2019-05-19T08:22:09Z"</span>,</span><br><span class="line">        <span class="string">"Driver"</span>: <span class="string">"local"</span>,</span><br><span class="line">        <span class="string">"Labels"</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="string">"Mountpoint"</span>: <span class="string">"/var/lib/docker/volumes/my-vol/_data"</span>,</span><br><span class="line">        <span class="string">"Name"</span>: <span class="string">"my-vol"</span>,</span><br><span class="line">        <span class="string">"Options"</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="string">"Scope"</span>: <span class="string">"local"</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<h4 id="启动一个挂载数据卷的容器"><a href="#启动一个挂载数据卷的容器" class="headerlink" title="启动一个挂载数据卷的容器"></a>启动一个挂载数据卷的容器</h4><p>在用 docker run 命令的时候，使用 -v和–mount 标记来将 数据卷 挂载到容器里。在一次 docker run 中可以挂载多个 数据卷。</p>
-<h5 id="v或–mount的区别："><a href="#v或–mount的区别：" class="headerlink" title="-v或–mount的区别："></a>-v或–mount的区别：</h5><p>如果要指定数据卷的选项，则必须使用–mount。</p>
-<ul>
-<li><p>-v或–volume：由三个字段组成，用冒号字符（:）分隔。字段必须按正确的顺序排列，并且每个字段的含义不是很明显。</p>
-<ul>
-<li>对于命名卷，第一个字段是卷的名称，并且在给定主机上是唯一的。对于匿名卷，省略第一个字段。</li>
-<li>第二个字段是文件或目录在容器中安装的路径。</li>
-<li>第三个字段是可选的，是逗号分隔的选项列表，例如ro。这些选项将在下面讨论。</li>
-</ul>
-</li>
-<li><p>–mount：由多个键值对组成，以逗号分隔，每个键<key>=<value>组由一个元组组成。该–mount语法比更详细的-v或–volume，但按键的顺序并不显著，并且标志的价值更容易理解。</p>
-<ul>
-<li>type是挂载类型，可以是bind，volume，或 tmpfs。本主题讨论卷，因此挂载类型始终是volume。</li>
-<li>source，对于命名卷，这是卷的名称。对于匿名卷，省略此字段。可以指定为source 或src。</li>
-<li>destination 文件或目录在容器中的路径。可以指定为destination，dst或target。</li>
-<li>readonly（如果存在）导致绑定装入以只读方式装入容器中。</li>
-<li>volume-opt 选项可以多次指定，它采用由选项名称及其值组成的键值对。</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>注意：如果启动的容器不存在挂载卷的路径，Docker会自动创建。</p>
-</blockquote>
-<ul>
-<li>-v</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -d \</span><br><span class="line">  --name devtest \</span><br><span class="line">  -v myvol2:<span class="regexp">/app \</span></span><br><span class="line"><span class="regexp">  nginx:latest</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>–mount</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -d \</span><br><span class="line">  --name devtest \</span><br><span class="line">  --mount source=myvol2,target=<span class="regexp">/app \</span></span><br><span class="line"><span class="regexp">  nginx:latest</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="删除数据卷"><a href="#删除数据卷" class="headerlink" title="删除数据卷"></a>删除数据卷</h4><p>删除容器后，Docker数据卷仍然存在。</p>
-<ul>
-<li>例如，命名卷：具有来自容器外部的特定源awesome:/bar</li>
-<li>匿名卷没有特定的源，因此在删除容器时，可以用–rm指令删除。</li>
-</ul>
-<h4 id="删除匿名卷"><a href="#删除匿名卷" class="headerlink" title="删除匿名卷"></a>删除匿名卷</h4><p>要自动删除匿名卷，需要使用–rm选项。例如，创建匿名/foo卷。删除容器后，Docker守护进程会删除/foo卷但不会删除awesome卷。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker run --rm -v /foo -v awesome:<span class="regexp">/bar busybox top</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="删除所有未使用的数据卷并释放空间："><a href="#删除所有未使用的数据卷并释放空间：" class="headerlink" title="删除所有未使用的数据卷并释放空间："></a>删除所有未使用的数据卷并释放空间：</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker volume prune</span><br></pre></td></tr></table></figure>
-
-
-
 ]]></content>
       <categories>
         <category>docker</category>
@@ -1746,6 +1621,131 @@ hexo g -d</code></pre>
 <p>现在这 2 个容器就可以相互 ping 通，并成功建立连接。点到点链路不需要子网和子网掩码。</p>
 <p>此外，也可以不指定 –net=none 来创建点到点链路。这样容器还可以通过原先的网络来通信。</p>
 <p>利用类似的办法，可以创建一个只跟主机通信的容器。但是一般情况下，更推荐使用 –icc=false 来关闭容器之间的通信。</p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 学习笔记 （四） 数据管理</title>
+    <url>/year/05/19/docker4/</url>
+    <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g36jt91zduj327w0r4168.jpg" alt=""></p>
+<a id="more"></a>
+
+<p>在默认情况下，容器内所有文件都存储在可写容器层中，这意味着：</p>
+<ul>
+<li>当该容器不再存在时，数据不会持久存在，并且如果另一个容器需要数据，则可能很难从容器中获取数据。</li>
+<li>容器的可写层紧密耦合到运行容器的主机。无法轻松地将数据移动到其他位置。</li>
+<li>写入容器的可写层需要 存储驱动程序来管理文件系统。存储驱动程序使用Linux内核提供联合文件系统。与使用直接写入主机文件系统的数据卷相比，这种额外的抽象降低了性能 。</li>
+</ul>
+<p>Docker有两个容器选项可以在主机中存储文件，因此即使在容器停止之后文件仍然会存在：volumes和 bind mounts。在Linux上运行Docker，可以使用tmpfs mount临时挂载。</p>
+<p>无论哪种方式，数据在容器内都是相同的。它作为目录或容器文件系统中的单个文件公开。</p>
+<p>Volumes，Bind mounts和tmpfs 装载之间差异的简单方法是考虑数据在Docker主机上的位置。</p>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g36owkutjrj30u00eyq5e.jpg" alt=""></p>
+<h3 id="三者的区别"><a href="#三者的区别" class="headerlink" title="三者的区别"></a>三者的区别</h3><ul>
+<li><p>Volumes存储在由Docker（/var/lib/docker/volumes/在Linux上）管理的主机文件系统的一部分中。非Docker进程不应修改文件系统的这一部分。卷是在Docker中保留数据的最佳方式。</p>
+</li>
+<li><p>Bind mounts可以存储在主机系统的任何位置。它们甚至可能是重要的系统文件或目录。Docker主机或Docker容器上的非Docker进程可以随时修改它们。</p>
+</li>
+<li><p>tmpfs挂载仅存储在主机系统的内存中，永远不会写入主机系统的文件系统。</p>
+</li>
+</ul>
+<h3 id="Volumes的特点"><a href="#Volumes的特点" class="headerlink" title="Volumes的特点"></a>Volumes的特点</h3><p>卷是在Docker容器和服务中持久保存数据的首选方法。卷的一些用例包括：</p>
+<ul>
+<li><p>在多个运行容器之间共享数据。如果未显式创建它，则会在第一次将其装入容器时创建卷。当该容器停止或被移除时，该卷仍然存在。多个容器可以同时安装相同的卷，可以是读写也可以是只读。仅在您明确删除卷时才会删除卷。</p>
+<p>  当Docker主机不能保证具有给定的目录或文件结构时。卷可帮助您将Docker主机的配置与容器运行时分离。</p>
+</li>
+<li><p>如果要将容器的数据存储在远程主机或云提供程序上，而不是本地存储。</p>
+</li>
+<li><p>当您需要将数据从一个Docker主机备份，还原或迁移到另一个Docker主机时，卷是更好的选择。您可以使用卷停止容器，然后备份卷的目录（例如/var/lib/docker/volumes/<volume-name>）。</p>
+</li>
+</ul>
+<h3 id="Bind-mounts的特点"><a href="#Bind-mounts的特点" class="headerlink" title="Bind mounts的特点"></a>Bind mounts的特点</h3><ul>
+<li><p>将配置文件从主机共享到容器。这就是Docker默认通过/etc/resolv.conf从主机安装到每个容器中来为容器提供DNS解析的方式 。</p>
+</li>
+<li><p>在Docker主机上的开发环境和容器之间共享源代码或构建工件。例如，您可以将Maven target/ 目录挂载到容器中，每次在Docker主机上构建Maven项目时，容器都可以访问重建的工件。</p>
+<p>  如果以这种方式使用Docker进行开发，您的生产Dockerfile会将生产就绪工件直接复制到映像中，而不是依赖于绑定装载。</p>
+</li>
+<li><p>当Docker主机的文件或目录结构保证与容器所需的绑定安装一致时。</p>
+</li>
+</ul>
+<h3 id="tmpfs"><a href="#tmpfs" class="headerlink" title="tmpfs"></a>tmpfs</h3><ul>
+<li>tmpfs 不希望数据在主机或容器内持久存在时，最好使用挂载。这可能是出于安全原因，或者在应用程序需要编写大量非持久状态数据时保护容器的性能。</li>
+</ul>
+<h3 id="Volumes和Bind-mounts需要注意"><a href="#Volumes和Bind-mounts需要注意" class="headerlink" title="Volumes和Bind mounts需要注意"></a>Volumes和Bind mounts需要注意</h3><ul>
+<li><p>如果将空卷装入容器中存在文件或目录的目录中，则会将这些文件或目录传播（复制）到卷中。同样，如果启动容器并指定尚不存在的卷，则会为您创建一个空卷。这是预先填充另一个容器所需数据的好方法。</p>
+</li>
+<li><p>如果将绑定装载或非空卷装入容器中存在某些文件或目录的目录中，则装载会遮盖这些文件或目录，就像将文件保存到/mntLinux主机上然后安装USB驱动器进入/mnt。/mnt在卸载USB驱动器之前，USB驱动器的内容会遮挡内容。隐藏的文件不会被删除或更改，但在安装绑定装载或卷时无法访问。</p>
+</li>
+</ul>
+<h3 id="数据卷（Volumes）"><a href="#数据卷（Volumes）" class="headerlink" title="数据卷（Volumes）"></a>数据卷（Volumes）</h3><p>数据卷 是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：</p>
+<ul>
+<li><p>数据卷 可以在容器之间共享和重用</p>
+</li>
+<li><p>对 数据卷 的修改会立马生效</p>
+</li>
+<li><p>对 数据卷 的更新，不会影响镜像</p>
+</li>
+<li><p>数据卷 默认会一直存在，即使容器被删除</p>
+</li>
+</ul>
+<blockquote>
+<p>注意：数据卷 的使用，类似于 Linux 下对目录或文件进行 mount，镜像中的被指定为挂载点的目录中的文件会隐藏掉，能显示看的是挂载的 数据卷。</p>
+</blockquote>
+<h4 id="创建数据卷"><a href="#创建数据卷" class="headerlink" title="创建数据卷"></a>创建数据卷</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker volume create my-vol</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看所有的-数据卷"><a href="#查看所有的-数据卷" class="headerlink" title="查看所有的 数据卷"></a>查看所有的 数据卷</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> $ docker volume ls</span><br><span class="line">DRIVER              VOLUME NAME</span><br><span class="line">local               my-vol</span><br></pre></td></tr></table></figure>
+
+<h4 id="在主机里使用以下命令可以查看指定-数据卷-的信息"><a href="#在主机里使用以下命令可以查看指定-数据卷-的信息" class="headerlink" title="在主机里使用以下命令可以查看指定 数据卷 的信息"></a>在主机里使用以下命令可以查看指定 数据卷 的信息</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker volume inspect my-vol</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">"CreatedAt"</span>: <span class="string">"2019-05-19T08:22:09Z"</span>,</span><br><span class="line">        <span class="string">"Driver"</span>: <span class="string">"local"</span>,</span><br><span class="line">        <span class="string">"Labels"</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="string">"Mountpoint"</span>: <span class="string">"/var/lib/docker/volumes/my-vol/_data"</span>,</span><br><span class="line">        <span class="string">"Name"</span>: <span class="string">"my-vol"</span>,</span><br><span class="line">        <span class="string">"Options"</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="string">"Scope"</span>: <span class="string">"local"</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动一个挂载数据卷的容器"><a href="#启动一个挂载数据卷的容器" class="headerlink" title="启动一个挂载数据卷的容器"></a>启动一个挂载数据卷的容器</h4><p>在用 docker run 命令的时候，使用 -v和–mount 标记来将 数据卷 挂载到容器里。在一次 docker run 中可以挂载多个 数据卷。</p>
+<h5 id="v或–mount的区别："><a href="#v或–mount的区别：" class="headerlink" title="-v或–mount的区别："></a>-v或–mount的区别：</h5><p>如果要指定数据卷的选项，则必须使用–mount。</p>
+<ul>
+<li><p>-v或–volume：由三个字段组成，用冒号字符（:）分隔。字段必须按正确的顺序排列，并且每个字段的含义不是很明显。</p>
+<ul>
+<li>对于命名卷，第一个字段是卷的名称，并且在给定主机上是唯一的。对于匿名卷，省略第一个字段。</li>
+<li>第二个字段是文件或目录在容器中安装的路径。</li>
+<li>第三个字段是可选的，是逗号分隔的选项列表，例如ro。这些选项将在下面讨论。</li>
+</ul>
+</li>
+<li><p>–mount：由多个键值对组成，以逗号分隔，每个键<key>=<value>组由一个元组组成。该–mount语法比更详细的-v或–volume，但按键的顺序并不显著，并且标志的价值更容易理解。</p>
+<ul>
+<li>type是挂载类型，可以是bind，volume，或 tmpfs。本主题讨论卷，因此挂载类型始终是volume。</li>
+<li>source，对于命名卷，这是卷的名称。对于匿名卷，省略此字段。可以指定为source 或src。</li>
+<li>destination 文件或目录在容器中的路径。可以指定为destination，dst或target。</li>
+<li>readonly（如果存在）导致绑定装入以只读方式装入容器中。</li>
+<li>volume-opt 选项可以多次指定，它采用由选项名称及其值组成的键值对。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意：如果启动的容器不存在挂载卷的路径，Docker会自动创建。</p>
+</blockquote>
+<ul>
+<li>-v</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -d \</span><br><span class="line">  --name devtest \</span><br><span class="line">  -v myvol2:<span class="regexp">/app \</span></span><br><span class="line"><span class="regexp">  nginx:latest</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>–mount</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$ docker run -d \</span><br><span class="line">  --name devtest \</span><br><span class="line">  --mount source=myvol2,target=<span class="regexp">/app \</span></span><br><span class="line"><span class="regexp">  nginx:latest</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="删除数据卷"><a href="#删除数据卷" class="headerlink" title="删除数据卷"></a>删除数据卷</h4><p>删除容器后，Docker数据卷仍然存在。</p>
+<ul>
+<li>例如，命名卷：具有来自容器外部的特定源awesome:/bar</li>
+<li>匿名卷没有特定的源，因此在删除容器时，可以用–rm指令删除。</li>
+</ul>
+<h4 id="删除匿名卷"><a href="#删除匿名卷" class="headerlink" title="删除匿名卷"></a>删除匿名卷</h4><p>要自动删除匿名卷，需要使用–rm选项。例如，创建匿名/foo卷。删除容器后，Docker守护进程会删除/foo卷但不会删除awesome卷。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker run --rm -v /foo -v awesome:<span class="regexp">/bar busybox top</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="删除所有未使用的数据卷并释放空间："><a href="#删除所有未使用的数据卷并释放空间：" class="headerlink" title="删除所有未使用的数据卷并释放空间："></a>删除所有未使用的数据卷并释放空间：</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">docker volume prune</span><br></pre></td></tr></table></figure>
+
+
+
 ]]></content>
       <categories>
         <category>docker</category>
@@ -2254,6 +2254,39 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
+    <title>《荒原狼》 - 摘抄</title>
+    <url>/year/05/27/hyl/</url>
+    <content><![CDATA[<blockquote>
+<p>人们对“人”这个概念的理解始终只不过是短暂的市民协议而已。</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="对抗自己"><a href="#对抗自己" class="headerlink" title="对抗自己"></a>对抗自己</h3><hr>
+<p>憎恨自己，整整一生。他把全部的天才的想象、全部的思维能力都用来反对自己，反对这个无辜而高尚的对象。不管怎么样，他把辛酸的讽刺、尖刻的批评、一切仇恨与恶意首先向自己发泄。</p>
+<p>他是一个受苦的天才，按尼采的某些说法，他磨炼造就了受苦的天才能力，能够没完没了地忍受可怕的痛苦。他的悲观的基础不是鄙视世界，而是鄙视自己，因为在他无情鞭笞、尖锐批评各种机构、各式任务时，从不把自己排除在外，他的箭头总是先对准自己，他憎恨和否定的第一个人就是自己…</p>
+<p>他的心灵正在走向死亡。</p>
+<h3 id="双重人格"><a href="#双重人格" class="headerlink" title="双重人格"></a>双重人格</h3><hr>
+<p>处于两种时代交替时期的人，他们是去了安全感，不在感到清白无辜，他们的命运就是怀疑人生，把人生是否哟意义这个问题作为个人的痛苦和劫数加以体验。</p>
+<p>他们的理想不是牺牲自我，而是保持自我，他们努力追求的既不是高尚的德行，当个圣人，也不是它的对立面，他们最不能忍受的是不达目的决不罢休的精神，他虽然侍奉上帝，但又想满足自己的欲望。他虽然愿意做个仁人君子，但又想在人世间过舒适安逸的日子。总而言之，他们企图在两个极端的中间，在没有狂风暴雨的温和舒适的地带安居乐业，他们成功地做到了这一点，不过放弃了某些东西：他们的生活和感情缺乏那种走极端、不达目的不罢休的人所具有的紧张与强度。只有牺牲自我才能积极地生活。</p>
+<h3 id="反受其害"><a href="#反受其害" class="headerlink" title="反受其害"></a>反受其害</h3><hr>
+<p>上帝造人是叫他生活，不是叫他思考！因为，谁思考，谁把思考当作首要的大事，他固然能在思考方面有所建树，然而他却颠倒了陆地与水域的关系，所以他总有一天会被淹死。</p>
+<p>他得到了他为本性所使而苦苦追求的东西，但是得之太多反受其害了。开始，这是他的梦想和幸福，后来就变成了他痛苦的命运。追求权力的人毁于权力，追求金钱的人毁于金钱，低声下气的人毁于卑躬屈膝，追求享乐的人毁于行乐。正是同样的道理，荒原狼毁于我行我素。他达到了目的，他越来越随心所欲，没有人能给他发号施令，他不用看别人的眼色行事，他的一言一行都由他自己自由决定。因为每个意志坚强的人都能得到他真正的内心冲动驱使他追求的东西。哈里得到了他的自由，但是他突然发现，他的自由就是死亡，他现在非常孤独，外界谁也不来打扰他，这使他觉得非常可怕，各式人等都和他毫不相干，连他自己也和自己没有什么关系，他在越来越稀薄的与人无关的孤独的空气中慢慢窒息而死。现在的情况是，孤独和绝对自主已经不再是他的愿望和目的，而是他的厄运，是对他的判决了，用魔术呼唤出来的东西再也收不回去了。现在，当他充满渴望、怀着良好的意愿，伸开双臂准备接受约束，准备和他人共同生活时，已经无济于事了，现在谁也不来理会他了。其实，并不是人们憎恨他，讨厌他。相反，他有许多朋友。许多人喜欢他。但是他得到的始终只是同情和友好的态度。人们请他作客，赠礼给他，给他写亲切的书信，但没有人真正接近他，他和其他人没有任何亲近感，没有人愿意并能够和他一起生活。包围他的是孤独的空气和宁静的气氛，周围的一切都从他身边溜走，他没有能力建立各种关系，意志和渴望都不能帮助他克服这种无能。这是他生活的重要特征之一。</p>
+<h3 id="原则性的错觉"><a href="#原则性的错觉" class="headerlink" title="原则性的错觉"></a>原则性的错觉</h3><hr>
+<p>原则性的错觉。所有的“解释”，所有的心理学，所有的探讨都需要辅助手段，需要理论、神话、谎言；一个正直的作者应该在他论述的结尾尽量澄清这些谎言。假如我说有“上”“下”之分，那么这就是一种观点，要求进一步得到解释，因为只有在思想中，在抽象概念中才有上下之分。世界本身并没有上下。 简而言之，“荒原狼”也同于此理，只是一种幻觉。如果说哈里觉得自己是一个狼人，自认为是由互相敌视的、对立的两种性格组成的，那么，这只是一种简化的神话。哈里根本不是狼人，假如我们表面上似乎不假思索地接受了他的谎言，接受了他自己虚构并信以为真的谎言，真的把他看作双重性格的人，看作荒原狼，并且据此加以解释的话，那么，我们是因为希望容易为人理解的缘故利用了一种错觉，这种错觉现在应该得到纠正。</p>
+<h3 id="整体"><a href="#整体" class="headerlink" title="整体"></a>整体</h3><hr>
+<p>所有的人似乎都具有一种天生的、必然的需要，把自我想象为一个整体。这种狂热尽管会经常地受到巨大的冲击而动摇，但它每次都能复原如旧。坐在杀人犯面前的法官直盯着他的眼睛，在某一瞬间，他听见杀人犯用他（法官）的声音说话，他在自己的内心深处也发现有杀人犯的感情、能力和可能性，但他很快又变成了一个整体，又成了法官，转身回到想象中的自我的躯壳中，行使他的职责，判处杀人犯死刑。</p>
+<h3 id="自杀"><a href="#自杀" class="headerlink" title="自杀"></a>自杀</h3><hr>
+<p>只把那些真正自尽的人成为自杀者是错误的。这类人中是由于偶然的原因才成为自杀者的，自杀并不一定是他们的本性。在这些没有个性、没有明显的特点、没有经历命运折磨的普普通通的人中，有些人用自杀了却了医生，但就他们的本性与特点来说，他们并不属于自杀者的类型；相反，那些按本质属于自杀者的人中却有许多人 – 也就是大部分人 – 从不曾损伤过自己的一根毫毛。</p>
+<p>任何失望、痛苦、恶劣的生活境遇会马上唤醒潜伏在他身上以一死而求解脱的愿望。久而久之，他却把这种倾向，发展成一套有益于生的哲学。他想，那扇太平门始终为他敞开着，这种想法给他力量，使他好奇，去饱尝各种痛苦与劣境，在他遭遇不幸的时候，有时他会有一种类似幸灾乐祸的感觉，他想：“我倒要看看，一个人到底能够忍受多少苦难！一旦到了忍无可忍的地步，我把太平门移开就拜托了劫数。“许多自杀者就是因为有这样的想法而获得巨大的力量。</p>
+]]></content>
+      <categories>
+        <category>阅读</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>更换 HomeBrew 镜像源及常用命令</title>
     <url>/year/05/22/homebrew-yuan/</url>
     <content><![CDATA[<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g39tijtyf5j31fe0do0ut.jpg" alt=""></p>
@@ -2290,39 +2323,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </categories>
       <tags>
         <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《荒原狼》 - 摘抄</title>
-    <url>/year/05/27/hyl/</url>
-    <content><![CDATA[<blockquote>
-<p>人们对“人”这个概念的理解始终只不过是短暂的市民协议而已。</p>
-</blockquote>
-<a id="more"></a>
-
-<h3 id="对抗自己"><a href="#对抗自己" class="headerlink" title="对抗自己"></a>对抗自己</h3><hr>
-<p>憎恨自己，整整一生。他把全部的天才的想象、全部的思维能力都用来反对自己，反对这个无辜而高尚的对象。不管怎么样，他把辛酸的讽刺、尖刻的批评、一切仇恨与恶意首先向自己发泄。</p>
-<p>他是一个受苦的天才，按尼采的某些说法，他磨炼造就了受苦的天才能力，能够没完没了地忍受可怕的痛苦。他的悲观的基础不是鄙视世界，而是鄙视自己，因为在他无情鞭笞、尖锐批评各种机构、各式任务时，从不把自己排除在外，他的箭头总是先对准自己，他憎恨和否定的第一个人就是自己…</p>
-<p>他的心灵正在走向死亡。</p>
-<h3 id="双重人格"><a href="#双重人格" class="headerlink" title="双重人格"></a>双重人格</h3><hr>
-<p>处于两种时代交替时期的人，他们是去了安全感，不在感到清白无辜，他们的命运就是怀疑人生，把人生是否哟意义这个问题作为个人的痛苦和劫数加以体验。</p>
-<p>他们的理想不是牺牲自我，而是保持自我，他们努力追求的既不是高尚的德行，当个圣人，也不是它的对立面，他们最不能忍受的是不达目的决不罢休的精神，他虽然侍奉上帝，但又想满足自己的欲望。他虽然愿意做个仁人君子，但又想在人世间过舒适安逸的日子。总而言之，他们企图在两个极端的中间，在没有狂风暴雨的温和舒适的地带安居乐业，他们成功地做到了这一点，不过放弃了某些东西：他们的生活和感情缺乏那种走极端、不达目的不罢休的人所具有的紧张与强度。只有牺牲自我才能积极地生活。</p>
-<h3 id="反受其害"><a href="#反受其害" class="headerlink" title="反受其害"></a>反受其害</h3><hr>
-<p>上帝造人是叫他生活，不是叫他思考！因为，谁思考，谁把思考当作首要的大事，他固然能在思考方面有所建树，然而他却颠倒了陆地与水域的关系，所以他总有一天会被淹死。</p>
-<p>他得到了他为本性所使而苦苦追求的东西，但是得之太多反受其害了。开始，这是他的梦想和幸福，后来就变成了他痛苦的命运。追求权力的人毁于权力，追求金钱的人毁于金钱，低声下气的人毁于卑躬屈膝，追求享乐的人毁于行乐。正是同样的道理，荒原狼毁于我行我素。他达到了目的，他越来越随心所欲，没有人能给他发号施令，他不用看别人的眼色行事，他的一言一行都由他自己自由决定。因为每个意志坚强的人都能得到他真正的内心冲动驱使他追求的东西。哈里得到了他的自由，但是他突然发现，他的自由就是死亡，他现在非常孤独，外界谁也不来打扰他，这使他觉得非常可怕，各式人等都和他毫不相干，连他自己也和自己没有什么关系，他在越来越稀薄的与人无关的孤独的空气中慢慢窒息而死。现在的情况是，孤独和绝对自主已经不再是他的愿望和目的，而是他的厄运，是对他的判决了，用魔术呼唤出来的东西再也收不回去了。现在，当他充满渴望、怀着良好的意愿，伸开双臂准备接受约束，准备和他人共同生活时，已经无济于事了，现在谁也不来理会他了。其实，并不是人们憎恨他，讨厌他。相反，他有许多朋友。许多人喜欢他。但是他得到的始终只是同情和友好的态度。人们请他作客，赠礼给他，给他写亲切的书信，但没有人真正接近他，他和其他人没有任何亲近感，没有人愿意并能够和他一起生活。包围他的是孤独的空气和宁静的气氛，周围的一切都从他身边溜走，他没有能力建立各种关系，意志和渴望都不能帮助他克服这种无能。这是他生活的重要特征之一。</p>
-<h3 id="原则性的错觉"><a href="#原则性的错觉" class="headerlink" title="原则性的错觉"></a>原则性的错觉</h3><hr>
-<p>原则性的错觉。所有的“解释”，所有的心理学，所有的探讨都需要辅助手段，需要理论、神话、谎言；一个正直的作者应该在他论述的结尾尽量澄清这些谎言。假如我说有“上”“下”之分，那么这就是一种观点，要求进一步得到解释，因为只有在思想中，在抽象概念中才有上下之分。世界本身并没有上下。 简而言之，“荒原狼”也同于此理，只是一种幻觉。如果说哈里觉得自己是一个狼人，自认为是由互相敌视的、对立的两种性格组成的，那么，这只是一种简化的神话。哈里根本不是狼人，假如我们表面上似乎不假思索地接受了他的谎言，接受了他自己虚构并信以为真的谎言，真的把他看作双重性格的人，看作荒原狼，并且据此加以解释的话，那么，我们是因为希望容易为人理解的缘故利用了一种错觉，这种错觉现在应该得到纠正。</p>
-<h3 id="整体"><a href="#整体" class="headerlink" title="整体"></a>整体</h3><hr>
-<p>所有的人似乎都具有一种天生的、必然的需要，把自我想象为一个整体。这种狂热尽管会经常地受到巨大的冲击而动摇，但它每次都能复原如旧。坐在杀人犯面前的法官直盯着他的眼睛，在某一瞬间，他听见杀人犯用他（法官）的声音说话，他在自己的内心深处也发现有杀人犯的感情、能力和可能性，但他很快又变成了一个整体，又成了法官，转身回到想象中的自我的躯壳中，行使他的职责，判处杀人犯死刑。</p>
-<h3 id="自杀"><a href="#自杀" class="headerlink" title="自杀"></a>自杀</h3><hr>
-<p>只把那些真正自尽的人成为自杀者是错误的。这类人中是由于偶然的原因才成为自杀者的，自杀并不一定是他们的本性。在这些没有个性、没有明显的特点、没有经历命运折磨的普普通通的人中，有些人用自杀了却了医生，但就他们的本性与特点来说，他们并不属于自杀者的类型；相反，那些按本质属于自杀者的人中却有许多人 – 也就是大部分人 – 从不曾损伤过自己的一根毫毛。</p>
-<p>任何失望、痛苦、恶劣的生活境遇会马上唤醒潜伏在他身上以一死而求解脱的愿望。久而久之，他却把这种倾向，发展成一套有益于生的哲学。他想，那扇太平门始终为他敞开着，这种想法给他力量，使他好奇，去饱尝各种痛苦与劣境，在他遭遇不幸的时候，有时他会有一种类似幸灾乐祸的感觉，他想：“我倒要看看，一个人到底能够忍受多少苦难！一旦到了忍无可忍的地步，我把太平门移开就拜托了劫数。“许多自杀者就是因为有这样的想法而获得巨大的力量。</p>
-]]></content>
-      <categories>
-        <category>阅读</category>
-      </categories>
-      <tags>
-        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -3079,35 +3079,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
-    <title>Next主题自动更换背景</title>
-    <url>/year/10/06/next%E6%9B%B4%E6%8D%A2%E8%83%8C%E6%99%AF/</url>
-    <content><![CDATA[<blockquote>
-<p>如果觉得next的空白主题看腻了或者太多人用觉得不够个性化，那么不妨试试自动更新背景图片。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="图片来源"><a href="#图片来源" class="headerlink" title="图片来源"></a>图片来源</h2><p>自动更换背景的实现是修改添加背景的css样式实现。图片来源是</p>
-<p><a href="https://source.unsplash.com/" target="_blank" rel="noopener">https://source.unsplash.com/</a></p>
-<p>这个网站，里面不仅免费提供了很多高清美图，而且还提供api接口调用，实在是良心。这里实现的原理也是调用了这个网站的接口。</p>
-<h2 id="修改背景样式"><a href="#修改背景样式" class="headerlink" title="修改背景样式"></a>修改背景样式</h2><p>修改<code>themes\next\source\css\_custom\custom.styl</code>文件，这个是Next故意留给用户自己个性化定制一些样式的文件，添加以下代码：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"></span><br><span class="line">    background:url(https:<span class="comment">//source.unsplash.com/random/1600x900);</span></span><br><span class="line"></span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line"></span><br><span class="line">    background-attachment:fixed;</span><br><span class="line"></span><br><span class="line">    background-position:<span class="number">50</span>% <span class="number">50</span>%;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果自己不喜欢这个网址提供的图片做背景，那么修改url()里面的路径即可。repeat、attachment、position就是调整图片的位置，不重复出现、不滚动等等。</p>
-<h2 id="修改不透明度"><a href="#修改不透明度" class="headerlink" title="修改不透明度"></a>修改不透明度</h2><p>完成这一步其实背景就会自动更换了，但是会出现一个问题，因为next主题的背景是纯透明的，这样子就造成背景图片的影响看不见文字，这对于博客来说肯定不行。</p>
-<p>那么就需要调整背景的不透明度了。同样是修改t<code>hemes\next\source\css _custom\custom.styl</code>文件。在后面添加如下代码：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">.main-inner &#123; </span><br><span class="line"></span><br><span class="line">    margin-top: <span class="number">60</span>px;</span><br><span class="line"></span><br><span class="line">    padding: <span class="number">60</span>px <span class="number">60</span>px <span class="number">60</span>px <span class="number">60</span>px;</span><br><span class="line"></span><br><span class="line">    background: #fff;</span><br><span class="line"></span><br><span class="line">	opacity: <span class="number">0.8</span>;</span><br><span class="line"></span><br><span class="line">    min-height: <span class="number">500</span>px;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<pre><code>* background: #fff; 白色
-* opacity: 0.8;不透明度</code></pre><h2 id="效果："><a href="#效果：" class="headerlink" title="效果："></a>效果：</h2><p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-006tNbRwgy1fvxvc6azb4j31kw0vknpd.jpg" alt=""></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>我的 macOS 使用习惯</title>
     <url>/year/06/02/mymac/</url>
     <content><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3mh8ghljej31c00u0u12.jpg" alt=""></p>
@@ -3224,6 +3195,35 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
+    <title>Next主题自动更换背景</title>
+    <url>/year/10/06/next%E6%9B%B4%E6%8D%A2%E8%83%8C%E6%99%AF/</url>
+    <content><![CDATA[<blockquote>
+<p>如果觉得next的空白主题看腻了或者太多人用觉得不够个性化，那么不妨试试自动更新背景图片。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="图片来源"><a href="#图片来源" class="headerlink" title="图片来源"></a>图片来源</h2><p>自动更换背景的实现是修改添加背景的css样式实现。图片来源是</p>
+<p><a href="https://source.unsplash.com/" target="_blank" rel="noopener">https://source.unsplash.com/</a></p>
+<p>这个网站，里面不仅免费提供了很多高清美图，而且还提供api接口调用，实在是良心。这里实现的原理也是调用了这个网站的接口。</p>
+<h2 id="修改背景样式"><a href="#修改背景样式" class="headerlink" title="修改背景样式"></a>修改背景样式</h2><p>修改<code>themes\next\source\css\_custom\custom.styl</code>文件，这个是Next故意留给用户自己个性化定制一些样式的文件，添加以下代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"></span><br><span class="line">    background:url(https:<span class="comment">//source.unsplash.com/random/1600x900);</span></span><br><span class="line"></span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line"></span><br><span class="line">    background-attachment:fixed;</span><br><span class="line"></span><br><span class="line">    background-position:<span class="number">50</span>% <span class="number">50</span>%;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果自己不喜欢这个网址提供的图片做背景，那么修改url()里面的路径即可。repeat、attachment、position就是调整图片的位置，不重复出现、不滚动等等。</p>
+<h2 id="修改不透明度"><a href="#修改不透明度" class="headerlink" title="修改不透明度"></a>修改不透明度</h2><p>完成这一步其实背景就会自动更换了，但是会出现一个问题，因为next主题的背景是纯透明的，这样子就造成背景图片的影响看不见文字，这对于博客来说肯定不行。</p>
+<p>那么就需要调整背景的不透明度了。同样是修改t<code>hemes\next\source\css _custom\custom.styl</code>文件。在后面添加如下代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">.main-inner &#123; </span><br><span class="line"></span><br><span class="line">    margin-top: <span class="number">60</span>px;</span><br><span class="line"></span><br><span class="line">    padding: <span class="number">60</span>px <span class="number">60</span>px <span class="number">60</span>px <span class="number">60</span>px;</span><br><span class="line"></span><br><span class="line">    background: #fff;</span><br><span class="line"></span><br><span class="line">	opacity: <span class="number">0.8</span>;</span><br><span class="line"></span><br><span class="line">    min-height: <span class="number">500</span>px;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>* background: #fff; 白色
+* opacity: 0.8;不透明度</code></pre><h2 id="效果："><a href="#效果：" class="headerlink" title="效果："></a>效果：</h2><p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-006tNbRwgy1fvxvc6azb4j31kw0vknpd.jpg" alt=""></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker 图形界面管理工具 -- Portainer</title>
     <url>/year/05/19/portainer/</url>
     <content><![CDATA[<p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g36jl1fll4j31fg0fkgnv.jpg" alt=""></p>
@@ -3248,30 +3248,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </categories>
       <tags>
         <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>macOS 如何像 Windows 一样使用鼠标</title>
-    <url>/year/06/02/shubiao/</url>
-    <content><![CDATA[<p>虽然 mac 本身的触摸板很好用，但有时候还是忍不住用鼠标，或者你外接显示器的时候。推荐两款软件，让鼠标在 mac 下和 win 一样顺滑。</p>
-<a id="more"></a>
-
-<h2 id="SteerMouse"><a href="#SteerMouse" class="headerlink" title="SteerMouse"></a>SteerMouse</h2><p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3ji2oedahj311c0u07ka.jpg" alt=""></p>
-<blockquote>
-<p>SteerMouse可以分配不同的功能按钮，包括双点击点击，改性剂，应用切换，快捷键的分配，“对齐”，光标移动，光标移动的目标（如OK按钮），和更多。<br>SteerMouse可以让你控制光标的灵敏度上的跟踪速度。（苹果的软件只允许跟踪速度。调整）调整配置，您可以自定义光标到适合你的手的运动的理想环境。</p>
-</blockquote>
-<p>官网地址： <a href="http://plentycom.jp/en/steermouse/" target="_blank" rel="noopener">http://plentycom.jp/en/steermouse/</a><br>破解版地址：<a href="https://xclient.info/s/steermouse.html" target="_blank" rel="noopener">https://xclient.info/s/steermouse.html</a></p>
-<h2 id="SmoothScroll"><a href="#SmoothScroll" class="headerlink" title="SmoothScroll"></a>SmoothScroll</h2><p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3ji5q6mlrj30ww0i0afv.jpg" alt=""></p>
-<p>鼠标滚轮一格一格的滚动效果总是没有触摸板来的顺滑，Smooth Scroll 可以让平滑滚动应用到系统的每个角落，让鼠标滚轮用起来也有触摸板的感觉。</p>
-<p>官网地址：<a href="https://www.smoothscroll.net/mac/" target="_blank" rel="noopener">https://www.smoothscroll.net/mac/</a></p>
-<p>破解版地址： <a href="https://xclient.info/s/smoothscroll.html" target="_blank" rel="noopener">https://xclient.info/s/smoothscroll.html</a></p>
-<p>参考： <a href="https://sspai.com/post/32832" target="_blank" rel="noopener">8 款 App 全面提升你的 Mac 鼠标体验</a></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -3306,6 +3282,30 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
+    <title>macOS 如何像 Windows 一样使用鼠标</title>
+    <url>/year/06/02/shubiao/</url>
+    <content><![CDATA[<p>虽然 mac 本身的触摸板很好用，但有时候还是忍不住用鼠标，或者你外接显示器的时候。推荐两款软件，让鼠标在 mac 下和 win 一样顺滑。</p>
+<a id="more"></a>
+
+<h2 id="SteerMouse"><a href="#SteerMouse" class="headerlink" title="SteerMouse"></a>SteerMouse</h2><p><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3ji2oedahj311c0u07ka.jpg" alt=""></p>
+<blockquote>
+<p>SteerMouse可以分配不同的功能按钮，包括双点击点击，改性剂，应用切换，快捷键的分配，“对齐”，光标移动，光标移动的目标（如OK按钮），和更多。<br>SteerMouse可以让你控制光标的灵敏度上的跟踪速度。（苹果的软件只允许跟踪速度。调整）调整配置，您可以自定义光标到适合你的手的运动的理想环境。</p>
+</blockquote>
+<p>官网地址： <a href="http://plentycom.jp/en/steermouse/" target="_blank" rel="noopener">http://plentycom.jp/en/steermouse/</a><br>破解版地址：<a href="https://xclient.info/s/steermouse.html" target="_blank" rel="noopener">https://xclient.info/s/steermouse.html</a></p>
+<h2 id="SmoothScroll"><a href="#SmoothScroll" class="headerlink" title="SmoothScroll"></a>SmoothScroll</h2><p><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3ji5q6mlrj30ww0i0afv.jpg" alt=""></p>
+<p>鼠标滚轮一格一格的滚动效果总是没有触摸板来的顺滑，Smooth Scroll 可以让平滑滚动应用到系统的每个角落，让鼠标滚轮用起来也有触摸板的感觉。</p>
+<p>官网地址：<a href="https://www.smoothscroll.net/mac/" target="_blank" rel="noopener">https://www.smoothscroll.net/mac/</a></p>
+<p>破解版地址： <a href="https://xclient.info/s/smoothscroll.html" target="_blank" rel="noopener">https://xclient.info/s/smoothscroll.html</a></p>
+<p>参考： <a href="https://sspai.com/post/32832" target="_blank" rel="noopener">8 款 App 全面提升你的 Mac 鼠标体验</a></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mac OS 下 Sublime Text 3 运行Java</title>
     <url>/year/01/12/sublime-text-%E8%BF%90%E8%A1%8C-java/</url>
     <content><![CDATA[<p>.</p>
@@ -3320,30 +3320,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
 
 <h4 id="选择Build-System，选择上一步保存的配置文件"><a href="#选择Build-System，选择上一步保存的配置文件" class="headerlink" title="选择Build System，选择上一步保存的配置文件"></a>选择Build System，选择上一步保存的配置文件</h4><p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-su.jpg" alt=""></p>
 <h4 id="Command-B编译运行"><a href="#Command-B编译运行" class="headerlink" title="Command+B编译运行"></a>Command+B编译运行</h4><pre><code>运行的时候会在桌面上生成一个　.class文件，可以通过配置文件将生成的.class文件删除。</code></pre><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">"shell_cmd": "javac -encoding utf-8 $file_name &amp;&amp; java $file_base_name &amp;&amp; rm -rf $file_base_name.class"</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>macOS 轻松愉快的解压 rar 压缩包</title>
-    <url>/year/06/28/unrar/</url>
-    <content><![CDATA[<p>macOS 自带的压缩软件不支持 rar 格式的文件解压缩，于是需要找一个第三方压缩软件。Keka 一个不错的软件，但是它默认的压缩文件图标也太丑了吧。而且我对解压缩并那么多的需求，在用了一段时间之后发现了 unrar 就果断放弃了。</p>
-<a id="more"></a>
-
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用 homebrew 安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install unrar</span><br></pre></td></tr></table></figure>
-
-<h2 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unrar 参数 压缩文件名 路径</span><br></pre></td></tr></table></figure>
-
-<p>解压参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">e             解压压缩文件到当前目录</span><br><span class="line">x             用绝对路径解压文件</span><br></pre></td></tr></table></figure>
-
 
 
 ]]></content>
@@ -3655,6 +3631,30 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </tags>
   </entry>
   <entry>
+    <title>macOS 轻松愉快的解压 rar 压缩包</title>
+    <url>/year/06/28/unrar/</url>
+    <content><![CDATA[<p>macOS 自带的压缩软件不支持 rar 格式的文件解压缩，于是需要找一个第三方压缩软件。Keka 一个不错的软件，但是它默认的压缩文件图标也太丑了吧。而且我对解压缩并那么多的需求，在用了一段时间之后发现了 unrar 就果断放弃了。</p>
+<a id="more"></a>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用 homebrew 安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install unrar</span><br></pre></td></tr></table></figure>
+
+<h2 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unrar 参数 压缩文件名 路径</span><br></pre></td></tr></table></figure>
+
+<p>解压参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">e             解压压缩文件到当前目录</span><br><span class="line">x             用绝对路径解压文件</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记一次误删系统文件</title>
     <url>/year/05/20/wushan/</url>
     <content><![CDATA[<p><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g37stwytfcj313803y3zc.jpg" alt=""></p>
@@ -3674,6 +3674,26 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </categories>
       <tags>
         <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哪里都是楚门的世界</title>
+    <url>/year/11/22/%E5%93%AA%E9%87%8C%E9%83%BD%E6%98%AF%E6%A5%9A%E9%97%A8%E7%9A%84%E4%B8%96%E7%95%8C/</url>
+    <content><![CDATA[<p><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-12-11-15129566132297.jpg" alt="-w325"></p>
+ <a id="more"></a>
+
+<p>楚门的世界 鼎鼎大名的电影… 直到完整看完，才明白TA的伟大之处：<strong>在遥远的以前，预估了日常生活的无趣，对他人生活强烈的窥视欲，以及真人秀的火爆。</strong></p>
+<p>更可怕的是，在上班途中、下班后、工作闲暇，爱刷的、爱聊的都是真人秀，或者是明星类爆款大IP作品（捂脸～最近一直追老九门～）生活的有意思的地方去哪里了…只能通过长篇小说、绵延注水的剧集，兴奋又半强迫自己往下看..满怀期待地看完后 在找类似的继续追～!如此以往～继续循环？？！</p>
+<p>我们究竟怎么了？！工作、加班，当然奔波辛苦：坐着拥挤公交，丧尸般机械go to work–working–下班继续working–挤公交回去，都是每天的真实写照，即使睡觉，梦里脑中交杂着工作中几个方面的信息。所以 我 and 同路人，希望下班就可以更无脑的接受happy信息，刷剧，看小说，让“有可追”的概念伴随我，避免自己还要费脑选择干什么～</p>
+<p>copy and copy，生活即使出现偶然的变化，也在微小波动内，我们逐步to be the same as楚门：重复做事，不再想边界在哪里，为什么要机械重复？为什么我要两点一线的过日子？有吃有喝后，我们可以额外想些什么，有的没的，脑洞大开的，甚至anything 都OK 。</p>
+<p>最可怕的是，当想去想think时，不知道自己想什么，要想什么，可以想什么。但每天能留给wo自由去想的时间很有限，内心os：赶紧想 一会就得睡觉了，抓狂想去想有趣的东西，可找脑海里一片空白……紧张的想ing，直至没有能用来想的时间over，重复进入另一个copy day，again and again～</p>
+<p>如何有改变 ？投入到一个未知领域，花掉闲散的精力？今天所感，希望对自己有惊醒…工作完不知道做什么 也是浑浑噩噩对自己极不负责的，既然时间有限，才更应该跳出“楚门的世界”，别让青春虚度！</p>
+]]></content>
+      <categories>
+        <category>电影</category>
+      </categories>
+      <tags>
+        <tag>电影</tag>
       </tags>
   </entry>
   <entry>
@@ -3704,26 +3724,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </categories>
       <tags>
         <tag>live</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>哪里都是楚门的世界</title>
-    <url>/year/11/22/%E5%93%AA%E9%87%8C%E9%83%BD%E6%98%AF%E6%A5%9A%E9%97%A8%E7%9A%84%E4%B8%96%E7%95%8C/</url>
-    <content><![CDATA[<p><img src="http://ovlnt0xy1.bkt.clouddn.com/2017-12-11-15129566132297.jpg" alt="-w325"></p>
- <a id="more"></a>
-
-<p>楚门的世界 鼎鼎大名的电影… 直到完整看完，才明白TA的伟大之处：<strong>在遥远的以前，预估了日常生活的无趣，对他人生活强烈的窥视欲，以及真人秀的火爆。</strong></p>
-<p>更可怕的是，在上班途中、下班后、工作闲暇，爱刷的、爱聊的都是真人秀，或者是明星类爆款大IP作品（捂脸～最近一直追老九门～）生活的有意思的地方去哪里了…只能通过长篇小说、绵延注水的剧集，兴奋又半强迫自己往下看..满怀期待地看完后 在找类似的继续追～!如此以往～继续循环？？！</p>
-<p>我们究竟怎么了？！工作、加班，当然奔波辛苦：坐着拥挤公交，丧尸般机械go to work–working–下班继续working–挤公交回去，都是每天的真实写照，即使睡觉，梦里脑中交杂着工作中几个方面的信息。所以 我 and 同路人，希望下班就可以更无脑的接受happy信息，刷剧，看小说，让“有可追”的概念伴随我，避免自己还要费脑选择干什么～</p>
-<p>copy and copy，生活即使出现偶然的变化，也在微小波动内，我们逐步to be the same as楚门：重复做事，不再想边界在哪里，为什么要机械重复？为什么我要两点一线的过日子？有吃有喝后，我们可以额外想些什么，有的没的，脑洞大开的，甚至anything 都OK 。</p>
-<p>最可怕的是，当想去想think时，不知道自己想什么，要想什么，可以想什么。但每天能留给wo自由去想的时间很有限，内心os：赶紧想 一会就得睡觉了，抓狂想去想有趣的东西，可找脑海里一片空白……紧张的想ing，直至没有能用来想的时间over，重复进入另一个copy day，again and again～</p>
-<p>如何有改变 ？投入到一个未知领域，花掉闲散的精力？今天所感，希望对自己有惊醒…工作完不知道做什么 也是浑浑噩噩对自己极不负责的，既然时间有限，才更应该跳出“楚门的世界”，别让青春虚度！</p>
-]]></content>
-      <categories>
-        <category>电影</category>
-      </categories>
-      <tags>
-        <tag>电影</tag>
       </tags>
   </entry>
   <entry>
@@ -3768,23 +3768,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       </categories>
       <tags>
         <tag>转载</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我爱你如此之深，这我毫不在意</title>
-    <url>/year/12/18/%E6%AF%9B%E5%A7%86%E3%80%8A%E9%9D%A2%E7%BA%B1%E3%80%8B/</url>
-    <content><![CDATA[<p><img src="https://blog-1256335675.cos.ap-chengdu.myqcloud.com/2019-06-18-165648.jpg" alt=""></p>
-<a id="more"></a>
-
-<p>我对你根本没抱幻想。我知道你愚蠢、轻佻、头脑空虚，然而我爱你。我知道你的企图、你的理想，你势利，庸俗，然而我爱你。我知道你是个二流货色，然而我爱你。为了欣赏你所热衷的那些玩意我竭尽全力，为了向你展示我并非不是无知、庸俗、闲言碎语、愚蠢至极，我煞费苦心。我知道智慧将会令你大惊失色，所以处处谨小慎微，务必表现得和你交往的任何男人一样像个傻瓜。我知道你仅仅为了一已之私跟我结婚。</p>
-<p>我爱你如此之深，这我毫不在意。</p>
-<p>据我所知，人们在爱上一个人却得不到回报时，往往感到伤心失望，继而变成愤怒尖刻。我不是那样。我从未奢望你来爱我，我从未设想你会有理由爱我，我也从未认为我自己惹人爱慕。对我来说能被赐予机会爱你就应心怀感激了。每当我想到你跟我在一起是愉悦的，每当我从你的眼睛里看到欢乐，我都狂喜不已。我尽力将我的爱维持在不让你厌烦的限度，否则我清楚那个后果我承受不了。我时刻关注你的神色，但凡你的厌烦显现出一点蛛丝马迹，我便改变方式。一个丈夫的权利，在我看来却是一种恩惠</p>
-]]></content>
-      <categories>
-        <category>阅读</category>
-      </categories>
-      <tags>
-        <tag>读书</tag>
       </tags>
   </entry>
   <entry>
@@ -4404,16 +4387,6 @@ gulp-uglify // 混淆js</code></pre><p>安装命令：</p>
       <tags>
         <tag>软件测试</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>轻</title>
-    <url>/year/11/15/%E8%BD%BB/</url>
-    <content><![CDATA[<p>意义的原因很可能是意义本身。干吗要有意义？干吗要有生命？干吗要有存在？干吗要有有？重量的原因是引力，引力的原因呢？又是重量。学物理的人告诉我：千万别把运动和能量，以及和时空分割开来理解。我随即得了启发：也千万别把人和意义分割开来理解。不是人有欲望，而是人即欲望。这欲望就是能量，是能量就是运动，是运动就走去前面或者未来。前面和未来都是什么和都是为什么？这必来的疑问使意义诞生，上帝便在第六天把人造成。上帝比靡菲斯特更有力量，任何魔法和咒语都不能把这一天的成就删除。在这一天以后所有的光阴里，你逃得开某种意义，但逃不开意义，如同你逃得开一次旅行但逃不开生命之旅。</p>
-<a id="more"></a>
-
-<p>你不是这种意义，就是那种意义。什么意义都不是，就掉进昆德拉所说的“生命不能承受之轻”。你是一个什么呢？生命算是个什么玩意儿呢？轻得称不出一点儿重量你可就要消失。我向L讨回那件东西，归途中的惶茫因年幼而无以名状，如今想来，分明就是为了一个“轻”字：珍宝转眼被处理成垃圾，一段生命轻得飘散了，没有了，以为是什么原来什么也不是，轻易、简单、灰飞烟灭。一段生命之轻，威胁了生命全面之重，惶茫往灵魂里渗透：是不是生命的所有段落都会落此下场啊？人的根本恐惧就在这个“轻”字上，比如歧视和漠视，比如嘲笑，比如穷人手里作废的股票，比如失恋和死亡。轻，最是可怕。</p>
-<p>要求意义就是要求生命的重量。各种重量。各种重量在撞墙之时被真正测量。但很多重量，在死神的秤盘上还是轻，秤砣平衡在荒诞的准星上。因而得有一种重量，你愿意为之生也愿意为之死，愿意为之累，愿意在它的引力下耗尽性命。不是强言不悔，是清醒地从命。神圣是上帝对心魂的测量，是心魂被确认的重量。死亡光临时有一个仪式，灰和土都好，看往日轻轻地蒸发，但能听见，有什么东西沉沉地还在。不期还在现实中，只望还在美丽的位置上。我与L的情谊，可否还在美丽的位置上沉沉地有着重量？</p>
-]]></content>
   </entry>
   <entry>
     <title>【转】Vim from zero to hero - Vim 从入门到精通</title>
