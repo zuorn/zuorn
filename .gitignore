@@ -1,0 +1,48 @@
+# =====================================================
+#  Hexo 博客 .gitignore
+# =====================================================
+
+# ---------- 依赖与构建产物 ----------
+node_modules/
+public/
+.deploy_git/
+
+# ---------- Hexo 数据库 / 日志 ----------
+db.json
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# ---------- 历史遗留：早期 gh-pages 静态站点产物 ----------
+# 以下为旧版打包产物在仓库根目录的残留，已移出版本控制；
+# 均用 "/" 锚定根目录，避免误伤 source/ 或 public/ 下的同名资源。
+/archives/
+/year/
+/images/
+/tags/
+/categories/
+/page/
+/about/
+/mubu/
+/lib/
+/js/
+/css/
+/index.html
+/search.xml
+/robots.txt
+/CNAME
+# /baidu_verify_6mIOMYzAv7.html
+# /google7523df552e983e09.html
+
+# ---------- 系统与编辑器 ----------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.suo
+*.user
+
+# ---------- 环境变量 / 密钥 ----------
+.env
+.env.*
+!.env.example
