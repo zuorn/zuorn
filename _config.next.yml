@@ -1,0 +1,66 @@
+# ---------------------------------------------------------------
+# NexT 主题替代配置（Alternate Theme Config）
+# 参考: https://theme-next.js.org/docs/getting-started/configuration
+# ---------------------------------------------------------------
+
+# 主题风格：Muse | Mist | Pisces | Gemini
+scheme: Gemini
+
+# 深色模式
+darkmode: true
+
+# ---------------------------------------------------------------
+# 菜单
+# ---------------------------------------------------------------
+menu:
+  home: / || fa fa-home
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-th
+  archives: /archives/ || fa fa-archive
+
+menu_settings:
+  icons: true
+  badges: false
+
+# ---------------------------------------------------------------
+# 侧边栏
+# ---------------------------------------------------------------
+sidebar:
+  # 侧边栏位置：left | right
+  position: left
+  # 展开方式：post | always | hide | remove
+  display: post
+  # 距顶部的偏移（Pisces | Gemini 生效）
+  offset: 12
+
+# 侧边栏头像
+avatar:
+  url: /images/avatar.png
+  rounded: true
+  rotated: false
+
+# 侧边栏显示站点统计（文章/分类/标签数）
+site_state: true
+
+# 社交链接
+social:
+  #GitHub: https://github.com/yourname || fab fa-github
+  #E-Mail: mailto:you@example.com || fa fa-envelope
+
+social_icons:
+  enable: true
+  icons_only: false
+  transition: false
+
+# ---------------------------------------------------------------
+# 页脚
+# ---------------------------------------------------------------
+footer:
+  # 建站年份
+  since: 2026
+  icon:
+    name: fa fa-heart
+    animated: true
+    color: "#ff0000"
+  # 站点信息由 Hexo 主配置提供，Powered by 信息
+  powered: false
