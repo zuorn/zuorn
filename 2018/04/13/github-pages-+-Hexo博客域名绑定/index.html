@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="终于有自己的域名了！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="github pages + Hexo博客域名绑定">
+<meta property="og:url" content="http://example.com/2018/04/13/github-pages-+-Hexo%E5%8D%9A%E5%AE%A2%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A/index.html">
+<meta property="og:site_name" content="zuorn">
+<meta property="og:description" content="终于有自己的域名了！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236108756974.jpg">
+<meta property="og:image" content="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236121614574.jpg">
+<meta property="og:image" content="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236134421366.jpg">
+<meta property="og:image" content="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236126374864.jpg">
+<meta property="og:image" content="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236140425982.jpg">
+<meta property="og:image" content="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236143444491.jpg">
+<meta property="article:published_time" content="2018-04-13T08:59:00.000Z">
+<meta property="article:modified_time" content="2019-10-17T04:24:39.000Z">
+<meta property="article:author" content="zuorn">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236108756974.jpg">
+
+
+<link rel="canonical" href="http://example.com/2018/04/13/github-pages-+-Hexo%E5%8D%9A%E5%AE%A2%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2018/04/13/github-pages-+-Hexo%E5%8D%9A%E5%AE%A2%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A/","path":"2018/04/13/github-pages-+-Hexo博客域名绑定/","title":"github pages + Hexo博客域名绑定"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>github pages + Hexo博客域名绑定 | zuorn</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">zuorn</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%88%E4%BA%8E%E6%9C%89%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9F%9F%E5%90%8D%E4%BA%86%EF%BC%81"><span class="nav-number">1.</span> <span class="nav-text">终于有自己的域名了！</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B3%E8%AF%B7%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D%EF%BC%9A"><span class="nav-number">1.0.1.</span> <span class="nav-text">申请个人域名：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E6%B7%BB%E5%8A%A0dns%E8%A7%A3%E6%9E%90%EF%BC%9A"><span class="nav-number">1.0.2.</span> <span class="nav-text">域名添加dns解析：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BACNAME%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="nav-number">1.0.3.</span> <span class="nav-text">创建CNAME文件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#github%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A%EF%BC%9A"><span class="nav-number">1.0.4.</span> <span class="nav-text">github域名绑定：</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zuorn"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">zuorn</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/04/13/github-pages-+-Hexo%E5%8D%9A%E5%AE%A2%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="zuorn">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zuorn">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="github pages + Hexo博客域名绑定 | zuorn">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          github pages + Hexo博客域名绑定
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-04-13 08:59:00" itemprop="dateCreated datePublished" datetime="2018-04-13T08:59:00+00:00">2018-04-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2019-10-17 04:24:39" itemprop="dateModified" datetime="2019-10-17T04:24:39+00:00">2019-10-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="终于有自己的域名了！"><a href="#终于有自己的域名了！" class="headerlink" title="终于有自己的域名了！"></a>终于有自己的域名了！</h2><p><img src="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236108756974.jpg"></p>
+<span id="more"></span>
+
+
+
+<p>经过几番折腾，终于绑定好了域名，现在总结一下</p>
+<h4 id="申请个人域名："><a href="#申请个人域名：" class="headerlink" title="申请个人域名："></a>申请个人域名：</h4><ul>
+<li><p>首先你要有个域名，在</p>
+<p><a target="_blank" rel="noopener" href="https://wanwang.aliyun.com/">万网</a></p>
+<p>购买即可。（当然要注册阿里云账号。）</p>
+</li>
+<li><p><strong>域名实名认证</strong></p>
+<p>，具体看</p>
+<p><a target="_blank" rel="noopener" href="https://help.aliyun.com/knowledge_detail/48263.html?spm=a2c4g.11186623.2.26.rUjij3">这里</a></p>
+<p>。</p>
+</li>
+<li><p>在</p>
+<p><a target="_blank" rel="noopener" href="https://whois.aliyun.com/?spm=5176.whzuorntop.10.4.218b39c62rDWWb">域名信息查询（WHOIS）</a></p>
+<p>确保自己的域名状态正常（如图）就可以开始配置啦！</p>
+<p><img src="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236121614574.jpg"></p>
+</li>
+</ul>
+<h4 id="域名添加dns解析："><a href="#域名添加dns解析：" class="headerlink" title="域名添加dns解析："></a>域名添加dns解析：</h4><ul>
+<li><p>添加记录类型为</p>
+<p><code>CNAME</code></p>
+<p>、主机记录为</p>
+<p><code>www</code></p>
+<p>、记录值为自己github二级域名的解析。</p>
+</li>
+<li><p>添加记录类型为</p>
+<p><code>A</code></p>
+<p>、主机记录为</p>
+<p><code>@</code></p>
+<p>、记录值为自己github的ip地址的解析。</p>
+</li>
+</ul>
+<p>通过ping 自己的gihub二级域名可获取ip<br><img src="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236134421366.jpg"></p>
+<p><img src="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236126374864.jpg"><br>添加完成勾选点击启用，状态为–即可。</p>
+<h4 id="创建CNAME文件："><a href="#创建CNAME文件：" class="headerlink" title="创建CNAME文件："></a>创建CNAME文件：</h4><p>在hexo本地目录<code>source</code>下新建CNAME（无后缀）文件并填入自己的域名，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zuorn.<span class="property">top</span></span><br><span class="line">www.<span class="property">zuorn</span>.<span class="property">top</span></span><br></pre></td></tr></table></figure>
+
+<p>重新生成上传：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="github域名绑定："><a href="#github域名绑定：" class="headerlink" title="github域名绑定："></a>github域名绑定：</h4><p>打开博客在github中的地址，点击<code>Settings</code>，修改<code>Custom domain</code>为我们自己的域名保存即可。</p>
+<p><img src="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236140425982.jpg"></p>
+<p>这个时候在浏览器当中输入域名就可以顺利打开了。</p>
+<p><img src="http://ovlnt0xy1.bkt.clouddn.com/2018-04-13-15236143444491.jpg"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/04/10/hexo-n-%E6%97%B6%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80markdown%E7%BC%96%E8%BE%91%E5%99%A8/" rel="prev" title="hexo n 时默认打开markdown编辑器">
+                  <i class="fa fa-angle-left"></i> hexo n 时默认打开markdown编辑器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/10/03/Mac-10.13-%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E7%89%88-man-%E5%91%BD%E4%BB%A4/" rel="next" title="Mac 10.13 安装中文版 man 命令">
+                  Mac 10.13 安装中文版 man 命令 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">zuorn</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="find命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="find 命令">
+<meta property="og:url" content="http://example.com/2017/10/11/find-%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="zuorn">
+<meta property="og:description" content="find命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-10-11T02:23:08.000Z">
+<meta property="article:modified_time" content="2019-05-20T04:41:15.000Z">
+<meta property="article:author" content="zuorn">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2017/10/11/find-%E5%91%BD%E4%BB%A4/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2017/10/11/find-%E5%91%BD%E4%BB%A4/","path":"2017/10/11/find-命令/","title":"find 命令"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>find 命令 | zuorn</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">zuorn</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">语法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E9%A1%B9%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">选项：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%A6%E5%AE%9A%E5%8F%82%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">否定参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8"><span class="nav-number">5.1.</span> <span class="nav-text">类型参数列表</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%9B%AE%E5%BD%95%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2"><span class="nav-number">6.</span> <span class="nav-text">基于目录深度搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%8C%B9%E9%85%8D%E6%96%87%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">删除匹配文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90-%E6%89%80%E6%9C%89%E6%9D%83%E8%BF%9B%E8%A1%8C%E5%8C%B9%E9%85%8D"><span class="nav-number"></span> <span class="nav-text">根据文件权限&#x2F;所有权进行匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%80%9F%E5%8A%A9-exec%E9%80%89%E9%A1%B9%E4%B8%8E%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">借助-exec选项与其他命令结合使用</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zuorn"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">zuorn</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/10/11/find-%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="zuorn">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zuorn">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="find 命令 | zuorn">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          find 命令
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-10-11 02:23:08" itemprop="dateCreated datePublished" datetime="2017-10-11T02:23:08+00:00">2017-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2019-05-20 04:41:15" itemprop="dateModified" datetime="2019-05-20T04:41:15+00:00">2019-05-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>find命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</p>
+<span id="more"></span>
+
+
+
+<h4 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h4><blockquote>
+<p>find(选项)(参数)</p>
+</blockquote>
+<h4 id="选项："><a href="#选项：" class="headerlink" title="选项："></a>选项：</h4><blockquote>
+<p>-amin&lt;分钟&gt;：查找在指定时间曾被存取过的文件或目录，单位以分钟计算；</p>
+<p>-anewer&lt;参考文件或目录&gt;：查找其存取时间较指定文件或目录的存取时间更接近现在的文件或目录；</p>
+<p>-atime&lt;24小时数&gt;：查找在指定时间曾被存取过的文件或目录，单位以24小时计算；</p>
+<p>-cmin&lt;分钟&gt;：查找在指定时间之时被更改过的文件或目录；</p>
+<p>-cnewer&lt;参考文件或目录&gt;查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</p>
+<p>-ctime&lt;24小时数&gt;：查找在指定时间之时被更改的文件或目录，单位以24小时计算；</p>
+<p>-daystart：从本日开始计算时间； -depth：从指定目录下最深层的子目录开始查找；</p>
+<p>-expty：寻找文件大小为0 Byte的文件，或目录下没有任何子目录或文件的空目录；</p>
+<p>-exec&lt;执行指令&gt;：假设find指令的回传值为True，就执行该指令；</p>
+<p>-false：将find指令的回传值皆设为False；</p>
+<p>-fls&lt;列表文件&gt;：此参数的效果和指定“-ls”参数类似，但会把结果保存为指定的列表文件； -follow：排除符号连接；</p>
+<p>-fprint&lt;列表文件&gt;：此参数的效果和指定“-print”参数类似，但会把结果保存成指定的列表文件； -fprint0&lt;列表文件&gt;：此参数的效果和指定“</p>
+<p>-print0”参数类似，但会把结果保存成指定的列表文件；</p>
+<p>-fprintf&lt;列表文件&gt;&lt;输出格式&gt;：此参数的效果和指定“-printf”参数类似，但会把结果保存成指定的列表文件；</p>
+<p>-fstype&lt;文件系统类型&gt;：只寻找该文件系统类型下的文件或目录；</p>
+<p>-gid&lt;群组识别码&gt;：查找符合指定之群组识别码的文件或目录；</p>
+<p>-group&lt;群组名称&gt;：查找符合指定之群组名称的文件或目录； -help或——help：在线帮助；</p>
+<p>-ilname&lt;范本样式&gt;：此参数的效果和指定“-lname”参数类似，但忽略字符大小写的差别； -iname&lt;范本样式&gt;：此参数的效果和指定“-name”参数类似，但忽略字符大小写的差别；</p>
+<p>-inum：查找符合指定的inode编号的文件或目录；</p>
+<p>-ipath&lt;范本样式&gt;：此参数的效果和指定“-path”参数类似，但忽略字符大小写的差别；</p>
+<p>-iregex&lt;范本样式&gt;：此参数的效果和指定“-regexe”参数类似，但忽略字符大小写的差别；</p>
+<p>-links&lt;连接数目&gt;：查找符合指定的硬连接数目的文件或目录；</p>
+<p>-iname&lt;范本样式&gt;：指定字符串作为寻找符号连接的范本样式；</p>
+<p>-ls：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出；</p>
+<p>-maxdepth&lt;目录层级&gt;：设置最大目录层级；</p>
+<p>-mindepth&lt;目录层级&gt;：设置最小目录层级；</p>
+<p>-mmin&lt;分钟&gt;：查找在指定时间曾被更改过的文件或目录，单位以分钟计算；</p>
+<p>-mount：此参数的效果和指定“-xdev”相同； -mtime&lt;24小时数&gt;：查找在指定时间曾被更改过的文件或目录，单位以24小时计算；</p>
+<p>-name&lt;范本样式&gt;：指定字符串作为寻找文件或目录的范本样式；</p>
+<p>-newer&lt;参考文件或目录&gt;：查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</p>
+<p>-nogroup：找出不属于本地主机群组识别码的文件或目录；</p>
+<p>-noleaf：不去考虑目录至少需拥有两个硬连接存在；</p>
+<p>-nouser：找出不属于本地主机用户识别码的文件或目录；</p>
+<p>-ok&lt;执行指令&gt;：此参数的效果和指定“-exec”类似，但在执行指令之前会先询问用户，若回答“y”或“Y”，则放弃执行命令；</p>
+<p>-path&lt;范本样式&gt;：指定字符串作为寻找目录的范本样式；</p>
+<p>-perm&lt;权限数值&gt;：查找符合指定的权限数值的文件或目录；</p>
+<p>-print：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式为每列一个名称，每个名称前皆有“.&#x2F;”字符串；</p>
+<p>-print0：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式为全部的名称皆在同一行；</p>
+<p>-printf&lt;输出格式&gt;：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式可以自行指定；</p>
+<p>-prune：不寻找字符串作为寻找文件或目录的范本样式;</p>
+<p>-regex&lt;范本样式&gt;：指定字符串作为寻找文件或目录的范本样式；</p>
+<p>-size&lt;文件大小&gt;：查找符合指定的文件大小的文件； -true：将find指令的回传值皆设为True；</p>
+<p>-typ&lt;文件类型&gt;：只寻找符合指定的文件类型的文件；</p>
+<p>-uid&lt;用户识别码&gt;：查找符合指定的用户识别码的文件或目录；</p>
+</blockquote>
+<blockquote>
+<p>-used&lt;日数&gt;：查找文件或目录被更改之后在指定时间曾被存取过的文件或目录，单位以日计算；</p>
+<p>-user&lt;拥有者名称&gt;：查找符和指定的拥有者名称的文件或目录；</p>
+<p>-version或——version：显示版本信息；</p>
+<p>-xdev：将范围局限在先行的文件系统中；</p>
+<p>-xtype&lt;文件类型&gt;：此参数的效果和指定“-type”参数类似，差别在于它针对符号连接检查。</p>
+</blockquote>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>起始目录：查找文件的起始目录。</p>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p><strong>根据文件或者正则表达式进行匹配</strong></p>
+<p>列出当前目录及子目录下所有文件和文件夹</p>
+<blockquote>
+<p>find .</p>
+</blockquote>
+<p>在<code>/home</code>目录下查找以.txt结尾的文件名</p>
+<blockquote>
+<p>find &#x2F;home -name “*.txt”</p>
+</blockquote>
+<p>同上，但忽略大小写</p>
+<blockquote>
+<p>find &#x2F;home iname “*.txt”</p>
+</blockquote>
+<p>当前目录及子目录下查找所有以.txt和.pdf结尾的文件</p>
+<blockquote>
+<p>find . ( -name “*.txt” -o -name “*.pdf” )<br>或<br>find . -name “*.txt” -o -name “*.pdf”</p>
+</blockquote>
+<p>匹配文件路径或者文件</p>
+<blockquote>
+<p>find &#x2F;usr&#x2F; -path “<em>local</em>“</p>
+</blockquote>
+<p>基于正则表达式匹配文件路径</p>
+<blockquote>
+<p>find . -regex “.*(.txt|.pdf)$”</p>
+</blockquote>
+<p>同上，但忽略大小写</p>
+<blockquote>
+<p>find . -iregex “.*(.txt|.pdf)$”</p>
+</blockquote>
+<h4 id="否定参数"><a href="#否定参数" class="headerlink" title="否定参数"></a>否定参数</h4><p>找<code>/home</code>路径下不是以.txt结尾的文件</p>
+<blockquote>
+<p>find &#x2F;home ! -name “*.txt”</p>
+</blockquote>
+<p>根据文件类型进行搜索</p>
+<blockquote>
+<p>find . -type 类型参数</p>
+</blockquote>
+<h5 id="类型参数列表"><a href="#类型参数列表" class="headerlink" title="类型参数列表"></a>类型参数列表</h5><ul>
+<li>f 普通文件</li>
+<li>l 符号连接</li>
+<li>d 目录</li>
+<li>c 字符设备</li>
+<li>b 块设备</li>
+<li>s 套接字</li>
+<li>p Fifo</li>
+</ul>
+<h4 id="基于目录深度搜索"><a href="#基于目录深度搜索" class="headerlink" title="基于目录深度搜索"></a>基于目录深度搜索</h4><p>向下最大深度限制为3</p>
+<blockquote>
+<p>find . -maxdepth 3 -type f</p>
+</blockquote>
+<p>搜索出深度距离当前目录至少2个子目录的所有文件</p>
+<blockquote>
+<p>find . -mindepth 2 -type f</p>
+</blockquote>
+<p>根据文件时间戳进行搜索</p>
+<blockquote>
+<p>find . -type f 时间戳</p>
+</blockquote>
+<p>UNIX&#x2F;Linux文件系统每个文件都有三种时间戳：</p>
+<ul>
+<li>访问时间（-atime&#x2F;天，-amin&#x2F;分钟）：用户最近一次访问时间。</li>
+<li>修改时间（-mtime&#x2F;天，-mmin&#x2F;分钟）：文件最后一次修改时间。</li>
+<li>变化时间（-ctime&#x2F;天，-cmin&#x2F;分钟）：文件数据元（例如权限等）最后一次修改时间。</li>
+</ul>
+<p>搜索最近七天内被访问过的所有文件</p>
+<blockquote>
+<p>find . -type f -atime -7</p>
+</blockquote>
+<p>搜索恰好在七天前被访问过的所有文件</p>
+<blockquote>
+<p>find . -type f -atime 7</p>
+</blockquote>
+<p>搜索超过七天内被访问过的所有文件</p>
+<blockquote>
+<p>find . -type f -atime +7</p>
+</blockquote>
+<p>搜索访问时间超过10分钟的所有文件</p>
+<blockquote>
+<p>find . -type f -amin +10</p>
+</blockquote>
+<p>找出比file.log修改时间更长的所有文件</p>
+<blockquote>
+<p>find . -type f -newer file.log</p>
+</blockquote>
+<p>文件大小单元：</p>
+<ul>
+<li>b —— 块（512字节）</li>
+<li>c —— 字节</li>
+<li>w —— 字（2字节）</li>
+<li>k —— 千字节</li>
+<li>M —— 兆字节</li>
+<li>G —— 吉字节</li>
+</ul>
+<p>搜索大于10KB的文件</p>
+<blockquote>
+<p>find . -type f -size +10k</p>
+</blockquote>
+<p>搜索小于10KB的文件</p>
+<blockquote>
+<p>find . -type f -size -10k \</p>
+</blockquote>
+<p>搜索等于10KB的文件</p>
+<blockquote>
+<p>find . -type f -size 10k</p>
+</blockquote>
+<h4 id="删除匹配文件"><a href="#删除匹配文件" class="headerlink" title="删除匹配文件"></a>删除匹配文件</h4><p>删除当前目录下所有.txt文件</p>
+<blockquote>
+<p>find . -type f -name “*.txt” -delete</p>
+</blockquote>
+<h3 id="根据文件权限-所有权进行匹配"><a href="#根据文件权限-所有权进行匹配" class="headerlink" title="根据文件权限&#x2F;所有权进行匹配"></a>根据文件权限&#x2F;所有权进行匹配</h3><p>当前目录下搜索出权限为777的文件</p>
+<blockquote>
+<p>find . -type f -perm 777</p>
+</blockquote>
+<p>找出当前目录下权限不是644的php文件</p>
+<blockquote>
+<p>find . -type f -name “*.php” ! -perm 644</p>
+</blockquote>
+<p>找出当前目录用户tom拥有的所有文件</p>
+<blockquote>
+<p>find . -type f -user tom</p>
+</blockquote>
+<p>找出当前目录用户组sunk拥有的所有文件</p>
+<blockquote>
+<p>find . -type f -group sunk</p>
+</blockquote>
+<h4 id="借助-exec选项与其他命令结合使用"><a href="#借助-exec选项与其他命令结合使用" class="headerlink" title="借助-exec选项与其他命令结合使用"></a>借助-exec选项与其他命令结合使用</h4><p>找出当前目录下所有root的文件，并把所有权更改为用户tom</p>
+<blockquote>
+<p>find .-type f -user root -exec chown tom {} ;</p>
+</blockquote>
+<p>上例中，{} 用于与-exec选项结合使用来匹配所有文件，然后会被替换为相应的文件名。 找出自己家目录下所有的.txt文件并删除</p>
+<blockquote>
+<p>find $HOME&#x2F;. -name “*.txt” -ok rm {} ;</p>
+</blockquote>
+<p>上例中，-ok和-exec行为一样，不过它会给出提示，是否执行相应的操作。 查找当前目录下所有.txt文件并把他们拼接起来写入到all.txt文件中</p>
+<blockquote>
+<p>find . -type f -name “*.txt” -exec cat {} ;&gt; all.txt</p>
+</blockquote>
+<p>将30天前的.log文件移动到old目录中</p>
+<blockquote>
+<p>find . -type f -mtime +30 -name “*.log” -exec cp {} old ;</p>
+</blockquote>
+<p>找出当前目录下所有.txt文件并以“File:文件名”的形式打印出来</p>
+<blockquote>
+<p>find . -type f -name “*.txt” -exec printf “File: %s\n” {} ;</p>
+</blockquote>
+<p>因为单行命令中-exec参数中无法使用多个命令，以下方法可以实现在-exec之后接受多条命令</p>
+<blockquote>
+<p>-exec .&#x2F;text.sh {} ;</p>
+</blockquote>
+<p>搜索但跳出指定的目录 查找当前目录或者子目录下所有.txt文件，但是跳过子目录sk</p>
+<blockquote>
+<p>find . -path “.&#x2F;sk” -prune -o -name “*.txt” -print</p>
+</blockquote>
+<p>####find其他技巧收集</p>
+<p>要列出所有长度为零的文件</p>
+<blockquote>
+<p>find . -empty</p>
+</blockquote>
+<p>转自: <a target="_blank" rel="noopener" href="http://man.linuxde.net/find">http://man.linuxde.net/find</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/10/10/mac%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/" rel="prev" title="mac设置指南">
+                  <i class="fa fa-angle-left"></i> mac设置指南
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/11/22/%E5%93%AA%E9%87%8C%E9%83%BD%E6%98%AF%E6%A5%9A%E9%97%A8%E7%9A%84%E4%B8%96%E7%95%8C/" rel="next" title="哪里都是楚门的世界">
+                  哪里都是楚门的世界 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">zuorn</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
